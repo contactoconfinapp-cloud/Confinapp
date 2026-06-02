@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>CONFÍN \u2014 Patagonia & Andes Australes</title>
+<meta name="description" content="Descubr\u00ed alojamientos, experiencias, gastronom\u00eda y comercios aut\u00e9nticos de la Patagonia. Conexi\u00f3n directa con anfitriones reales.">
+<meta name="theme-color" content="#0E1A1C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:#FAF8F5; --stone:#E8E2D9; --ash:#C4BAB0; --bark:#7A6E65;
+  --soil:#4A3F38; --night:#1C1915; --ember:#B8673A; --pine:#3D5247;
+  --atlantic:#3D6B73; --deep:#0E1A1C; --fog:#F4F1ED;
+  --font-d:'Cormorant Garamond',Georgia,serif;
+  --font-b:'DM Sans',sans-serif;
+  --trans:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{height:100%;overflow:hidden;font-family:var(--font-b);font-weight:300;background:var(--deep);}
+
+/* \u2500\u2500 VIEWS \u2500\u2500 */
+.view{
+  position:fixed;inset:0;
+  display:flex;flex-direction:column;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.5s ease, transform 0.5s ease;
+  transform:translateX(30px);
+  overflow:hidden;
+}
+.view.active{
+  opacity:1;pointer-events:all;
+  transform:translateX(0);
+}
+.view.exit{
+  opacity:0;transform:translateX(-30px);
+}
+
+/* \u2500\u2500 SPLASH \u2500\u2500 */
+#splash{
+  background:var(--deep);
+  align-items:center;justify-content:center;
+  z-index:999;
+  opacity:1;pointer-events:all;transform:none;
+}
+.splash-glow{
+  position:absolute;top:40%;left:50%;
+  transform:translate(-50%,-50%) scale(0);
+  width:100%;height:65%;
+  background:radial-gradient(ellipse at 50% 50%,rgba(140,210,225,0.18) 0%,rgba(61,150,170,0.1) 40%,transparent 72%);
+  transition:transform 1.6s cubic-bezier(0.2,0.8,0.3,1),opacity 1.6s ease;
+  opacity:0;pointer-events:none;
+}
+#splash-logo{opacity:0;transform:translateY(28px) scale(0.94);transition:all 1.2s cubic-bezier(0.2,0.8,0.3,1) 0.5s;margin-bottom:36px;text-align:center;position:relative;z-index:2;width:100%;}
+#splash-logo img{width:82%;max-width:360px;height:auto;filter:brightness(1.9) contrast(0.88) saturate(0.75) drop-shadow(0 0 22px rgba(140,210,225,0.55));}
+#splash-slogan{opacity:0;transform:translateY(12px);transition:all 0.9s ease 1.3s;text-align:center;margin-bottom:18px;position:relative;z-index:2;}
+#splash-slogan p{font-family:var(--font-d);font-size:clamp(1.3rem,4.5vw,1.9rem);font-weight:300;font-style:italic;color:rgba(250,248,245,0.88);line-height:1.3;}
+#splash-region{opacity:0;transform:translateY(8px);transition:all 0.8s ease 1.7s;position:relative;z-index:2;}
+#splash-region p{font-size:0.65rem;letter-spacing:0.26em;text-transform:uppercase;color:rgba(163,196,204,0.58);text-align:center;}
+
+/* \u2500\u2500 NAV \u2500\u2500 */
+.nav{
+  position:relative;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;
+  background:rgba(250,248,245,0.97);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(196,186,176,0.2);
+  flex-shrink:0;
+}
+.nav-logo img{height:42px;width:auto;object-fit:contain;max-width:160px;}
+.nav-logo span{font-family:var(--font-d);font-size:1.3rem;font-weight:300;letter-spacing:0.14em;color:var(--night);}
+.nav-logo span em{font-style:italic;color:var(--atlantic);}
+.nav-right{display:flex;align-items:center;gap:6px;}
+.lang-btn{background:none;border:1px solid var(--ash);padding:4px 7px;font-size:0.6rem;letter-spacing:0.1em;cursor:pointer;font-family:var(--font-b);color:var(--bark);transition:all 0.2s;}
+.lang-btn.active,.lang-btn:hover{background:var(--night);color:var(--cream);border-color:var(--night);}
+.font-btn{background:none;border:1px solid var(--ash);padding:4px 6px;font-size:0.65rem;cursor:pointer;font-family:var(--font-b);color:var(--bark);}
+.back-btn{background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;font-size:0.72rem;letter-spacing:0.08em;color:var(--bark);font-family:var(--font-b);padding:4px 0;}
+.back-btn span{font-size:1rem;}
+
+/* \u2500\u2500 HERO VIEW \u2500\u2500 */
+#view-hero{background:var(--deep);}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 50% 55%,rgba(180,220,230,0.2) 0%,transparent 48%),
+    radial-gradient(ellipse at 30% 40%,rgba(61,107,115,0.5) 0%,transparent 48%),
+    radial-gradient(ellipse at 75% 25%,rgba(184,103,58,0.18) 0%,transparent 42%),
+    linear-gradient(175deg,#1A2022 0%,#1C3032 38%,#1E3028 65%,#1A2022 100%);
+}
+.hero-mountains{
+  position:absolute;bottom:0;left:0;right:0;height:45%;
+  background:var(--deep);
+  clip-path:polygon(0 100%,0 65%,8% 42%,18% 60%,30% 18%,44% 52%,54% 32%,66% 10%,78% 38%,88% 22%,100% 40%,100% 100%);
+  opacity:0.55;
+}
+.hero-content{
+  position:relative;z-index:2;
+  flex:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:20px 24px 100px;
+  text-align:center;
+}
+.hero-logo-wrap{margin-bottom:28px;position:relative;}
+.hero-logo-glow{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:340px;height:220px;
+  background:radial-gradient(ellipse,rgba(220,240,245,0.16) 0%,rgba(61,107,115,0.2) 35%,transparent 70%);
+  pointer-events:none;
+}
+.hero-logo-wrap img{
+  width:82%;max-width:340px;height:auto;
+  position:relative;z-index:1;
+  filter:brightness(1.9) contrast(0.88) saturate(0.75) drop-shadow(0 0 22px rgba(140,210,225,0.5));
+}
+.hero-slogan{
+  font-family:var(--font-d);
+  font-size:clamp(1.4rem,5vw,2.2rem);
+  font-weight:300;font-style:italic;
+  color:rgba(250,248,245,0.88);
+  line-height:1.3;margin-bottom:16px;
+}
+.hero-region{
+  font-size:0.65rem;letter-spacing:0.26em;text-transform:uppercase;
+  color:rgba(163,196,204,0.6);margin-bottom:44px;
+}
+.hero-cta{
+  background:var(--atlantic);color:var(--cream);
+  border:none;padding:15px 32px;
+  font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;
+  cursor:pointer;font-family:var(--font-b);font-weight:400;
+  transition:background var(--trans);
+  display:flex;align-items:center;gap:8px;
+}
+.hero-cta:hover{background:#2d5560;}
+.hero-sub-cta{
+  margin-top:14px;font-size:0.72rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:rgba(196,186,176,0.6);
+  background:none;border:none;cursor:pointer;font-family:var(--font-b);
+  text-decoration:none;display:block;
+  border-bottom:1px solid rgba(196,186,176,0.3);padding-bottom:2px;
+}
+
+/* \u2500\u2500 DESTINATIONS VIEW \u2500\u2500 */
+#view-destinations{background:var(--cream);}
+.view-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.view-header{padding:20px 20px 8px;text-align:center;}
+.view-header h2{font-family:var(--font-d);font-size:clamp(1.6rem,5vw,2.4rem);font-weight:300;color:var(--night);line-height:1.1;margin-bottom:6px;}
+.view-header h2 em{font-style:italic;color:var(--atlantic);}
+.view-header p{font-size:0.74rem;color:var(--bark);letter-spacing:0.06em;}
+.dest-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px 16px 24px;}
+.dest-card{
+  border-radius:3px;overflow:hidden;
+  position:relative;cursor:pointer;
+  height:160px;
+  transition:transform 0.3s ease;
+}
+.dest-card:hover{transform:scale(1.02);}
+.dest-card.full-width{grid-column:1/-1;height:180px;}
+.dest-bg{width:100%;height:100%;}
+.dest-bg.sm{background:linear-gradient(145deg,#1A3028,#2d5560,#3D6B73);}
+.dest-bg.bar{background:linear-gradient(145deg,#1C2820,#243830,#3D5247);}
+.dest-bg.vla{background:linear-gradient(145deg,#162830,#1E3038,#2d5560);}
+.dest-bg.bolson{background:linear-gradient(145deg,#1A2C20,#243428,#3D5247);}
+.dest-bg.esquel{background:linear-gradient(145deg,#241E14,#3A2A18,#4A3028);}
+.dest-bg.pehue{background:linear-gradient(145deg,#1E2420,#2A3428,#3D5247);}
+.dest-bg.ushuaia{background:linear-gradient(145deg,#0E1820,#162430,#1E3038);}
+.dest-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 30%,rgba(14,26,28,0.88) 100%);
+  padding:14px 14px 16px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+}
+.dest-tag{font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(163,196,204,0.7);margin-bottom:4px;}
+.dest-name{font-family:var(--font-d);font-size:1.2rem;font-weight:300;color:var(--cream);line-height:1.1;}
+.dest-name em{font-style:italic;color:rgba(163,196,204,0.85);}
+.dest-arrow{position:absolute;top:12px;right:12px;color:rgba(250,248,245,0.4);font-size:0.9rem;}
+
+/* \u2500\u2500 CATEGORIES VIEW \u2500\u2500 */
+#view-categories{background:var(--fog);}
+.dest-hero-mini{
+  height:140px;position:relative;overflow:hidden;flex-shrink:0;
+}
+.dest-hero-mini-bg{width:100%;height:100%;}
+.dest-hero-mini-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 20%,rgba(14,26,28,0.85) 100%);
+  padding:16px 20px;display:flex;flex-direction:column;justify-content:flex-end;
+}
+.dest-hero-mini-name{font-family:var(--font-d);font-size:clamp(1.6rem,5vw,2.4rem);font-weight:300;color:var(--cream);line-height:1;}
+.dest-hero-mini-region{font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(163,196,204,0.7);margin-bottom:4px;}
+.cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:16px;}
+.cat-card{
+  background:var(--cream);border:1px solid var(--ash);
+  padding:18px 14px;cursor:pointer;
+  display:flex;flex-direction:column;gap:8px;
+  transition:all 0.25s ease;
+  position:relative;overflow:hidden;
+}
+.cat-card:hover,.cat-card:active{border-color:var(--atlantic);background:rgba(61,107,115,0.04);}
+.cat-icon{font-size:1.4rem;line-height:1;}
+.cat-name{font-family:var(--font-d);font-size:1rem;font-weight:400;color:var(--night);line-height:1.1;}
+.cat-count{font-size:0.65rem;color:var(--bark);letter-spacing:0.08em;}
+.cat-arrow{position:absolute;bottom:12px;right:12px;color:var(--ash);font-size:0.8rem;}
+
+/* \u2500\u2500 LISTINGS VIEW \u2500\u2500 */
+#view-listings{background:var(--fog);}
+.listings-header{padding:16px 16px 8px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.listings-title{font-family:var(--font-d);font-size:1.4rem;font-weight:300;color:var(--night);}
+.listings-count{font-size:0.68rem;color:var(--bark);}
+.listings-grid{padding:0 16px 24px;display:flex;flex-direction:column;gap:12px;}
+.listing-card{
+  background:var(--cream);border:1px solid var(--ash);
+  overflow:hidden;cursor:pointer;
+  transition:border-color 0.2s,transform 0.2s;
+  display:flex;
+}
+.listing-card:hover{border-color:var(--atlantic);transform:translateY(-1px);}
+.listing-img{width:110px;flex-shrink:0;position:relative;}
+.listing-img-bg{width:100%;height:100%;}
+.lc1{background:linear-gradient(145deg,#2A3D35,#3D5247);}
+.lc2{background:linear-gradient(145deg,#162830,#3D6B73);}
+.lc3{background:linear-gradient(145deg,#2C1E14,#4A3028);}
+.lc4{background:linear-gradient(145deg,#1A2C24,#263C30);}
+.lc5{background:linear-gradient(145deg,#1C2830,#2d5560);}
+.lc6{background:linear-gradient(145deg,#241814,#3A2810);}
+.listing-badge{position:absolute;top:6px;left:6px;background:rgba(250,248,245,0.92);color:var(--soil);font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;padding:2px 6px;font-weight:500;}
+.listing-body{padding:12px 14px 14px;flex:1;display:flex;flex-direction:column;justify-content:space-between;}
+.listing-loc{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--bark);margin-bottom:3px;}
+.listing-name{font-family:var(--font-d);font-size:1rem;font-weight:400;color:var(--night);line-height:1.1;margin-bottom:4px;}
+.listing-desc{font-size:0.7rem;color:var(--bark);line-height:1.5;margin-bottom:8px;}
+.listing-actions{display:flex;align-items:center;justify-content:space-between;}
+.fav-btn{background:none;border:none;cursor:pointer;font-size:0.9rem;color:var(--ash);padding:0;transition:color 0.2s;}
+.fav-btn.active{color:var(--ember);}
+.listing-cta{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--atlantic);text-decoration:none;border-bottom:1px solid var(--atlantic);padding-bottom:1px;}
+
+/* \u2500\u2500 PROFILE VIEW \u2500\u2500 */
+#view-profile{background:var(--cream);}
+.profile-hero{height:48vw;max-height:320px;position:relative;overflow:hidden;flex-shrink:0;}
+.profile-hero-bg{width:100%;height:100%;}
+.profile-hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,26,28,0.1) 0%,rgba(14,26,28,0.7) 100%);}
+.profile-badges{position:absolute;top:14px;left:14px;display:flex;gap:6px;flex-wrap:wrap;}
+.badge{background:rgba(250,248,245,0.14);backdrop-filter:blur(6px);border:1px solid rgba(250,248,245,0.22);color:var(--cream);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;padding:3px 8px;}
+.verified-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(61,107,115,0.1);border:1px solid var(--atlantic);color:var(--atlantic);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:4px 8px;margin-bottom:12px;}
+.verified-badge::before{content:'\u2713';font-weight:700;}
+.profile-body{padding:20px;overflow-y:auto;}
+.profile-name{font-family:var(--font-d);font-size:clamp(1.6rem,5vw,2.4rem);font-weight:300;color:var(--night);line-height:1.05;margin-bottom:4px;}
+.profile-name em{font-style:italic;color:var(--bark);}
+.profile-loc{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--bark);margin-bottom:16px;display:flex;align-items:center;gap:5px;}
+.profile-loc::before{content:'\u25ce';color:var(--atlantic);}
+.profile-desc{font-size:0.85rem;line-height:1.75;color:var(--soil);margin-bottom:18px;}
+.amenities{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-bottom:20px;}
+.amenity{display:flex;align-items:center;gap:7px;font-size:0.74rem;color:var(--soil);}
+.am-icon{width:18px;height:18px;background:var(--stone);display:flex;align-items:center;justify-content:center;font-size:0.6rem;flex-shrink:0;}
+.divider{height:1px;background:var(--ash);margin:16px 0;}
+
+/* Gallery tabs */
+.gallery-tabs{display:flex;gap:5px;margin-bottom:10px;}
+.gallery-tab{padding:5px 10px;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--ash);background:transparent;color:var(--bark);cursor:pointer;font-family:var(--font-b);transition:all 0.2s;}
+.gallery-tab.active,.gallery-tab:hover{background:var(--night);color:var(--cream);border-color:var(--night);}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:16px;}
+.gallery-item{aspect-ratio:1;overflow:hidden;border-radius:1px;}
+.gi1{background:linear-gradient(135deg,#1C2820,#3D5247);}
+.gi2{background:linear-gradient(135deg,#162830,#3D6B73);}
+.gi3{background:linear-gradient(135deg,#2A2018,#4A3028);}
+.gi4{background:linear-gradient(135deg,#1A2C24,#263C30);}
+.gi5{background:linear-gradient(135deg,#2C1814,#5C3028);}
+.gi6{background:linear-gradient(135deg,#1C2028,#2d5560);}
+
+/* Contact */
+.contact-box{background:var(--night);padding:20px;}
+.contact-box h3{font-family:var(--font-d);font-size:1.2rem;font-weight:300;color:var(--cream);margin-bottom:5px;}
+.contact-box p{font-size:0.74rem;color:var(--ash);margin-bottom:16px;line-height:1.6;}
+.cta-btns{display:flex;gap:8px;flex-wrap:wrap;}
+.btn-wa{display:flex;align-items:center;gap:6px;background:#25D366;color:white;padding:10px 16px;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;font-family:var(--font-b);transition:background 0.2s;}
+.btn-wa:hover{background:#1da851;}
+.btn-ig{display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;padding:10px 16px;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;font-family:var(--font-b);}
+.btn-web{display:flex;align-items:center;gap:6px;background:var(--atlantic);color:var(--cream);padding:10px 16px;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;font-family:var(--font-b);}
+
+/* Consult dates */
+.btn-consult{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--fog);border:1px solid var(--atlantic);color:var(--atlantic);padding:11px 16px;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;font-family:var(--font-b);cursor:pointer;width:100%;margin-bottom:10px;transition:all 0.2s;}
+.btn-consult:hover{background:var(--atlantic);color:var(--cream);}
+
+/* Nearby */
+.nearby-title{font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--bark);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.nearby-title::before{content:'\u25ce';color:var(--atlantic);}
+.nearby-list{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
+.nearby-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--ash);background:var(--fog);cursor:pointer;text-decoration:none;transition:border-color 0.2s;}
+.nearby-item:hover{border-color:var(--atlantic);}
+.nearby-icon{width:34px;height:34px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.85rem;}
+.ni-gastro{background:linear-gradient(135deg,#3A2A1E,#5C3D28);}
+.ni-exp{background:linear-gradient(135deg,#1A2C24,#3D5247);}
+.ni-shop{background:linear-gradient(135deg,#162830,#3D6B73);}
+.nearby-name{font-size:0.78rem;font-weight:500;color:var(--night);margin-bottom:1px;}
+.nearby-type{font-size:0.6rem;color:var(--bark);letter-spacing:0.08em;text-transform:uppercase;}
+
+/* Share btn */
+.share-btn{background:none;border:1px solid var(--ash);padding:8px 14px;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--bark);cursor:pointer;font-family:var(--font-b);display:flex;align-items:center;gap:6px;margin-top:14px;}
+
+/* \u2500\u2500 TOAST \u2500\u2500 */
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--night);color:var(--cream);padding:10px 20px;font-size:0.7rem;letter-spacing:0.08em;z-index:999;border-radius:2px;white-space:nowrap;opacity:0;transition:opacity 0.3s;}
+.toast.show{opacity:1;}
+
+/* \u2500\u2500 DEMO BANNER \u2500\u2500 */
+.demo-bar{background:var(--atl);color:var(--cream);text-align:center;padding:8px 16px;font-size:0.72rem;letter-spacing:0.08em;font-family:var(--fb);flex-shrink:0;font-weight:400;}
+.demo-banner span{color:var(--ember);}
+
+/* Scrollbar hide */
+.view-scroll::-webkit-scrollbar{display:none;}
+.view-scroll{scrollbar-width:none;}
+
+/* Font size */
+body.fs-sm{font-size:14px;}
+body.fs-lg{font-size:18px;}
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 -->
+<!-- SPLASH                         -->
+<!-- \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 -->
+<div class="view active" id="splash">
+  <div class="splash-glow" id="splash-glow"></div>
+
+  <div id="splash-logo">
+    <img src="confin-logo-transparente.png" alt="CONFÍN" translate="no">
+  </div>
+  <div id="splash-slogan">
+    <p>Todo el sur en un solo lugar</p>
+  </div>
+  <div id="splash-region">
+    <p>Patagonia & Andes Australes</p>
+  </div>
+</div>
+
+<!-- \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 -->
+<!-- HERO                           -->
+<!-- \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 -->
+<div class="view" id="view-hero">
+  <div class="demo-bar">◎ DEMO — Sistema en validación. Los establecimientos mostrados son de ejemplo.</div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a class="nav-logo" href="#" translate="no">
+      <img src="confin-logo-transparente.png" alt="CONFÍN"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+      <span style="display:none;">CON<em>F\u00cdN</em></span>
+    </a>
+    <div class="nav-right">
+      <button class="lang-btn active" onclick="setLang(this)">ES</button>
+      <button class="lang-btn" onclick="setLang(this)">EN</button>
+      <button class="lang-btn" onclick="setLang(this)">PT</button>
+      <button class="font-btn" onclick="setFont(-1)" title="Texto m\u00e1s peque\u00f1o">A-</button>
+      <button class="font-btn" onclick="setFont(1)" title="Texto m\u00e1s grande">A+</button>
+    </div>
+  </nav>
+
+  <!-- HERO CONTENT -->
+  <div style="position:relative;flex:1;display:flex;flex-direction:column;overflow:hidden;">
+    <div class="hero-bg"></div>
+    <div class="hero-mountains"></div>
+    <div class="hero-content">
+      <div class="hero-logo-wrap">
+        <div class="hero-logo-glow"></div>
+        <img src="confin-logo-transparente.png" alt="CONFÍN" translate="no"
+             onerror="this.style.display='none'">
+      </div>
+      <p class="hero-slogan">Todo el sur en un solo lugar</p>
+      <p class="hero-region">Patagonia & Andes Australes</p>
+      <button class="hero-cta" onclick="goTo('view-destinations')">
+        Explorar destinos ↓
+      </button>
+      <a class="hero-sub-cta" onclick="goTo('view-panel')">Publicar mi espacio →</a>
+    </div>
+  </div>
+</div>
+
+<!-- \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 -->
+<!-- DESTINATIONS                   -->
+<!-- \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 -->
+<div class="view" id="view-destinations">
+  <nav class="nav">
+    <a class="nav-logo" href="#" translate="no">
+      <img src="confin-logo-transparente.png" alt="CONFÍN" style="height:38px;"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+      <span style="display:none;">CON<em>F\u00cdN</em></span>
+    </a>
+    <div class="nav-right">
+      <button class="lang-btn active" onclick="setLang(this)">ES</button>
+      <button class="lang-btn" onclick="setLang(this)">EN</button>
+      <button class="lang-btn" onclick="setLang(this)">PT</button>
+    </div>
+  </nav>
+
+  <div class="view-scroll">
+    <div class="view-header">
+      <h2>Elige tu <em>destino</em></h2>
+      <p>Centros de ski y destinos de invierno</p>
+    </div>
+
+    <div class="dest-grid">
+      <div class="dest-card full-width" onclick="selectDest('San Mart\u00edn de los Andes','Neuqu\u00e9n, AR','sm')">
+        <div class="dest-bg sm"></div>
+        <div class="dest-overlay">
+          <div class="dest-tag">Neuqu\u00e9n \u00b7 Chapelco</div>
+          <div class="dest-name">San Mart\u00edn<br><em>de los Andes</em></div>
+        </div>
+        <div class="dest-arrow">→</div>
+      </div>
+
+      <div class="dest-card" onclick="selectDest('Bariloche','R\u00edo Negro, AR','bar')">
+        <div class="dest-bg bar"></div>
+        <div class="dest-overlay">
+          <div class="dest-tag">R\u00edo Negro \u00b7 Catedral</div>
+          <div class="dest-name">Bariloche</div>
+        </div>
+        <div class="dest-arrow">→</div>
+      </div>
+
+      <div class="dest-card" onclick="selectDest('Villa La Angostura','Neuqu\u00e9n, AR','vla')">
+        <div class="dest-bg vla"></div>
+        <div class="dest-overlay">
+          <div class="dest-tag">Neuqu\u00e9n \u00b7 Cerro Bayo</div>
+          <div class="dest-name">Villa La<br>Angostura</div>
+        </div>
+        <div class="dest-arrow">→</div>
+      </div>
+
+      <div class="dest-card" onclick="selectDest('El Bols\u00f3n','R\u00edo Negro, AR','bolson')">
+        <div class="dest-bg bolson"></div>
+        <div class="dest-overlay">
+          <div class="dest-tag">R\u00edo Negro, AR</div>
+          <div class="dest-name">El Bols\u00f3n</div>
+        </div>
+        <div class="dest-arrow">→</div>
+      </div>
+
+      <div class="dest-card" onclick="selectDest('Esquel','Chubut, AR','esquel')">
+        <div class="dest-bg esquel"></div>
+        <div class="dest-overlay">
+          <div class="dest-tag">Chubut \u00b7 La Hoya</div>
+          <div class="dest-name">Esquel</div>
+        </div>
+        <div class="dest-arrow">→</div>
+      </div>
+
+      <div class="dest-card" onclick="selectDest('Villa Pehuenia','Neuqu\u00e9n, AR','pehue')">
+        <div class="dest-bg pehue"></div>
+        <div class="dest-overlay">
+          <div class="dest-tag">Neuqu\u00e9n, AR</div>
+          <div class="dest-name">Villa<br>Pehuenia</div>
+        </div>
+        <div class="dest-arrow">→</div>
+      </div>
+
+      <div class="dest-card full-width" onclick="selectDest('Ushuaia','Tierra del Fuego, AR','ushuaia')">
+        <div class="dest-bg ushuaia"></div>
+        <div class="dest-overlay">
+          <div class="dest-tag">Tierra del Fuego \u00b7 Castor</div>
+          <div class="dest-name">Ushuaia \u2014 <em>Fin del mundo</em></div>
+        </div>
+        <div class="dest-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 -->
+<!-- CATEGORIES                     -->
+<!-- \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 -->
+<div class="view" id="view-categories">
+  <nav class="nav">
+    <button class="back-btn" onclick="goBack()"><span>←</span> Destinos</button>
+    <div class="nav-right">
+      <button class="lang-btn active" onclick="setLang(this)">ES</button>
+    </div>
+  </nav>
+
+  <div style="flex-shrink:0;">
+    <div class="dest-hero-mini" id="cat-hero">
+      <div class="dest-bg sm dest-hero-mini-bg"></div>
+      <div class="dest-hero-mini-overlay">
+        <div class="dest-hero-mini-region" id="cat-region">Neuqu\u00e9n, AR</div>
+        <div class="dest-hero-mini-name" id="cat-name">San Mart\u00edn de los Andes</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="view-scroll">
+    <div style="padding:16px 16px 4px;">
+      <p style="font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--bark);">\u00bfQu\u00e9 est\u00e1s buscando?</p>
+    </div>
+     <div class="cat-grid" id="cat-grid">
+
+       <div class="cat-card" onclick="selectCat('Alojamiento')">
+        <div class="cat-icon">🏠</div>
+        <div class="cat-name">Alojamiento</div>
+        <div class="cat-count">Cabañas · Hosterías · Hoteles · Domos · Glamping</div>
+        <div class="cat-arrow">→</div>
+      </div>
+
+      <div class="cat-card" onclick="selectCat('Gastronomía')">
+        <div class="cat-icon">☕</div>
+        <div class="cat-name">Gastronomía</div>
+        <div class="cat-count">Restaurantes · Casas de té · Pastelerías · Cervecerías</div>
+        <div class="cat-arrow">→</div>
+      </div>
+
+      <div class="cat-card" onclick="selectCat('Montaña')">
+        <div class="cat-icon">⛷</div>
+        <div class="cat-name">Montaña e invierno</div>
+        <div class="cat-count">Ski · Alquiler equipos · Clases · Guías</div>
+        <div class="cat-arrow">→</div>
+      </div>
+
+      <div class="cat-card" onclick="selectCat('Experiencias')">
+        <div class="cat-icon">🧭</div>
+        <div class="cat-name">Experiencias</div>
+        <div class="cat-count">Trekking · Cabalgatas · Pesca · Náutica</div>
+        <div class="cat-arrow">→</div>
+      </div>
+
+      <div class="cat-card" onclick="selectCat('Compras')">
+        <div class="cat-icon">🎁</div>
+        <div class="cat-name">Compras y regalería</div>
+        <div class="cat-count">Chocolates · Artesanías · Vinos · Diseño local</div>
+        <div class="cat-arrow">→</div>
+      </div>
+
+      <div class="cat-card" onclick="selectCat('Traslados')">
+        <div class="cat-icon">🚗</div>
+        <div class="cat-name">Traslados</div>
+        <div class="cat-count">Taxis · Remises · Combis · Transfer aeropuerto</div>
+        <div class="cat-arrow">→</div>
+      </div>
+
+      <div class="cat-card" onclick="selectCat('Wellness')">
+        <div class="cat-icon">✦</div>
+        <div class="cat-name">Wellness</div>
+        <div class="cat-count">Spas · Masajes · Yoga · Retiros</div>
+        <div class="cat-arrow">→</div>
+      </div>
+
+      <div class="cat-card" onclick="selectCat('Servicios')">
+        <div class="cat-icon">ℹ</div>
+        <div class="cat-name">Información útil</div>
+        <div class="cat-count">Farmacias · Emergencias · Clima · Transporte</div>
+        <div class="cat-arrow">→</div>
+      </div>
+
+</div>
+
+<!-- \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 -->
+<!-- LISTINGS                       -->
+<!-- \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 -->
+<div class="view" id="view-listings">
+  <nav class="nav">
+    <button class="back-btn" onclick="goBack()"><span>←</span> <span id="listings-back-label">Categor\u00edas</span></button>
+    <div class="nav-right">
+      <select style="padding:4px 8px;font-size:0.65rem;border:1px solid var(--ash);background:var(--cream);color:var(--soil);font-family:var(--font-b);">
+        <option>Por zona</option>
+        <option>Por tipo</option>
+        <option>Reci\u00e9n sumados</option>
+      </select>
+    </div>
+  </nav>
+
+  <div class="listings-header" style="flex-shrink:0;">
+    <div>
+      <div class="listings-title" id="listings-title">Alojamiento</div>
+      <div class="listings-count" id="listings-subtitle">San Mart\u00edn de los Andes</div>
+    </div>
+  </div>
+
+  <div class="view-scroll">
+    <div class="listings-grid" id="listings-grid">
+      <!-- populated by JS -->
+    </div>
+
+    <!-- Nota ilustrativa -->
+    <div style="margin:4px 16px 24px;padding:12px 14px;background:rgba(61,107,115,0.06);border-left:2px solid var(--atlantic);">
+      <p style="font-size:0.68rem;color:var(--bark);line-height:1.5;font-style:italic;">Las im\u00e1genes y establecimientos mostrados son ilustrativos hasta la incorporaci\u00f3n oficial de cada espacio.</p>
+    </div>
+  </div>
+</div>
+
+<!-- \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 -->
+<!-- PROFILE                        -->
+<!-- \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 -->
+<div class="view" id="view-profile">
+  <nav class="nav" style="position:relative;z-index:10;">
+    <button class="back-btn" onclick="goBack()"><span>←</span> Resultados</button>
+    <button onclick="toggleFav(this)" style="background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--ash);">\u2661</button>
+  </nav>
+
+  <div class="view-scroll">
+    <div class="profile-hero">
+      <div class="dest-bg sm profile-hero-bg"></div>
+      <div class="profile-hero-overlay"></div>
+      <div class="profile-badges">
+        <span class="badge">Lago L\u00e1car</span>
+        <span class="badge">2 personas</span>
+        <span class="badge">\ud83d\udc3e Mascotas s\u00ed</span>
+      </div>
+    </div>
+
+    <div class="profile-body">
+      <div class="verified-badge">Anfitri\u00f3n Verificado por CONFÍN</div>
+      <h1 class="profile-name">Caba\u00f1a<br><em>del Alerce</em></h1>
+      <div class="profile-loc">San Mart\u00edn de los Andes, Neuqu\u00e9n</div>
+
+      <div class="gallery-tabs">
+        <button class="gallery-tab active" onclick="setTab(this)">Interiores</button>
+        <button class="gallery-tab" onclick="setTab(this)">Vistas</button>
+        <button class="gallery-tab" onclick="setTab(this)">Servicios</button>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item gi1"></div>
+        <div class="gallery-item gi2"></div>
+        <div class="gallery-item gi3"></div>
+        <div class="gallery-item gi4"></div>
+        <div class="gallery-item gi5"></div>
+        <div class="gallery-item gi6"></div>
+      </div>
+
+      <p class="profile-desc">Caba\u00f1a de troncos a 200m del lago L\u00e1car. Vista al volc\u00e1n Lan\u00edn. Sin wifi \u2014 solo el sonido del viento entre los alerces y el reflejo del lago al amanecer.</p>
+
+      <div class="amenities">
+        <div class="amenity"><span class="am-icon">\u2615</span> Cocina equipada</div>
+        <div class="amenity"><span class="am-icon">\ud83d\udd25</span> Chimenea a le\u00f1a</div>
+        <div class="amenity"><span class="am-icon">\ud83c\udf3f</span> Jard\u00edn y parrilla</div>
+        <div class="amenity"><span class="am-icon">\ud83d\udef6</span> Kayak incluido</div>
+        <div class="amenity"><span class="am-icon">\ud83d\udc3e</span> Mascotas s\u00ed</div>
+        <div class="amenity"><span class="am-icon">\ud83c\udf04</span> Vista al volc\u00e1n</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <button class="btn-consult" onclick="consultarFechas()">
+        \ud83d\udcc5 Consultar fechas especiales
+      </button>
+
+      <div class="contact-box">
+        <h3>Contactar al anfitri\u00f3n</h3>
+        <p>Consult\u00e1 disponibilidad directamente. CONFÍN conecta \u2014 el resto lo resuelven entre vos y el anfitri\u00f3n.</p>
+        <div class="cta-btns">
+          <a href="#" class="btn-wa">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+          <a href="#" class="btn-ig">Instagram</a>
+          <a href="#" class="btn-web">\ud83c\udf10 Web</a>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="nearby-title">A pocos metros en CONFÍN</div>
+      <div class="nearby-list">
+        <a class="nearby-item" onclick="goTo('view-profile')">
+          <div class="nearby-icon ni-gastro">\u2615</div>
+          <div><div class="nearby-name">La Casa del Mate</div><div class="nearby-type">Casa de t\u00e9</div></div>
+        </a>
+        <a class="nearby-item" onclick="goTo('view-profile')">
+          <div class="nearby-icon ni-exp">\ud83c\udfbf</div>
+          <div><div class="nearby-name">Nieve Viva Ski School</div><div class="nearby-type">Clases de ski</div></div>
+        </a>
+        <a class="nearby-item" onclick="goTo('view-profile')">
+          <div class="nearby-icon ni-shop">\ud83e\udde5</div>
+          <div><div class="nearby-name">Outdoor Patagonia</div><div class="nearby-type">Ropa outdoor</div></div>
+        </a>
+      </div>
+
+      <button class="share-btn" onclick="shareProfile()">\u2197 Compartir este lugar</button>
+
+      <div style="height:32px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 -->
+<!-- PANEL (anfitri\u00f3n)              -->
+<!-- \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 -->
+<div class="view" id="view-panel">
+  <nav class="nav">
+    <button class="back-btn" onclick="goTo('view-hero')"><span>←</span> Inicio</button>
+    <span style="font-family:var(--font-d);font-size:0.9rem;color:var(--night);">CON<em style="font-style:italic;color:var(--atlantic);">F\u00cdN</em> \u00b7 Anfitriones</span>
+  </nav>
+  <div class="view-scroll" style="padding:24px 20px;">
+    <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--atlantic);margin-bottom:12px;">\u00bfTen\u00e9s un espacio en el sur?</p>
+    <h2 style="font-family:var(--font-d);font-size:clamp(1.7rem,5vw,2.4rem);font-weight:300;color:var(--night);line-height:1.1;margin-bottom:12px;">Unite a <em style="font-style:italic;color:var(--atlantic);">CONFÍN</em></h2>
+    <p style="font-size:0.82rem;color:var(--bark);line-height:1.7;margin-bottom:28px;">Conect\u00e1 tu caba\u00f1a, restaurante, experiencia o comercio con viajeros que buscan lo aut\u00e9ntico. Sin reservas, sin comisiones. Solo visibilidad real.</p>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px;">
+      <input type="text" placeholder="Nombre del espacio" style="border:1px solid var(--ash);background:var(--fog);padding:11px 14px;font-size:0.82rem;font-family:var(--font-b);color:var(--soil);">
+      <select style="border:1px solid var(--ash);background:var(--fog);padding:11px 14px;font-size:0.82rem;font-family:var(--font-b);color:var(--soil);">
+        <option>Tipo de espacio...</option>
+        <option>Caba\u00f1a</option><option>Hoster\u00eda / B&B</option><option>Hotel Boutique</option>
+        <option>Domo / Glamping</option><option>Restaurante</option><option>Caf\u00e9 / Casa de t\u00e9</option>
+        <option>Experiencia / Excursi\u00f3n</option><option>Wellness / Spa</option><option>Comercio</option>
+      </select>
+      <input type="text" placeholder="Localidad" style="border:1px solid var(--ash);background:var(--fog);padding:11px 14px;font-size:0.82rem;font-family:var(--font-b);color:var(--soil);">
+      <input type="tel" placeholder="WhatsApp de contacto" style="border:1px solid var(--ash);background:var(--fog);padding:11px 14px;font-size:0.82rem;font-family:var(--font-b);color:var(--soil);">
+      <input type="email" placeholder="Email" style="border:1px solid var(--ash);background:var(--fog);padding:11px 14px;font-size:0.82rem;font-family:var(--font-b);color:var(--soil);">
+    </div>
+
+    <label style="display:flex;align-items:flex-start;gap:8px;margin-bottom:18px;cursor:pointer;">
+      <input type="checkbox" style="margin-top:3px;accent-color:var(--atlantic);flex-shrink:0;">
+      <span style="font-size:0.7rem;color:var(--bark);line-height:1.5;">Acepto los T\u00e9rminos y Condiciones de CONFÍN</span>
+    </label>
+
+    <button onclick="showToast('\u00a1Gracias! Te contactaremos pronto.')" style="background:var(--atlantic);color:var(--cream);border:none;padding:13px 24px;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-family:var(--font-b);width:100%;margin-bottom:28px;">
+      Quiero publicar mi espacio
+    </button>
+
+    <!-- Pr\u00f3ximamente -->
+    <div style="border:1px solid rgba(61,107,115,0.25);background:rgba(61,107,115,0.05);padding:18px;margin-bottom:14px;">
+      <div style="font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--atlantic);margin-bottom:8px;">Pr\u00f3ximamente</div>
+      <h4 style="font-family:var(--font-d);font-size:1.1rem;font-weight:400;color:var(--night);margin-bottom:6px;">Pasaporte <em style="font-style:italic;">CONFÍN</em></h4>
+      <p style="font-size:0.74rem;color:var(--bark);line-height:1.6;">Beneficios exclusivos para viajeros en cada destino. Descuentos, cortes\u00edas y experiencias especiales.</p>
+    </div>
+
+    <div style="border:1px solid rgba(61,107,115,0.25);background:rgba(61,107,115,0.05);padding:18px;margin-bottom:28px;">
+      <div style="font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--atlantic);margin-bottom:8px;">Pr\u00f3ximamente</div>
+      <h4 style="font-family:var(--font-d);font-size:1.1rem;font-weight:400;color:var(--night);margin-bottom:6px;">Habl\u00e1 con <em style="font-style:italic;">CONFÍN</em></h4>
+      <p style="font-size:0.74rem;color:var(--bark);line-height:1.6;">Muy pronto podr\u00e1s preguntarle a CONFÍN qu\u00e9 hacer, d\u00f3nde comer o d\u00f3nde alojarte y recibir recomendaciones reales seg\u00fan d\u00f3nde est\u00e9s.</p>
+    </div>
+
+    <!-- Instrucciones PWA -->
+    <div style="background:var(--stone);padding:16px;">
+      <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--bark);margin-bottom:10px;">\ud83d\udcf1 Agreg\u00e1 CONFÍN a tu pantalla de inicio</p>
+      <p style="font-size:0.72rem;color:var(--soil);line-height:1.6;margin-bottom:6px;"><strong>iPhone:</strong> \u00edcono compartir \u2191 → "Agregar a pantalla de inicio"</p>
+      <p style="font-size:0.72rem;color:var(--soil);line-height:1.6;"><strong>Android:</strong> tres puntos \u22ee → "Agregar a pantalla de inicio"</p>
+    </div>
+
+    <div style="height:32px;"></div>
+  </div>
+</div>
+
+<script>
+// \u2500\u2500 STATE \u2500\u2500
+let currentView = 'view-hero';
+let navHistory = [];
+let selectedDest = {name:'San Mart\u00edn de los Andes', region:'Neuqu\u00e9n, AR', bg:'sm'};
+let selectedCat = 'Alojamiento';
+
+// \u2500\u2500 LISTINGS DATA \u2500\u2500
+const listings = {
+  'Alojamiento':[
+    {name:'Caba\u00f1a del Alerce',loc:'San Mart\u00edn de los Andes',desc:'Caba\u00f1a de troncos frente al lago L\u00e1car, vista al volc\u00e1n Lan\u00edn.',type:'Caba\u00f1a',bg:'lc1'},
+    {name:'Hoster\u00eda Viento Sur',loc:'San Mart\u00edn de los Andes',desc:'Peque\u00f1a hoster\u00eda familiar con desayuno incluido y vista al cerro.',type:'Hoster\u00eda',bg:'lc2'},
+    {name:'Apart Lago Azul',loc:'San Mart\u00edn de los Andes',desc:'Departamentos con cocina equipada, a 3 cuadras del centro.',type:'Apart Hotel',bg:'lc5'},
+    {name:'Hotel El Refugio',loc:'San Mart\u00edn de los Andes',desc:'Hotel boutique de 12 habitaciones con spa y gastronom\u00eda de autor.',type:'Hotel Boutique',bg:'lc3'},
+    {name:'N\u00f3made Patag\u00f3nico',loc:'San Mart\u00edn de los Andes',desc:'Hostel con ambiente viajero, fog\u00f3n nocturno y cocina compartida.',type:'Hostel',bg:'lc4'},
+    {name:'Domo Cielo Abierto',loc:'Lago Meliquina',desc:'Domo geod\u00e9sico para 2, cielo estrellado garantizado.',type:'Domo',bg:'lc6'},
+  ],
+  'Gastronomía':[
+    {name:'La Casa del Mate',loc:'San Mart\u00edn de los Andes',desc:'Casa de t\u00e9 con recetas artesanales y vista al jard\u00edn.',type:'Casa de t\u00e9',bg:'lc3'},
+    {name:'Cervecer\u00eda El Tronco',loc:'San Mart\u00edn de los Andes',desc:'8 variedades propias, cocina de autor y ambiente de monta\u00f1a.',type:'Cervecer\u00eda',bg:'lc6'},
+    {name:'Chocolate & Monta\u00f1a',loc:'San Mart\u00edn de los Andes',desc:'Chocolater\u00eda artesanal con caf\u00e9 de especialidad.',type:'Chocolater\u00eda',bg:'lc2'},
+    {name:'Rest\u00f3 Ra\u00edces',loc:'San Mart\u00edn de los Andes',desc:'Cocina patag\u00f3nica de autor con ingredientes locales de estaci\u00f3n.',type:'Restaurante',bg:'lc4'},
+  ],
+  'Experiencias':[
+    {name:'Nieve Viva Ski School',loc:'Chapelco',desc:'Clases de ski y snowboard para todos los niveles.',type:'Ski',bg:'lc1'},
+    {name:'Alquiler El Cerro',loc:'Chapelco',desc:'Ski, snowboard y bastones. Entrega en el cerro o en el local.',type:'Rental',bg:'lc5'},
+    {name:'Trekking Sur',loc:'San Mart\u00edn de los Andes',desc:'Caminatas guiadas con gu\u00eda local certificado.',type:'Trekking',bg:'lc3'},
+    {name:'Patagonia a Caballo',loc:'San Mart\u00edn de los Andes',desc:'Cabalgatas por la cordillera con vista al lago.',type:'Cabalgata',bg:'lc2'},
+  ],
+  'Wellness':[
+    {name:'Spa Agua Fr\u00eda',loc:'San Mart\u00edn de los Andes',desc:'Masajes, sauna y tratamientos con ingredientes patag\u00f3nicos.',type:'Spa',bg:'lc5'},
+    {name:'Retiro del Bosque',loc:'Lago Meliquina',desc:'Yoga y meditaci\u00f3n en plena naturaleza. Grupos peque\u00f1os.',type:'Retiro',bg:'lc4'},
+  ],
+  'Comercios':[
+    {name:'Outdoor Patagonia',loc:'San Mart\u00edn de los Andes',desc:'Ropa y equipamiento t\u00e9cnico para monta\u00f1a y ski.',type:'Ropa outdoor',bg:'lc1'},
+    {name:'Artesan\u00edas del Sur',loc:'San Mart\u00edn de los Andes',desc:'Tejidos en lana, cer\u00e1mica y artesan\u00edas locales.',type:'Artesan\u00edas',bg:'lc6'},
+    {name:'Chocolates del Lago',loc:'San Mart\u00edn de los Andes',desc:'Chocolates artesanales elaborados con cacao selecto.',type:'Chocolater\u00eda',bg:'lc3'},
+  ],
+  'Montaña':[
+    {name:'Chapelco Ski Resort',loc:'Chapelco, San Martín de los Andes',desc:'Centro de ski con 29 pistas. Clases para todos los niveles.',type:'Centro de ski',bg:'lc1'},
+    {name:'Nieve Viva Ski School',loc:'Chapelco',desc:'Clases de ski y snowboard para adultos y niños. Instructores certificados.',type:'Escuela de ski',bg:'lc5'},
+    {name:'Alquiler El Cerro',loc:'Chapelco',desc:'Ski, snowboard y bastones. Entrega en el cerro o en el local.',type:'Alquiler equipos',bg:'lc3'},
+    {name:'Ropa de Montaña Sur',loc:'San Martín de los Andes',desc:'Alquiler de indumentaria técnica para nieve y cadenas para autos.',type:'Alquiler indumentaria',bg:'lc2'},
+  ],
+  'Compras':[
+    {name:'Chocolates del Lago',loc:'San Martín de los Andes',desc:'Chocolates artesanales con cacao selecto. Envíos a todo el país.',type:'Chocolatería',bg:'lc3'},
+    {name:'Artesanías del Sur',loc:'San Martín de los Andes',desc:'Tejidos en lana, cerámica y artesanías locales.',type:'Artesanías',bg:'lc6'},
+    {name:'Vinos Patagónicos',loc:'San Martín de los Andes',desc:'Selección de vinos y licores regionales. Degustaciones.',type:'Vinos y licores',bg:'lc1'},
+    {name:'Regalería Lanín',loc:'San Martín de los Andes',desc:'Sahumerios, productos naturales y souvenirs de la región.',type:'Regalería',bg:'lc4'},
+  ],
+  'Traslados':[
+    {name:'Transfer Chapelco',loc:'San Martín de los Andes',desc:'Traslados desde el aeropuerto. Reservas online.',type:'Transfer',bg:'lc2'},
+    {name:'Remis Central',loc:'San Martín de los Andes',desc:'Remises las 24 horas. Traslados locales y zonas cercanas.',type:'Remis',bg:'lc5'},
+    {name:'Combi Patagónica',loc:'San Martín de los Andes',desc:'Servicios a Bariloche, Junín de los Andes y destinos cercanos.',type:'Combi',bg:'lc3'},
+  ],
+  'Servicios':[
+    {name:'Farmacia de Turno',loc:'San Martín de los Andes',desc:'Consultar farmacia de turno activa. Rotación diaria.',type:'Farmacia',bg:'lc4'},
+    {name:'Hospital Ramón Carrillo',loc:'San Martín de los Andes',desc:'Hospital público. Emergencias las 24 horas. Tel: 02972-427076',type:'Hospital',bg:'lc1'},
+    {name:'Terminal de Ómnibus',loc:'San Martín de los Andes',desc:'Servicios a Bariloche, Neuquén, Buenos Aires y destinos nacionales.',type:'Terminal',bg:'lc6'},
+    {name:'Secretaría de Turismo',loc:'San Martín de los Andes',desc:'Información turística oficial. Mapas, eventos y recomendaciones locales.',type:'Turismo',bg:'lc2'},
+    {name:'Policía',loc:'San Martín de los Andes',desc:'Comisaría local. Emergencias: 911. Tel directo: 02972-427300',type:'Policía',bg:'lc3'},
+    {name:'Bomberos Voluntarios',loc:'San Martín de los Andes',desc:'Emergencias: 100. Cuartel local disponible las 24 horas.',type:'Bomberos',bg:'lc5'},
+  ],
+};
+
+// \u2500\u2500 NAVIGATION \u2500\u2500
+function goTo(viewId) {
+  const current = document.getElementById(currentView);
+  const next = document.getElementById(viewId);
+  if (!next || viewId === currentView) return;
+  navHistory.push(currentView);
+  current.classList.add('exit');
+  setTimeout(() => {
+    current.classList.remove('active','exit');
+    next.classList.add('active');
+  }, 350);
+  currentView = viewId;
+}
+
+function goBack() {
+  if (navHistory.length === 0) return;
+  const prev = navHistory.pop();
+  const current = document.getElementById(currentView);
+  const prevEl = document.getElementById(prev);
+  current.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+  current.style.opacity = '0';
+  current.style.transform = 'translateX(30px)';
+  setTimeout(() => {
+    current.classList.remove('active');
+    current.style.opacity = '';
+    current.style.transform = '';
+    prevEl.classList.add('active');
+    prevEl.style.transform = 'translateX(0)';
+    prevEl.style.opacity = '1';
+  }, 350);
+  currentView = prev;
+}
+
+// \u2500\u2500 SELECT DESTINATION \u2500\u2500
+function selectDest(name, region, bgClass) {
+  selectedDest = {name, region, bg:bgClass};
+  document.getElementById('cat-name').textContent = name;
+  document.getElementById('cat-region').textContent = region;
+  const heroBg = document.querySelector('#cat-hero .dest-hero-mini-bg');
+  heroBg.className = 'dest-bg dest-hero-mini-bg ' + bgClass;
+  goTo('view-categories');
+}
+
+// \u2500\u2500 SELECT CATEGORY \u2500\u2500
+function selectCat(cat) {
+  selectedCat = cat;
+  document.getElementById('listings-title').textContent = cat;
+  document.getElementById('listings-subtitle').textContent = selectedDest.name;
+  document.getElementById('listings-back-label').textContent = selectedDest.name;
+  renderListings(cat);
+  goTo('view-listings');
+}
+
+function renderListings(cat) {
+  const items = listings[cat] || listings['Alojamiento'];
+  const grid = document.getElementById('listings-grid');
+  grid.innerHTML = items.map((item,i) => `
+    <div class="listing-card" onclick="goTo('view-profile')">
+      <div class="listing-img">
+        <div class="${item.bg} listing-img-bg"></div>
+        <span class="listing-badge">${item.type}</span>
+      </div>
+      <div class="listing-body">
+        <div>
+          <div class="listing-loc">${item.loc}</div>
+          <div class="listing-name">${item.name}</div>
+          <div class="listing-desc">${item.desc}</div>
+        </div>
+        <div class="listing-actions">
+          <button class="fav-btn" onclick="event.stopPropagation();toggleFav(this)">\u2661</button>
+          <a class="listing-cta">Ver y consultar →</a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// \u2500\u2500 SPLASH ANIMATION \u2500\u2500
+window.addEventListener('load', function() {
+  setTimeout(() => {
+    const g = document.getElementById('splash-glow');
+    if(g){g.style.transform='translate(-50%,-50%) scale(1)';g.style.opacity='1';}
+  }, 150);
+  setTimeout(() => {
+    const l = document.getElementById('splash-logo');
+    if(l){l.style.opacity='1';l.style.transform='translateY(0) scale(1)';}
+  }, 500);
+  setTimeout(() => {
+    const s = document.getElementById('splash-slogan');
+    if(s){s.style.opacity='1';s.style.transform='translateY(0)';}
+  }, 1200);
+  setTimeout(() => {
+    const r = document.getElementById('splash-region');
+    if(r){r.style.opacity='1';r.style.transform='translateY(0)';}
+  }, 1700);
+  setTimeout(() => {
+    const splash = document.getElementById('splash');
+    splash.style.transition = 'opacity 1s ease';
+    splash.style.opacity = '0';
+    setTimeout(() => {
+      splash.classList.remove('active');
+      splash.style.display = 'none';
+      document.getElementById('view-hero').classList.add('active');
+      currentView = 'view-hero';
+    }, 1000);
+  }, 5500);
+});
+
+// \u2500\u2500 UTILS \u2500\u2500
+function toggleFav(btn) {
+  btn.classList.toggle('active');
+  btn.textContent = btn.classList.contains('active') ? '\u2665' : '\u2661';
+  if(btn.classList.contains('active')) btn.style.color='var(--ember)';
+  else btn.style.color='';
+}
+
+function consultarFechas() {
+  const msg = encodeURIComponent('Hola \ud83d\udc4b Te escribo desde CONFÍN \ud83c\udf3f\
+Vi tu espacio Caba\u00f1a del Alerce.\
+\u00bfTen\u00e9s disponibilidad? \u00bfMe pod\u00e9s dar m\u00e1s informaci\u00f3n?');
+  window.open('https://wa.me/?text='+msg,'_blank');
+}
+
+function shareProfile() {
+  if(navigator.share) {
+    navigator.share({title:'Caba\u00f1a del Alerce \u2014 CONFÍN',url:window.location.href});
+  } else {
+    navigator.clipboard.writeText(window.location.href);
+    showToast('Link copiado \u2713');
+  }
+}
+
+function setTab(btn) {
+  document.querySelectorAll('.gallery-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function setLang(btn) {
+  btn.closest('.nav-right').querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function setFont(dir) {
+  const sizes = {'fs-sm':14,'':16,'fs-lg':18};
+  const current = document.body.classList.contains('fs-sm')?'fs-sm':document.body.classList.contains('fs-lg')?'fs-lg':'';
+  const vals = ['fs-sm','','fs-lg'];
+  const idx = vals.indexOf(current);
+  const newIdx = Math.max(0,Math.min(2,idx+dir));
+  document.body.classList.remove('fs-sm','fs-lg');
+  if(vals[newIdx]) document.body.classList.add(vals[newIdx]);
+  document.documentElement.style.fontSize = sizes[vals[newIdx]]+'px';
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+// prevent body scroll
+document.body.addEventListener('touchmove', function(e){
+  const scrollable = e.target.closest('.view-scroll,.profile-body');
+  if(!scrollable) e.preventDefault();
+},{passive:false});
+</script>
+</body>
+</html>
