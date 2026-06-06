@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CONFÍN — Aceptación de Propuesta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FAF8F5;
+  --stone: #E8E2D9;
+  --bark: #7A6E65;
+  --soil: #4A3F38;
+  --night: #1C1915;
+  --deep: #0E1A1C;
+  --atlantic: #3D6B73;
+  --pine: #1C3032;
+  --fog: #F4F1ED;
+  --font-d: 'Cormorant Garamond', Georgia, serif;
+  --font-b: 'DM Sans', sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--fog); font-family:var(--font-b); font-weight:300; color:var(--soil); }
+
+.header {
+  background: var(--deep);
+  padding: 36px 28px 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content:'';
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:100%;height:100%;
+  background:radial-gradient(ellipse at 50% 50%, rgba(61,107,115,0.3) 0%, transparent 70%);
+  pointer-events:none;
+}
+.header img {
+  width: 70%;
+  max-width: 240px;
+  filter: brightness(1.9) contrast(0.88) saturate(0.75) drop-shadow(0 0 18px rgba(140,210,225,0.4));
+  position: relative; z-index: 1;
+  margin-bottom: 16px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.header-title {
+  font-family: var(--font-d);
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(250,248,245,0.7);
+  letter-spacing: 0.08em;
+  position: relative; z-index: 1;
+}
+.header-title em { font-style: italic; color: rgba(163,196,204,0.8); }
+
+.card {
+  background: var(--cream);
+  margin: 24px 16px;
+  padding: 28px 24px;
+  border: 1px solid var(--stone);
+}
+
+.label {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--atlantic);
+  margin-bottom: 8px;
+}
+
+h2 {
+  font-family: var(--font-d);
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--night);
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+h2 em { font-style: italic; color: var(--atlantic); }
+
+.intro {
+  font-size: 0.82rem;
+  color: var(--bark);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.divider { height: 1px; background: var(--stone); margin: 20px 0; }
+
+/* CONDICIONES RESUMEN */
+.conditions {
+  background: var(--fog);
+  border-left: 3px solid var(--atlantic);
+  padding: 16px 18px;
+  margin-bottom: 24px;
+}
+.conditions p {
+  font-size: 0.78rem;
+  color: var(--soil);
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+.conditions p:last-child { margin-bottom: 0; }
+.conditions strong { color: var(--night); }
+
+/* FORM */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+.form-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bark);
+}
+.form-label span { color: var(--atlantic); }
+.form-input {
+  background: var(--fog);
+  border: 1px solid var(--stone);
+  padding: 12px 14px;
+  font-size: 0.84rem;
+  font-family: var(--font-b);
+  color: var(--soil);
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+.form-input:focus { border-color: var(--atlantic); }
+.form-input::placeholder { color: rgba(122,110,101,0.4); }
+
+select.form-input { cursor: pointer; }
+
+/* CHECKBOX */
+.check-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 16px;
+  background: rgba(61,107,115,0.06);
+  border: 1px solid rgba(61,107,115,0.2);
+}
+.check-group input[type="checkbox"] {
+  margin-top: 3px;
+  accent-color: var(--atlantic);
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+.check-text {
+  font-size: 0.78rem;
+  color: var(--soil);
+  line-height: 1.6;
+}
+.check-text strong { color: var(--night); }
+
+/* SUBMIT */
+.btn-submit {
+  background: var(--atlantic);
+  color: white;
+  border: none;
+  padding: 16px;
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: var(--font-b);
+  width: 100%;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+.btn-submit:hover { background: var(--pine); }
+.btn-submit:disabled { background: var(--bark); cursor: not-allowed; }
+
+.form-note {
+  font-size: 0.65rem;
+  color: var(--bark);
+  text-align: center;
+  margin-top: 12px;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* SUCCESS */
+.success {
+  display: none;
+  text-align: center;
+  padding: 32px 24px;
+}
+.success-icon { font-size: 2.5rem; margin-bottom: 16px; }
+.success h3 {
+  font-family: var(--font-d);
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--night);
+  margin-bottom: 10px;
+}
+.success p { font-size: 0.82rem; color: var(--bark); line-height: 1.7; }
+
+.footer {
+  background: var(--night);
+  padding: 24px;
+  text-align: center;
+  margin-top: 8px;
+}
+.footer-logo {
+  font-family: var(--font-d);
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: rgba(250,248,245,0.5);
+  margin-bottom: 6px;
+}
+.footer-logo em { font-style: italic; color: var(--atlantic); }
+.footer-text { font-size: 0.58rem; color: rgba(163,196,204,0.35); letter-spacing: 0.1em; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <img src="confin-logo-transparente.png" alt="CONFÍN"
+       onerror="this.style.display='none'">
+  <div class="header-title">Propuesta de <em>Coordinadora de Incorporaciones</em></div>
+</div>
+
+<!-- CARD PRINCIPAL -->
+<div class="card">
+  <div class="label">Aceptación formal</div>
+  <h2>Completá tus datos<br>y <em>confirmá</em></h2>
+  <p class="intro">Leíste la propuesta completa. Para aceptarla formalmente, completá el formulario a continuación. Al enviarlo, me llegará tu confirmación por mail y quedará registrada con fecha y hora.</p>
+
+  <!-- RESUMEN DE CONDICIONES -->
+  <div class="conditions">
+    <p><strong>Rol:</strong> Coordinadora de Incorporaciones · CONFÍN San Martín de los Andes</p>
+    <p><strong>Comisión:</strong> 40% del primer mes pago · 5% mensual recurrente (con seguimiento activo)</p>
+    <p><strong>Cobro:</strong> El 25 de cada mes, vía Payoneer o Wise · Requiere factura</p>
+    <p><strong>Zona:</strong> San Martín de los Andes y área de influencia asignada</p>
+    <p><strong>Confidencialidad:</strong> Toda la información interna de CONFÍN es estrictamente confidencial</p>
+    <p><strong>Vigencia:</strong> Desde la aceptación · Rescisión con 15 días de preaviso por escrito</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FORMULARIO -->
+  <div id="form-area">
+    <div class="form-group">
+      <label class="form-label">Nombre completo <span>*</span></label>
+      <input type="text" id="nombre" class="form-input" placeholder="Ej: Ailén Rasso" required>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">DNI <span>*</span></label>
+      <input type="text" id="dni" class="form-input" placeholder="Ej: 38.456.789" required>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">CUIT / Categoría fiscal <span>*</span></label>
+      <input type="text" id="cuit" class="form-input" placeholder="Ej: 27-38456789-4 / Monotributista Cat. B">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Mail personal <span>*</span></label>
+      <input type="email" id="mail" class="form-input" placeholder="tu@mail.com" required>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Teléfono / WhatsApp <span>*</span></label>
+      <input type="tel" id="telefono" class="form-input" placeholder="Ej: +54 9 2972 000000" required>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Cuenta para cobros <span>*</span></label>
+      <select id="plataforma" class="form-input">
+        <option value="">Seleccioná la plataforma...</option>
+        <option>Payoneer</option>
+        <option>Wise</option>
+        <option>Aún no tengo — la creo antes del primer cobro</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Mail o usuario de la cuenta de cobros</label>
+      <input type="text" id="cuenta" class="form-input" placeholder="Mail registrado en Payoneer o Wise">
+    </div>
+
+    <div class="check-group">
+      <input type="checkbox" id="acepto" onchange="toggleBtn()">
+      <div class="check-text">
+        Declaro haber leído y comprendido la propuesta completa. Acepto las condiciones de trabajo, la estructura de comisiones, la cláusula de confidencialidad y las condiciones de vigencia y finalización. <strong>Esta aceptación tiene validez formal como acuerdo digital.</strong>
+      </div>
+    </div>
+
+    <button class="btn-submit" id="btn-enviar" disabled onclick="enviar()">
+      Confirmo mi aceptación →
+    </button>
+
+    <p class="form-note">Al enviar este formulario, tu confirmación llega automáticamente a CONFÍN con fecha y hora registradas.</p>
+  </div>
+
+  <!-- ÉXITO -->
+  <div class="success" id="success-area">
+    <div class="success-icon">✦</div>
+    <h3>¡Bienvenida a <em style="font-style:italic;color:var(--atlantic);">CONFÍN</em>!</h3>
+    <p>Tu aceptación fue registrada correctamente. En las próximas horas te llega la confirmación por mail con todos los detalles para arrancar.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-logo">CON<em>FÍN</em></div>
+  <div class="footer-text">contacto.confinapp@gmail.com · @confin.app · CUIT 27-18456502-7</div>
+</div>
+
+<script>
+function toggleBtn() {
+  const btn = document.getElementById('btn-enviar');
+  btn.disabled = !document.getElementById('acepto').checked;
+}
+
+function enviar() {
+  const nombre = document.getElementById('nombre').value.trim();
+  const dni = document.getElementById('dni').value.trim();
+  const cuit = document.getElementById('cuit').value.trim();
+  const mail = document.getElementById('mail').value.trim();
+  const telefono = document.getElementById('telefono').value.trim();
+  const plataforma = document.getElementById('plataforma').value;
+  const cuenta = document.getElementById('cuenta').value.trim();
+
+  if (!nombre || !dni || !mail || !telefono) {
+    alert('Por favor completá todos los campos obligatorios.');
+    return;
+  }
+  if (!mail.includes('@')) {
+    alert('Ingresá un mail válido.');
+    return;
+  }
+
+  const fecha = new Date().toLocaleDateString('es-AR', {
+    day: '2-digit', month: '2-digit', year: 'numeric',
+    hour: '2-digit', minute: '2-digit'
+  });
+
+  const asunto = encodeURIComponent('ACEPTO — Propuesta CONFÍN · ' + nombre);
+  const cuerpo = encodeURIComponent(
+    'ACEPTACIÓN FORMAL — COORDINADORA DE INCORPORACIONES CONFÍN\n' +
+    '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n' +
+    'Nombre completo: ' + nombre + '\n' +
+    'DNI: ' + dni + '\n' +
+    'CUIT / Categoría fiscal: ' + (cuit || 'A completar') + '\n' +
+    'Mail personal: ' + mail + '\n' +
+    'Teléfono: ' + telefono + '\n' +
+    'Plataforma de cobro: ' + (plataforma || 'A definir') + '\n' +
+    'Cuenta de cobro: ' + (cuenta || 'A completar') + '\n\n' +
+    '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n' +
+    'Declaro haber leído y aceptado la propuesta completa de CONFÍN,\n' +
+    'incluyendo condiciones de trabajo, comisiones, confidencialidad\n' +
+    'y condiciones de vigencia y finalización.\n\n' +
+    'Fecha y hora de aceptación: ' + fecha + '\n\n' +
+    'CONFÍN — contacto.confinapp@gmail.com'
+  );
+
+  window.location.href = 'mailto:contacto.confinapp@gmail.com?subject=' + asunto + '&body=' + cuerpo;
+
+  // Mostrar éxito
+  setTimeout(() => {
+    document.getElementById('form-area').style.display = 'none';
+    document.getElementById('success-area').style.display = 'block';
+  }, 800);
+}
+</script>
+
+</body>
+</html>
