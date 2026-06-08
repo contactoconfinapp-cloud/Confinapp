@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CONFÍN — Tu espacio, visible para el mundo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FAF8F5;--stone:#E8E2D9;--bark:#7A6E65;--soil:#4A3F38;
+  --night:#1C1915;--deep:#0E1A1C;--atlantic:#3D6B73;--pine:#1C3032;
+  --fog:#F4F1ED;
+  --font-d:'Cormorant Garamond',Georgia,serif;
+  --font-b:'DM Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--deep);font-family:var(--font-b);font-weight:300;color:var(--soil);}
+
+/* HERO */
+.hero{
+  background:linear-gradient(170deg,#0E1A1C 0%,#1C3032 50%,#1A2C28 100%);
+  padding:48px 24px 40px;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:40%;left:50%;
+  transform:translate(-50%,-50%);
+  width:100%;height:80%;
+  background:radial-gradient(ellipse,rgba(61,107,115,0.3) 0%,transparent 68%);
+  pointer-events:none;
+}
+.hero-mountains{
+  position:absolute;bottom:0;left:0;right:0;height:30%;
+  background:rgba(10,20,22,0.6);
+  clip-path:polygon(0 100%,0 55%,15% 25%,30% 50%,45% 10%,60% 42%,72% 5%,85% 32%,100% 18%,100% 100%);
+}
+.hero img{
+  width:78%;max-width:260px;
+  filter:brightness(1.9) contrast(0.88) saturate(0.75) drop-shadow(0 0 22px rgba(140,210,225,0.5));
+  position:relative;z-index:2;
+  margin:0 auto 20px;display:block;
+}
+.hero-title{
+  font-family:var(--font-d);
+  font-size:clamp(1.6rem,5vw,2.2rem);
+  font-weight:300;font-style:italic;
+  color:rgba(250,248,245,0.92);
+  line-height:1.2;margin-bottom:10px;
+  position:relative;z-index:2;
+}
+.hero-sub{
+  font-family:var(--font-d);
+  font-size:1rem;font-style:italic;
+  color:rgba(163,196,204,0.7);
+  position:relative;z-index:2;
+}
+
+/* INTRO */
+.intro{
+  background:var(--cream);
+  padding:32px 24px;
+  text-align:center;
+}
+.intro p{
+  font-size:1rem;
+  color:var(--soil);
+  line-height:1.8;
+  max-width:580px;
+  margin:0 auto;
+}
+.intro strong{color:var(--night);}
+
+/* BENEFICIOS */
+.benefits{background:var(--fog);}
+.benefit{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:22px 24px;
+  border-bottom:1px solid var(--stone);
+}
+.benefit:last-child{border-bottom:none;}
+.benefit-icon{
+  width:48px;height:48px;flex-shrink:0;
+  background:var(--deep);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;
+}
+.benefit-body{}
+.benefit-title{
+  font-family:var(--font-d);
+  font-size:1.15rem;font-weight:400;
+  color:var(--night);
+  margin-bottom:4px;line-height:1.2;
+}
+.benefit-desc{
+  font-size:0.86rem;color:var(--bark);line-height:1.7;
+}
+
+/* DIFERENCIAL */
+.diferencial{
+  background:var(--pine);
+  padding:32px 24px;
+}
+.dif-title{
+  font-family:var(--font-d);
+  font-size:clamp(1.5rem,4.5vw,2rem);
+  font-weight:300;color:var(--cream);
+  line-height:1.15;margin-bottom:20px;
+}
+.dif-title em{font-style:italic;color:rgba(163,196,204,0.85);}
+.dif-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid rgba(61,107,115,0.25);
+}
+.dif-item:last-child{border-bottom:none;}
+.dif-check{
+  width:22px;height:22px;flex-shrink:0;
+  background:var(--atlantic);
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-size:0.7rem;font-weight:700;
+  margin-top:1px;
+}
+.dif-text{font-size:0.88rem;color:rgba(196,186,176,0.85);line-height:1.65;}
+.dif-text strong{color:var(--cream);}
+
+/* QUOTE */
+.quote{
+  background:var(--deep);
+  padding:32px 24px;
+  text-align:center;
+}
+.quote blockquote{
+  font-family:var(--font-d);
+  font-size:clamp(1.2rem,4vw,1.7rem);
+  font-weight:300;font-style:italic;
+  color:rgba(250,248,245,0.85);
+  line-height:1.45;
+  max-width:520px;margin:0 auto 12px;
+}
+.quote cite{
+  font-size:0.65rem;letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:rgba(163,196,204,0.5);
+}
+
+/* PROCESO */
+.proceso{background:var(--cream);padding:32px 24px;}
+.proceso-title{
+  font-family:var(--font-d);
+  font-size:1.6rem;font-weight:300;
+  color:var(--night);margin-bottom:20px;
+}
+.proceso-title em{font-style:italic;color:var(--atlantic);}
+.paso{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:14px 0;
+  border-bottom:1px solid var(--stone);
+}
+.paso:last-child{border-bottom:none;}
+.paso-num{
+  width:30px;height:30px;flex-shrink:0;
+  background:var(--atlantic);color:white;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.75rem;font-weight:500;
+}
+.paso-title{
+  font-size:0.88rem;font-weight:500;color:var(--night);
+  margin-bottom:3px;
+}
+.paso-desc{font-size:0.82rem;color:var(--bark);line-height:1.6;}
+
+/* FOUNDER */
+.founder{
+  background:var(--atlantic);
+  padding:28px 24px;text-align:center;
+}
+.founder-badge{
+  display:inline-block;
+  border:1px solid rgba(255,255,255,0.4);
+  padding:6px 16px;
+  font-size:0.6rem;letter-spacing:0.18em;
+  text-transform:uppercase;color:rgba(255,255,255,0.85);
+  margin-bottom:14px;
+}
+.founder-title{
+  font-family:var(--font-d);
+  font-size:1.5rem;font-weight:300;
+  color:white;line-height:1.2;margin-bottom:10px;
+}
+.founder-desc{
+  font-size:0.85rem;color:rgba(255,255,255,0.8);
+  line-height:1.7;
+}
+
+/* CTA */
+.cta-section{background:var(--night);padding:32px 24px;text-align:center;}
+.cta-section p{
+  font-size:0.88rem;color:rgba(196,186,176,0.7);
+  line-height:1.7;margin-bottom:20px;
+}
+.cta-btn{
+  display:block;
+  background:var(--atlantic);color:white;
+  padding:17px 24px;
+  font-size:0.76rem;letter-spacing:0.14em;
+  text-transform:uppercase;
+  text-decoration:none;
+  font-family:var(--font-b);
+  margin-bottom:12px;
+}
+.cta-contact{
+  font-size:0.68rem;color:rgba(163,196,204,0.45);
+  letter-spacing:0.08em;line-height:1.8;
+}
+.cta-contact a{color:rgba(163,196,204,0.6);text-decoration:none;}
+
+/* FOOTER */
+.footer{background:var(--deep);padding:24px;text-align:center;}
+.footer-logo{
+  font-family:var(--font-d);font-size:1.2rem;font-weight:300;
+  color:rgba(250,248,245,0.4);margin-bottom:8px;
+}
+.footer-logo em{font-style:italic;color:var(--atlantic);}
+.footer-text{font-size:0.58rem;color:rgba(163,196,204,0.3);letter-spacing:0.08em;line-height:1.8;}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-mountains"></div>
+  <img src="confin-logo-transparente.png" alt="CONFÍN" onerror="this.style.display='none'">
+  <p class="hero-title">Tu espacio,<br>visible para el mundo.</p>
+  <p class="hero-sub">Nacida en San Martín de los Andes</p>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <p>CONFÍN es la nueva plataforma turística de San Martín de los Andes.<br><strong>Los viajeros la usan para encontrar dónde quedarse, dónde comer y qué hacer.</strong><br>Vos aparecés. Ellos te contactan directamente.</p>
+</div>
+
+<!-- BENEFICIOS -->
+<div class="benefits">
+  <div class="benefit">
+    <div class="benefit-icon">🌍</div>
+    <div class="benefit-body">
+      <div class="benefit-title">Tres idiomas — llegás a todos</div>
+      <div class="benefit-desc">La app funciona en español, inglés y portugués. El viajero brasileño, el europeo, el chileno — todos te encuentran en su idioma.</div>
+    </div>
+  </div>
+  <div class="benefit">
+    <div class="benefit-icon" style="overflow:hidden;border-radius:50%;border:2px solid rgba(61,107,115,0.5);padding:0;width:48px;height:48px;">
+        <img src="luna-avatar.jpg" alt="Luna" style="width:100%;height:100%;object-fit:cover;object-position:center top;" onerror="this.parentElement.style.fontSize='1.4rem';this.parentElement.innerHTML='🌙';">
+      </div>
+    <div class="benefit-body">
+      <div class="benefit-title">Luna — tu guía personal en la app</div>
+      <div class="benefit-desc">Luna es la asistente inteligente de CONFÍN. El viajero le escribe — en español, inglés o portugués — y ella le recomienda lugares dentro de la plataforma según lo que busca. Si alguien pregunta "¿dónde puedo cenar con mi perro?" o "¿hay algún lugar con menú vegano?", Luna lo dirige directamente a tu espacio — si lo que vos ofrecés coincide. Es como tener una persona que recomienda tu establecimiento las 24 horas.</div>
+    </div>
+  </div>
+  <div class="benefit">
+    <div class="benefit-icon">📍</div>
+    <div class="benefit-body">
+      <div class="benefit-title">Mapa interactivo</div>
+      <div class="benefit-desc">Tu espacio aparece en el mapa con ubicación exacta, distancia y cómo llegar. El viajero te encuentra incluso antes de llegar a San Martín.</div>
+    </div>
+  </div>
+  <div class="benefit">
+    <div class="benefit-icon">📲</div>
+    <div class="benefit-body">
+      <div class="benefit-title">Contacto directo — sin intermediarios</div>
+      <div class="benefit-desc">El viajero te escribe directamente a vos — por WhatsApp, Instagram o tu web. CONFÍN conecta. El resto es entre vos y el viajero.</div>
+    </div>
+  </div>
+  <div class="benefit">
+    <div class="benefit-icon">📱</div>
+    <div class="benefit-body">
+      <div class="benefit-title">Una sola carga — siempre visible</div>
+      <div class="benefit-desc">Cargás tus datos una vez — fotos, descripción, contacto. Después no hacés nada más. Tu espacio está visible las 24 horas, los 365 días.</div>
+    </div>
+  </div>
+</div>
+
+<!-- DIFERENCIAL -->
+<div class="diferencial">
+  <p class="dif-title">¿Por qué <em>CONFÍN?</em></p>
+  <div class="dif-item">
+    <div class="dif-check">✓</div>
+    <div class="dif-text"><strong>Sin comisión por cada reserva.</strong> Muchas plataformas cobran un porcentaje de cada reserva que te llega — entre el 15% y el 20%. CONFÍN cobra una suscripción mensual fija, sin importar cuántas reservas entraron. Todo lo que generás es tuyo.</div>
+  </div>
+
+  <div class="dif-item">
+    <div class="dif-check">✓</div>
+    <div class="dif-text"><strong>Nacida acá.</strong> No es una multinacional que no conoce el sur. CONFÍN nació en San Martín de los Andes y está hecha para mostrar lo mejor de este lugar.</div>
+  </div>
+  <div class="dif-item">
+    <div class="dif-check">✓</div>
+    <div class="dif-text"><strong>Filtrás por lo que importa.</strong> Pet friendly, apto celíacos, vegano, con estacionamiento, vista al lago. El viajero busca exactamente lo que vos ofrecés.</div>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="quote">
+  <blockquote>"El viajero abre CONFÍN, te encuentra, y te escribe directamente. Sin intermediarios. Sin porcentajes. Sin complicaciones."</blockquote>
+  <cite>CONFÍN · San Martín de los Andes</cite>
+</div>
+
+<!-- PROCESO -->
+<div class="proceso">
+  <p class="proceso-title">Sumarte es <em>muy simple</em></p>
+  <div class="paso">
+    <div class="paso-num">1</div>
+    <div>
+      <div class="paso-title">Completás el formulario</div>
+      <div class="paso-desc">Nombre, tipo de espacio, fotos, descripción, contacto. Una sola vez, desde tu celular.</div>
+    </div>
+  </div>
+  <div class="paso">
+    <div class="paso-num">2</div>
+    <div>
+      <div class="paso-title">Tu espacio se verifica automáticamente</div>
+      <div class="paso-desc">El sistema verifica que el establecimiento sea real — ubicación, datos públicos, existencia. Sin intervención manual. Si todo está correcto, el perfil queda listo.</div>
+    </div>
+  </div>
+  <div class="paso">
+    <div class="paso-num">3</div>
+    <div>
+      <div class="paso-title">Activás tu espacio</div>
+      <div class="paso-desc">Confirmás la suscripción. Tu espacio queda activo en la plataforma desde el <strong>lanzamiento oficial del 6 de julio</strong>. Podés decidir no continuar hasta el día anterior al primer cobro.</div>
+    </div>
+  </div>
+  <div class="paso">
+    <div class="paso-num">4</div>
+    <div>
+      <div class="paso-title">Los viajeros te encuentran</div>
+      <div class="paso-desc">Desde el día del lanzamiento, cualquier persona que abra CONFÍN puede ver tu espacio y contactarte.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOUNDER -->
+<div class="founder">
+  <div class="founder-badge">✦ Sello Pionero · Antes del 6 de julio</div>
+  <p class="founder-title">Sumarte ahora tiene<br>un valor especial</p>
+  <p class="founder-desc">Los espacios que se incorporan <strong>antes del lanzamiento oficial del 6 de julio</strong> reciben el <strong>Sello Pionero CONFÍN</strong> — un distintivo permanente dentro de la plataforma que los identifica como los primeros establecimientos de San Martín en ser parte de este proyecto. Un sello que no se repite.</p>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <p>El lanzamiento oficial es el <strong style="color:rgba(163,196,204,0.9);">6 de julio</strong>.<br>Los que se sumen antes reciben el <strong style="color:rgba(163,196,204,0.9);">Sello Pionero CONFÍN</strong>.</p>
+  <a href="https://contactoconfinapp-cloud.github.io/Confinapp/?ref=ailen" class="cta-btn">
+    Quiero sumar mi espacio →
+  </a>
+  <div class="cta-contact">
+    contacto.confinapp@gmail.com<br>
+    <a href="https://instagram.com/confin.app">@confin.app</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <img src="confin-logo-transparente.png" alt="CONFÍN" style="width:140px;max-width:55%;filter:brightness(1.9) contrast(0.88) saturate(0.75);margin:0 auto 12px;display:block;" onerror="this.style.display='none'">
+  <div class="footer-logo">CON<em>FÍN</em></div>
+  <div class="footer-text">Una nueva forma de viajar · Nacida en San Martín de los Andes<br>Liliana Edit Bruno · CUIT 27-18456502-7</div>
+</div>
+
+</body>
+</html>
