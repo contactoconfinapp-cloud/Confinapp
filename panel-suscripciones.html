@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CONFÍN - Panel de Suscripciones</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #F4F1EC;
+    color: #1C2B2B;
+    padding: 16px;
+  }
+  h1 {
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+    color: #1C2B2B;
+  }
+  .subtitle {
+    font-size: 0.82rem;
+    color: #6B6258;
+    margin-bottom: 20px;
+  }
+  .config-bar {
+    background: white;
+    border: 1px solid #D9D3C7;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+    font-size: 0.82rem;
+  }
+  .config-bar label { font-weight: 600; color: #3D6B73; }
+  .config-bar input {
+    border: 1px solid #D9D3C7;
+    padding: 6px 10px;
+    font-size: 0.82rem;
+    width: 70px;
+  }
+  .resumen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .resumen-card {
+    background: white;
+    border: 1px solid #D9D3C7;
+    padding: 14px;
+    text-align: center;
+  }
+  .resumen-card .num { font-size: 1.6rem; font-weight: 700; }
+  .resumen-card .label { font-size: 0.7rem; color: #6B6258; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px; }
+  .resumen-card.alerta .num { color: #B8673A; }
+  .resumen-card.ok .num { color: #3D6B73; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    font-size: 0.82rem;
+  }
+  th {
+    background: #1C2B2B;
+    color: #F4F1EC;
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #EAE5DC;
+  }
+  tr.alerta { background: rgba(184,103,58,0.08); }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+  .badge.ok { background: rgba(61,107,115,0.15); color: #3D6B73; }
+  .badge.alerta { background: rgba(184,103,58,0.18); color: #B8673A; }
+  .badge.gratis { background: rgba(184,164,80,0.18); color: #8a7320; }
+  .codigo { font-family: monospace; font-weight: 700; color: #3D6B73; }
+  .loading, .error, .empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: #6B6258;
+  }
+  .error { color: #B8673A; }
+  .filtros {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .filtros button {
+    background: white;
+    border: 1px solid #D9D3C7;
+    padding: 8px 14px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  .filtros button.active {
+    background: #3D6B73;
+    color: white;
+    border-color: #3D6B73;
+  }
+  @media (max-width: 600px) {
+    table { font-size: 0.74rem; }
+    th, td { padding: 8px 6px; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🌲 CONFÍN — Panel de Suscripciones</h1>
+<p class="subtitle">Seguimiento de fechas de cambio de precio (descuento de lanzamiento)</p>
+
+<div class="config-bar">
+  <label>Meses gratis + descuento:</label>
+  <input type="number" id="cfg-meses" value="4" min="1" max="12">
+  <label>% de descuento:</label>
+  <input type="number" id="cfg-descuento" value="25" min="0" max="100">
+  <button onclick="cargarDatos()" style="background:#3D6B73;color:white;border:none;padding:8px 16px;cursor:pointer;border-radius:3px;">Recalcular</button>
+</div>
+
+<div class="resumen" id="resumen"></div>
+
+<div class="filtros">
+  <button class="active" onclick="filtrar('todos', this)">Todos</button>
+  <button onclick="filtrar('alerta', this)">🔴 Cambiar ahora</button>
+  <button onclick="filtrar('proximo', this)">🟡 Próximos 7 días</button>
+  <button onclick="filtrar('ok', this)">🟢 En descuento</button>
+</div>
+
+<div id="contenido" class="loading">Cargando establecimientos...</div>
+
+<script>
+// ============================================
+// CONFIGURACIÓN DE SUPABASE
+// ============================================
+const SUPABASE_URL = 'https://cstaurdeiyulzaqymexa.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNzdGF1cmRlaXl1bHphcXltZXhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE3MTE0NzEsImV4cCI6MjA5NzI4NzQ3MX0.Fy0qqp6MhcryEkttW2fMUAB_N50PlvSwjfmeRv3HJjA';
+
+let establecimientosData = [];
+let filtroActual = 'todos';
+
+async function fetchSupabase(tabla) {
+  const url = `${SUPABASE_URL}/rest/v1/${tabla}?select=*`;
+  const res = await fetch(url, {
+    headers: {
+      'apikey': SUPABASE_ANON_KEY,
+      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+    }
+  });
+  if (!res.ok) throw new Error('Error al consultar Supabase: ' + res.status);
+  return res.json();
+}
+
+function calcularEstado(fechaSuscripcion, mesesDescuento) {
+  const fechaInicio = new Date(fechaSuscripcion);
+  const fechaFin = new Date(fechaInicio);
+  fechaFin.setMonth(fechaFin.getMonth() + parseInt(mesesDescuento));
+
+  const hoy = new Date();
+  const diffDias = Math.ceil((fechaFin - hoy) / (1000 * 60 * 60 * 24));
+
+  let estado, badge;
+  if (diffDias <= 0) {
+    estado = 'alerta';
+    badge = '🔴 Cambiar precio YA';
+  } else if (diffDias <= 7) {
+    estado = 'proximo';
+    badge = `🟡 Faltan ${diffDias} día${diffDias === 1 ? '' : 's'}`;
+  } else {
+    estado = 'ok';
+    badge = `🟢 En descuento (${diffDias} días)`;
+  }
+
+  return { fechaFin, diffDias, estado, badge };
+}
+
+function formatearFecha(fecha) {
+  return fecha.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+}
+
+async function cargarDatos() {
+  const contenido = document.getElementById('contenido');
+  contenido.innerHTML = '<div class="loading">Cargando establecimientos...</div>';
+
+  try {
+    const data = await fetchSupabase('establecimientos');
+    establecimientosData = data;
+    renderizar();
+  } catch (err) {
+    contenido.innerHTML = `<div class="error">Error al cargar datos: ${err.message}<br><br>Verificá que la tabla "establecimientos" tenga un campo de fecha de suscripción (ej: created_at o fecha_suscripcion).</div>`;
+    console.error(err);
+  }
+}
+
+function renderizar() {
+  const mesesDescuento = document.getElementById('cfg-meses').value;
+  const contenido = document.getElementById('contenido');
+
+  if (!establecimientosData.length) {
+    contenido.innerHTML = '<div class="empty">No hay establecimientos cargados todavía.</div>';
+    actualizarResumen([]);
+    return;
+  }
+
+  const procesados = establecimientosData.map(est => {
+    const fechaSus = est.created_at || est.fecha_suscripcion || est.fecha;
+    const calculo = calcularEstado(fechaSus, mesesDescuento);
+    return { ...est, ...calculo, fechaSus };
+  });
+
+  procesados.sort((a, b) => a.diffDias - b.diffDias);
+
+  actualizarResumen(procesados);
+
+  const filtrados = filtroActual === 'todos'
+    ? procesados
+    : procesados.filter(e => e.estado === filtroActual);
+
+  if (!filtrados.length) {
+    contenido.innerHTML = '<div class="empty">No hay establecimientos en esta categoría.</div>';
+    return;
+  }
+
+  let html = `<table>
+    <tr>
+      <th>Código</th>
+      <th>Establecimiento</th>
+      <th>Categoría</th>
+      <th>Fecha alta</th>
+      <th>Fin descuento</th>
+      <th>Estado</th>
+    </tr>`;
+
+  filtrados.forEach(e => {
+    const claseFila = e.estado === 'alerta' ? 'alerta' : '';
+    const claseBadge = e.estado === 'alerta' ? 'alerta' : (e.estado === 'proximo' ? 'gratis' : 'ok');
+    html += `<tr class="${claseFila}">
+      <td class="codigo">${e.codigo || '-'}</td>
+      <td>${e.nombre || '-'}</td>
+      <td>${e.rubro || e.categoria || '-'}</td>
+      <td>${e.fechaSus ? formatearFecha(new Date(e.fechaSus)) : '-'}</td>
+      <td>${formatearFecha(e.fechaFin)}</td>
+      <td><span class="badge ${claseBadge}">${e.badge}</span></td>
+    </tr>`;
+  });
+
+  html += '</table>';
+  contenido.innerHTML = html;
+}
+
+function actualizarResumen(procesados) {
+  const alertas = procesados.filter(e => e.estado === 'alerta').length;
+  const proximos = procesados.filter(e => e.estado === 'proximo').length;
+  const ok = procesados.filter(e => e.estado === 'ok').length;
+
+  document.getElementById('resumen').innerHTML = `
+    <div class="resumen-card alerta">
+      <div class="num">${alertas}</div>
+      <div class="label">Cambiar precio ya</div>
+    </div>
+    <div class="resumen-card" style="border-color:#d4bc70;">
+      <div class="num" style="color:#8a7320;">${proximos}</div>
+      <div class="label">Próximos 7 días</div>
+    </div>
+    <div class="resumen-card ok">
+      <div class="num">${ok}</div>
+      <div class="label">En descuento</div>
+    </div>
+    <div class="resumen-card">
+      <div class="num">${procesados.length}</div>
+      <div class="label">Total establecimientos</div>
+    </div>
+  `;
+}
+
+function filtrar(tipo, btn) {
+  filtroActual = tipo;
+  document.querySelectorAll('.filtros button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderizar();
+}
+
+// Cargar al iniciar
+cargarDatos();
+</script>
+
+</body>
+</html>
