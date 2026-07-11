@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editar mi perfil — CONFÍN</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  :root {
+    --cream: #F4F1EA;
+    --dark: #0E1A1C;
+    --atlantic: #3D6B73;
+    --gold: #B8A450;
+    --bark: #7A6A55;
+    --ash: #C4BAB0;
+    --font-d: 'Georgia', serif;
+    --font-s: 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: var(--font-s);
+    min-height: 100vh;
+    padding-bottom: 60px;
+  }
+
+  .header {
+    background: var(--dark);
+    padding: 20px 24px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .header-logo {
+    font-family: var(--font-d);
+    color: var(--cream);
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    font-style: italic;
+  }
+
+  .header-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .header-sub {
+    color: var(--ash);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* --- AUTH SCREEN --- */
+  #screen-auth {
+    padding: 48px 24px 32px;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .auth-title {
+    font-family: var(--font-d);
+    font-size: 1.8rem;
+    font-style: italic;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+
+  .auth-sub {
+    color: var(--bark);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 32px;
+  }
+
+  .field-label {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bark);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  .field-input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--ash);
+    border-radius: 6px;
+    background: white;
+    font-size: 0.95rem;
+    color: var(--dark);
+    font-family: var(--font-s);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .field-input:focus { border-color: var(--atlantic); }
+
+  .btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: var(--dark);
+    color: var(--cream);
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--atlantic); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-secondary {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    color: var(--bark);
+    border: 1.5px solid var(--ash);
+    border-radius: 6px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: border-color 0.2s;
+  }
+
+  .btn-secondary:hover { border-color: var(--atlantic); color: var(--atlantic); }
+
+  .auth-hint {
+    margin-top: 24px;
+    padding: 14px 16px;
+    background: rgba(61,107,115,0.08);
+    border-radius: 6px;
+    font-size: 0.78rem;
+    color: var(--bark);
+    line-height: 1.5;
+  }
+
+  .error-msg {
+    color: #c0392b;
+    font-size: 0.82rem;
+    margin-top: 10px;
+    display: none;
+  }
+
+  /* --- EDIT SCREEN --- */
+  #screen-edit { display: none; }
+
+  .edit-hero {
+    background: var(--dark);
+    padding: 20px 24px;
+    color: var(--cream);
+  }
+
+  .edit-hero-nombre {
+    font-family: var(--font-d);
+    font-size: 1.4rem;
+    font-style: italic;
+  }
+
+  .edit-hero-codigo {
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .edit-body {
+    padding: 24px 20px;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin: 28px 0 14px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(184,164,80,0.3);
+  }
+
+  .field-group {
+    margin-bottom: 18px;
+  }
+
+  .field-textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--ash);
+    border-radius: 6px;
+    background: white;
+    font-size: 0.9rem;
+    color: var(--dark);
+    font-family: var(--font-s);
+    outline: none;
+    resize: vertical;
+    min-height: 80px;
+    transition: border-color 0.2s;
+  }
+
+  .field-textarea:focus { border-color: var(--atlantic); }
+
+  .field-hint {
+    font-size: 0.72rem;
+    color: var(--ash);
+    margin-top: 4px;
+  }
+
+  .field-select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--ash);
+    border-radius: 6px;
+    background: white;
+    font-size: 0.9rem;
+    color: var(--dark);
+    outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A6A55' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+  }
+
+  .chips-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .chip {
+    padding: 6px 12px;
+    border: 1.5px solid var(--ash);
+    border-radius: 20px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    background: white;
+    color: var(--bark);
+    transition: all 0.15s;
+    user-select: none;
+  }
+
+  .chip.active {
+    background: var(--dark);
+    border-color: var(--dark);
+    color: var(--cream);
+  }
+
+  .foto-preview {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-top: 10px;
+    display: none;
+  }
+
+  .foto-placeholder {
+    width: 100%;
+    height: 100px;
+    background: rgba(61,107,115,0.08);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    color: var(--ash);
+    font-size: 0.82rem;
+  }
+
+  .btn-guardar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 24px;
+    background: var(--dark);
+    color: var(--cream);
+    border: none;
+    font-size: 0.88rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 100;
+    transition: background 0.2s;
+  }
+
+  .btn-guardar:hover { background: var(--atlantic); }
+  .btn-guardar:disabled { opacity: 0.5; }
+
+  .toast {
+    position: fixed;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--dark);
+    color: var(--cream);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 200;
+  }
+
+  .toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="header-logo">CONFÍN</div>
+    <div class="header-sub">Gestión de perfil</div>
+  </div>
+</div>
+
+<!-- PANTALLA DE ACCESO -->
+<div id="screen-auth">
+  <div class="auth-title">Tu espacio,<br>tu voz.</div>
+  <p class="auth-sub">Ingresá tu código CONFÍN para editar la información de tu establecimiento.</p>
+
+  <div class="field-group">
+    <label class="field-label" for="input-codigo">Código CONFÍN</label>
+    <input class="field-input" id="input-codigo" type="text"
+      placeholder="Ej: SMA-001" autocomplete="off" autocapitalize="characters"
+      onkeydown="if(event.key==='Enter') acceder()">
+    <div class="error-msg" id="auth-error">Código no encontrado. Verificá el código que recibiste.</div>
+  </div>
+
+  <button class="btn-primary" onclick="acceder()" id="btn-acceder">Acceder →</button>
+
+  <div class="auth-hint">
+    📩 Tu código CONFÍN lo recibiste por mail cuando completaste el formulario de alta. Si no lo encontrás, escribinos a <strong>contacto.confinapp@gmail.com</strong>
+  </div>
+</div>
+
+<!-- PANTALLA DE EDICIÓN -->
+<div id="screen-edit">
+  <div class="edit-hero">
+    <div class="edit-hero-nombre" id="edit-nombre-display">—</div>
+    <div class="edit-hero-codigo" id="edit-codigo-display">—</div>
+  </div>
+
+  <div class="edit-body">
+
+    <div class="section-title">📝 Descripción</div>
+
+    <div class="field-group">
+      <label class="field-label">Descripción breve</label>
+      <textarea class="field-textarea" id="ed-descripcion" placeholder="Una línea que describe tu espacio para el viajero..."></textarea>
+      <div class="field-hint">Este texto aparece en el listado y en tu perfil.</div>
+    </div>
+
+    <div class="section-title">🕐 Horarios y contacto</div>
+
+    <div class="field-group">
+      <label class="field-label">Horario de atención</label>
+      <input class="field-input" id="ed-horario" type="text" placeholder="Ej: 9:00 a 20:00">
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">WhatsApp</label>
+      <input class="field-input" id="ed-whatsapp" type="tel" placeholder="+5492972XXXXXX">
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Instagram</label>
+      <input class="field-input" id="ed-instagram" type="text" placeholder="@tuespacio">
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Sitio web</label>
+      <input class="field-input" id="ed-web" type="url" placeholder="https://...">
+    </div>
+
+    <div class="section-title">✦ Servicios e instalaciones</div>
+
+    <div class="field-group">
+      <label class="field-label">WiFi</label>
+      <select class="field-select" id="ed-wifi">
+        <option value="">— Seleccioná —</option>
+        <option value="si">Sí, WiFi incluido</option>
+        <option value="no">No tenemos WiFi</option>
+      </select>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Servicios disponibles</label>
+      <div class="chips-row" id="chips-servicios">
+        <div class="chip" data-val="cocina" onclick="toggleChip(this)">🍳 Cocina</div>
+        <div class="chip" data-val="ropa_blanca" onclick="toggleChip(this)">🛏️ Ropa blanca</div>
+        <div class="chip" data-val="estacionamiento" onclick="toggleChip(this)">🚗 Estacionamiento</div>
+        <div class="chip" data-val="parrilla" onclick="toggleChip(this)">🔥 Parrilla</div>
+        <div class="chip" data-val="jardín" onclick="toggleChip(this)">🌿 Jardín</div>
+        <div class="chip" data-val="piscina" onclick="toggleChip(this)">🏊 Piscina</div>
+        <div class="chip" data-val="desayuno" onclick="toggleChip(this)">☕ Desayuno</div>
+        <div class="chip" data-val="mascotas" onclick="toggleChip(this)">🐾 Mascotas</div>
+        <div class="chip" data-val="kayak" onclick="toggleChip(this)">🛶 Kayak</div>
+        <div class="chip" data-val="bicicletas" onclick="toggleChip(this)">🚲 Bicicletas</div>
+        <div class="chip" data-val="fogon" onclick="toggleChip(this)">🪵 Fogón</div>
+        <div class="chip" data-val="quincho" onclick="toggleChip(this)">🏡 Quincho</div>
+      </div>
+    </div>
+
+    <div class="section-title">📸 Foto de portada</div>
+
+    <div class="field-group">
+      <label class="field-label">Foto actual</label>
+      <img id="foto-actual" class="foto-preview" src="" alt="Foto actual">
+      <div id="foto-placeholder" class="foto-placeholder">Sin foto de portada todavía</div>
+      <div style="margin-top:12px;">
+        <label class="field-label">Subir nueva foto</label>
+        <input class="field-input" type="file" id="ed-foto" accept="image/*">
+        <div class="field-hint">La foto que mejor representa tu espacio. Tamaño recomendado: 1200×800px.</div>
+      </div>
+    </div>
+
+    <div style="height:80px;"></div><!-- espacio para el botón fijo -->
+  </div>
+</div>
+
+<button class="btn-guardar" id="btn-guardar" onclick="guardarCambios()" style="display:none;">
+  Guardar cambios
+</button>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const SUPABASE_URL  = 'https://cstaurdeiyulzaqymexa.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNzdGF1cmRlaXl1bHphcXltZXhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgwMzk3MDAsImV4cCI6MjA2MzYxNTcwMH0.8JxSmHWcJ9A55o6EzJ0RvVEAmRjj6iYsqn5fy5FVv9M';
+
+let _sb = null;
+let establActual = null;
+
+try {
+  const sbLib = window.supabase || window.supabaseJs;
+  if (sbLib) _sb = sbLib.createClient(SUPABASE_URL, SUPABASE_ANON);
+} catch(e) { console.warn('Supabase init error:', e); }
+
+function toast(msg, dur = 2500) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), dur);
+}
+
+async function acceder() {
+  const codigo = document.getElementById('input-codigo').value.trim().toUpperCase();
+  if (!codigo) return;
+
+  const btn = document.getElementById('btn-acceder');
+  const err = document.getElementById('auth-error');
+  btn.disabled = true;
+  btn.textContent = 'Buscando...';
+  err.style.display = 'none';
+
+  if (!_sb) {
+    err.textContent = 'Error de conexión. Intentá de nuevo en unos segundos.';
+    err.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Acceder →';
+    return;
+  }
+
+  try {
+    const { data, error } = await _sb
+      .from('establecimientos')
+      .select('*')
+      .eq('codigo', codigo)
+      .single();
+
+    if (error || !data) {
+      err.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Acceder →';
+      return;
+    }
+
+    establActual = data;
+    mostrarPantallaEdicion(data);
+  } catch(e) {
+    err.textContent = 'Error de conexión. Intentá de nuevo.';
+    err.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Acceder →';
+  }
+}
+
+function mostrarPantallaEdicion(est) {
+  document.getElementById('screen-auth').style.display = 'none';
+  document.getElementById('screen-edit').style.display = 'block';
+  document.getElementById('btn-guardar').style.display = 'block';
+
+  document.getElementById('edit-nombre-display').textContent = est.nombre || '—';
+  document.getElementById('edit-codigo-display').textContent = est.codigo || '—';
+
+  document.getElementById('ed-descripcion').value = est.descripcion || '';
+  document.getElementById('ed-horario').value     = est.horario || '';
+  document.getElementById('ed-whatsapp').value    = est.whatsapp || '';
+  document.getElementById('ed-instagram').value   = est.instagram || '';
+  document.getElementById('ed-web').value         = est.sitio_web || '';
+  document.getElementById('ed-wifi').value        = est.wifi || '';
+
+  // Cargar chips de servicios
+  if (est.servicios) {
+    const activos = est.servicios.split(',').map(s => s.trim());
+    document.querySelectorAll('#chips-servicios .chip').forEach(chip => {
+      if (activos.includes(chip.getAttribute('data-val'))) {
+        chip.classList.add('active');
+      }
+    });
+  }
+
+  // Foto actual
+  if (est.foto_portada) {
+    const img = document.getElementById('foto-actual');
+    img.src = est.foto_portada;
+    img.style.display = 'block';
+    document.getElementById('foto-placeholder').style.display = 'none';
+  }
+}
+
+function toggleChip(el) {
+  el.classList.toggle('active');
+}
+
+async function guardarCambios() {
+  if (!_sb || !establActual) return;
+
+  const btn = document.getElementById('btn-guardar');
+  btn.disabled = true;
+  btn.textContent = 'Guardando...';
+
+  const serviciosSeleccionados = Array.from(
+    document.querySelectorAll('#chips-servicios .chip.active')
+  ).map(c => c.getAttribute('data-val')).join(',');
+
+  let fotoUrl = establActual.foto_portada || null;
+
+  // Upload nueva foto si se eligió
+  const fotoInput = document.getElementById('ed-foto');
+  if (fotoInput.files && fotoInput.files[0]) {
+    try {
+      const file = fotoInput.files[0];
+      const ext  = file.name.split('.').pop().toLowerCase() || 'jpg';
+      const path = establActual.codigo + '/portada.' + ext;
+      const { error: upErr } = await _sb.storage
+        .from('fotos-establecimientos')
+        .upload(path, file, { cacheControl: '3600', upsert: true });
+      if (!upErr) {
+        const { data: urlData } = _sb.storage
+          .from('fotos-establecimientos')
+          .getPublicUrl(path);
+        fotoUrl = urlData.publicUrl;
+      }
+    } catch(e) { console.warn('Upload foto:', e); }
+  }
+
+  try {
+    const { error } = await _sb
+      .from('establecimientos')
+      .update({
+        descripcion: document.getElementById('ed-descripcion').value.trim(),
+        horario:     document.getElementById('ed-horario').value.trim(),
+        whatsapp:    document.getElementById('ed-whatsapp').value.trim(),
+        instagram:   document.getElementById('ed-instagram').value.trim(),
+        sitio_web:   document.getElementById('ed-web').value.trim(),
+        wifi:        document.getElementById('ed-wifi').value,
+        servicios:   serviciosSeleccionados || null,
+        foto_portada: fotoUrl
+      })
+      .eq('codigo', establActual.codigo);
+
+    if (error) {
+      toast('❌ Error al guardar. Intentá de nuevo.');
+    } else {
+      toast('✓ Cambios guardados correctamente');
+      // Actualizar el objeto local
+      establActual.descripcion = document.getElementById('ed-descripcion').value.trim();
+      establActual.foto_portada = fotoUrl;
+      if (fotoUrl) {
+        document.getElementById('foto-actual').src = fotoUrl;
+        document.getElementById('foto-actual').style.display = 'block';
+        document.getElementById('foto-placeholder').style.display = 'none';
+      }
+    }
+  } catch(e) {
+    toast('❌ Error de conexión.');
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Guardar cambios';
+}
+</script>
+</body>
+</html>
