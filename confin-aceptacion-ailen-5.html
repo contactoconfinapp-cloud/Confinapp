@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CONFÍN — Propuesta Coordinadora de Incorporaciones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FAF8F5;--stone:#E8E2D9;--bark:#7A6E65;--soil:#4A3F38;--night:#1C1915;--deep:#0E1A1C;--atlantic:#3D6B73;--pine:#1C3032;--fog:#F4F1ED;--font-d:'Cormorant Garamond',Georgia,serif;--font-b:'DM Sans',sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--fog);font-family:var(--font-b);font-weight:300;color:var(--soil);font-size:15px;}
+.header{background:var(--deep);padding:40px 28px 36px;text-align:center;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;height:100%;background:radial-gradient(ellipse,rgba(61,107,115,0.3) 0%,transparent 70%);pointer-events:none;}
+.header img{width:72%;max-width:260px;filter:brightness(1.9) contrast(0.88) saturate(0.75) drop-shadow(0 0 18px rgba(140,210,225,0.4));position:relative;z-index:1;margin:0 auto 16px;display:block;}
+.header-sub{font-family:var(--font-d);font-size:1rem;color:rgba(250,248,245,0.65);letter-spacing:0.06em;position:relative;z-index:1;}
+.header-sub em{font-style:italic;color:rgba(163,196,204,0.75);}
+.section{background:var(--cream);margin:16px;padding:28px 22px;border:1px solid var(--stone);}
+.section-dark{background:var(--pine);margin:4px 16px;padding:28px 22px;}
+.section-deep{background:var(--deep);margin:4px 16px;padding:28px 22px;}
+.section-fog{background:var(--fog);margin:4px 16px;padding:28px 22px;border:1px solid var(--stone);}
+.eyebrow{font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--atlantic);margin-bottom:10px;}
+.eyebrow-light{color:rgba(163,196,204,0.65);}
+h2{font-family:var(--font-d);font-size:1.65rem;font-weight:300;color:var(--night);line-height:1.15;margin-bottom:14px;}
+h2 em{font-style:italic;color:var(--atlantic);}
+h2.light{color:var(--cream);}
+h2.light em{color:rgba(163,196,204,0.85);}
+h3{font-family:var(--font-d);font-size:1.15rem;font-weight:400;color:var(--night);margin:22px 0 8px;}
+h3.light{color:var(--cream);}
+p{font-size:0.84rem;color:var(--soil);line-height:1.82;margin-bottom:10px;}
+p.light{color:rgba(196,186,176,0.82);}
+p.note{font-size:0.76rem;color:var(--bark);font-style:italic;margin-top:8px;}
+strong.atl{color:var(--atlantic);}
+.divider{height:1px;background:var(--stone);margin:18px 0;}
+.divider-dark{height:1px;background:rgba(61,107,115,0.2);margin:16px 0;}
+.highlight{background:rgba(61,107,115,0.1);border-left:3px solid var(--atlantic);padding:14px 16px;margin:16px 0;}
+.highlight p{font-family:var(--font-d);font-size:0.96rem;font-style:italic;color:rgba(163,196,204,0.9);margin:0;}
+.highlight-warn{background:rgba(184,103,58,0.07);border-left:3px solid #B8673A;padding:14px 16px;margin:16px 0;}
+.highlight-warn p{font-size:0.82rem;color:var(--soil);font-weight:500;margin:0;}
+ul{padding-left:0;list-style:none;margin:10px 0;}
+ul li{font-size:0.84rem;color:var(--soil);line-height:1.75;padding:6px 0 6px 20px;border-bottom:1px solid rgba(196,186,176,0.2);position:relative;}
+ul li:last-child{border-bottom:none;}
+ul li::before{content:'→';position:absolute;left:0;color:var(--atlantic);font-size:0.75rem;top:8px;}
+ul.light li{color:rgba(196,186,176,0.82);}
+ul.light li::before{color:rgba(61,107,115,0.6);}
+.table-row{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--stone);gap:12px;}
+.table-row:last-child{border-bottom:none;}
+.table-label{font-size:0.82rem;color:var(--soil);flex:1;}
+.table-val{font-size:0.82rem;color:var(--atlantic);font-weight:500;text-align:right;flex-shrink:0;}
+.tag{display:inline-block;border:1px solid rgba(61,107,115,0.4);padding:5px 12px;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--atlantic);margin-bottom:14px;}
+/* FORM */
+.form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:16px;}
+.form-label{font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--bark);}
+.form-label span{color:var(--atlantic);}
+.form-input{background:var(--fog);border:1px solid var(--stone);padding:13px 14px;font-size:0.84rem;font-family:var(--font-b);color:var(--soil);outline:none;transition:border-color 0.2s;border-radius:0;-webkit-appearance:none;}
+.form-input:focus{border-color:var(--atlantic);}
+.form-input::placeholder{color:rgba(122,110,101,0.35);}
+.check-group{display:flex;align-items:flex-start;gap:12px;margin:22px 0;padding:16px;background:rgba(61,107,115,0.06);border:1px solid rgba(61,107,115,0.25);}
+.check-group input[type=checkbox]{margin-top:3px;accent-color:var(--atlantic);flex-shrink:0;width:17px;height:17px;}
+.check-text{font-size:0.80rem;color:var(--soil);line-height:1.7;}
+.check-text strong{color:var(--night);}
+.btn{background:var(--atlantic);color:white;border:none;padding:16px;font-size:0.76rem;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;font-family:var(--font-b);width:100%;transition:background 0.2s;}
+.btn:hover{background:var(--pine);}
+.btn:disabled{background:var(--bark);cursor:not-allowed;}
+.form-note{font-size:0.63rem;color:var(--bark);text-align:center;margin-top:12px;line-height:1.65;font-style:italic;}
+.success{display:none;text-align:center;padding:28px 0;}
+.success .icon{font-size:2rem;margin-bottom:14px;}
+.success h3{font-family:var(--font-d);font-size:1.5rem;font-weight:300;color:var(--night);margin-bottom:10px;}
+.success p{font-size:0.82rem;color:var(--bark);line-height:1.7;}
+.footer{background:var(--night);padding:24px;text-align:center;margin-top:4px;}
+.footer-logo{font-family:var(--font-d);font-size:1.2rem;font-weight:300;color:rgba(250,248,245,0.45);margin-bottom:6px;}
+.footer-logo em{font-style:italic;color:var(--atlantic);}
+.footer-text{font-size:0.57rem;color:rgba(163,196,204,0.3);letter-spacing:0.08em;line-height:1.7;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <img src="confin-logo-transparente.png" alt="CONFÍN" onerror="this.style.display='none'">
+  <div class="header-sub">Propuesta — <em>Coordinadora de Incorporaciones</em></div>
+</div>
+
+<!-- PARTE 1 — SPEECH -->
+<div class="section" style="margin-top:20px;">
+  <div class="tag">Parte 1</div>
+  <div class="eyebrow">Cómo presentar CONFÍN</div>
+  <h2>¿Qué es <em>CONFÍN?</em></h2>
+  <p>CONFÍN es la primera plataforma de descubrimiento turístico nacida en San Martín de los Andes. Conecta a los viajeros con alojamientos, gastronomía, experiencias y comercios locales — en español, inglés y portugués — con contacto directo entre el viajero y el establecimiento, sin intermediarios.</p>
+  <p>No somos una agencia de viajes. No cobramos comisión por reservas. El viajero ve tu espacio, y te contacta directamente a vos.</p>
+</div>
+
+<div class="section-dark">
+  <h3 class="light" style="margin-top:0;">Apertura — los primeros 30 segundos</h3>
+  <div class="highlight">
+    <p>"Hola, soy Ailén, trabajo con CONFÍN — una nueva app turística nacida acá en San Martín. Los viajeros la usan para buscar dónde quedarse, dónde comer y qué hacer. Queremos sumar tu espacio. El proceso es simple y te lo explico. ¿Tenés unos minutos?"</p>
+  </div>
+</div>
+
+<div class="section">
+  <h3 style="margin-top:0;">Los puntos fuertes — qué le ofrecemos al suscriptor</h3>
+  <ul>
+    <li><strong>Sin comisiones por reserva.</strong> Plataformas como Booking o Airbnb cobran entre el 15% y el 20% de cada reserva. CONFÍN cobra una suscripción mensual fija — y el viajero te contacta directamente. Cada reserva que entra por CONFÍN es tuya al 100%.</li>
+    <li><strong>Luna — asistente inteligente de CONFÍN.</strong> El viajero le pregunta a Luna qué hacer, dónde comer, qué lugar es pet friendly o tiene opciones veganas. Luna busca dentro de la plataforma y lo dirige a los espacios que coinciden. Tu establecimiento aparece cuando alguien busca exactamente lo que vos ofrecés.</li>
+    <li><strong>Mapa interactivo.</strong> El viajero puede ver dónde estás ubicado, a qué distancia, cómo llegar. Filtrará por categoría, distancia y características especiales.</li>
+    <li><strong>Tres idiomas — español, inglés y portugués.</strong> El turismo internacional puede encontrarte y consultarte en su idioma.</li>
+    <li><strong>Sello Pionero CONFÍN.</strong> Los establecimientos que se sumen hasta el 30 de septiembre reciben el Sello Pionero CONFÍN de forma permanente en su perfil — una distinción exclusiva para quienes estuvieron desde el primer día en San Martín.</li>
+    <li><strong>Suscripción accesible para cada tipo de espacio.</strong> Cuatro categorías — $50.000 ARS, $90.000 ARS, $120.000 ARS y $230.000 ARS — según el tipo y escala del establecimiento. Cada espacio paga lo que le corresponde.</li>
+  </ul>
+</div>
+
+<div class="section-fog">
+  <h3 style="margin-top:0;">Respuestas a objeciones frecuentes</h3>
+  <p><strong>"Ya tengo Booking / Airbnb / Instagram"</strong></p>
+  <p>"Perfecto — y eso no cambia. Pero Booking te cobra entre el 15% y el 20% de cada reserva. CONFÍN no te cobra nada por reserva — pagás una suscripción fija mensual y el viajero llega directo a vos. Es recibir turistas sin cederle un porcentaje de tu ingreso a nadie."</p>
+  <div class="divider"></div>
+  <p><strong>"¿Cuántos usuarios tiene la app?"</strong></p>
+  <p>"Estamos en etapa de lanzamiento — arrancamos el 8 de agosto. Los establecimientos que se sumen hasta el 30 de septiembre reciben el Sello Pionero CONFÍN — una distinción permanente que los identifica como los primeros en San Martín."</p>
+  <div class="divider"></div>
+  <p><strong>"¿Es seguro?"</strong></p>
+  <p>"El pago se procesa a través de Mercado Pago — el mismo sistema que usa Netflix y Amazon. Y podés cancelar antes del próximo cobro si lo decidís."</p>
+  <div class="divider"></div>
+  <p><strong>"No tengo tiempo para cargar todo"</strong></p>
+  <p>"El formulario es simple y lo completás una sola vez — fotos, descripción, contacto, Instagram — todo desde tu celular. Después no tenés que hacer nada más."</p>
+</div>
+
+<div class="section">
+  <h3 style="margin-top:0;">El proceso — paso a paso</h3>
+  <ul>
+    <li>Visitás o contactás el establecimiento y presentás CONFÍN.</li>
+    <li>Le enviás por mail tu link personalizado de incorporación.</li>
+    <li>El anfitrión completa el formulario de onboarding: nombre, tipo de espacio, fotos, descripción, mail, Instagram, características especiales (celíaco, vegano, pet friendly, etc.).</li>
+    <li>Una vez revisado y aprobado el perfil, se envía el link de pago.</li>
+    <li>Al confirmar el pago, el espacio queda activo en la app desde el 8 de agosto.</li>
+  </ul>
+  <p class="note">Los establecimientos que se incorporen hasta el 30 de septiembre tienen el primer mes sin cargo. El primer cobro se realiza el 4 de agosto o un mes después de la fecha de suscripción para quienes se sumen entre el 4 y el 38 de agosto.</p>
+</div>
+
+<div class="section-deep">
+  <h3 class="light" style="margin-top:0;">El link personalizado — cómo funciona</h3>
+  <p class="light">Tenés un link único con tu nombre. Cuando alguien entra por ese link y completa la incorporación, queda registrado como tu referido automáticamente.</p>
+  <ul class="light">
+    <li>Lo enviás por mail a los establecimientos que visitaste o contactaste.</li>
+    <li>Se lo dejás a un anfitrión para que él lo reenvíe a sus contactos del rubro.</li>
+    <li>Cualquier persona que entre por ese link y se incorpore queda a tu nombre, sin que tengas que hacer nada más.</li>
+  </ul>
+  <div class="highlight">
+    <p>El link genera comisión únicamente para establecimientos de San Martín de los Andes y su zona de influencia asignada. Cada zona tiene su propio representante cuando se abra.</p>
+  </div>
+</div>
+
+<!-- PARTE 2 — CONDICIONES -->
+<div class="section">
+  <div class="tag">Parte 2</div>
+  <div class="eyebrow">Tus condiciones de trabajo</div>
+  <h2>Tu rol — Coordinadora de <em>Incorporaciones</em></h2>
+  <p>Sos la cara visible de CONFÍN en el territorio. Presentás la plataforma, acompañás al anfitrión durante todo el proceso de incorporación, y mantenés el vínculo activo con los espacios que sumaste.</p>
+
+  <h3>Lo que hacés</h3>
+  <ul>
+    <li>Visitás establecimientos en San Martín de los Andes y zonas aledañas, o los contactás por mail desde tu cuenta asignada por CONFÍN.</li>
+    <li>Presentás CONFÍN, explicás los beneficios y el proceso.</li>
+    <li>Enviás tu link personalizado al anfitrión interesado.</li>
+    <li>Acompañás al anfitrión hasta que completa el onboarding.</li>
+    <li>Una vez aprobado el perfil, se le envía el link de pago. Sin pago confirmado, el espacio no se publica.</li>
+    <li>Hacés seguimiento periódico: verificar que los espacios estén activos y conformes, e intentar revincular a quien quiera darse de baja.</li>
+  </ul>
+
+  <h3>Lo que NO hacés</h3>
+  <ul>
+    <li>No cargás los datos del establecimiento — eso lo hace el anfitrión en el formulario.</li>
+    <li>No manejás pagos en efectivo ni transferencias directas.</li>
+    <li>No usás canales personales (tu teléfono personal, tu Instagram) para representar a CONFÍN.</li>
+    <li>No prometés funciones o condiciones que no estén en este documento.</li>
+  </ul>
+</div>
+
+<div class="section-fog">
+  <div class="eyebrow">Comisiones</div>
+  <h2>Lo que <em>ganás</em></h2>
+  <div class="table-row"><div class="table-label">Primer mes de suscripción</div><div class="table-val">40% de ese mes</div></div>
+  <div class="table-row"><div class="table-label">Segundo mes en adelante</div><div class="table-val">7% mensual recurrente</div></div>
+  <div class="highlight-warn"><p>La comisión recurrente del 7% requiere seguimiento activo — no es pasiva. Solo generan comisión los establecimientos de tu zona donde quede registrado que el contacto fue iniciado por vos.</p></div>
+
+  <h3>Condiciones y fechas de cobro</h3>
+
+  <div class="table-row">
+    <div class="table-label"><strong>Suscriptos antes del 8 de agosto</strong><br><span style="font-size:0.76rem;color:var(--bark);">1 mes sin cargo + 3 meses con 25% de descuento<br>Primer cobro del suscriptor: 8 de septiembre<br>Vos cobrás: 29 de agosto</span></div>
+  </div>
+
+  <div class="table-row">
+    <div class="table-label"><strong>Suscriptos del 8 de agosto al 30 de septiembre</strong><br><span style="font-size:0.76rem;color:var(--bark);">1 mes sin cargo + 3 meses con 25% de descuento<br>Primer cobro del suscriptor: un mes después de su fecha de suscripción<br>Vos cobrás: 7 días después de cada cobro</span></div>
+  </div>
+
+  <div class="table-row">
+    <div class="table-label"><strong>Suscriptos desde el 1 de agosto en adelante</strong><br><span style="font-size:0.76rem;color:var(--bark);">Sin 1 mes sin cargo + 3 meses con 25% de descuento<br>Primer cobro del suscriptor: al suscribirse<br>Vos cobrás: el 10 de cada mes</span></div>
+  </div>
+
+  <h3>Cancelaciones</h3>
+  <p>Los suscriptores pueden cancelar en cualquier momento enviando un mail a <strong>contacto.confinapp@gmail.com</strong> con el asunto <strong>"Cancelación CONFÍN"</strong>, indicando nombre del establecimiento y mail de registro. La cancelación debe hacerse con al menos <strong>5 días de anticipación</strong> al próximo cobro para que no se genere el siguiente cargo. Mes pagado no se devuelve.</p>
+
+  <h3>Para cobrar necesitás</h3>
+  <ul>
+    <li>Estar inscripta en el régimen impositivo que corresponda (monotributo u otro).</li>
+    <li>Tener cuenta en CBU/Mercado Pago o Transferencia bancaria para recibir los pagos.</li>
+    <li>Enviar tus datos fiscales (CUIT) y datos de cuenta a CONFÍN antes del primer cobro.</li>
+    <li>Emitir factura o comprobante fiscal por cada comisión percibida. No se realiza ningún pago sin comprobante.</li>
+  </ul>
+</div>
+
+<div class="section-dark">
+  <div class="eyebrow eyebrow-light">Confidencialidad</div>
+  <h2 class="light">Lo que queda <em>adentro</em></h2>
+  <p class="light">Al aceptar esta propuesta te comprometés a mantener estricta confidencialidad sobre toda la información interna de CONFÍN:</p>
+  <ul class="light">
+    <li>Estrategia comercial, planes de expansión y cronograma de lanzamiento.</li>
+    <li>Estructura tecnológica, proveedores, herramientas y sistemas utilizados.</li>
+    <li>Precios, condiciones comerciales y estructura de comisiones.</li>
+    <li>Datos de otros representantes, afiliados o contactos de la plataforma.</li>
+    <li>Conversaciones, acuerdos y decisiones internas del equipo CONFÍN.</li>
+    <li>Cualquier información que no haya sido comunicada públicamente por CONFÍN.</li>
+  </ul>
+  <div class="highlight">
+    <p>"Lo que se habla adentro de CONFÍN, queda adentro de CONFÍN."</p>
+  </div>
+  <p class="light">Esta obligación se extiende durante toda la vigencia de la relación y por <strong style="color:rgba(163,196,204,0.9);">2 años posteriores</strong> a su finalización.</p>
+  <div class="highlight-warn" style="background:rgba(184,103,58,0.12);border-left-color:#B8673A;">
+    <p style="color:rgba(250,248,245,0.85);">El incumplimiento puede dar lugar a la rescisión inmediata del acuerdo y a las acciones legales que correspondan.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="eyebrow">Canales oficiales y seguridad</div>
+  <h2>Cómo opera <em>CONFÍN</em></h2>
+  <p>Como Coordinadora de Incorporaciones, sos la única persona habilitada para representar a CONFÍN en San Martín de los Andes. Los establecimientos pueden verificar tu identidad solicitando tu documento, o escribiendo directamente a <strong>contacto.confinapp@gmail.com</strong>.</p>
+  <ul>
+    <li>Los pagos se realizan <strong>exclusivamente</strong> a través del link oficial enviado por CONFÍN, procesado por <strong>Mercado Pago</strong>.</li>
+    <li>No se aceptan pagos en efectivo ni transferencias fuera del link oficial.</li>
+    <li>No usás canales personales para gestionar pagos bajo ninguna circunstancia.</li>
+    <li>CONFÍN no se responsabiliza por pagos realizados fuera de los canales oficiales.</li>
+  </ul>
+  <div class="divider"></div>
+
+  <div class="eyebrow">Vigencia y finalización</div>
+  <h2>Cómo <em>termina</em></h2>
+  <p>Este acuerdo puede ser finalizado por cualquiera de las partes con <strong>15 días de preaviso</strong> por escrito a contacto.confinapp@gmail.com.</p>
+  <h3>En caso de finalización</h3>
+  <ul>
+    <li>Se liquidan las comisiones generadas hasta esa fecha.</li>
+    <li>El 7% recurrente cesa para períodos posteriores a la finalización.</li>
+    <li>El mail asignado por CONFÍN es dado de baja o reasignado.</li>
+    <li>Los establecimientos incorporados son notificados de que el contacto directo pasa a ser con CONFÍN.</li>
+  </ul>
+</div>
+
+<!-- FORMULARIO DE ACEPTACIÓN -->
+<div class="section">
+  <div class="eyebrow">Aceptación formal</div>
+  <h2>Completá tus datos<br>y <em>confirmá</em></h2>
+  <p>Leíste la propuesta completa. Para aceptarla formalmente, completá el formulario a continuación. Al enviarlo, llegará tu confirmación a CONFÍN con fecha y hora registradas.</p>
+  <div class="divider"></div>
+
+  <div id="form-area">
+    <div class="form-group">
+      <label class="form-label">Nombre completo <span>*</span></label>
+      <input type="text" id="nombre" class="form-input" placeholder="Ej: Ailén Rasso" required>
+    </div>
+    <div class="form-group">
+      <label class="form-label">DNI <span>*</span></label>
+      <input type="text" id="dni" class="form-input" placeholder="Ej: 38.456.789" required>
+    </div>
+    <div class="form-group">
+      <label class="form-label">CUIT / Categoría fiscal</label>
+      <input type="text" id="cuit" class="form-input" placeholder="Ej: 27-38456789-4 · Monotributista Cat. B">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Mail personal <span>*</span></label>
+      <input type="email" id="mail" class="form-input" placeholder="tu@mail.com" required>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Teléfono / WhatsApp <span>*</span></label>
+      <input type="tel" id="telefono" class="form-input" placeholder="+54 9 2972 000000" required>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Plataforma de cobro</label>
+      <select id="plataforma" class="form-input">
+        <option value="">Seleccioná...</option>
+        <option>CBU/Mercado Pago</option>
+        <option>Transferencia bancaria</option>
+        <option>Aún no tengo — la creo antes del primer cobro</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Mail o usuario de la cuenta de cobros</label>
+      <input type="text" id="cuenta" class="form-input" placeholder="Mail registrado en CBU/Mercado Pago o Transferencia bancaria">
+    </div>
+
+    <div class="check-group">
+      <input type="checkbox" id="acepto" onchange="toggleBtn()">
+      <div class="check-text">
+        Declaro haber leído y comprendido esta propuesta en su totalidad — incluyendo el rol, las comisiones, las fechas de pago, la cláusula de confidencialidad (vigente por 2 años posteriores a la finalización) y las condiciones de vigencia y finalización. <strong>Esta aceptación tiene validez formal como acuerdo digital.</strong>
+      </div>
+    </div>
+
+    <button class="btn" id="btn-enviar" disabled onclick="enviar()">
+      Confirmo mi aceptación →
+    </button>
+    <p class="form-note">Al enviar, tu confirmación llega a CONFÍN con fecha y hora registradas.<br>Recibirás una copia en tu mail.</p>
+  </div>
+
+  <div class="success" id="success-area">
+    <div class="icon">✦</div>
+    <h3>¡Bienvenida a <em style="font-style:italic;color:var(--atlantic);">CONFÍN</em>!</h3>
+    <p>Tu aceptación fue registrada correctamente. En las próximas horas te llega la confirmación por mail con todos los detalles para arrancar.</p>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-logo">CON<em>FÍN</em></div>
+  <div class="footer-text">contacto.confinapp@gmail.com · @confin.app<br>Liliana Edit Bruno · CUIT 27-18456502-7</div>
+</div>
+
+<script>
+function toggleBtn(){
+  document.getElementById('btn-enviar').disabled=!document.getElementById('acepto').checked;
+}
+function enviar(){
+  const nombre=document.getElementById('nombre').value.trim();
+  const dni=document.getElementById('dni').value.trim();
+  const cuit=document.getElementById('cuit').value.trim();
+  const mail=document.getElementById('mail').value.trim();
+  const telefono=document.getElementById('telefono').value.trim();
+  const plataforma=document.getElementById('plataforma').value;
+  const cuenta=document.getElementById('cuenta').value.trim();
+  if(!nombre||!dni||!mail||!telefono){alert('Completá todos los campos obligatorios.');return;}
+  if(!mail.includes('@')){alert('Ingresá un mail válido.');return;}
+  const fecha=new Date().toLocaleString('es-AR');
+  const asunto=encodeURIComponent('ACEPTO — Propuesta CONFÍN · '+nombre);
+  const cuerpo=encodeURIComponent(
+    'ACEPTACIÓN FORMAL — COORDINADORA DE INCORPORACIONES CONFÍN\n'+
+    '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n'+
+    'Nombre completo: '+nombre+'\n'+
+    'DNI: '+dni+'\n'+
+    'CUIT / Categoría fiscal: '+(cuit||'A completar')+'\n'+
+    'Mail personal: '+mail+'\n'+
+    'Teléfono / WhatsApp: '+telefono+'\n'+
+    'Plataforma de cobro: '+(plataforma||'A definir')+'\n'+
+    'Cuenta de cobro: '+(cuenta||'A completar')+'\n\n'+
+    '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'+
+    'DECLARO haber leído y aceptado en su totalidad la Propuesta de\n'+
+    'Coordinadora de Incorporaciones de CONFÍN, incluyendo:\n'+
+    '· Rol y condiciones de trabajo\n'+
+    '· Estructura de comisiones (40% primer mes · 7% recurrente)\n'+
+    '· Fechas de pago (25 de cada mes)\n'+
+    '· Cláusula de confidencialidad (vigente 2 años post finalización)\n'+
+    '· Condiciones de vigencia y finalización (15 días de preaviso)\n\n'+
+    'Fecha y hora de aceptación: '+fecha+'\n\n'+
+    'CONFÍN · contacto.confinapp@gmail.com · Liliana Edit Bruno · CUIT 27-18456502-7'
+  );
+  window.location.href='mailto:contacto.confinapp@gmail.com,ailen.confinapp@gmail.com?subject='+asunto+'&body='+cuerpo;
+  setTimeout(()=>{
+    document.getElementById('form-area').style.display='none';
+    document.getElementById('success-area').style.display='block';
+  },800);
+}
+</script>
+</body>
+</html>
