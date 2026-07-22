@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CONFÍN — Rentals & Temporada</title>
+<meta name="description" content="CONFÍN llega a San Martín de los Andes el 8 de agosto de 2026. Sumá tu rental antes del lanzamiento y obtené el Sello Pionero.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --night: #0E1A1C;
+    --atlantic: #3D6B73;
+    --atlantic-light: #5a8f99;
+    --cream: #F0EBE1;
+    --cream-dark: #E4DDD2;
+    --bark: #7A6A56;
+    --gold: #B8A450;
+    --gold-light: rgba(184,164,80,0.15);
+    --gold-border: rgba(184,164,80,0.35);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--night);
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(61,107,115,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .logo-mark {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 32px;
+    opacity: 0.9;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--atlantic-light);
+    margin-bottom: 20px;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 8vw, 5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--atlantic-light);
+  }
+
+  .hero-sub {
+    font-size: 0.9rem;
+    color: rgba(240,235,225,0.55);
+    margin-top: 20px;
+    max-width: 400px;
+    line-height: 1.6;
+  }
+
+  .hero-date {
+    margin-top: 36px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border: 1px solid rgba(61,107,115,0.4);
+    border-radius: 40px;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--atlantic-light);
+    font-weight: 400;
+  }
+
+  .hero-date span {
+    width: 6px;
+    height: 6px;
+    background: var(--atlantic-light);
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero-cta {
+    margin-top: 40px;
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--atlantic);
+    color: var(--cream);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    transition: background 0.2s;
+  }
+  .hero-cta:hover { background: var(--atlantic-light); }
+
+  /* SECTIONS */
+  .section {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 72px 24px;
+    border-top: 1px solid rgba(61,107,115,0.15);
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--atlantic-light);
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--cream);
+    margin-bottom: 16px;
+  }
+
+  .section-body {
+    color: rgba(240,235,225,0.72);
+    line-height: 1.75;
+    font-size: 0.92rem;
+  }
+
+  .section-body p + p { margin-top: 14px; }
+
+  /* SELLO PIONERO */
+  .pionero-block {
+    margin-top: 32px;
+    padding: 24px;
+    background: var(--gold-light);
+    border: 1px solid var(--gold-border);
+    border-radius: 6px;
+  }
+
+  .pionero-block .p-icon { font-size: 1.6rem; margin-bottom: 10px; }
+
+  .pionero-block .p-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 8px;
+    letter-spacing: 0.03em;
+  }
+
+  .pionero-block .p-body {
+    font-size: 0.82rem;
+    color: rgba(240,235,225,0.65);
+    line-height: 1.65;
+  }
+
+  /* RUBROS GRID */
+  .rubros-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .rubro-item {
+    padding: 12px 14px;
+    background: rgba(61,107,115,0.08);
+    border: 1px solid rgba(61,107,115,0.18);
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: rgba(240,235,225,0.7);
+  }
+
+  /* RENTAL INFO */
+  .rental-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .rental-card {
+    padding: 18px 20px;
+    background: rgba(61,107,115,0.07);
+    border-left: 3px solid var(--atlantic);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .rental-card .rc-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--atlantic-light);
+    margin-bottom: 6px;
+  }
+
+  .rental-card .rc-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    line-height: 1.4;
+  }
+
+  .rental-card .rc-desc {
+    font-size: 0.78rem;
+    color: rgba(240,235,225,0.55);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  /* CIERRE / OPORTUNIDAD */
+  .oportunidad {
+    margin-top: 32px;
+    padding: 28px 24px;
+    background: rgba(61,107,115,0.1);
+    border: 1px solid rgba(61,107,115,0.3);
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .oportunidad .op-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .oportunidad .op-body {
+    font-size: 0.85rem;
+    color: rgba(240,235,225,0.65);
+    line-height: 1.7;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  /* CTA FINAL */
+  .cta-section {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+    text-align: center;
+    border-top: 1px solid rgba(61,107,115,0.15);
+  }
+
+  .cta-section .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .cta-section .cta-sub {
+    font-size: 0.82rem;
+    color: rgba(240,235,225,0.5);
+    margin-bottom: 32px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 16px 36px;
+    background: var(--atlantic);
+    color: var(--cream);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: background 0.2s;
+    margin-bottom: 16px;
+  }
+  .btn-primary:hover { background: var(--atlantic-light); }
+
+  .btn-secondary {
+    display: inline-block;
+    padding: 12px 28px;
+    border: 1px solid rgba(61,107,115,0.4);
+    color: var(--atlantic-light);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    font-weight: 400;
+    transition: border-color 0.2s;
+    margin-left: 8px;
+  }
+  .btn-secondary:hover { border-color: var(--atlantic-light); }
+
+  .contacto-links {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    font-size: 0.8rem;
+    color: rgba(240,235,225,0.45);
+  }
+
+  .contacto-links a {
+    color: var(--atlantic-light);
+    text-decoration: none;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 0.7rem;
+    color: rgba(240,235,225,0.25);
+    border-top: 1px solid rgba(61,107,115,0.1);
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 480px) {
+    .rubros-grid { grid-template-columns: 1fr; }
+    .btn-secondary { margin-left: 0; margin-top: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="confin-icon.png" alt="CONFÍN" class="logo-mark" onerror="this.style.display='none'">
+  <div class="hero-eyebrow">San Martín de los Andes · Patagonia</div>
+  <h1 class="hero-title">Bienvenido a<br><em>CONFÍN</em></h1>
+  <p class="hero-sub">Una nueva forma de conectar a los viajeros con los establecimientos que hacen único a San Martín de los Andes.</p>
+  <div class="hero-date"><span></span> Lanzamiento 8 de agosto de 2026</div>
+  <a href="https://contactoconfinapp-cloud.github.io/Confinapp/" target="_blank" class="hero-cta">Recorrer la plataforma →</a>
+</section>
+
+<!-- QUÉ ES CONFÍN -->
+<section class="section">
+  <div class="section-label">El proyecto</div>
+  <h2 class="section-title">Un solo lugar para todo San Martín</h2>
+  <div class="section-body">
+    <p>CONFÍN nace en San Martín de los Andes con un objetivo muy simple: reunir en un solo lugar los establecimientos, servicios y experiencias que hacen único al destino, para que cualquier viajero pueda descubrirlos de manera fácil, confiable y directa.</p>
+    <p>Es una plataforma privada, desarrollada íntegramente para San Martín de los Andes, con la visión de expandirse progresivamente hacia otros destinos de la región.</p>
+  </div>
+</section>
+
+<!-- LUNA -->
+<section class="section">
+  <div class="section-label">Inteligencia artificial</div>
+  <h2 class="section-title">Luna, la concierge<br>de San Martín</h2>
+  <div class="section-body">
+    <p>CONFÍN incorpora a Luna, una asistente inteligente especializada exclusivamente en turismo de San Martín de los Andes. Los viajeros pueden conversar con ella en español, inglés y portugués.</p>
+    <p>Luna responde consultas sobre establecimientos, servicios y experiencias, guiando a cada visitante según sus intereses y mostrando únicamente información verificada dentro del ecosistema CONFÍN.</p>
+    <p>Es como contar con una recepcionista multilingüe disponible las 24 horas.</p>
+  </div>
+</section>
+
+<!-- CURADURÍA -->
+<section class="section">
+  <div class="section-label">Diferencial</div>
+  <h2 class="section-title">Una plataforma<br>curada</h2>
+  <div class="section-body">
+    <p>Cada establecimiento es incorporado de manera manual. Priorizamos propuestas reales, información confiable y contacto directo con cada prestador.</p>
+    <p>No buscamos cantidad.<br>Buscamos confianza.</p>
+  </div>
+
+  <div class="rubros-grid">
+    <div class="rubro-item">🏨 Alojamientos</div>
+    <div class="rubro-item">🍽 Gastronomía</div>
+    <div class="rubro-item">🎿 Rentadoras de esquí</div>
+    <div class="rubro-item">🏔 Experiencias</div>
+    <div class="rubro-item">🛍 Comercios</div>
+    <div class="rubro-item">🧘 Bienestar</div>
+    <div class="rubro-item">🚐 Traslados</div>
+    <div class="rubro-item">🐾 Mascotas</div>
+    <div class="rubro-item">🎭 Cultura</div>
+    <div class="rubro-item">🔧 Servicios</div>
+    <div class="rubro-item">🏠 Inmobiliarias</div>
+    <div class="rubro-item">📋 Info útil</div>
+  </div>
+</section>
+
+<!-- SELLO PIONERO -->
+<section class="section">
+  <div class="section-label">Distinción permanente</div>
+  <h2 class="section-title">El Sello Pionero</h2>
+  <div class="section-body">
+    <p>Los establecimientos que acompañen a CONFÍN desde su nacimiento recibirán el Sello Pionero CONFÍN, una distinción permanente que identifica a quienes apostaron por este proyecto desde sus primeros pasos.</p>
+    <p>En el caso de los rentals y actividades de temporada, el sello estará disponible para quienes se suscriban antes del 8 de agosto, fecha de lanzamiento de la plataforma.</p>
+  </div>
+
+  <div class="pionero-block">
+    <div class="p-icon">🏅</div>
+    <div class="p-title">Sello Pionero CONFÍN</div>
+    <div class="p-body">Tu establecimiento queda marcado permanentemente como uno de los fundadores de CONFÍN en San Martín de los Andes. El sello se mantiene activo incluso durante los meses fuera de temporada, y se conserva en cada reactivación mientras sigas siendo parte de la plataforma.</div>
+  </div>
+</section>
+
+<!-- MODALIDAD RENTALS -->
+<section class="section">
+  <div class="section-label">Modalidad especial</div>
+  <h2 class="section-title">Pensado para<br>la temporada</h2>
+  <div class="section-body">
+    <p>Los rentals cuentan con una modalidad especialmente diseñada para este tipo de actividad.</p>
+  </div>
+
+  <div class="rental-cards">
+    <div class="rental-card">
+      <div class="rc-label">Valor de suscripción</div>
+      <div class="rc-value">$79.000 / mes</div>
+      <div class="rc-desc">Durante los meses activos de temporada.</div>
+    </div>
+    <div class="rental-card">
+      <div class="rc-label">Fuera de temporada</div>
+      <div class="rc-value">Sin costo</div>
+      <div class="rc-desc">Tu perfil permanece publicado con la leyenda "Fuera de temporada", conservando toda la información cargada y el Sello Pionero. Cuando vuelva la temporada, simplemente reactivás la suscripción.</div>
+    </div>
+    <div class="rental-card">
+      <div class="rc-label">Sello Pionero</div>
+      <div class="rc-value">Disponible hasta el 8 de agosto</div>
+      <div class="rc-desc">Si no renovás al inicio de la próxima temporada, el sello se pierde de forma permanente.</div>
+    </div>
+    <div class="rental-card">
+      <div class="rc-label">Modalidad anual</div>
+      <div class="rc-value">Opción futura</div>
+      <div class="rc-desc">Si en el futuro decidís mantener tu actividad visible durante todo el año, podés solicitar el cambio a la modalidad de establecimiento permanente.</div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ AHORA -->
+<section class="section">
+  <div class="section-label">El momento</div>
+  <h2 class="section-title">¿Por qué sumarte ahora?</h2>
+  <div class="section-body">
+    <p>Porque vas a formar parte de la primera generación de establecimientos de CONFÍN. Quienes se incorporan desde el inicio no solo obtienen mayor visibilidad desde el lanzamiento, sino que también acompañan el crecimiento de una plataforma nacida en San Martín de los Andes con proyección regional.</p>
+  </div>
+
+  <div class="oportunidad">
+    <div class="op-title">Una oportunidad, no una venta</div>
+    <div class="op-body">Los que estén desde el principio van a ser los que los viajeros encuentren primero. Y el Sello Pionero va a recordarles siempre que apostaron cuando el proyecto era una idea nueva en el pueblo.</div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <h2 class="cta-title">¿Listo para sumarte?</h2>
+  <p class="cta-sub">El proceso de alta demora menos de cinco minutos.</p>
+  <div>
+    <a href="https://contactoconfinapp-cloud.github.io/Confinapp/confin-onboarding-3.html" target="_blank" class="btn-primary">Completar el formulario de alta →</a>
+  </div>
+  <div style="margin-top: 12px;">
+    <a href="https://contactoconfinapp-cloud.github.io/Confinapp/" target="_blank" class="btn-secondary">Recorrer la plataforma primero</a>
+  </div>
+
+  <div class="contacto-links">
+    <div>¿Tenés alguna consulta?</div>
+    <div>📧 <a href="mailto:contacto.confinapp@gmail.com">contacto.confinapp@gmail.com</a></div>
+    <div>📲 <a href="https://instagram.com/confin.app" target="_blank">@confin.app</a></div>
+  </div>
+</section>
+
+<footer>
+  CONFÍN · San Martín de los Andes · Patagonia · 2026
+</footer>
+
+</body>
+</html>
