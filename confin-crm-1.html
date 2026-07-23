@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CONFÍN · CRM</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --night:#0E1A1C;--atlantic:#3D6B73;--atl-light:#5a8f99;
+  --cream:#F0EBE1;--bark:#7A6A56;--gold:#B8A450;
+}
+body{background:var(--night);color:var(--cream);font-family:'Inter',sans-serif;font-size:14px;min-height:100vh}
+input,select,textarea{background:rgba(61,107,115,0.12);border:1px solid rgba(61,107,115,0.3);border-radius:4px;color:var(--cream);font-size:13px;outline:none;padding:9px 12px;width:100%}
+input::placeholder,textarea::placeholder{color:rgba(240,235,225,0.3)}
+select option{background:#0E1A1C}
+button{cursor:pointer;font-size:13px;font-weight:500;border:none;border-radius:4px;padding:10px 18px;transition:opacity 0.15s}
+button:hover{opacity:0.85}
+.btn-pri{background:var(--atlantic);color:var(--cream)}
+.btn-sec{background:rgba(61,107,115,0.15);color:var(--atl-light);border:1px solid rgba(61,107,115,0.3)}
+.btn-red{background:#7f1d1d;color:var(--cream)}
+.btn-sm{padding:7px 14px;font-size:12px}
+
+/* HEADER */
+.header{background:#0a1214;border-bottom:1px solid rgba(61,107,115,0.25);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:20}
+.logo{font-family:Georgia,serif;font-size:17px;color:var(--atl-light);letter-spacing:0.08em}
+.nav{display:flex;gap:6px}
+.nav button{padding:7px 13px;font-size:12px}
+.nav .activo{background:var(--atlantic);color:var(--cream)}
+.nav .inactivo{background:rgba(61,107,115,0.1);color:var(--atl-light)}
+
+/* CONTENIDO */
+.contenido{max-width:700px;margin:0 auto;padding:18px 14px}
+
+/* CARDS */
+.card{background:rgba(61,107,115,0.08);border:1px solid rgba(61,107,115,0.18);border-radius:8px;padding:14px;margin-bottom:10px}
+.card-click{cursor:pointer}
+.card-click:hover{border-color:rgba(61,107,115,0.4)}
+
+/* LABEL */
+.lbl{display:block;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--atl-light);margin-bottom:5px;margin-top:14px}
+.lbl:first-child{margin-top:0}
+
+/* BADGE ESTADO */
+.badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:500}
+
+/* GRID FORM */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.full{grid-column:1/-1}
+
+/* STAT */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.stat{background:rgba(61,107,115,0.1);border:1px solid rgba(61,107,115,0.2);border-radius:8px;padding:14px 10px;text-align:center}
+.stat-num{font-size:26px;font-weight:300}
+.stat-lbl{font-size:10px;color:rgba(240,235,225,0.45);margin-top:4px}
+
+/* ESTADOS MINI */
+.estados-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.estado-row{display:flex;align-items:center;justify-content:space-between;padding:7px 11px;background:rgba(61,107,115,0.06);border:1px solid rgba(61,107,115,0.14);border-radius:4px;font-size:12px}
+
+/* HISTORIAL */
+.hist-item{font-size:12px;color:rgba(240,235,225,0.6);padding:6px 0;border-bottom:1px solid rgba(61,107,115,0.1)}
+.hist-item:last-child{border-bottom:none}
+
+/* FILTROS */
+.filtros{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.filtros-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.resultados{font-size:11px;color:rgba(240,235,225,0.4);margin-top:4px}
+
+/* ACCION RAPIDA */
+.accion-box{background:rgba(61,107,115,0.12);border:1px solid rgba(61,107,115,0.3);border-radius:8px;padding:14px;margin-bottom:14px}
+.accion-row{display:flex;gap:8px;margin-top:6px}
+
+/* VACIO */
+.vacio{text-align:center;padding:50px 20px;color:rgba(240,235,225,0.35)}
+.vacio-icon{font-size:36px;margin-bottom:12px}
+
+/* MSG */
+.msg-ok{color:#16A34A;font-size:12px}
+.msg-err{color:#DC2626;font-size:12px}
+
+/* LOADER */
+.loader{display:flex;align-items:center;justify-content:center;height:200px;color:var(--atl-light)}
+
+@media(max-width:480px){
+  .grid2{grid-template-columns:1fr}
+  .full{grid-column:1}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .filtros-row{grid-template-columns:1fr}
+  .estados-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">CONFÍN · CRM</div>
+  <div class="nav">
+    <button id="btn-panel" class="activo btn-sm" onclick="irA('panel')">Panel</button>
+    <button id="btn-lista" class="inactivo btn-sm" onclick="irA('lista')">Establecimientos</button>
+    <button class="btn-pri btn-sm" onclick="irA('nuevo')">+ Nuevo</button>
+  </div>
+</div>
+
+<div class="contenido">
+  <div id="loader" class="loader">Cargando...</div>
+  <div id="vista-panel" style="display:none"></div>
+  <div id="vista-lista" style="display:none"></div>
+  <div id="vista-form" style="display:none"></div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://cstaurdeiyulzaqymexa.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNzdGF1cmRlaXl1bHphcXltZXhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE3MTE0NzEsImV4cCI6MjA5NzI4NzQ3MX0.Fy0qqp6MhcryEkttW2fMUAB_N50PlvSwjfmeRv3HJjA';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const ESTADOS = [
+  {v:'pendiente',e:'🔘',l:'Pendiente',c:'#6B7280'},
+  {v:'instagram',e:'🟡',l:'Instagram enviado',c:'#D97706'},
+  {v:'mail',e:'🟡',l:'Mail enviado',c:'#D97706'},
+  {v:'mail_instagram',e:'🟡',l:'Mail e Instagram enviados',c:'#D97706'},
+  {v:'respondio',e:'🟠',l:'Respondió',c:'#EA580C'},
+  {v:'alta',e:'🟢',l:'Alta iniciada',c:'#16A34A'},
+  {v:'suscripto',e:'🟢',l:'Suscripto',c:'#15803D'},
+  {v:'padrino',e:'🔵',l:'Padrino',c:'#2563EB'},
+  {v:'convenio',e:'⚪',l:'Convenio especial',c:'#9CA3AF'},
+  {v:'no_interesado',e:'🔴',l:'No interesado',c:'#DC2626'},
+  {v:'volver',e:'⚫',l:'Volver a contactar',c:'#374151'},
+];
+const RUBROS = ['Gastronomía','Alojamiento','Rental','Experiencias','Comercio','Bienestar','Traslados','Cultura','Mascotas','Inmobiliaria','Servicios','Radio FM','Otro'];
+const RESPONSABLES = ['Ailén','Lily'];
+
+let todos = [];
+let vistaActual = 'panel';
+let editandoId = null;
+
+function estadoInfo(v){ return ESTADOS.find(e=>e.v===v)||ESTADOS[0]; }
+function hoy(){ return new Date().toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'2-digit'}); }
+
+async function cargar(){
+  document.getElementById('loader').style.display='flex';
+  const {data,error} = await sb.from('crm_leads').select('*').order('creado_en',{ascending:false});
+  document.getElementById('loader').style.display='none';
+  if(!error) todos = data||[];
+  irA(vistaActual);
+}
+
+function irA(v){
+  vistaActual=v;
+  ['panel','lista','form'].forEach(x=>{ document.getElementById('vista-'+x).style.display='none'; });
+  document.getElementById('btn-panel').className = v==='panel'?'activo btn-sm':'inactivo btn-sm';
+  document.getElementById('btn-lista').className = (v==='lista'||v==='form')?'activo btn-sm':'inactivo btn-sm';
+  if(v==='panel') renderPanel();
+  else if(v==='lista') renderLista();
+  else if(v==='nuevo'){ editandoId=null; renderForm(null); }
+}
+
+function renderPanel(){
+  const el = document.getElementById('vista-panel');
+  el.style.display='block';
+  const total = todos.length;
+  const porEstado = {};
+  ESTADOS.forEach(e=>{ porEstado[e.v]=0; });
+  todos.forEach(t=>{ if(porEstado[t.estado]!==undefined) porEstado[t.estado]++; });
+  const suscriptos = (porEstado['suscripto']||0)+(porEstado['padrino']||0);
+
+  let estadosRows = ESTADOS.filter(e=>porEstado[e.v]>0).map(e=>`
+    <div class="estado-row">
+      <span>${e.e} ${e.l}</span>
+      <span style="font-size:16px;font-weight:500;color:${e.c}">${porEstado[e.v]}</span>
+    </div>`).join('');
+
+  let ultimos = todos.slice(0,5).map(t=>`
+    <div class="card card-click" onclick="abrirFicha(${t.id})">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+        <div>
+          <div style="font-weight:500">${t.nombre||'Sin nombre'}</div>
+          <div style="font-size:11px;color:rgba(240,235,225,0.45);margin-top:2px">${t.rubro||''} · ${t.responsable||''}</div>
+        </div>
+        <span class="badge" style="background:${estadoInfo(t.estado).c}22;color:${estadoInfo(t.estado).c};border:1px solid ${estadoInfo(t.estado).c}44;white-space:nowrap;font-size:10px">${estadoInfo(t.estado).e} ${estadoInfo(t.estado).l}</span>
+      </div>
+    </div>`).join('');
+
+  el.innerHTML = `
+    <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--atl-light);margin-bottom:10px">Panel de avance</div>
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-num" style="color:var(--atl-light)">${total}</div><div class="stat-lbl">Total cargados</div></div>
+      <div class="stat"><div class="stat-num" style="color:#16A34A">${suscriptos}</div><div class="stat-lbl">Suscriptos</div></div>
+      <div class="stat"><div class="stat-num" style="color:#EA580C">${porEstado['respondio']||0}</div><div class="stat-lbl">Respondieron</div></div>
+    </div>
+    ${estadosRows ? `<div class="estados-grid" style="margin-bottom:20px">${estadosRows}</div>` : ''}
+    ${total===0?`<div class="vacio"><div class="vacio-icon">🗂</div><div>Todavía no hay establecimientos cargados.</div><button class="btn-pri" style="margin-top:14px" onclick="irA('nuevo')">Agregar el primero</button></div>`:`
+    <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--atl-light);margin-bottom:10px;margin-top:4px">Últimos agregados</div>
+    ${ultimos}
+    <button class="btn-sec" style="width:100%;margin-top:6px" onclick="irA('lista')">Ver todos →</button>`}`;
+}
+
+let filtroRubro='Todos', filtroEstado='Todos', filtroResp='Todos', busqueda='';
+
+function renderLista(){
+  const el = document.getElementById('vista-lista');
+  el.style.display='block';
+
+  const filtrados = todos.filter(t=>{
+    const okR = filtroRubro==='Todos'||t.rubro===filtroRubro;
+    const okE = filtroEstado==='Todos'||t.estado===filtroEstado;
+    const okP = filtroResp==='Todos'||t.responsable===filtroResp;
+    const okB = busqueda===''||(t.nombre||'').toLowerCase().includes(busqueda.toLowerCase())||(t.contacto||'').toLowerCase().includes(busqueda.toLowerCase())||(t.instagram||'').toLowerCase().includes(busqueda.toLowerCase());
+    return okR&&okE&&okP&&okB;
+  });
+
+  const rubroOpts = ['Todos',...RUBROS].map(r=>`<option ${r===filtroRubro?'selected':''}>${r}</option>`).join('');
+  const estadoOpts = ['Todos',...ESTADOS.map(e=>e.v)].map(v=>{
+    const info = v==='Todos'?{l:'Todos los estados'}:estadoInfo(v);
+    return `<option value="${v}" ${v===filtroEstado?'selected':''}>${info.l}</option>`;
+  }).join('');
+  const respOpts = ['Todos',...RESPONSABLES].map(r=>`<option ${r===filtroResp?'selected':''}>${r}</option>`).join('');
+
+  const items = filtrados.length===0
+    ? `<div class="vacio"><div class="vacio-icon">🔍</div><div>${todos.length===0?'Todavía no hay establecimientos cargados.':'No hay resultados con esos filtros.'}</div>${todos.length===0?`<button class="btn-pri" style="margin-top:14px" onclick="irA('nuevo')">Agregar el primero</button>`:''}</div>`
+    : filtrados.map(t=>`
+      <div class="card card-click" onclick="abrirFicha(${t.id})">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px">
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:500">${t.nombre||'Sin nombre'}</div>
+            <div style="font-size:11px;color:rgba(240,235,225,0.45);margin-top:2px">${t.rubro||''} · ${t.contacto||''} · ${t.responsable||''}</div>
+            ${t.proxima_accion?`<div style="font-size:11px;color:var(--atl-light);margin-top:4px">→ ${t.proxima_accion}</div>`:''}
+          </div>
+          <span class="badge" style="background:${estadoInfo(t.estado).c}22;color:${estadoInfo(t.estado).c};border:1px solid ${estadoInfo(t.estado).c}44;white-space:nowrap;font-size:10px;flex-shrink:0">${estadoInfo(t.estado).e} ${estadoInfo(t.estado).l}</span>
+        </div>
+      </div>`).join('');
+
+  el.innerHTML = `
+    <div class="filtros">
+      <input placeholder="Buscar por nombre, contacto o Instagram..." value="${busqueda}" oninput="busqueda=this.value;renderLista()">
+      <div class="filtros-row">
+        <select onchange="filtroRubro=this.value;renderLista()">${rubroOpts}</select>
+        <select onchange="filtroEstado=this.value;renderLista()">${estadoOpts}</select>
+        <select onchange="filtroResp=this.value;renderLista()">${respOpts}</select>
+      </div>
+      <div class="resultados">${filtrados.length} resultado${filtrados.length!==1?'s':''}</div>
+    </div>
+    ${items}`;
+}
+
+function abrirFicha(id){
+  const t = todos.find(x=>x.id===id);
+  if(!t) return;
+  editandoId = id;
+  renderForm(t);
+}
+
+function renderForm(t){
+  const el = document.getElementById('vista-form');
+  el.style.display='block';
+  vistaActual='form';
+  ['panel','lista'].forEach(x=>document.getElementById('vista-'+x).style.display='none');
+  document.getElementById('btn-lista').className='activo btn-sm';
+  document.getElementById('btn-panel').className='inactivo btn-sm';
+
+  const esNuevo = !t;
+  const hist = t && t.historial ? (Array.isArray(t.historial)?t.historial:JSON.parse(t.historial||'[]')) : [];
+  const histHTML = hist.length>0
+    ? [...hist].reverse().map(h=>`<div class="hist-item">${h}</div>`).join('')
+    : '<div style="font-size:12px;color:rgba(240,235,225,0.3);padding:8px 0">Sin acciones registradas todavía.</div>';
+
+  const rubroOpts = ['','...elegí un rubro',...RUBROS].map((r,i)=>i===1?`<option value="" disabled>Elegí un rubro</option>`:`<option value="${r}" ${t&&t.rubro===r?'selected':''}>${r}</option>`).join('');
+  const estadoOpts = ESTADOS.map(e=>`<option value="${e.v}" ${t&&t.estado===e.v?'selected':(!t&&e.v==='pendiente'?'selected':'')}>${e.e} ${e.l}</option>`).join('');
+  const respOpts = RESPONSABLES.map(r=>`<option ${(t?t.responsable:' Ailén')===r?'selected':''}>${r}</option>`).join('');
+
+  el.innerHTML = `
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+      <button class="btn-sec btn-sm" onclick="irA('lista')">← Volver</button>
+      <div style="font-size:15px;font-weight:500">${esNuevo?'Nuevo establecimiento':t.nombre||'Editar'}</div>
+    </div>
+
+    ${!esNuevo?`
+    <div class="accion-box">
+      <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--atl-light)">Registrar acción rápida</div>
+      <div class="accion-row">
+        <input id="accion-input" placeholder='Ej: "Instagram enviado" o "Llamó con dudas"' onkeydown="if(event.key==='Enter')registrarAccion(${t.id})">
+        <button class="btn-pri" onclick="registrarAccion(${t.id})">✓</button>
+      </div>
+      <div id="msg-accion" style="margin-top:6px;font-size:12px"></div>
+    </div>`:''}
+
+    <div class="grid2">
+      <div class="full">
+        <span class="lbl">Nombre del establecimiento</span>
+        <input id="f-nombre" value="${t?escHTML(t.nombre||''):''}">
+      </div>
+      <div>
+        <span class="lbl">Rubro</span>
+        <select id="f-rubro">${rubroOpts}</select>
+      </div>
+      <div>
+        <span class="lbl">Estado</span>
+        <select id="f-estado">${estadoOpts}</select>
+      </div>
+      <div>
+        <span class="lbl">Nombre de contacto</span>
+        <input id="f-contacto" value="${t?escHTML(t.contacto||''):''}">
+      </div>
+      <div>
+        <span class="lbl">Teléfono</span>
+        <input id="f-telefono" value="${t?escHTML(t.telefono||''):''}">
+      </div>
+      <div>
+        <span class="lbl">Instagram</span>
+        <input id="f-instagram" placeholder="@usuario" value="${t?escHTML(t.instagram||''):''}">
+      </div>
+      <div>
+        <span class="lbl">Mail</span>
+        <input id="f-mail" value="${t?escHTML(t.mail||''):''}">
+      </div>
+      <div>
+        <span class="lbl">Responsable</span>
+        <select id="f-responsable">${respOpts}</select>
+      </div>
+      <div>
+        <span class="lbl">Próxima acción</span>
+        <input id="f-proxima" placeholder="Ej: Enviar mail, Llamar..." value="${t?escHTML(t.proxima_accion||''):''}">
+      </div>
+      <div class="full">
+        <span class="lbl">Observaciones</span>
+        <textarea id="f-obs" rows="3">${t?escHTML(t.observaciones||''):''}</textarea>
+      </div>
+    </div>
+
+    ${!esNuevo?`
+    <div style="margin-top:16px">
+      <span class="lbl">Historial</span>
+      <div style="background:rgba(61,107,115,0.06);border:1px solid rgba(61,107,115,0.18);border-radius:6px;padding:12px">
+        ${histHTML}
+      </div>
+    </div>`:''}
+
+    <div style="display:flex;gap:10px;align-items:center;margin-top:18px;flex-wrap:wrap">
+      <button class="btn-pri" onclick="guardar(${t?t.id:'null'})">Guardar</button>
+      ${!esNuevo?`<button class="btn-red btn-sm" onclick="eliminar(${t.id})">Eliminar</button>`:''}
+      <span id="msg-guardar" style="font-size:12px"></span>
+    </div>`;
+}
+
+function escHTML(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+async function guardar(id){
+  const datos = {
+    nombre: document.getElementById('f-nombre').value.trim(),
+    rubro: document.getElementById('f-rubro').value,
+    estado: document.getElementById('f-estado').value,
+    contacto: document.getElementById('f-contacto').value.trim(),
+    telefono: document.getElementById('f-telefono').value.trim(),
+    instagram: document.getElementById('f-instagram').value.trim(),
+    mail: document.getElementById('f-mail').value.trim(),
+    responsable: document.getElementById('f-responsable').value,
+    proxima_accion: document.getElementById('f-proxima').value.trim(),
+    observaciones: document.getElementById('f-obs').value.trim(),
+    ultimo_contacto: hoy(),
+  };
+  const msg = document.getElementById('msg-guardar');
+  msg.textContent = 'Guardando...';
+  msg.className = '';
+
+  let error;
+  if(id && id !== 'null'){
+    ({error} = await sb.from('crm_leads').update(datos).eq('id',id));
+  } else {
+    datos.historial = [];
+    ({error} = await sb.from('crm_leads').insert([datos]));
+  }
+
+  if(error){ msg.textContent='Error al guardar. Intentá de nuevo.'; msg.className='msg-err'; return; }
+  msg.textContent='Guardado ✓'; msg.className='msg-ok';
+  await cargar();
+  setTimeout(()=>irA('lista'),800);
+}
+
+async function registrarAccion(id){
+  const input = document.getElementById('accion-input');
+  const texto = input.value.trim();
+  if(!texto) return;
+  const resp = document.getElementById('f-responsable')?.value || 'Ailén';
+  const entrada = `${hoy()}: ${texto} (${resp})`;
+  const t = todos.find(x=>x.id===id);
+  const histActual = t&&t.historial ? (Array.isArray(t.historial)?t.historial:JSON.parse(t.historial||'[]')) : [];
+  const nuevoHist = [...histActual, entrada];
+  const msg = document.getElementById('msg-accion');
+  msg.textContent='Registrando...';
+
+  const {error} = await sb.from('crm_leads').update({
+    historial: nuevoHist,
+    ultimo_contacto: hoy()
+  }).eq('id',id);
+
+  if(error){ msg.textContent='Error. Intentá de nuevo.'; msg.className='msg-err'; return; }
+  input.value='';
+  msg.textContent='Acción registrada ✓'; msg.className='msg-ok';
+  await cargar();
+  abrirFicha(id);
+}
+
+async function eliminar(id){
+  if(!confirm('¿Eliminar este establecimiento? Esta acción no se puede deshacer.')) return;
+  await sb.from('crm_leads').delete().eq('id',id);
+  await cargar();
+  irA('lista');
+}
+
+cargar();
+</script>
+</body>
+</html>
