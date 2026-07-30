@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CONFÍN | Guía Útil de Villa Traful — Lago Traful, Cascadas y Qué Hacer</title>
+<meta name="description" content="Información esencial de Villa Traful: emergencias, acceso vial, cascadas, bosque sumergido, miradores habilitados y qué hacer en el Lago Traful.">
+<meta property="og:title" content="CONFÍN — Villa Traful · Guía útil para el viajero">
+<meta property="og:description" content="Todo lo que necesitás saber antes y durante tu visita a Villa Traful. Gratuito, curado y siempre actualizado.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#3D6B73">
+<link rel="canonical" href="https://contactoconfinapp-cloud.github.io/Confinapp/villa-traful/">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--atlantic:#3D6B73;--fern:#5C7A4A;--cream:#FAF7F2;--fog:#F3F0EA;--night:#1C2B2B;--soil:#44352B;--bark:#8A7A6A;--ash:#D8D2C5;--deep:#0E1A1C;--font-d:'Georgia',serif;}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:var(--cream);color:var(--soil);min-height:100vh;}
+.nav{position:sticky;top:0;z-index:100;background:var(--deep);display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(61,107,115,0.3);}
+.nav-logo{font-family:var(--font-d);font-size:1rem;color:var(--cream);letter-spacing:0.04em;text-decoration:none;}
+.nav-corredor{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(163,196,204,0.5);}
+.nav-back{font-size:0.72rem;color:rgba(163,196,204,0.7);text-decoration:none;display:flex;align-items:center;gap:4px;}
+.hero{background:linear-gradient(160deg,#1A3028 0%,var(--deep) 100%);padding:32px 20px 24px;position:relative;overflow:hidden;}
+.hero-content{position:relative;z-index:1;}
+.hero-tag{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(163,196,204,0.6);margin-bottom:8px;}
+.hero-title{font-family:var(--font-d);font-size:clamp(1.8rem,5vw,2.4rem);font-weight:300;color:#fff;line-height:1.15;margin-bottom:6px;}
+.hero-sub{font-size:0.72rem;color:rgba(163,196,204,0.6);letter-spacing:0.06em;}
+.content{max-width:640px;margin:0 auto;}
+.info-bloque{padding:20px 16px 0;}
+.info-bloque-titulo{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--bark);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.info-bloque-titulo::after{content:'';flex:1;height:1px;background:var(--ash);}
+.info-cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.info-cards-grid.cols1{grid-template-columns:1fr;}
+.info-card{background:#fff;border-radius:10px;padding:16px 14px;box-shadow:0 1px 4px rgba(28,43,43,0.07);border:1px solid rgba(216,210,197,0.5);display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,var(--atlantic));}
+.info-card.emergencia{--card-accent:#B84E3A;}
+.info-card.paseo{--card-accent:#5C7A4A;}
+.info-card.gris{--card-accent:#6A7A7A;}
+.info-card.alerta{--card-accent:#B84E3A;background:#fff8f6;}
+.info-card-icon{font-size:1.6rem;line-height:1;}
+.info-card-name{font-size:0.78rem;font-weight:600;color:var(--night);line-height:1.3;}
+.info-card-sub{font-size:0.66rem;color:var(--bark);line-height:1.4;}
+.info-card-tel{font-size:1rem;font-weight:700;color:var(--atlantic);}
+.info-card-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.65rem;letter-spacing:0.06em;text-transform:uppercase;padding:7px 10px;border-radius:5px;text-decoration:none;background:var(--card-accent,var(--atlantic));color:#fff;font-family:inherit;margin-top:auto;justify-content:center;border:none;cursor:pointer;}
+.info-card-btn.outline{background:transparent;color:var(--card-accent,var(--atlantic));border:1px solid var(--card-accent,var(--atlantic));}
+.info-nota{background:rgba(61,107,115,0.06);border-left:3px solid var(--atlantic);border-radius:0 6px 6px 0;padding:10px 12px;font-size:0.75rem;color:var(--soil);line-height:1.6;margin-bottom:10px;}
+.info-aviso{background:rgba(184,78,58,0.08);border-left:3px solid #B84E3A;border-radius:0 6px 6px 0;padding:12px 14px;font-size:0.78rem;color:var(--night);line-height:1.6;margin-bottom:10px;font-weight:500;}
+.spacer{height:24px;}
+.stt-grid{display:grid;grid-template-columns:1fr;gap:8px;}
+.stt-card{background:#fff;border-radius:8px;padding:14px;border:1px solid rgba(216,210,197,0.5);display:flex;gap:12px;align-items:flex-start;}
+.stt-tiempo{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--atlantic);font-weight:600;white-space:nowrap;margin-top:2px;min-width:72px;}
+.stt-desc{font-size:0.8rem;color:var(--soil);line-height:1.5;}
+.pronto-section{margin:20px 16px 0;background:var(--fog);border-radius:10px;padding:16px;border:1px solid var(--ash);}
+.pronto-title{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--bark);margin-bottom:10px;}
+.pronto-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.pronto-card{background:#fff;border-radius:8px;padding:12px;opacity:0.6;position:relative;border:1px solid var(--ash);}
+.pronto-badge{position:absolute;top:6px;right:6px;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--ash);color:var(--bark);padding:2px 6px;border-radius:2px;}
+.pronto-icon{font-size:1.2rem;margin-bottom:4px;}
+.pronto-name{font-size:0.72rem;font-weight:600;color:var(--night);}
+footer{text-align:center;padding:24px 16px;font-size:0.65rem;color:var(--ash);letter-spacing:0.06em;text-transform:uppercase;border-top:1px solid var(--fog);margin-top:24px;}
+@media(max-width:380px){.info-cards-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-back">← Volver</a>
+  <a href="../index.html" class="nav-logo">CONFÍN</a>
+  <div class="nav-corredor">Lagos del Sur</div>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">🏔️ Corredor de los Lagos · Neuquén</div>
+    <div class="hero-title">Villa<br><em>Traful</em></div>
+    <div class="hero-sub">Todo lo que necesitás saber · Curado por CONFÍN</div>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- ALERTA IMPORTANTE -->
+  <div class="info-bloque">
+    <div class="info-aviso">⚠️ <strong>Mirador del Viento — CLAUSURADO</strong><br>Parques Nacionales clausuró preventivamente el Mirador del Viento por riesgo de desprendimiento de rocas. Prohibido el acceso a pasarelas y estacionamiento.</div>
+  </div>
+
+  <!-- EMERGENCIAS -->
+  <div class="info-bloque">
+    <div class="info-bloque-titulo">🚨 Emergencias</div>
+    <div class="info-cards-grid">
+      <div class="info-card emergencia">
+        <div class="info-card-icon">🏥</div>
+        <div class="info-card-name">Centro de Salud</div>
+        <div class="info-card-sub">Villa Traful</div>
+        <div class="info-card-tel" style="font-size:0.82rem;">(02944) 479018</div>
+        <a href="tel:+542944479018" class="info-card-btn">Llamar</a>
+      </div>
+      <div class="info-card emergencia">
+        <div class="info-card-icon">👮</div>
+        <div class="info-card-name">Comisaría 51</div>
+        <div class="info-card-sub">Emergencias: 101</div>
+        <div class="info-card-tel" style="font-size:0.82rem;">(02944) 479009</div>
+        <a href="tel:101" class="info-card-btn">Llamar 101</a>
+      </div>
+      <div class="info-card emergencia">
+        <div class="info-card-icon">🚒</div>
+        <div class="info-card-name">Bomberos Voluntarios</div>
+        <div class="info-card-sub">Villa Traful</div>
+        <div class="info-card-tel" style="font-size:0.82rem;">(02944) 479060</div>
+        <a href="tel:+542944479060" class="info-card-btn">Llamar</a>
+      </div>
+      <div class="info-card emergencia">
+        <div class="info-card-icon">🌲</div>
+        <div class="info-card-name">Parques Nacionales</div>
+        <div class="info-card-sub">Seccional Traful — PN Nahuel Huapi</div>
+        <div class="info-card-tel" style="font-size:0.82rem;">(02944) 479020</div>
+        <a href="tel:+542944479020" class="info-card-btn">Llamar</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- SI TENÉS TIEMPO -->
+  <div class="info-bloque">
+    <div class="info-bloque-titulo">⏱️ ¿Cuánto tiempo tenés?</div>
+    <div class="stt-grid">
+      <div class="stt-card">
+        <div class="stt-tiempo">Día completo</div>
+        <div class="stt-desc">Costanera del lago → Cascada Coa Co → almuerzo en el centro gastronómico → miradores habilitados sobre la RP 65.</div>
+      </div>
+      <div class="stt-card" style="border-left:3px solid #5C7A4A;">
+        <div class="stt-tiempo" style="color:#5C7A4A;">🚤 Especial</div>
+        <div class="stt-desc">Navegación al Bosque Sumergido — uno de los atractivos más únicos de la Patagonia. Y travesía lacustre a la Laguna Encantada.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- PASEOS GRATUITOS -->
+  <div class="info-bloque">
+    <div class="info-bloque-titulo">🚶 Paseos gratuitos</div>
+    <div class="info-cards-grid">
+      <div class="info-card paseo" style="grid-column:1/-1;">
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <div class="info-card-icon">🌊</div>
+          <div>
+            <div class="info-card-name">Muelle y costanera del Lago Traful</div>
+            <div class="info-card-sub">El paseo central del pueblo. Aguas cristalinas del lago con fondo de montañas nevadas. Acceso libre todo el año.</div>
+          </div>
+        </div>
+      </div>
+      <div class="info-card paseo">
+        <div class="info-card-icon">💧</div>
+        <div class="info-card-name">Cascada Coa Co</div>
+        <div class="info-card-sub">Senderismo accesible desde el centro del pueblo. Cascada rodeada de vegetación nativa.</div>
+      </div>
+      <div class="info-card paseo">
+        <div class="info-card-icon">💧</div>
+        <div class="info-card-name">Cascada Blanco</div>
+        <div class="info-card-sub">Sendero señalizado desde la villa. Caminata por bosque de coihues y cipreses.</div>
+      </div>
+      <div class="info-card paseo" style="grid-column:1/-1;">
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <div class="info-card-icon">🏔️</div>
+          <div>
+            <div class="info-card-name">Mirador Alto Traful</div>
+            <div class="info-card-sub">Sendero peatonal señalizado desde el pueblo. Vista panorámica al lago Traful y la cordillera. Habilitado por Parques Nacionales.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- ACCESO Y RUTAS -->
+  <div class="info-bloque">
+    <div class="info-bloque-titulo">🛣️ Acceso y servicios</div>
+    <div class="info-cards-grid">
+      <div class="info-card gris" style="grid-column:1/-1;">
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <div class="info-card-icon">🛣️</div>
+          <div>
+            <div class="info-card-name">Acceso por Ruta Provincial 65</div>
+            <div class="info-card-sub">Empalme desde RN 40. Tramo en obra de pavimentación. Cadenas obligatorias en invierno. Verificar estado antes de salir.</div>
+          </div>
+        </div>
+        <a href="https://www.argentina.gob.ar/vialidad-nacional" target="_blank" class="info-card-btn outline">Ver estado de rutas →</a>
+      </div>
+      <div class="info-card gris">
+        <div class="info-card-icon">⛽</div>
+        <div class="info-card-name">Combustible</div>
+        <div class="info-card-sub">YPF disponible en la zona centro / Pampa del Castillo.</div>
+      </div>
+      <div class="info-card gris">
+        <div class="info-card-icon">🏧</div>
+        <div class="info-card-name">Cajero automático</div>
+        <div class="info-card-sub">Cajero BPN disponible en la villa.</div>
+      </div>
+      <div class="info-card" style="--card-accent:#5C7A4A;grid-column:1/-1;">
+        <div style="display:flex;gap:12px;align-items:center;">
+          <div class="info-card-icon">🌧️</div>
+          <div>
+            <div class="info-card-name">Clima en tiempo real</div>
+            <div class="info-card-sub">Servicio Meteorológico Nacional — consultá antes de salir, especialmente en invierno.</div>
+          </div>
+        </div>
+        <a href="https://www.smn.gob.ar" target="_blank" class="info-card-btn">Ver pronóstico →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRÓXIMAMENTE -->
+  <div class="pronto-section">
+    <div class="pronto-title">Próximamente en CONFÍN Villa Traful</div>
+    <div class="pronto-grid">
+      <div class="pronto-card"><div class="pronto-badge">Próximamente</div><div class="pronto-icon">🏠</div><div class="pronto-name">Alojamiento</div></div>
+      <div class="pronto-card"><div class="pronto-badge">Próximamente</div><div class="pronto-icon">🍽️</div><div class="pronto-name">Gastronomía</div></div>
+      <div class="pronto-card"><div class="pronto-badge">Próximamente</div><div class="pronto-icon">🧭</div><div class="pronto-name">Experiencias</div></div>
+      <div class="pronto-card"><div class="pronto-badge">Próximamente</div><div class="pronto-icon">🚗</div><div class="pronto-name">Traslados</div></div>
+    </div>
+  </div>
+
+  <div style="height:16px;"></div>
+</div>
+
+<footer>confín app &nbsp;·&nbsp; corredor de los lagos &nbsp;·&nbsp; villa traful</footer>
+</body>
+</html>
