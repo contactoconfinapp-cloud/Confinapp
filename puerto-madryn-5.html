@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TouristDestination","name":"Puerto Madryn","description":"Gu&#237;a &#250;til de viaje para Puerto Madryn. Emergencias, avistaje de ballenas, Pen&#237;nsula Vald&#233;s, buceo y todo lo que necesit&#225;s saber antes de llegar.","url":"https://contactoconfinapp-cloud.github.io/Confinapp/puerto-madryn/","touristType":["Avistaje de Fauna","Turismo Costero","Buceo","Ecoturismo"],"includesAttraction":[{"@type":"TouristAttraction","name":"Pen&#237;nsula Vald&#233;s"},{"@type":"TouristAttraction","name":"Avistaje de Ballenas Francas"},{"@type":"TouristAttraction","name":"Ecocentro Pampa Azul"},{"@type":"TouristAttraction","name":"Punta Tombo"}],"contactPoint":[{"@type":"ContactPoint","telephone":"107","contactType":"emergency","name":"Hospital Dr. Andr&#233;s &#205;sola"}]}
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CONF&#205;N | Gu&#237;a &#218;til y Gratuita de Puerto Madryn &mdash; Ballenas, Pen&#237;nsula Vald&#233;s y Buceo</title>
+<meta name="description" content="Informaci&#243;n esencial de Puerto Madryn: emergencias, avistaje de ballenas francas australes, Pen&#237;nsula Vald&#233;s, buceo, Punta Tombo y todo lo que necesit&#225;s saber.">
+<meta property="og:title" content="CONF&#205;N &mdash; Puerto Madryn &#183; Gu&#237;a &#250;til para el viajero">
+<meta property="og:description" content="Todo lo que necesit&#225;s saber antes y durante tu visita a Puerto Madryn. Gratuito, curado y siempre actualizado.">
+<meta property="og:image" content="https://contactoconfinapp-cloud.github.io/Confinapp/puerto-madryn-foto.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#3D6B73">
+<link rel="canonical" href="https://contactoconfinapp-cloud.github.io/Confinapp/puerto-madryn/">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--atlantic:#3D6B73;--fern:#5C7A4A;--cream:#FAF7F2;--fog:#F3F0EA;--night:#1C2B2B;--soil:#44352B;--bark:#8A7A6A;--ash:#D8D2C5;--deep:#0E1A1C;--font-d:'Georgia',serif;}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:var(--deep);color:var(--cream);min-height:100vh;}
+.nav{position:sticky;top:0;z-index:100;background:var(--deep);display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(61,107,115,0.3);}
+.nav-logo{font-family:var(--font-d);font-size:1rem;color:var(--cream);letter-spacing:0.04em;text-decoration:none;}
+.nav-corredor{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(163,196,204,0.5);}
+.nav-back{font-size:0.72rem;color:rgba(163,196,204,0.7);text-decoration:none;display:flex;align-items:center;gap:4px;}
+.hero{background:linear-gradient(160deg,#0A1E2C 0%,var(--deep) 100%);padding:32px 20px 24px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:url('puerto-madryn-foto.jpg') center/cover no-repeat;opacity:0.22;}
+.hero-content{position:relative;z-index:1;}
+.hero-tag{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(163,196,204,0.6);margin-bottom:8px;}
+.hero-title{font-family:var(--font-d);font-size:clamp(1.8rem,5vw,2.4rem);font-weight:300;color:#fff;line-height:1.15;margin-bottom:6px;}
+.hero-sub{font-size:0.72rem;color:rgba(163,196,204,0.6);letter-spacing:0.06em;}
+.lang-bar{display:flex;gap:6px;margin-top:14px;}
+.lang-btn-dest{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:5px 10px;border-radius:20px;border:1px solid rgba(163,196,204,0.3);background:transparent;color:rgba(163,196,204,0.6);cursor:pointer;font-family:inherit;}
+.lang-btn-dest.activo{background:rgba(61,107,115,0.4);color:#fff;border-color:rgba(163,196,204,0.5);}
+.content{max-width:640px;margin:0 auto;}
+.info-bloque{padding:20px 16px 0;}
+.info-bloque-titulo{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--bark);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.info-bloque-titulo::after{content:'';flex:1;height:1px;background:var(--ash);}
+.info-cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px;}
+.info-cards-grid.cols1{grid-template-columns:1fr;}
+.info-card{background:rgba(255,255,255,0.07);border-radius:12px;padding:16px 14px;box-shadow:0 2px 12px rgba(0,0,0,0.2);border:1px solid rgba(163,196,204,0.12);display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden;transition:border-color 0.2s;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,var(--atlantic));}
+.info-card.emergencia{--card-accent:#B84E3A;}
+.info-card.paseo{--card-accent:#5C7A4A;}
+.info-card.cultura{--card-accent:#8A6A2A;}
+.info-card.gris{--card-accent:#6A7A7A;}
+.info-card-icon{font-size:1.6rem;line-height:1;}
+.info-card-name{font-size:0.78rem;font-weight:600;color:var(--cream);line-height:1.3;}
+.info-card-sub{font-size:0.66rem;color:rgba(196,220,228,0.88);line-height:1.4;}
+.info-card-tel{font-size:1rem;font-weight:700;color:var(--atlantic);letter-spacing:0.03em;}
+.info-card-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.65rem;letter-spacing:0.06em;text-transform:uppercase;padding:7px 10px;border-radius:20px;text-decoration:none;background:var(--card-accent,var(--atlantic));color:#fff;font-family:inherit;margin-top:auto;justify-content:center;border:none;cursor:pointer;}
+.info-card-btn.outline{background:transparent;color:var(--card-accent,var(--atlantic));border:1px solid var(--card-accent,var(--atlantic));}
+.info-nota{background:rgba(61,107,115,0.18);border-left:3px solid var(--atlantic);border-radius:0 6px 6px 0;padding:10px 12px;font-size:0.75rem;color:rgba(196,220,228,0.9);line-height:1.6;margin-bottom:10px;}
+.info-aviso{background:rgba(184,78,58,0.15);border-left:3px solid #B84E3A;border-radius:0 6px 6px 0;padding:10px 12px;font-size:0.75rem;color:rgba(196,220,228,0.9);line-height:1.6;margin-bottom:10px;}
+.spacer{height:24px;}
+.stt-grid{display:grid;grid-template-columns:1fr;gap:8px;}
+.stt-card{background:rgba(255,255,255,0.07);border-radius:10px;padding:14px;border:1px solid rgba(163,196,204,0.12);display:flex;gap:12px;align-items:flex-start;}
+.stt-tiempo{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--atlantic);font-weight:600;white-space:nowrap;margin-top:2px;min-width:72px;}
+.stt-desc{font-size:0.8rem;color:rgba(220,212,202,0.92);line-height:1.5;}
+.pronto-section{background:rgba(255,255,255,0.025);border-top:1px solid rgba(163,196,204,0.1);padding:24px 16px;}
+.pronto-title{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(163,196,204,0.4);margin-bottom:16px;}
+.pronto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.pronto-card{background:rgba(255,255,255,0.02);border:1px solid rgba(163,196,204,0.08);border-radius:10px;padding:14px 10px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;}
+.pronto-badge{font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(163,196,204,0.35);background:rgba(61,107,115,0.08);padding:3px 7px;border-radius:10px;}
+.pronto-icon{font-size:1.4rem;}
+.pronto-name{font-size:0.6rem;color:rgba(163,196,204,0.4);letter-spacing:0.04em;}
+footer{text-align:center;padding:20px 16px;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(163,196,204,0.25);}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/" class="nav-logo">conf&#237;n <span class="nav-corredor">&#183; patagonia</span></a>
+  <a href="/" class="nav-back">&#8592; volver</a>
+</nav>
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag" data-es="Argentina &#183; Patagonia &#183; Chubut &#183; Atl&#225;ntico Sur" data-en="Argentina &#183; Patagonia &#183; Chubut &#183; South Atlantic" data-pt="Argentina &#183; Patag&#244;nia &#183; Chubut &#183; Atl&#226;ntico Sul">Argentina &#183; Patagonia &#183; Chubut &#183; Atl&#225;ntico Sur</div>
+    <h1 class="hero-title">Puerto Madryn</h1>
+    <div class="hero-sub" data-es="Ballenas francas australes &#183; Pen&#237;nsula Vald&#233;s &#183; Buceo con lobos marinos" data-en="Southern right whales &#183; Vald&#233;s Peninsula &#183; Diving with sea lions" data-pt="Baleias francas austrais &#183; Pen&#237;nsula Vald&#233;s &#183; Mergulho com le&#245;es-marinhos">Ballenas francas australes &#183; Pen&#237;nsula Vald&#233;s &#183; Buceo con lobos marinos</div>
+    <div class="lang-bar">
+      <button class="lang-btn-dest activo" onclick="cambiarIdioma('es',this)">ES</button>
+      <button class="lang-btn-dest" onclick="cambiarIdioma('en',this)">EN</button>
+      <button class="lang-btn-dest" onclick="cambiarIdioma('pt',this)">PT</button>
+    </div>
+  </div>
+</div>
+<div class="content">
+
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#128680; Emergencias" data-en="&#128680; Emergencies" data-pt="&#128680; Emerg&#234;ncias">&#128680; Emergencias</div>
+<div class="info-cards-grid">
+<div class="info-card emergencia" style="grid-column:1/-1;">
+  <div style="display:flex;gap:12px;align-items:flex-start;">
+  <div class="info-card-icon">&#127973;</div>
+  <div style="flex:1;">
+    <div class="info-card-name" data-es="Hospital Dr. Andr&#233;s &#205;sola" data-en="Hospital Dr. Andr&#233;s &#205;sola" data-pt="Hospital Dr. Andr&#233;s &#205;sola">Hospital Dr. Andr&#233;s &#205;sola</div>
+    <div class="info-card-sub" data-es="Roberto G&#243;mez 383. Guardia 24 hs &mdash; &#250;nico hospital p&#250;blico de Puerto Madryn." data-en="Roberto G&#243;mez 383. 24-hour emergency &mdash; only public hospital in Puerto Madryn." data-pt="Roberto G&#243;mez 383. Plant&#227;o 24 hs &mdash; &#250;nico hospital p&#250;blico de Puerto Madryn.">Roberto G&#243;mez 383. Guardia 24 hs &mdash; &#250;nico hospital p&#250;blico de Puerto Madryn.</div>
+    <div class="info-card-tel">107</div>
+  </div>
+  </div>
+  <a href="tel:+542965451300" class="info-card-btn outline">(02965) 451-300</a>
+</div>
+<div class="info-card emergencia">
+  <div class="info-card-icon">&#128658;</div>
+  <div class="info-card-name" data-es="Bomberos" data-en="Fire Dept." data-pt="Bombeiros">Bomberos</div>
+  <div class="info-card-sub">Av. Roca 233</div>
+  <div class="info-card-tel">100</div>
+</div>
+<div class="info-card emergencia">
+  <div class="info-card-icon">&#128110;</div>
+  <div class="info-card-name" data-es="Polic&#237;a" data-en="Police" data-pt="Pol&#237;cia">Polic&#237;a</div>
+  <div class="info-card-sub">Av. Roca 1032</div>
+  <div class="info-card-tel">101</div>
+</div>
+<div class="info-card emergencia">
+  <div class="info-card-icon">&#9875;</div>
+  <div class="info-card-name" data-es="Prefectura Naval" data-en="Coast Guard" data-pt="Prefeitura Naval">Prefectura Naval</div>
+  <div class="info-card-sub" data-es="Av. Gales 100 &mdash; emergencias en mar y costa." data-en="Av. Gales 100 &mdash; sea and coastal emergencies." data-pt="Av. Gales 100 &mdash; emerg&#234;ncias no mar e costa.">Av. Gales 100 &mdash; emergencias en mar y costa.</div>
+  <div class="info-card-tel">106</div>
+</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#9201;&#65039; &#191;Cu&#225;nto tiempo ten&#233;s?" data-en="&#9201;&#65039; How much time do you have?" data-pt="&#9201;&#65039; Quanto tempo voc&#234; tem?">&#9201;&#65039; &#191;Cu&#225;nto tiempo ten&#233;s?</div>
+<div class="stt-grid">
+  <div class="stt-card">
+    <div class="stt-tiempo" data-es="Medio d&#237;a" data-en="Half day" data-pt="Meio dia">Medio d&#237;a</div>
+    <div class="stt-desc" data-es="Paseo costero por el Golfo Nuevo + Ecocentro Pampa Azul + avistaje de ballenas desde tierra (Playa El Doradillo, jul&ndash;dic)." data-en="Coastal walk along Golfo Nuevo + Ecocentro Pampa Azul + whale watching from shore (Playa El Doradillo, Jul&ndash;Dec)." data-pt="Passeio costeiro pelo Golfo Nuevo + Ecocentro Pampa Azul + avistagem de baleias da costa (Praia El Doradillo, jul&ndash;dez).">Paseo costero por el Golfo Nuevo + Ecocentro Pampa Azul + avistaje de ballenas desde tierra (Playa El Doradillo, jul&ndash;dic).</div>
+  </div>
+  <div class="stt-card">
+    <div class="stt-tiempo" data-es="1 d&#237;a" data-en="1 day" data-pt="1 dia">1 d&#237;a</div>
+    <div class="stt-desc" data-es="Excursi&#243;n en catamar&#225;n al avistaje de ballenas (3&ndash;4 hs, sale del muelle tur&#237;stico) + Ecocentro + Museo Chalett Pujol." data-en="Catamaran whale watching tour (3&ndash;4 hrs, departs from tourist pier) + Ecocentro + Chalett Pujol Museum." data-pt="Excurs&#227;o de catamar&#227; para avistagem de baleias (3&ndash;4 hs, sai do cais tur&#237;stico) + Ecocentro + Museu Chalett Pujol.">Excursi&#243;n en catamar&#225;n al avistaje de ballenas (3&ndash;4 hs, sale del muelle tur&#237;stico) + Ecocentro + Museo Chalett Pujol.</div>
+  </div>
+  <div class="stt-card">
+    <div class="stt-tiempo" data-es="2&ndash;3 d&#237;as" data-en="2&ndash;3 days" data-pt="2&ndash;3 dias">2&ndash;3 d&#237;as</div>
+    <div class="stt-desc" data-es="Pen&#237;nsula Vald&#233;s (tour full day: Puerto Pir&#225;mides, lobos marinos Caleta Vald&#233;s, ping&#252;inos Punta Norte, orcas ago&ndash;abr) + buceo + Punta Tombo (130 km, ping&#252;inos de Magallanes)." data-en="Vald&#233;s Peninsula full-day tour: Puerto Pir&#225;mides, sea lions at Caleta Vald&#233;s, penguins at Punta Norte, orcas Aug&ndash;Apr + diving + Punta Tombo (130 km, Magellanic penguins)." data-pt="Pen&#237;nsula Vald&#233;s (tour dia inteiro: Puerto Pir&#225;mides, le&#245;es-marinhos Caleta Vald&#233;s, pinguins Punta Norte, orcas ago&ndash;abr) + mergulho + Punta Tombo (130 km, pinguins-de-Magalh&#227;es).">Pen&#237;nsula Vald&#233;s (tour full day: Puerto Pir&#225;mides, lobos marinos Caleta Vald&#233;s, ping&#252;inos Punta Norte, orcas ago&ndash;abr) + buceo + Punta Tombo (130 km, ping&#252;inos de Magallanes).</div>
+  </div>
+  <div class="stt-card" style="border-left:3px solid #5C7A4A;">
+    <div class="stt-tiempo" style="color:#5C7A4A;" data-es="&#9748; Si llueve" data-en="&#9748; If it rains" data-pt="&#9748; Se chover">&#9748; Si llueve</div>
+    <div class="stt-desc" data-es="Ecocentro Pampa Azul (edificio excepcional frente al mar) + Museo Chalett Pujol + Av. Roca con caf&#233;s y chocolater&#237;as." data-en="Ecocentro Pampa Azul (exceptional building facing the sea) + Chalett Pujol Museum + Av. Roca with caf&#233;s and chocolate shops." data-pt="Ecocentro Pampa Azul (edif&#237;cio excepcional de frente ao mar) + Museu Chalett Pujol + Av. Roca com caf&#233;s e lojas de chocolate.">Ecocentro Pampa Azul (edificio excepcional frente al mar) + Museo Chalett Pujol + Av. Roca con caf&#233;s y chocolater&#237;as.</div>
+  </div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#128011; Ballenas y fauna &#183; Temporadas" data-en="&#128011; Whales & wildlife &#183; Seasons" data-pt="&#128011; Baleias e fauna &#183; Temporadas">&#128011; Ballenas y fauna &#183; Temporadas</div>
+<div class="info-cards-grid">
+<div class="info-card paseo" style="grid-column:1/-1;">
+  <div style="display:flex;gap:12px;align-items:flex-start;">
+  <div class="info-card-icon">&#128011;</div>
+  <div style="flex:1;">
+    <div class="info-card-name" data-es="Ballenas Francas Australes &mdash; Pico: julio&ndash;diciembre" data-en="Southern Right Whales &mdash; Peak: July&ndash;December" data-pt="Baleias Francas Austrais &mdash; Pico: julho&ndash;dezembro">Ballenas Francas Australes &mdash; Pico: julio&ndash;diciembre</div>
+    <div class="info-card-sub" data-es="Las ballenas llegan al Golfo Nuevo en mayo y se van en diciembre. Agosto es el mes de mayor cantidad. Avistaje en catamar&#225;n desde Puerto Pir&#225;mides (90 km, Reserva UNESCO) o desde tierra en Playa El Doradillo (17 km, gratuito). Reserv&#225; con operadoras con anticipaci&#243;n en agosto." data-en="Whales arrive at Golfo Nuevo in May and leave in December. August has the highest numbers. Catamaran tours from Puerto Pir&#225;mides (90 km, UNESCO Reserve) or free shore watching at Playa El Doradillo (17 km). Book with operators well in advance for August." data-pt="As baleias chegam ao Golfo Nuevo em maio e partem em dezembro. Agosto &#233; o m&#234;s com maior quantidade. Avistagem de catamar&#227; de Puerto Pir&#225;mides (90 km, Reserva UNESCO) ou da costa em Praia El Doradillo (17 km, gratuito). Reserve com operadoras com anteced&#234;ncia em agosto.">Las ballenas llegan al Golfo Nuevo en mayo y se van en diciembre. Agosto es el mes de mayor cantidad. Avistaje en catamar&#225;n desde Puerto Pir&#225;mides (90 km, Reserva UNESCO) o desde tierra en Playa El Doradillo (17 km, gratuito). Reserv&#225; con operadoras con anticipaci&#243;n en agosto.</div>
+  </div>
+  </div>
+</div>
+<div class="info-card paseo">
+  <div class="info-card-icon">&#129409;</div>
+  <div>
+    <div class="info-card-name" data-es="Lobos y elefantes marinos" data-en="Sea lions & elephant seals" data-pt="Le&#245;es e elefantes-marinhos">Lobos y elefantes marinos</div>
+    <div class="info-card-sub" data-es="Caleta Vald&#233;s y Punta Norte (Pen&#237;nsula Vald&#233;s). Todo el a&#241;o. Orcas varadoras: agosto&ndash;abril." data-en="Caleta Vald&#233;s and Punta Norte (Vald&#233;s Peninsula). Year-round. Stranding orcas: August&ndash;April." data-pt="Caleta Vald&#233;s e Punta Norte (Pen&#237;nsula Vald&#233;s). Todo o ano. Orcas encalhadoras: agosto&ndash;abril.">Caleta Vald&#233;s y Punta Norte (Pen&#237;nsula Vald&#233;s). Todo el a&#241;o. Orcas varadoras: agosto&ndash;abril.</div>
+  </div>
+</div>
+<div class="info-card paseo">
+  <div class="info-card-icon">&#128039;</div>
+  <div>
+    <div class="info-card-name" data-es="Ping&#252;inos de Magallanes" data-en="Magellanic penguins" data-pt="Pinguins-de-Magalh&#227;es">Ping&#252;inos de Magallanes</div>
+    <div class="info-card-sub" data-es="Punta Norte (Vald&#233;s) y Punta Tombo (130 km al sur). Temporada: sept&ndash;marzo. La colonia de Punta Tombo es la m&#225;s grande de SA." data-en="Punta Norte (Vald&#233;s) and Punta Tombo (130 km south). Season: Sept&ndash;March. Punta Tombo colony is the largest in SA." data-pt="Punta Norte (Vald&#233;s) e Punta Tombo (130 km ao sul). Temporada: set&ndash;mar&#231;o. A col&#244;nia de Punta Tombo &#233; a maior da AS.">Punta Norte (Vald&#233;s) y Punta Tombo (130 km al sur). Temporada: sept&ndash;marzo. La colonia de Punta Tombo es la m&#225;s grande de SA.</div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#127963;&#65039; Cultura y patrimonio" data-en="&#127963;&#65039; Culture & heritage" data-pt="&#127963;&#65039; Cultura e patrim&#244;nio">&#127963;&#65039; Cultura y patrimonio</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+<div class="info-card cultura" style="grid-column:1/-1;">
+  <div style="display:flex;gap:12px;align-items:flex-start;">
+  <div class="info-card-icon">&#127754;</div>
+  <div style="flex:1;">
+    <div class="info-card-name">Ecocentro Pampa Azul</div>
+    <div class="info-card-sub" data-es="Julio Verne 3784. Edificio ic&#243;nico frente al mar &mdash; museo interactivo sobre el Atl&#225;ntico Sur, ballenas, fauna marina y el ecosistema patag&#243;nico. Una de las propuestas culturales m&#225;s singulares de la Patagonia costera." data-en="Julio Verne 3784. Iconic oceanfront building &mdash; interactive museum about the South Atlantic, whales, marine wildlife and the Patagonian ecosystem. One of the most unique cultural offerings on the Patagonian coast." data-pt="Julio Verne 3784. Edif&#237;cio ic&#244;nico de frente ao mar &mdash; museu interativo sobre o Atl&#226;ntico Sul, baleias, fauna marinha e o ecossistema patag&#244;nico. Uma das propostas culturais mais singulares da costa patag&#244;nica.">Julio Verne 3784. Edificio ic&#243;nico frente al mar &mdash; museo interactivo sobre el Atl&#225;ntico Sur, ballenas, fauna marina y el ecosistema patag&#243;nico. Una de las propuestas culturales m&#225;s singulares de la Patagonia costera.</div>
+  </div>
+  </div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">&#129429;</div>
+  <div>
+    <div class="info-card-name" data-es="Museo Ciencias Naturales Chalett Pujol" data-en="Chalett Pujol Natural Sciences Museum" data-pt="Museu Ci&#234;ncias Naturais Chalett Pujol">Museo Ciencias Naturales Chalett Pujol</div>
+    <div class="info-card-sub" data-es="Domecq Garc&#237;a y Men&#233;ndez. Paleontolog&#237;a, fauna marina y arqueolog&#237;a de la costa patag&#243;nica. Entrada gratuita." data-en="Domecq Garc&#237;a y Men&#233;ndez. Palaeontology, marine wildlife and archaeology of the Patagonian coast. Free entry." data-pt="Domecq Garc&#237;a y Men&#233;ndez. Paleontologia, fauna marinha e arqueologia da costa patag&#244;nica. Entrada gratuita.">Domecq Garc&#237;a y Men&#233;ndez. Paleontolog&#237;a, fauna marina y arqueolog&#237;a de la costa patag&#243;nica. Entrada gratuita.</div>
+  </div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631;</div>
+  <div>
+    <div class="info-card-name" data-es="Monumento al Desembarco Gal&#233;s" data-en="Welsh Landing Monument" data-pt="Monumento ao Desembarque Gal&#234;s">Monumento al Desembarco Gal&#233;s</div>
+    <div class="info-card-sub" data-es="Costanera &#183; Hito del primer desembarco gal&#233;s en 1865. La comunidad galesa es parte central de la identidad cultural de Chubut." data-en="Costanera &#183; Marks the first Welsh landing in 1865. The Welsh community is central to Chubut's cultural identity." data-pt="Costanera &#183; Marco do primeiro desembarque gal&#234;s em 1865. A comunidade galesa &#233; central para a identidade cultural de Chubut.">Costanera &#183; Hito del primer desembarco gal&#233;s en 1865. La comunidad galesa es parte central de la identidad cultural de Chubut.</div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#128739;&#65039; Acceso y servicios" data-en="&#128739;&#65039; Access & services" data-pt="&#128739;&#65039; Acesso e servi&#231;os">&#128739;&#65039; Acceso y servicios</div>
+<div class="info-cards-grid">
+<div class="info-card gris">
+  <div class="info-card-icon">&#9992;&#65039;</div>
+  <div class="info-card-name" data-es="Aeropuerto El Tehuelche" data-en="El Tehuelche Airport" data-pt="Aeroporto El Tehuelche">Aeropuerto El Tehuelche</div>
+  <div class="info-card-sub" data-es="7 km del centro. Vuelos desde Buenos Aires (Aeroparque) &mdash; Aerol&#237;neas y LATAM. Tambi&#233;n desde Bariloche y Comodoro." data-en="7 km from center. Flights from Buenos Aires (Aeroparque) &mdash; Aerol&#237;neas and LATAM. Also from Bariloche and Comodoro." data-pt="7 km do centro. Voos de Buenos Aires (Aeroparque) &mdash; Aerol&#237;neas e LATAM. Tamb&#233;m de Bariloche e Comodoro.">7 km del centro. Vuelos desde Buenos Aires (Aeroparque) &mdash; Aerol&#237;neas y LATAM. Tambi&#233;n desde Bariloche y Comodoro.</div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">&#128652;</div>
+  <div class="info-card-name" data-es="Terminal de &#211;mnibus" data-en="Bus Terminal" data-pt="Terminal Rodovi&#225;ria">Terminal de &#211;mnibus</div>
+  <div class="info-card-sub" data-es="Independencia 681. Desde Buenos Aires (18 hs), Bariloche (12 hs), Comodoro Rivadavia (5 hs), Trelew (1 hs)." data-en="Independencia 681. From Buenos Aires (18 hrs), Bariloche (12 hrs), Comodoro Rivadavia (5 hrs), Trelew (1 hr)." data-pt="Independencia 681. De Buenos Aires (18 hs), Bariloche (12 hs), Comodoro Rivadavia (5 hs), Trelew (1 hs).">Independencia 681. Desde Buenos Aires (18 hs), Bariloche (12 hs), Comodoro Rivadavia (5 hs), Trelew (1 hs).</div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">&#129343;</div>
+  <div class="info-card-name" data-es="Buceo &mdash; Todo el a&#241;o" data-en="Diving &mdash; Year-round" data-pt="Mergulho &mdash; O ano todo">Buceo &mdash; Todo el a&#241;o</div>
+  <div class="info-card-sub" data-es="Con lobos marinos en el &#193;rea Protegida. Visibilidad excelente en invierno. Varias escuelas en el centro &mdash; alquiler de equipo incluido." data-en="With sea lions in the Protected Area. Excellent visibility in winter. Several schools downtown &mdash; equipment rental included." data-pt="Com le&#245;es-marinhos na &#193;rea Protegida. Visibilidade excelente no inverno. V&#225;rias escolas no centro &mdash; aluguel de equipamentos inclu&#237;do.">Con lobos marinos en el &#193;rea Protegida. Visibilidad excelente en invierno. Varias escuelas en el centro &mdash; alquiler de equipo incluido.</div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">&#128663;</div>
+  <div class="info-card-name" data-es="Auto propio recomendado" data-en="Own car recommended" data-pt="Carro pr&#243;prio recomendado">Auto propio recomendado</div>
+  <div class="info-card-sub" data-es="Para Pen&#237;nsula Vald&#233;s y Punta Tombo es ideal tener auto. Remises y tours organizados disponibles desde Madryn si no ten&#233;s." data-en="For Vald&#233;s Peninsula and Punta Tombo a car is ideal. Remises and organized tours available from Madryn without one." data-pt="Para Pen&#237;nsula Vald&#233;s e Punta Tombo &#233; ideal ter carro. Remises e tours organizados dispon&#237;veis em Madryn sem carro.">Para Pen&#237;nsula Vald&#233;s y Punta Tombo es ideal tener auto. Remises y tours organizados disponibles desde Madryn si no ten&#233;s.</div>
+</div>
+</div>
+</div>
+
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#128739;&#65039; C&#xF3;mo llegar" data-en="&#128739;&#65039; Getting there" data-pt="&#128739;&#65039; Como chegar">&#128739;&#65039; C&#xF3;mo llegar</div>
+<div class="stt-grid">
+<div class="stt-card"><div class="stt-tiempo" data-es="Desde BsAs" data-en="From BsAs" data-pt="De BsAs">Desde BsAs</div><div class="stt-desc" data-es="~1.300 km por RN 3. Vuelos desde Aeroparque al aeropuerto El Tehuelche (7 km del centro) con Aerol&#xED;neas y LATAM." data-en="~1,300 km on RN 3. Flights from Aeroparque to El Tehuelche airport (7 km from center) with Aerol&#xED;neas and LATAM." data-pt="~1.300 km pela RN 3. Voos do Aeroparque ao aeroporto El Tehuelche (7 km do centro) com Aerol&#xED;neas e LATAM.">~1.300 km por RN 3. Vuelos desde Aeroparque al aeropuerto El Tehuelche (7 km del centro).</div></div>
+<div class="stt-card"><div class="stt-tiempo" data-es="Desde Neuqu&#xE9;n" data-en="From Neuqu&#xE9;n" data-pt="De Neuqu&#xE9;n">Desde Neuqu&#xE9;n</div><div class="stt-desc" data-es="~680 km: RN 22 hasta Choele Choel, luego RN 251 y RN 3. Estaciones clave en Sierra Grande y San Antonio Oeste." data-en="~680 km: RN 22 to Choele Choel, then RN 251 and RN 3. Key fuel stops at Sierra Grande and San Antonio Oeste." data-pt="~680 km: RN 22 at&#xE9; Choele Choel, depois RN 251 e RN 3. Postos chave em Sierra Grande e San Antonio Oeste.">~680 km: RN 22 hasta Choele Choel + RN 251 + RN 3.</div></div>
+<div class="stt-card"><div class="stt-tiempo" data-es="Desde Cordillera" data-en="From Andes" data-pt="Da Cordilheira">Desde Cordillera</div><div class="stt-desc" data-es="Desde Bariloche: ~800 km por RN 25 cruzando el plateau chubutense (Las Plumas, Paso de Indios). Desde Esquel: ~650 km. Fauna silvestre constante en RN 25 &#x2014; m&#xE1;xima precauci&#xF3;n al atardecer." data-en="From Bariloche: ~800 km on RN 25 crossing the Chubut plateau. From Esquel: ~650 km. Constant wildlife on RN 25 &#x2014; extra caution at dusk." data-pt="De Bariloche: ~800 km pela RN 25 cruzando o plat&#xF4; chubutense. De Esquel: ~650 km. Fauna constante na RN 25 &#x2014; m&#xE1;xima precau&#xE7;&#xE3;o ao entardecer.">Desde Bariloche ~800 km por RN 25. Desde Esquel ~650 km. Fauna en ruta &#x2014; precauci&#xF3;n al atardecer.</div></div>
+</div>
+</div>
+
+<div style="height:16px;"></div>
+</div>
+
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#127756; El alma de este lugar" data-en="&#127756; The soul of this place" data-pt="&#127756; A alma deste lugar">&#127756; El alma de este lugar</div>
+<div style="background:rgba(255,255,255,0.04);border-radius:14px;padding:18px 16px;border:1px solid rgba(163,196,204,0.12);display:flex;flex-direction:column;gap:16px;">
+<div style="display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid rgba(163,196,204,0.1);">
+<img src="../luna-avatar.jpg" alt="Luna" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:1px solid rgba(163,196,204,0.3);" onerror="this.style.display='none'">
+<div><div style="font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(163,196,204,0.5);" data-es="Curado por Luna &#xB7; CONF&#xCD;N" data-en="Curated by Luna &#xB7; CONF&#xCD;N" data-pt="Curado por Luna &#xB7; CONF&#xCD;N">Curado por Luna &#xB7; CONF&#xCD;N</div><div style="font-family:Georgia,serif;font-size:0.82rem;font-style:italic;color:rgba(220,212,200,0.9);" data-es="El reino del mar patag&#xF3;nico" data-en="The kingdom of the Patagonian sea" data-pt="O reino do mar patag&#xF4;nico">El reino del mar patag&#xF3;nico</div></div>
+</div>
+<div>
+<div style="font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(163,196,204,0.45);margin-bottom:6px;" data-es="&#128218; Historia" data-en="&#128218; History" data-pt="&#128218; Hist&#xF3;ria">&#128218; Historia</div>
+<div style="font-size:0.75rem;color:rgba(210,202,190,0.88);line-height:1.6;" data-es="Fundada el 28 de julio de 1865 con la llegada del velero Mimosa, desembarcando a los primeros 153 inmigrantes galeses que poblaron el valle del r&#xED;o Chubut. El nombre rinde honor al Bar&#xF3;n de Madryn en Gales." data-en="Founded July 28, 1865 with the arrival of the sailing ship Mimosa, landing the first 153 Welsh immigrants who settled the Chubut river valley. The name honors the Baron of Madryn in Wales." data-pt="Fundada em 28 de julho de 1865 com a chegada do veleiro Mimosa, desembarcando os primeiros 153 imigrantes galeses que povoaram o vale do rio Chubut. O nome homenageia o Bar&#xE3;o de Madryn no Pa&#xED;s de Gales.">Fundada el 28 de julio de 1865 con la llegada del velero Mimosa, desembarcando a los primeros 153 inmigrantes galeses que poblaron el valle del r&#xED;o Chubut. El nombre rinde honor al Bar&#xF3;n de Madryn en Gales.</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+<div style="background:rgba(61,107,115,0.1);border-radius:10px;padding:12px;">
+<div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(163,196,204,0.45);margin-bottom:5px;" data-es="&#127993; Fauna insignia" data-en="&#127993; Wildlife" data-pt="&#127993; Fauna insignia">&#127993; Fauna insignia</div>
+<div style="font-size:0.7rem;color:rgba(196,220,228,0.85);line-height:1.5;" data-es="La Ballena Franca Austral &#x2014; llega entre mayo y diciembre a los golfos Nuevo y San Jos&#xE9; para aparearse y dar a luz a sus cr&#xED;as a escasos metros de la playa." data-en="The Southern Right Whale &#x2014; arrives between May and December in the Nuevo and San Jos&#xE9; gulfs to mate and give birth just meters from shore." data-pt="A Baleia Franca Austral &#x2014; chega entre maio e dezembro aos golfos Nuevo e San Jos&#xE9; para se reproduzir e dar &#xE0; luz a seus filhotes a poucos metros da praia.">La Ballena Franca Austral &#x2014; llega entre mayo y diciembre a los golfos Nuevo y San Jos&#xE9; para aparearse y dar a luz a sus cr&#xED;as a escasos metros de la playa.</div>
+</div>
+<div style="background:rgba(92,122,74,0.1);border-radius:10px;padding:12px;">
+<div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(163,196,204,0.45);margin-bottom:5px;" data-es="&#127807; Flora emblema" data-en="&#127807; Flora" data-pt="&#127807; Flora emblema">&#127807; Flora emblema</div>
+<div style="font-size:0.7rem;color:rgba(196,220,228,0.85);line-height:1.5;" data-es="El Quilimbay y la Jarilla &#x2014; arbustos achaparrados con espinas y hojas resinosas adaptados al &#xE1;rido clima de la estepa patag&#xF3;nica." data-en="The Quilimbay and Jarilla &#x2014; stunted shrubs with thorns and resinous leaves adapted to the arid Patagonian steppe climate." data-pt="O Quilimbay e a Jarilla &#x2014; arbustos baixos com espinhos e folhas resinosas adaptados ao clima &#xE1;rido da estepe patag&#xF4;nica.">El Quilimbay y la Jarilla &#x2014; arbustos achaparrados con espinas y hojas resinosas adaptados al &#xE1;rido clima de la estepa patag&#xF3;nica.</div>
+</div>
+</div>
+<div style="background:rgba(138,106,42,0.1);border-radius:10px;padding:14px;border-left:3px solid rgba(138,106,42,0.5);">
+<div style="font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(200,170,100,0.6);margin-bottom:6px;" data-es="&#128161; &#xBF;Sab&#xED;as que...?" data-en="&#128161; Did you know...?" data-pt="&#128161; Voc&#xEA; sabia...?">&#128161; &#xBF;Sab&#xED;as que...?</div>
+<div style="font-size:0.72rem;color:rgba(220,200,160,0.9);line-height:1.6;font-style:italic;" data-es="Gracias a las aguas calmas del Golfo Nuevo, Puerto Madryn es la Capital Nacional del Buceo en Argentina, permitiendo sumergirse y nadar junto a lobos marinos en el &#xE1;rea protegida." data-en="Thanks to the calm waters of Golfo Nuevo, Puerto Madryn is Argentina&#x27;s National Diving Capital, allowing visitors to dive and swim alongside sea lions in the protected area." data-pt="Gra&#xE7;as &#xE0;s &#xE1;guas calmas do Golfo Nuevo, Puerto Madryn &#xE9; a Capital Nacional do Mergulho na Argentina, permitindo mergulhar e nadar com le&#xF5;es-marinhos na &#xE1;rea protegida.">Gracias a las aguas calmas del Golfo Nuevo, Puerto Madryn es la Capital Nacional del Buceo en Argentina, permitiendo sumergirse y nadar junto a lobos marinos en el &#xE1;rea protegida.</div>
+</div>
+</div>
+</div>
+
+<div class="pronto-section">
+  <div class="pronto-title" data-es="Pr&#243;ximamente en CONF&#205;N Puerto Madryn" data-en="Coming soon to CONF&#205;N Puerto Madryn" data-pt="Em breve no CONF&#205;N Puerto Madryn">Pr&#243;ximamente en CONF&#205;N Puerto Madryn</div>
+    <div class="pronto-subtitle" style="font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(163,196,204,0.38);margin-bottom:18px;" data-es="Muy pronto disponible" data-en="Coming soon" data-pt="Em breve">Muy pronto disponible</div>
+  <div class="pronto-grid">
+    <div class="pronto-card"><div class="pronto-badge" data-es="Pr&#243;ximamente" data-en="Coming soon" data-pt="Em breve">Pr&#243;ximamente</div><div class="pronto-icon">&#127968;</div><div class="pronto-name" data-es="Alojamiento" data-en="Accommodation" data-pt="Hospedagem">Alojamiento</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Pr&#243;ximamente" data-en="Coming soon" data-pt="Em breve">Pr&#243;ximamente</div><div class="pronto-icon">&#127869;&#65039;</div><div class="pronto-name" data-es="Gastronom&#237;a" data-en="Gastronomy" data-pt="Gastronomia">Gastronom&#237;a</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Pr&#243;ximamente" data-en="Coming soon" data-pt="Em breve">Pr&#243;ximamente</div><div class="pronto-icon">&#129343;</div><div class="pronto-name" data-es="Buceo" data-en="Diving" data-pt="Mergulho">Buceo</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Pr&#243;ximamente" data-en="Coming soon" data-pt="Em breve">Pr&#243;ximamente</div><div class="pronto-icon">&#9973;</div><div class="pronto-name" data-es="Excursiones" data-en="Excursions" data-pt="Excurs&#245;es">Excursiones</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Pr&#243;ximamente" data-en="Coming soon" data-pt="Em breve">Pr&#243;ximamente</div><div class="pronto-icon">&#128663;</div><div class="pronto-name" data-es="Traslados" data-en="Transfers" data-pt="Traslados">Traslados</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Pr&#243;ximamente" data-en="Coming soon" data-pt="Em breve">Pr&#243;ximamente</div><div class="pronto-icon">&#128011;</div><div class="pronto-name" data-es="Avistaje" data-en="Wildlife tours" data-pt="Avistagem">Avistaje</div></div>
+  </div>
+</div>
+<div style="height:16px;"></div>
+<footer data-es="conf&#237;n app &#183; atl&#225;ntico sur &#183; puerto madryn &#183; chubut" data-en="conf&#237;n app &#183; south atlantic &#183; puerto madryn &#183; chubut" data-pt="conf&#237;n app &#183; atl&#226;ntico sul &#183; puerto madryn &#183; chubut">conf&#237;n app &#183; atl&#225;ntico sur &#183; puerto madryn &#183; chubut</footer>
+<script>
+window.addEventListener('DOMContentLoaded',function(){
+  var btns=document.querySelectorAll('.lang-btn-dest');
+  btns.forEach(function(b){b.classList.remove('activo');});
+  var es=document.querySelector('.lang-btn-dest');
+  if(es)es.classList.add('activo');
+  document.querySelectorAll('[data-es]').forEach(function(el){
+    if(el.innerHTML.trim()===''||el.innerHTML===el.getAttribute('data-es').substring(0,3)){
+      el.innerHTML=el.getAttribute('data-es');
+    }
+  });
+});
+function cambiarIdioma(lang,btn){
+  document.querySelectorAll('.lang-btn-dest').forEach(b=>b.classList.remove('activo'));
+  btn.classList.add('activo');
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const txt=lang==='es'?el.dataset.es:lang==='en'?el.dataset.en:el.dataset.pt;
+    if(txt)el.innerHTML=txt;
+  });
+}
+</script>
+</body>
+</html>
