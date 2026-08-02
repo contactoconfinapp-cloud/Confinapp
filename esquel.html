@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TouristDestination","name":"Esquel","description":"Guia util de viaje para Esquel. Emergencias, La Hoya ski, La Trochita, Parque Nacional Los Alerces y todo lo que necesitas saber antes de llegar.","url":"https://contactoconfinapp-cloud.github.io/Confinapp/esquel/","touristType":["Ski","Turismo de Montana","Turismo Cultural","Ecoturismo"],"includesAttraction":[{"@type":"TouristAttraction","name":"Centro de Ski La Hoya"},{"@type":"TouristAttraction","name":"La Trochita - Viejo Expreso Patagonico"},{"@type":"TouristAttraction","name":"Parque Nacional Los Alerces"},{"@type":"TouristAttraction","name":"Trevelin"}],"contactPoint":[{"@type":"ContactPoint","telephone":"107","contactType":"emergency","name":"Hospital Zonal de Esquel"}]}
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CONFIN | Guia Util Esquel - La Hoya Ski, La Trochita y Parque Nacional Los Alerces</title>
+<meta name="description" content="Informacion esencial de Esquel: emergencias, Centro de Ski La Hoya, La Trochita, Parque Nacional Los Alerces, acceso desde Bariloche y paso Futaleufu hacia Chile.">
+<meta property="og:title" content="CONFIN - Esquel &#183; Guia util para el viajero">
+<meta property="og:description" content="Todo lo que necesitas saber antes y durante tu visita a Esquel. Gratuito, curado y siempre actualizado.">
+<meta property="og:image" content="https://contactoconfinapp-cloud.github.io/Confinapp/esquel-foto.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#3D6B73">
+<link rel="canonical" href="https://contactoconfinapp-cloud.github.io/Confinapp/esquel/">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--atlantic:#3D6B73;--fern:#5C7A4A;--cream:#FAF7F2;--bark:#8A7A6A;--ash:#D8D2C5;--deep:#0E1A1C;--font-d:'Georgia',serif;}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:var(--deep);color:var(--cream);min-height:100vh;}
+.nav{position:sticky;top:0;z-index:100;background:var(--deep);display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(61,107,115,0.3);}
+.nav-logo{font-family:var(--font-d);font-size:1rem;color:var(--cream);letter-spacing:0.04em;text-decoration:none;}
+.nav-corredor{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(163,196,204,0.5);}
+.nav-back{font-size:0.72rem;color:rgba(163,196,204,0.7);text-decoration:none;}
+.hero{background:linear-gradient(160deg,#1A2820 0%,var(--deep) 100%);padding:32px 20px 24px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:url('../esquel-foto.jpg') center/cover no-repeat;opacity:0.22;}
+.hero-content{position:relative;z-index:1;}
+.hero-tag{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(163,196,204,0.6);margin-bottom:8px;}
+.hero-title{font-family:var(--font-d);font-size:clamp(1.8rem,5vw,2.4rem);font-weight:300;color:#fff;line-height:1.15;margin-bottom:6px;}
+.hero-sub{font-size:0.72rem;color:rgba(163,196,204,0.6);letter-spacing:0.06em;}
+.lang-bar{display:flex;gap:6px;margin-top:14px;}
+.lang-btn-dest{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:5px 10px;border-radius:20px;border:1px solid rgba(163,196,204,0.3);background:transparent;color:rgba(163,196,204,0.6);cursor:pointer;font-family:inherit;}
+.lang-btn-dest.activo{background:rgba(61,107,115,0.4);color:#fff;border-color:rgba(163,196,204,0.5);}
+.content{max-width:640px;margin:0 auto;}
+.info-bloque{padding:20px 16px 0;}
+.info-bloque-titulo{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--bark);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.info-bloque-titulo::after{content:'';flex:1;height:1px;background:rgba(216,210,197,0.3);}
+.info-cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px;}
+.info-cards-grid.cols1{grid-template-columns:1fr;}
+.info-card{background:rgba(255,255,255,0.07);border-radius:12px;padding:16px 14px;box-shadow:0 2px 12px rgba(0,0,0,0.2);border:1px solid rgba(163,196,204,0.12);display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,var(--atlantic));}
+.info-card.emergencia{--card-accent:#B84E3A;}
+.info-card.paseo{--card-accent:#5C7A4A;}
+.info-card.cultura{--card-accent:#8A6A2A;}
+.info-card.nieve{--card-accent:#7AAFC4;}
+.info-card.gris{--card-accent:#6A7A7A;}
+.info-card-icon{font-size:1.6rem;line-height:1;}
+.info-card-name{font-size:0.78rem;font-weight:600;color:var(--cream);line-height:1.3;}
+.info-card-sub{font-size:0.66rem;color:rgba(196,220,228,0.88);line-height:1.4;}
+.info-card-tel{font-size:1rem;font-weight:700;color:var(--atlantic);letter-spacing:0.03em;}
+.info-card-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.65rem;letter-spacing:0.06em;text-transform:uppercase;padding:7px 10px;border-radius:20px;text-decoration:none;background:var(--card-accent,var(--atlantic));color:#fff;font-family:inherit;margin-top:auto;justify-content:center;border:none;cursor:pointer;}
+.info-card-btn.outline{background:transparent;color:var(--card-accent,var(--atlantic));border:1px solid var(--card-accent,var(--atlantic));}
+.info-nota{background:rgba(61,107,115,0.18);border-left:3px solid var(--atlantic);border-radius:0 6px 6px 0;padding:10px 12px;font-size:0.75rem;color:rgba(196,220,228,0.9);line-height:1.6;margin-bottom:10px;}
+.info-aviso{background:rgba(184,78,58,0.12);border-left:3px solid #B84E3A;border-radius:0 6px 6px 0;padding:10px 12px;font-size:0.75rem;color:rgba(245,205,195,0.92);line-height:1.6;margin-bottom:10px;}
+.spacer{height:24px;}
+.stt-grid{display:grid;grid-template-columns:1fr;gap:8px;}
+.stt-card{background:rgba(255,255,255,0.07);border-radius:10px;padding:14px;border:1px solid rgba(163,196,204,0.12);display:flex;gap:12px;align-items:flex-start;}
+.stt-tiempo{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--atlantic);font-weight:600;white-space:nowrap;margin-top:2px;min-width:72px;}
+.stt-desc{font-size:0.8rem;color:rgba(220,212,202,0.92);line-height:1.5;}
+.pronto-section{margin:32px 0 0;background:rgba(255,255,255,0.02);border-top:1px solid rgba(163,196,204,0.12);padding:32px 16px 40px;}
+.pronto-title{font-size:1.1rem;font-family:var(--font-d);font-weight:300;color:var(--cream);margin-bottom:6px;letter-spacing:0.01em;}
+.pronto-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.pronto-card{background:rgba(255,255,255,0.04);border-radius:12px;padding:14px 10px;border:1px solid rgba(163,196,204,0.1);display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;}
+.pronto-badge{font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(163,196,204,0.4);background:rgba(61,107,115,0.12);padding:3px 7px;border-radius:10px;}
+.pronto-icon{font-size:1.5rem;}
+.pronto-name{font-size:0.68rem;font-weight:600;color:rgba(163,196,204,0.6);letter-spacing:0.03em;}
+footer{text-align:center;padding:20px 16px;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(163,196,204,0.3);border-top:1px solid rgba(163,196,204,0.08);}
+</style>
+</head>
+<body>
+<nav class="nav">
+<a href="/" class="nav-logo">conf&#xED;n <span class="nav-corredor">&#xB7; patagonia</span></a>
+<a href="/" class="nav-back">&#x2190; volver</a>
+</nav>
+<div class="hero">
+<div class="hero-content">
+<div class="hero-tag" data-es="Argentina &#xB7; Chubut &#xB7; Comarca Andina" data-en="Argentina &#xB7; Chubut &#xB7; Andean Region" data-pt="Argentina &#xB7; Chubut &#xB7; Comarca Andina">Argentina &#xB7; Chubut &#xB7; Comarca Andina</div>
+<h1 class="hero-title">Esquel</h1>
+<div class="hero-sub" data-es="La Hoya &#xB7; La Trochita &#xB7; Los Alerces &#xB7; Puerta a la Carretera Austral" data-en="La Hoya &#xB7; La Trochita &#xB7; Los Alerces &#xB7; Gateway to the Carretera Austral" data-pt="La Hoya &#xB7; La Trochita &#xB7; Los Alerces &#xB7; Porta da Carretera Austral">La Hoya &#xB7; La Trochita &#xB7; Los Alerces &#xB7; Puerta a la Carretera Austral</div>
+<div class="lang-bar">
+<button class="lang-btn-dest activo" onclick="cambiarIdioma('es',this)">ES</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('en',this)">EN</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('pt',this)">PT</button>
+</div>
+</div>
+</div>
+<div class="content">
+
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#x1F6A8; Emergencias" data-en="&#x1F6A8; Emergencies" data-pt="&#x1F6A8; Emerg&#xEA;ncias">&#x1F6A8; Emergencias</div>
+<div class="info-cards-grid">
+<div class="info-card emergencia" style="grid-column:1/-1;"><div style="display:flex;gap:12px;align-items:flex-start;"><div class="info-card-icon">&#x1F3E5;</div><div style="flex:1;"><div class="info-card-name" data-es="Hospital Zonal de Esquel" data-en="Esquel Zonal Hospital" data-pt="Hospital Zonal de Esquel">Hospital Zonal de Esquel</div><div class="info-card-sub" data-es="Av. Mitre 50. Guardia 24 hs." data-en="Av. Mitre 50. 24-hour emergency." data-pt="Av. Mitre 50. Plant&#xE3;o 24 hs.">Av. Mitre 50. Guardia 24 hs.</div><div class="info-card-tel">107</div></div></div><a href="tel:+542945451200" class="info-card-btn outline">(02945) 451-200</a></div>
+<div class="info-card emergencia"><div class="info-card-icon">&#x1F46E;</div><div class="info-card-name" data-es="Polic&#xED;a Comisa&#xED;ra 1&#xAA;" data-en="Police Station 1st" data-pt="Del&#xE9;gacia Policial">Polic&#xED;a Comisara 1&#xAA;</div><div class="info-card-sub" data-es="Esquel centro" data-en="Esquel center" data-pt="Esquel centro">Esquel centro</div><div class="info-card-tel">101</div><a href="tel:+542945450782" class="info-card-btn outline">(02945) 450-782</a></div>
+<div class="info-card emergencia"><div class="info-card-icon">&#x1F692;</div><div class="info-card-name" data-es="Bomberos Voluntarios" data-en="Volunteer Fire Dept." data-pt="Bombeiros Volunt&#xE1;rios">Bomberos Voluntarios</div><div class="info-card-sub">Esquel</div><div class="info-card-tel">100</div><a href="tel:+542945452222" class="info-card-btn outline">(02945) 452-222</a></div>
+<div class="info-card emergencia"><div class="info-card-icon">&#x1F6E1;&#xFE0F;</div><div class="info-card-name" data-es="Defensa Civil" data-en="Civil Defense" data-pt="Defesa Civil">Defensa Civil</div><div class="info-card-sub">Esquel</div><div class="info-card-tel">103</div><a href="tel:+542945451323" class="info-card-btn outline">(02945) 451-323</a></div>
+<div class="info-card emergencia"><div class="info-card-icon">&#x1F4E1;</div><div class="info-card-name" data-es="Gendarmer&#xED;a Nacional" data-en="National Border Force" data-pt="Gendarmer&#xED;a Nacional">Gendarmer&#xED;a Nacional</div><div class="info-card-sub" data-es="Escuadr&#xF3;n 36 &#xB7; Pasos fronterizos" data-en="Squadron 36 &#xB7; Border crossings" data-pt="Escuadr&#xE3;o 36 &#xB7; Postos fronteiri&#xE7;os">Escuadr&#xF3;n 36 &#xB7; Pasos fronterizos</div><a href="tel:+542945451211" class="info-card-btn outline">(02945) 451-211</a></div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#x26F7;&#xFE0F; Centro de ski &#xB7; La Hoya" data-en="&#x26F7;&#xFE0F; Ski resort &#xB7; La Hoya" data-pt="&#x26F7;&#xFE0F; Centro de ski &#xB7; La Hoya">&#x26F7;&#xFE0F; Centro de ski &#xB7; La Hoya</div>
+<div class="info-cards-grid cols1">
+<div class="info-card nieve" style="position:relative;overflow:hidden;"><div style="position:absolute;inset:0;background:url('../centro-ski-foto.jpg') center/cover no-repeat;opacity:0.12;"></div><div style="position:relative;z-index:1;display:flex;gap:12px;align-items:flex-start;"><div class="info-card-icon">&#x1F3BF;</div><div style="flex:1;"><div class="info-card-name" data-es="La Hoya &#x2014; 12 km del centro" data-en="La Hoya &#x2014; 12 km from town" data-pt="La Hoya &#x2014; 12 km do centro">La Hoya &#x2014; 12 km del centro</div><div class="info-card-sub" data-es="30 pistas de todos los niveles, snowpark y 8 medios de elevaci&#xF3;n. Famoso por su nieve polvo de excepcional calidad hasta bien entrada la primavera, gracias a la orientaci&#xF3;n de su hoya natural. Todas las pistas confluyen en una misma base &#x2014; ideal para familias. Snowpark para freestyle, escuela de ski y snowboard, guarderia infantil y alquiler de equipo en base. Excelente relaci&#xF3;n precio-calidad de pases." data-en="30 slopes for all levels, snowpark and 8 lifts. Famous for exceptional powder snow quality well into spring, thanks to its natural bowl orientation. All slopes converge at one base &#x2014; ideal for families. Freestyle snowpark, ski and snowboard school, childcare and equipment rental at base. Excellent price-quality ratio." data-pt="30 pistas para todos os n&#xED;veis, snowpark e 8 meios de eleva&#xE7;&#xE3;o. Famoso pela excepcional qualidade da neve em p&#xF3; at&#xE9; a primavera, gra&#xE7;as &#xE0; orienta&#xE7;&#xE3;o de sua concha natural. Todas as pistas convergem em uma base &#x2014; ideal para fam&#xED;lias. Snowpark, escola de ski e snowboard, brinquedoteca e aluguel de equipamentos na base.">30 pistas, snowpark y 8 medios. Nieve polvo excepcional hasta primavera. Todas las pistas en una sola base &#x2014; ideal para familias.</div></div></div><a href="https://www.lahoya.com" target="_blank" class="info-card-btn">lahoya.com &#x2192;</a></div>
+<div class="info-nota" data-es="Colectivo de l&#xED;nea y transfers diarios desde el centro de Esquel. Cadenas obligatorias en d&#xED;as de nevada reciente en el camino de subida." data-en="Regular bus and daily transfers from Esquel center. Chains mandatory after fresh snowfall on the way up." data-pt="&#xD4;nibus regular e transfers di&#xE1;rios do centro de Esquel. Correntes obrigat&#xF3;rias ap&#xF3;s neve fresca na subida.">Colectivo y transfers diarios desde Esquel. Cadenas obligatorias en d&#xED;as de nevada en la subida.</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#x23F1;&#xFE0F; &#xBF;Cu&#xE1;nto tiempo ten&#xE9;s?" data-en="&#x23F1;&#xFE0F; How much time do you have?" data-pt="&#x23F1;&#xFE0F; Quanto tempo voc&#xEA; tem?">&#x23F1;&#xFE0F; &#xBF;Cu&#xE1;nto tiempo ten&#xE9;s?</div>
+<div class="stt-grid">
+<div class="stt-card"><div class="stt-tiempo" data-es="1 d&#xED;a" data-en="1 day" data-pt="1 dia">1 d&#xED;a</div><div class="stt-desc" data-es="La Hoya (ski o trekking seg&#xFA;n temporada) + La Trochita desde la estaci&#xF3;n Esquel + paseo por el centro con chocolate artesanal." data-en="La Hoya (ski or trekking depending on season) + La Trochita from Esquel station + stroll through town with artisan chocolate." data-pt="La Hoya (ski ou trekking conforme temporada) + La Trochita da esta&#xE7;&#xE3;o Esquel + passeio pelo centro com chocolate artesanal.">La Hoya + La Trochita desde la estaci&#xF3;n + centro con chocolate artesanal.</div></div>
+<div class="stt-card"><div class="stt-tiempo" data-es="2 d&#xED;as" data-en="2 days" data-pt="2 dias">2 d&#xED;as</div><div class="stt-desc" data-es="Los Alerces (Lago Futalaufquen, sendero Alerce Abuelo) + La Hoya + excursi&#xF3;n a Trevelin con t&#xE9; gal&#xE9;s." data-en="Los Alerces (Lago Futalaufquen, Alerce Abuelo trail) + La Hoya + excursion to Trevelin with Welsh tea." data-pt="Los Alerces (Lago Futalaufquen, trilha Alerce Abuelo) + La Hoya + excurs&#xE3;o a Trevelin com ch&#xE1; gal&#xEA;s.">Los Alerces + La Hoya + Trevelin con t&#xE9; gal&#xE9;s.</div></div>
+<div class="stt-card"><div class="stt-tiempo" data-es="3+ d&#xED;as" data-en="3+ days" data-pt="3+ dias">3+ d&#xED;as</div><div class="stt-desc" data-es="Todo lo anterior + excursi&#xF3;n al Lago Menendez (alerce milenario de 2.600 a&#xF1;os) + cruce a Chile por Futaleuf&#xFA; si quer&#xE9;s encarar la Carretera Austral." data-en="All of the above + excursion to Lago Menendez (2,600-year-old alerce) + crossing to Chile via Futaleuf&#xFA; to access the Carretera Austral." data-pt="Tudo acima + excurs&#xE3;o ao Lago Menendez (alerce de 2.600 anos) + cruzar para o Chile por Futaleuf&#xFA; para a Carretera Austral.">Todo lo anterior + Lago Menendez (alerce de 2.600 a&#xF1;os) + cruce a Chile por Futaleuf&#xFA;.</div></div>
+<div class="stt-card" style="border-left:3px solid #5C7A4A;"><div class="stt-tiempo" style="color:#5C7A4A;" data-es="&#x2614; Si llueve" data-en="&#x2614; If it rains" data-pt="&#x2614; Se chover">&#x2614; Si llueve</div><div class="stt-desc" data-es="La Trochita bajo la lluvia tiene su magia &#x2014; el vapor y el paisaje patag&#xF3;nico mojado son inolvidables. Museo L&#xE9;leque a 80 km sobre RN 40. Chocolater&#xED;as y caf&#xE9;s del centro." data-en="La Trochita in the rain has its own magic &#x2014; the steam and wet Patagonian landscape are unforgettable. Museo L&#xE9;leque 80 km away on RN 40. Chocolate shops and cafes downtown." data-pt="La Trochita na chuva tem sua magia &#x2014; o vapor e a paisagem patag&#xF4;nica molhada s&#xE3;o inesquec&#xED;veis. Museo L&#xE9;leque a 80 km na RN 40. Chocolaterias e caf&#xE9;s no centro.">La Trochita bajo la lluvia es m&#xE1;gica. Museo L&#xE9;leque (80 km). Chocolater&#xED;as en el centro.</div></div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#x1F6A3; C&#xF3;mo llegar" data-en="&#x1F6A3; Getting there" data-pt="&#x1F6A3; Como chegar">&#x1F6A3; C&#xF3;mo llegar</div>
+<div class="stt-grid">
+<div class="stt-card"><div class="stt-tiempo" data-es="Desde Bariloche" data-en="From Bariloche" data-pt="De Bariloche">Desde Bariloche</div><div class="stt-desc" data-es="285 km por RN 40 Sur (~3h 30m). Ruta asfaltada completa pasando por Epu&#xE9;n y L&#xE9;leque. C&#xE1;nyon de la Mosca con hielo en invierno &#x2014; llevar cadenas. Atractivos: Museo L&#xE9;leque y Comarca Andina del Paralelo 42." data-en="285 km on RN 40 South (~3.5 hrs). Fully paved route via Epu&#xE9;n and L&#xE9;leque. C&#xE1;nyon de la Mosca icy in winter &#x2014; carry chains. Highlights: Museo L&#xE9;leque and Andean Region of Parallel 42." data-pt="285 km pela RN 40 Sul (~3h 30m). Rota totalmente asfaltada passando por Epu&#xE9;n e L&#xE9;leque. C&#xE1;non de la Mosca com gelo no inverno &#x2014; levar correntes. Atrativas: Museo L&#xE9;leque e Comarca Andina do Paralelo 42.">285 km por RN 40 Sur. Pasando por L&#xE9;leque y Epu&#xE9;n. Cadenas en invierno.</div></div>
+<div class="stt-card"><div class="stt-tiempo" data-es="Desde El Bols&#xF3;n" data-en="From El Bols&#xF3;n" data-pt="De El Bols&#xF3;n">Desde El Bols&#xF3;n</div><div class="stt-desc" data-es="165 km por RN 40 Sur (~2 hs). Ruta panor&#225;mica entre cerros y bosques. R&#xED;o Tecka como atractivo en camino." data-en="165 km on RN 40 South (~2 hrs). Scenic route between hills and forests. R&#xED;o Tecka as a roadside highlight." data-pt="165 km pela RN 40 Sul (~2 hs). Rota panor&#xE2;mica entre morros e florestas. R&#xED;o Tecka como atrativa no caminho.">165 km por RN 40 Sur (~2 hs). R&#xED;o Tecka en ruta.</div></div>
+<div class="stt-card"><div class="stt-tiempo" data-es="Desde la Costa" data-en="From the Coast" data-pt="Da Costa">Desde la Costa</div><div class="stt-desc" data-es="650 km desde Puerto Madryn/Trelew por RN 25 (~7h 30m). Corredor Bioc&#xE9;anico atravesando la estepa chubutense. Carga obligatoria en Paso de Indios o Las Plumas &#x2014; sin estaciones intermedias." data-en="650 km from Puerto Madryn/Trelew on RN 25 (~7.5 hrs). Trans-ocean corridor crossing the Chubut steppe. Mandatory fuel at Paso de Indios or Las Plumas &#x2014; no intermediate stations." data-pt="650 km de Puerto Madryn/Trelew pela RN 25 (~7h 30m). Corredor Bioc&#xE2;nico cruzando a estepe chubutense. Abastecimento obrigat&#xF3;rio em Paso de Indios ou Las Plumas.">650 km desde Puerto Madryn por RN 25. Carga obligatoria en Paso de Indios o Las Plumas.</div></div>
+<div class="stt-card" style="border-left:3px solid #B84E3A;"><div class="stt-tiempo" style="color:#B84E3A;" data-es="&#x2708;&#xFE0F; En avi&#xF3;n" data-en="&#x2708;&#xFE0F; By plane" data-pt="&#x2708;&#xFE0F; De avi&#xE3;o">&#x2708;&#xFE0F; En avi&#xF3;n</div><div class="stt-desc" data-es="Aeropuerto Esquel (EQS), 20 km del centro. Vuelos desde Buenos Aires (Aeroparque) con Aerol&#xED;neas Argentinas. Verificar frecuencias &#x2014; servicio estacional con mayor frecuencia en temporada de ski." data-en="Esquel Airport (EQS), 20 km from center. Flights from Buenos Aires (Aeroparque) with Aerol&#xED;neas Argentinas. Check schedules &#x2014; seasonal service with higher frequency in ski season." data-pt="Aeroporto Esquel (EQS), 20 km do centro. Voos de Buenos Aires (Aeroparque) com Aerol&#xED;neas Argentinas. Verificar frequ&#xEA;ncias &#x2014; servi&#xE7;o sazonal com maior frequ&#xEA;ncia na temporada de ski.">Aeropuerto Esquel (EQS), 20 km. Vuelos desde Buenos Aires con Aerol&#xED;neas. Mayor frecuencia en temporada ski.</div></div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#x1F1E8;&#x1F1F1; Cruce a Chile &#xB7; Paso Futaleuf&#xFA;" data-en="&#x1F1E8;&#x1F1F1; Crossing to Chile &#xB7; Paso Futaleuf&#xFA;" data-pt="&#x1F1E8;&#x1F1F1; Cruzamento ao Chile &#xB7; Paso Futaleuf&#xFA;">&#x1F1E8;&#x1F1F1; Cruce a Chile &#xB7; Paso Futaleuf&#xFA;</div>
+<div class="info-cards-grid cols1">
+<div class="info-card gris" style="grid-column:1/-1;"><div style="display:flex;gap:12px;align-items:flex-start;"><div class="info-card-icon">&#x1F6C2;</div><div style="flex:1;"><div class="info-card-name" data-es="Paso Futaleuf&#xFA; &#x2014; 65 km de Esquel" data-en="Paso Futaleuf&#xFA; &#x2014; 65 km from Esquel" data-pt="Paso Futaleuf&#xFA; &#x2014; 65 km de Esquel">Paso Futaleuf&#xFA; &#x2014; 65 km de Esquel</div><div class="info-card-sub" data-es="Cruce por Trevelin (RP 259) hacia Futaleuf&#xFA; y la Carretera Austral (Ruta 7 Chile). SAG estricto &#x2014; no ingresar frutas, verduras, carnes ni l&#xE1;cteos frescos. Cobertura roaming Entel, Movistar o WOM al cruzar." data-en="Crossing via Trevelin (RP 259) to Futaleuf&#xFA; and the Carretera Austral (Chile Route 7). Strict SAG &#x2014; no fresh fruit, vegetables, meat or dairy. Entel, Movistar or WOM roaming coverage on crossing." data-pt="Cruzamento via Trevelin (RP 259) para Futaleuf&#xFA; e a Carretera Austral (Rota 7 Chile). SAG estrito &#x2014; sem frutas, verduras, carnes ou latic&#xED;nios frescos. Cobertura roaming Entel, Movistar ou WOM ao cruzar.">Cruce por Trevelin hacia Futaleuf&#xFA; y la Carretera Austral. SAG estricto &#x2014; sin productos frescos.</div></div></div></div>
+<div class="info-nota" data-es="Para chilenos que visitan Esquel: cambio de pesos chilenos y d&#xF3;lares en bancos y casas de cambio en Av. Alvear y 25 de Mayo. Seguro internacional Mercosur + c&#xE9;dula del veh&#xED;culo + cadenas en invierno." data-en="For Chilean visitors to Esquel: exchange Chilean pesos and dollars at banks and exchange houses on Av. Alvear and 25 de Mayo. International Mercosur insurance + vehicle registration + chains in winter." data-pt="Para chilenos que visitam Esquel: c&#xE2;mbio de pesos chilenos e d&#xF3;lares em bancos e casas de c&#xE2;mbio na Av. Alvear e 25 de Mayo. Seguro internacional Mercosur + documento do ve&#xED;culo + correntes no inverno.">Para chilenos en Esquel: cambio en Av. Alvear y 25 de Mayo. Seguro Mercosur + c&#xE9;dula del veh&#xED;culo.</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#x1F3DB;&#xFE0F; Cultura y patrimonio" data-en="&#x1F3DB;&#xFE0F; Culture &amp; heritage" data-pt="&#x1F3DB;&#xFE0F; Cultura e patrim&#xF4;nio">&#x1F3DB;&#xFE0F; Cultura y patrimonio</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+<div class="info-card cultura" style="grid-column:1/-1;"><div style="display:flex;gap:12px;align-items:flex-start;"><div class="info-card-icon">&#x1F682;</div><div style="flex:1;"><div class="info-card-name" data-es="La Trochita &#x2014; Viejo Expreso Patag&#xF3;nico" data-en="La Trochita &#x2014; Old Patagonian Express" data-pt="La Trochita &#x2014; Velho Expresso Patag&#xF4;nico">La Trochita &#x2014; Viejo Expreso Patag&#xF3;nico</div><div class="info-card-sub" data-es="Monumento Hist&#xF3;rico Nacional. Tren a vapor de trocha angosta &#xFA;nico en el mundo. Recorrido hist&#xF3;rico Esquel&#x2013;Nahuel Pan. Estaci&#xF3;n: Roggero y Brun." data-en="National Historic Monument. Unique narrow-gauge steam train in the world. Historic route Esquel&#x2013;Nahuel Pan. Station: Roggero y Brun." data-pt="Monumento Hist&#xF3;rico Nacional. Trem a vapor de bitola estreita &#xFA;nico no mundo. Percurso hist&#xF3;rico Esquel&#x2013;Nahuel Pan. Esta&#xE7;&#xE3;o: Roggero y Brun.">Monumento Hist&#xF3;rico Nacional. Estaci&#xF3;n: Roggero y Brun.</div></div></div></div>
+<div class="info-card gris"><div class="info-card-icon">&#x1F332;</div><div><div class="info-card-name" data-es="Parque Nacional Los Alerces" data-en="Los Alerces National Park" data-pt="Parque Nacional Los Alerces">Parque Nacional Los Alerces</div><div class="info-card-sub" data-es="Patrimonio Mundial UNESCO. Bosques milenarios de lahuanes y lagos cristalinos a 50 km por RP 71. Alerce Abuelo: 2.600 a&#xF1;os." data-en="UNESCO World Heritage. Ancient lahuan forests and crystal lakes 50 km away on RP 71. Alerce Abuelo: 2,600 years old." data-pt="Patrim&#xF4;nio Mundial UNESCO. Florestas milenares de lahuan e lagos cristalinos a 50 km pela RP 71. Alerce Abuelo: 2.600 anos.">Patrimonio Mundial UNESCO. A 50 km por RP 71. Alerce de 2.600 a&#xF1;os.</div></div></div>
+<div class="info-card gris"><div class="info-card-icon">&#x1FA76;</div><div><div class="info-card-name" data-es="Museo Hist&#xF3;rico / Comunidad Nahuel Pan" data-en="Historic Museum / Nahuel Pan Community" data-pt="Museu Hist&#xF3;rico / Comunidade Nahuel Pan">Museo Hist&#xF3;rico / Nahuel Pan</div><div class="info-card-sub" data-es="Memoria mapuche-tehuelche y llegada del ferrocarril. Centro Cultural Melipal / Estaci&#xF3;n Nahuel Pan." data-en="Mapuche-Tehuelche memory and arrival of the railroad. Centro Cultural Melipal / Nahuel Pan Station." data-pt="Mem&#xF3;ria mapuche-tehuelche e chegada da ferrovia. Centro Cultural Melipal / Esta&#xE7;&#xE3;o Nahuel Pan.">Memoria mapuche-tehuelche. Centro Cultural Melipal.</div></div></div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#x1F5FA;&#xFE0F; Servicios clave" data-en="&#x1F5FA;&#xFE0F; Key services" data-pt="&#x1F5FA;&#xFE0F; Servi&#xE7;os essenciais">&#x1F5FA;&#xFE0F; Servicios clave</div>
+<div class="info-cards-grid">
+<div class="info-card gris"><div class="info-card-icon">&#x26FD;</div><div class="info-card-name" data-es="Combustible" data-en="Fuel" data-pt="Combust&#xED;vel">Combustible</div><div class="info-card-sub" data-es="YPF y Axion en Av. Alvear y Av. Fontana. Cargar siempre antes de salir a Los Alerces o hacia el sur por RN 40." data-en="YPF and Axion on Av. Alvear and Av. Fontana. Always fill up before heading to Los Alerces or south on RN 40." data-pt="YPF e Axion na Av. Alvear e Av. Fontana. Abastecer sempre antes de ir aos Los Alerces ou para o sul pela RN 40.">YPF y Axion en Av. Alvear y Fontana. Cargar antes de Los Alerces o RN 40 Sur.</div></div>
+<div class="info-card gris"><div class="info-card-icon">&#x1F3E6;</div><div class="info-card-name" data-es="Cajeros y bancos" data-en="ATMs &amp; banks" data-pt="Caixas e bancos">Cajeros y bancos</div><div class="info-card-sub" data-es="Banco del Chubut, Banco Naci&#xF3;n, Galicia y Santander en Av. Alvear y 25 de Mayo." data-en="Banco del Chubut, Banco Naci&#xF3;n, Galicia and Santander on Av. Alvear and 25 de Mayo." data-pt="Banco del Chubut, Banco Na&#xE7;&#xE3;o, Galicia e Santander na Av. Alvear e 25 de Mayo.">Banco del Chubut, Naci&#xF3;n, Galicia y Santander en Av. Alvear.</div></div>
+<div class="info-card gris"><div class="info-card-icon">&#x2139;&#xFE0F;</div><div class="info-card-name" data-es="Oficina de Turismo" data-en="Tourism Office" data-pt="Secretaria de Turismo">Oficina de Turismo</div><div class="info-card-sub" data-es="Av. Alvear y Sarmiento. Informaci&#xF3;n sobre Los Alerces, La Trochita y excursiones." data-en="Av. Alvear y Sarmiento. Information on Los Alerces, La Trochita and excursions." data-pt="Av. Alvear y Sarmiento. Informa&#xE7;&#xF5;es sobre Los Alerces, La Trochita e excurs&#xF5;es.">Av. Alvear y Sarmiento.<a href="tel:+542945451927" class="info-card-btn outline" style="margin-top:6px;">(02945) 451-927</a></div></div>
+<div class="info-card gris"><div class="info-card-icon">&#x1F6DC;</div><div class="info-card-name" data-es="Terminal de &#xF3;mnibus" data-en="Bus terminal" data-pt="Terminal rodovi&#xE1;ria">Terminal de &#xF3;mnibus</div><div class="info-card-sub" data-es="Av. Alvear 1871. Conexiones a Bariloche, El Bols&#xF3;n, Comodoro Rivadavia y Buenos Aires." data-en="Av. Alvear 1871. Connections to Bariloche, El Bols&#xF3;n, Comodoro Rivadavia and Buenos Aires." data-pt="Av. Alvear 1871. Conex&#xF5;es para Bariloche, El Bols&#xF3;n, Comodoro Rivadavia e Buenos Aires.">Av. Alvear 1871. Bariloche, El Bols&#xF3;n, Comodoro y BsAs.</div></div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#x1F30D; El alma de este lugar" data-en="&#x1F30D; The soul of this place" data-pt="&#x1F30D; A alma deste lugar">&#x1F30D; El alma de este lugar</div>
+<div style="background:rgba(255,255,255,0.04);border-radius:14px;padding:18px 16px;border:1px solid rgba(163,196,204,0.12);display:flex;flex-direction:column;gap:16px;">
+<div style="display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid rgba(163,196,204,0.1);">
+<img src="../luna-avatar.jpg" alt="Luna" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:1px solid rgba(163,196,204,0.3);" onerror="this.style.display='none'">
+<div><div style="font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(163,196,204,0.5);" data-es="Curado por Luna &#xB7; CONF&#xCD;N" data-en="Curated by Luna &#xB7; CONF&#xCD;N" data-pt="Curado por Luna &#xB7; CONF&#xCD;N">Curado por Luna &#xB7; CONF&#xCD;N</div><div style="font-family:Georgia,serif;font-size:0.82rem;font-style:italic;color:rgba(220,212,200,0.9);" data-es="La nieve que el sol respeta" data-en="The snow the sun respects" data-pt="A neve que o sol respeita">La nieve que el sol respeta</div></div>
+</div>
+<div><div style="font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(163,196,204,0.45);margin-bottom:6px;">&#x1F4DA; Historia</div><div style="font-size:0.75rem;color:rgba(210,202,190,0.88);line-height:1.6;" data-es="Esquel fue fundada en 1906 en tierras que los mapuches llamaban Esquel, vocablo que significa &#x22;pantano&#x22; o &#x22;c&#xE9;naga&#x22; en mapudungun. Creci&#xF3; al son del tren &#x2014; La Trochita lleg&#xF3; en 1945 conectando la Patagonia profunda &#x2014; y su alma combina la herencia mapuche-tehuelche con la inmigraci&#xF3;n galesa que lleva su caf&#xE9; y su t&#xE9; al alma de la ciudad." data-en="Esquel was founded in 1906 on lands the Mapuche called Esquel, a word meaning &#x22;swamp&#x22; or &#x22;marsh&#x22; in Mapudungun. It grew to the rhythm of the train &#x2014; La Trochita arrived in 1945 connecting deep Patagonia &#x2014; and its soul combines Mapuche-Tehuelche heritage with Welsh immigration that brings its coffee and tea to the city&#x27;s heart." data-pt="Esquel foi fundada em 1906 em terras que os mapuches chamavam de Esquel, palavra que significa &#x22;p&#xE2;ntano&#x22; em mapudungun. Cresceu ao ritmo do trem &#x2014; La Trochita chegou em 1945 conectando a Patag&#244;nia profunda &#x2014; e sua alma combina a heran&#xE7;a mapuche-tehuelche com a imigra&#xE7;&#xE3;o galesa que leva seu caf&#xE9; e ch&#xE1; ao cora&#xE7;&#xE3;o da cidade.">Fundada en 1906. La Trochita lleg&#xF3; en 1945. Herencia mapuche-tehuelche y galesa.</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+<div style="background:rgba(61,107,115,0.1);border-radius:10px;padding:12px;"><div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(163,196,204,0.45);margin-bottom:5px;">&#x1F993; Fauna insignia</div><div style="font-size:0.7rem;color:rgba(196,220,228,0.85);line-height:1.5;" data-es="El Huill&#237;n &#x2014; nutria patag&#243;nica nativa en peligro de extinci&#243;n que habita los r&#237;os y lagos del Parque Nacional Los Alerces." data-en="The Huill&#237;n &#x2014; an endangered native Patagonian otter that inhabits the rivers and lakes of Los Alerces National Park." data-pt="O Huill&#237;n &#x2014; lontra patag&#xF4;nica nativa em perigo de extin&#xE7;&#xE3;o que habita os rios e lagos do Parque Nacional Los Alerces.">El Huill&#xED;n &#x2014; nutria patag&#xF3;nica nativa en peligro de extinci&#xF3;n en Los Alerces.</div></div>
+<div style="background:rgba(92,122,74,0.1);border-radius:10px;padding:12px;"><div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(163,196,204,0.45);margin-bottom:5px;">&#x1F33F; Flora emblema</div><div style="font-size:0.7rem;color:rgba(196,220,228,0.85);line-height:1.5;" data-es="El Alerce o Lahu&#225;n &#x2014; &#225;rbol milenario de crecimiento lent&#237;simo que puede vivir m&#225;s de 3.000 a&#241;os. Los ejemplares de Los Alerces son Patrimonio de la Humanidad." data-en="The Alerce or Lahu&#225;n &#x2014; an ancient slow-growing tree that can live over 3,000 years. The specimens in Los Alerces are a World Heritage site." data-pt="O Alerce ou Lahu&#225;n &#x2014; &#xE1;rvore milenar de crescimento lent&#xED;ssimo que pode viver mais de 3.000 anos. Os exemplares de Los Alerces s&#xE3;o Patrim&#xF4;nio da Humanidade.">El Alerce / Lahu&#xE1;n &#x2014; puede vivir m&#xE1;s de 3.000 a&#xF1;os. Patrimonio de la Humanidad.</div></div>
+</div>
+<div style="background:rgba(138,106,42,0.1);border-radius:10px;padding:14px;border-left:3px solid rgba(138,106,42,0.5);"><div style="font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(200,170,100,0.6);margin-bottom:6px;">&#x1F4A1; &#xBF;Sab&#xED;as que...?</div><div style="font-size:0.72rem;color:rgba(220,200,160,0.9);line-height:1.6;font-style:italic;" data-es="La Hoya tiene una caracter&#xED;stica geogr&#xE1;fica &#xFA;nica: la forma de hoya natural del cerro orienta las pistas al sur, protegi&#233;ndolas del sol directo. Esto hace que la nieve se conserve en polvo mucho m&#xE1;s tiempo que en otros centros &#x2014; a veces hasta noviembre &#x2014; generando la mejor nieve polvo de la Patagonia." data-en="La Hoya has a unique geographical feature: the natural bowl shape of the mountain orients the slopes southward, protecting them from direct sunlight. This keeps the snow as powder far longer than other resorts &#x2014; sometimes until November &#x2014; producing Patagonia&#x27;s best powder snow." data-pt="La Hoya tem uma caracter&#xED;stica geogr&#xE1;fica &#xFA;nica: a forma de concha natural do morro orienta as pistas ao sul, protegendo-as do sol direto. Isso faz com que a neve se conserve em p&#xF3; muito mais tempo &#x2014; &#xE0;s vezes at&#xE9; novembro &#x2014; gerando a melhor neve em p&#xF3; da Patag&#244;nia.">La Hoya orienta sus pistas al sur protegi&#233;ndolas del sol &#x2014; genera la mejor nieve polvo de la Patagonia, a veces hasta noviembre.</div></div>
+</div>
+</div>
+
+<div style="height:16px;"></div>
+</div>
+
+<div class="pronto-section">
+<div class="pronto-title" data-es="Pr&#xF3;ximamente en CONF&#xCD;N Esquel" data-en="Coming soon to CONF&#xCD;N Esquel" data-pt="Em breve no CONF&#xCD;N Esquel">Pr&#xF3;ximamente en CONF&#xCD;N Esquel</div>
+<div style="font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(163,196,204,0.38);margin-bottom:18px;" data-es="Muy pronto disponible" data-en="Coming soon" data-pt="Em breve">Muy pronto disponible</div>
+<div class="pronto-grid">
+<div class="pronto-card"><div class="pronto-badge" data-es="Pr&#xF3;ximamente" data-en="Coming soon" data-pt="Em breve">Pr&#xF3;ximamente</div><div class="pronto-icon">&#x1F3E0;</div><div class="pronto-name" data-es="Alojamiento" data-en="Accommodation" data-pt="Hospedagem">Alojamiento</div></div>
+<div class="pronto-card"><div class="pronto-badge" data-es="Pr&#xF3;ximamente" data-en="Coming soon" data-pt="Em breve">Pr&#xF3;ximamente</div><div class="pronto-icon">&#x1F37D;&#xFE0F;</div><div class="pronto-name" data-es="Gastronom&#xED;a" data-en="Gastronomy" data-pt="Gastronomia">Gastronom&#xED;a</div></div>
+<div class="pronto-card"><div class="pronto-badge" data-es="Pr&#xF3;ximamente" data-en="Coming soon" data-pt="Em breve">Pr&#xF3;ximamente</div><div class="pronto-icon">&#x1F3BF;</div><div class="pronto-name" data-es="Ski La Hoya" data-en="La Hoya Ski" data-pt="Ski La Hoya">Ski La Hoya</div></div>
+<div class="pronto-card"><div class="pronto-badge" data-es="Pr&#xF3;ximamente" data-en="Coming soon" data-pt="Em breve">Pr&#xF3;ximamente</div><div class="pronto-icon">&#x1F682;</div><div class="pronto-name" data-es="La Trochita" data-en="La Trochita" data-pt="La Trochita">La Trochita</div></div>
+<div class="pronto-card"><div class="pronto-badge" data-es="Pr&#xF3;ximamente" data-en="Coming soon" data-pt="Em breve">Pr&#xF3;ximamente</div><div class="pronto-icon">&#x1F332;</div><div class="pronto-name" data-es="Los Alerces" data-en="Los Alerces" data-pt="Los Alerces">Los Alerces</div></div>
+<div class="pronto-card"><div class="pronto-badge" data-es="Pr&#xF3;ximamente" data-en="Coming soon" data-pt="Em breve">Pr&#xF3;ximamente</div><div class="pronto-icon">&#x1F9ED;</div><div class="pronto-name" data-es="Experiencias" data-en="Experiences" data-pt="Experi&#xEA;ncias">Experiencias</div></div>
+</div>
+</div>
+<div style="height:16px;"></div>
+<footer data-es="conf&#xED;n app &#xB7; patagonia &#xB7; esquel &#xB7; chubut" data-en="conf&#xED;n app &#xB7; patagonia &#xB7; esquel &#xB7; chubut" data-pt="conf&#xED;n app &#xB7; patagonia &#xB7; esquel &#xB7; chubut">conf&#xED;n app &#xB7; patagonia &#xB7; esquel &#xB7; chubut</footer>
+<script>
+window.addEventListener('DOMContentLoaded',function(){
+document.querySelectorAll('[data-es]').forEach(function(el){
+if(el.innerHTML.trim()===''||el.getAttribute('data-es')===null)return;
+el.innerHTML=el.getAttribute('data-es');
+});
+});
+function cambiarIdioma(lang,btn){
+document.querySelectorAll('.lang-btn-dest').forEach(function(b){b.classList.remove('activo');});
+btn.classList.add('activo');
+document.querySelectorAll('[data-es]').forEach(function(el){
+var txt=lang==='es'?el.dataset.es:lang==='en'?el.dataset.en:el.dataset.pt;
+if(txt)el.innerHTML=txt;
+});
+}
+</script>
+</body>
+</html>
