@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TouristDestination","name":"El Bols&#243;n","description":"Gu&#237;a &#250;til de viaje para El Bols&#243;n. Emergencias, feria artesanal, trekking, Cerro Perito Moreno y todo lo que necesit&#225;s saber antes de llegar.","url":"https://contactoconfinapp-cloud.github.io/Confinapp/el-bolson/","touristType":["Turismo de Monta&#241;a","Trekking","Turismo Rural","Feria Artesanal"],"includesAttraction":[{"@type":"TouristAttraction","name":"Feria Regional El Bols&#243;n"},{"@type":"TouristAttraction","name":"Cerro Perito Moreno"},{"@type":"TouristAttraction","name":"R&#237;o Azul"},{"@type":"TouristAttraction","name":"Cascada Escondida"}],"contactPoint":[{"@type":"ContactPoint","telephone":"107","contactType":"emergency","name":"Hospital Dr. Ram&#243;n Carillo El Bols&#243;n"}]}
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CONF&#205;N | Gu&#237;a &#218;til y Gratuita de El Bols&#243;n &mdash; Emergencias, Feria, Trekking y Cerro Perito Moreno</title>
+<meta name="description" content="Informaci&#243;n esencial de El Bols&#243;n: emergencias, feria regional, trekking al Caj&#243;n del Azul, Cerro Perito Moreno y todo lo que necesit&#225;s saber antes de llegar.">
+<meta property="og:title" content="CONF&#205;N &mdash; El Bols&#243;n &#183; Gu&#237;a &#250;til para el viajero">
+<meta property="og:description" content="Todo lo que necesit&#225;s saber antes y durante tu visita a El Bols&#243;n. Gratuito, curado y siempre actualizado.">
+<meta property="og:image" content="https://contactoconfinapp-cloud.github.io/Confinapp/el-bolson-foto.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#3D6B73">
+<link rel="canonical" href="https://contactoconfinapp-cloud.github.io/Confinapp/el-bolson/">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--atlantic:#3D6B73;--fern:#5C7A4A;--cream:#FAF7F2;--fog:#F3F0EA;--night:#1C2B2B;--soil:#44352B;--bark:#8A7A6A;--ash:#D8D2C5;--deep:#0E1A1C;--font-d:'Georgia',serif;}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:var(--deep);color:var(--cream);min-height:100vh;}
+.nav{position:sticky;top:0;z-index:100;background:var(--deep);display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(61,107,115,0.3);}
+.nav-logo{font-family:var(--font-d);font-size:1rem;color:var(--cream);letter-spacing:0.04em;text-decoration:none;}
+.nav-corredor{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(163,196,204,0.5);}
+.nav-back{font-size:0.72rem;color:rgba(163,196,204,0.7);text-decoration:none;display:flex;align-items:center;gap:4px;}
+.hero{background:linear-gradient(160deg,#1A3028 0%,var(--deep) 100%);padding:32px 20px 24px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:url('el-bolson-foto.jpg') center/cover no-repeat;opacity:0.22;}
+.hero-content{position:relative;z-index:1;}
+.hero-tag{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(163,196,204,0.6);margin-bottom:8px;}
+.hero-title{font-family:var(--font-d);font-size:clamp(1.8rem,5vw,2.4rem);font-weight:300;color:#fff;line-height:1.15;margin-bottom:6px;}
+.hero-sub{font-size:0.72rem;color:rgba(163,196,204,0.6);letter-spacing:0.06em;}
+.lang-bar{display:flex;gap:6px;margin-top:14px;}
+.lang-btn-dest{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:5px 10px;border-radius:20px;border:1px solid rgba(163,196,204,0.3);background:transparent;color:rgba(163,196,204,0.6);cursor:pointer;font-family:inherit;}
+.lang-btn-dest.activo{background:rgba(61,107,115,0.4);color:#fff;border-color:rgba(163,196,204,0.5);}
+.content{max-width:640px;margin:0 auto;}
+.info-bloque{padding:20px 16px 0;}
+.info-bloque-titulo{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--bark);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.info-bloque-titulo::after{content:'';flex:1;height:1px;background:var(--ash);}
+.info-cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px;}
+.info-cards-grid.cols1{grid-template-columns:1fr;}
+.info-card{background:rgba(255,255,255,0.07);border-radius:12px;padding:16px 14px;box-shadow:0 2px 12px rgba(0,0,0,0.2);border:1px solid rgba(163,196,204,0.12);display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden;transition:border-color 0.2s;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,var(--atlantic));}
+.info-card.emergencia{--card-accent:#B84E3A;}
+.info-card.paseo{--card-accent:#5C7A4A;}
+.info-card.cultura{--card-accent:#8A6A2A;}
+.info-card.nieve{--card-accent:#7AAFC4;}
+.info-card.gris{--card-accent:#6A7A7A;}
+.info-card-icon{font-size:1.6rem;line-height:1;}
+.info-card-name{font-size:0.78rem;font-weight:600;color:var(--cream);line-height:1.3;}
+.info-card-sub{font-size:0.66rem;color:rgba(196,220,228,0.88);line-height:1.4;}
+.info-card-tel{font-size:1rem;font-weight:700;color:var(--atlantic);letter-spacing:0.03em;}
+.info-card-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.65rem;letter-spacing:0.06em;text-transform:uppercase;padding:7px 10px;border-radius:20px;text-decoration:none;background:var(--card-accent,var(--atlantic));color:#fff;font-family:inherit;margin-top:auto;justify-content:center;border:none;cursor:pointer;}
+.info-card-btn.outline{background:transparent;color:var(--card-accent,var(--atlantic));border:1px solid var(--card-accent,var(--atlantic));}
+.info-nota{background:rgba(61,107,115,0.18);border-left:3px solid var(--atlantic);border-radius:0 6px 6px 0;padding:10px 12px;font-size:0.75rem;color:rgba(196,220,228,0.9);line-height:1.6;margin-bottom:10px;}
+.info-aviso{background:rgba(184,78,58,0.15);border-left:3px solid #B84E3A;border-radius:0 6px 6px 0;padding:10px 12px;font-size:0.75rem;color:rgba(196,220,228,0.9);line-height:1.6;margin-bottom:10px;}
+.spacer{height:24px;}
+.stt-grid{display:grid;grid-template-columns:1fr;gap:8px;}
+.stt-card{background:rgba(255,255,255,0.07);border-radius:10px;padding:14px;border:1px solid rgba(163,196,204,0.12);display:flex;gap:12px;align-items:flex-start;}
+.stt-tiempo{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--atlantic);font-weight:600;white-space:nowrap;margin-top:2px;min-width:72px;}
+.stt-desc{font-size:0.8rem;color:rgba(220,212,202,0.92);line-height:1.5;}
+.pronto-section{background:rgba(255,255,255,0.025);border-top:1px solid rgba(163,196,204,0.1);padding:24px 16px;}
+.pronto-title{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(163,196,204,0.4);margin-bottom:16px;}
+.pronto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.pronto-card{background:rgba(255,255,255,0.02);border:1px solid rgba(163,196,204,0.08);border-radius:10px;padding:14px 10px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;}
+.pronto-badge{font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(163,196,204,0.35);background:rgba(61,107,115,0.08);padding:3px 7px;border-radius:10px;}
+.pronto-icon{font-size:1.4rem;}
+.pronto-name{font-size:0.6rem;color:rgba(163,196,204,0.4);letter-spacing:0.04em;}
+footer{text-align:center;padding:20px 16px;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(163,196,204,0.25);}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/" class="nav-logo">conf&#237;n <span class="nav-corredor">&#183; patagonia</span></a>
+  <a href="/" class="nav-back">&#8592; volver</a>
+</nav>
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag" data-es="Argentina &#183; Patagonia &#183; R&#237;o Negro" data-en="Argentina &#183; Patagonia &#183; R&#237;o Negro" data-pt="Argentina &#183; Patag&#244;nia &#183; R&#237;o Negro">Argentina &#183; Patagonia &#183; R&#237;o Negro</div>
+    <h1 class="hero-title">El Bols&#243;n</h1>
+    <div class="hero-sub" data-es="Valle artesanal, treks legendarios y la mejor cerveza artesanal del sur" data-en="Artisan valley, legendary treks and the best craft beer in the south" data-pt="Vale artesanal, trilhas lend&#225;rias e a melhor cerveja artesanal do sul">Valle artesanal, treks legendarios y la mejor cerveza artesanal del sur</div>
+    <div class="lang-bar">
+      <button class="lang-btn-dest activo" onclick="cambiarIdioma('es',this)">ES</button>
+      <button class="lang-btn-dest" onclick="cambiarIdioma('en',this)">EN</button>
+      <button class="lang-btn-dest" onclick="cambiarIdioma('pt',this)">PT</button>
+    </div>
+  </div>
+</div>
+<div class="content">
+
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#128680; Emergencias" data-en="&#128680; Emergencies" data-pt="&#128680; Emerg&#234;ncias">&#128680; Emergencias</div>
+<div class="info-cards-grid">
+<div class="info-card emergencia">
+  <div class="info-card-icon">&#127973;</div>
+  <div class="info-card-name" data-es="Hospital Dr. Ram&#243;n Carrillo" data-en="Hospital Dr. Ram&#243;n Carrillo" data-pt="Hospital Dr. Ram&#243;n Carrillo">Hospital Dr. Ram&#243;n Carrillo</div>
+  <div class="info-card-sub" data-es="Av. Belgrano y Perito Moreno" data-en="Av. Belgrano y Perito Moreno" data-pt="Av. Belgrano y Perito Moreno">Av. Belgrano y Perito Moreno</div>
+  <div class="info-card-tel">107</div>
+  <a href="tel:+542944492000" class="info-card-btn outline">(02944) 492-000</a>
+</div>
+<div class="info-card emergencia">
+  <div class="info-card-icon">&#128658;</div>
+  <div class="info-card-name" data-es="Bomberos Voluntarios" data-en="Volunteer Fire Dept." data-pt="Bombeiros Volunt&#225;rios">Bomberos Voluntarios</div>
+  <div class="info-card-sub" data-es="San Mart&#237;n y Pablo Hube" data-en="San Mart&#237;n y Pablo Hube" data-pt="San Mart&#237;n y Pablo Hube">San Mart&#237;n y Pablo Hube</div>
+  <div class="info-card-tel">100</div>
+</div>
+<div class="info-card emergencia">
+  <div class="info-card-icon">&#128110;</div>
+  <div class="info-card-name" data-es="Polic&#237;a" data-en="Police" data-pt="Pol&#237;cia">Polic&#237;a</div>
+  <div class="info-card-sub" data-es="Comisar&#237;a El Bols&#243;n" data-en="El Bols&#243;n Police Station" data-pt="Delegacia El Bols&#243;n">Comisar&#237;a El Bols&#243;n</div>
+  <div class="info-card-tel">101</div>
+</div>
+<div class="info-card emergencia">
+  <div class="info-card-icon">&#127956;&#65039;</div>
+  <div class="info-card-name" data-es="Defensa Civil / Rescate" data-en="Civil Defense / Rescue" data-pt="Defesa Civil / Resgate">Defensa Civil / Rescate</div>
+  <div class="info-card-sub" data-es="Para emergencias en monta&#241;a y r&#237;os &mdash; coordin&#225; siempre antes de salir a trekkings largos." data-en="For mountain and river emergencies &mdash; always coordinate before long treks." data-pt="Para emerg&#234;ncias em montanha e rios &mdash; coordene sempre antes de trilhas longas.">Para emergencias en monta&#241;a y r&#237;os &mdash; coordin&#225; siempre antes de salir a trekkings largos.</div>
+  <div class="info-card-tel">103</div>
+</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#9201;&#65039; &#191;Cu&#225;nto tiempo ten&#233;s?" data-en="&#9201;&#65039; How much time do you have?" data-pt="&#9201;&#65039; Quanto tempo voc&#234; tem?">&#9201;&#65039; &#191;Cu&#225;nto tiempo ten&#233;s?</div>
+<div class="stt-grid">
+  <div class="stt-card">
+    <div class="stt-tiempo" data-es="Medio d&#237;a" data-en="Half day" data-pt="Meio dia">Medio d&#237;a</div>
+    <div class="stt-desc" data-es="Feria Regional (mar, jue, s&#225;b, dom) + helados artesanales + paseo por el centro." data-en="Regional fair (Tue, Thu, Sat, Sun) + artisan ice cream + stroll through the center." data-pt="Feira Regional (ter, qui, s&#225;b, dom) + sorvetes artesanais + passeio pelo centro.">Feria Regional (mar, jue, s&#225;b, dom) + helados artesanales + paseo por el centro.</div>
+  </div>
+  <div class="stt-card">
+    <div class="stt-tiempo" data-es="1 d&#237;a" data-en="1 day" data-pt="1 dia">1 d&#237;a</div>
+    <div class="stt-desc" data-es="Feria + Cascada Escondida (4 hs ida y vuelta) o Caj&#243;n del Azul (full day desde El Bols&#243;n)." data-en="Fair + Cascada Escondida (4 hrs round trip) or Caj&#243;n del Azul (full day from El Bols&#243;n)." data-pt="Feira + Cascada Escondida (4 hs ida e volta) ou Caj&#243;n del Azul (dia inteiro).">Feria + Cascada Escondida (4 hs ida y vuelta) o Caj&#243;n del Azul (full day desde El Bols&#243;n).</div>
+  </div>
+  <div class="stt-card">
+    <div class="stt-tiempo" data-es="2&ndash;3 d&#237;as" data-en="2&ndash;3 days" data-pt="2&ndash;3 dias">2&ndash;3 d&#237;as</div>
+    <div class="stt-desc" data-es="Caj&#243;n del Azul, Cerro Perito Moreno, Mall&#237;n Ahogado, cervecer&#237;as artesanales y mercado de productores." data-en="Caj&#243;n del Azul, Cerro Perito Moreno, Mall&#237;n Ahogado, craft breweries and producers market." data-pt="Caj&#243;n del Azul, Cerro Perito Moreno, Mall&#237;n Ahogado, cervejarias artesanais e mercado de produtores.">Caj&#243;n del Azul, Cerro Perito Moreno, Mall&#237;n Ahogado, cervecer&#237;as artesanales y mercado de productores.</div>
+  </div>
+  <div class="stt-card" style="border-left:3px solid #5C7A4A;">
+    <div class="stt-tiempo" style="color:#5C7A4A;" data-es="&#9748; Si llueve" data-en="&#9748; If it rains" data-pt="&#9748; Se chover">&#9748; Si llueve</div>
+    <div class="stt-desc" data-es="Cervecer&#237;as con espacio cubierto (Berlina, Mantra) + chocolate artesanal El Almac&#233;n de Ramos Generales + librer&#237;as de la calle Perito Moreno." data-en="Breweries with covered space (Berlina, Mantra) + artisan chocolate El Almac&#233;n de Ramos Generales + bookshops on Perito Moreno street." data-pt="Cervejarias com espa&#231;o coberto (Berlina, Mantra) + chocolate artesanal El Almac&#233;n de Ramos Generales + livrarias na rua Perito Moreno.">Cervecer&#237;as con espacio cubierto (Berlina, Mantra) + chocolate artesanal El Almac&#233;n de Ramos Generales + librer&#237;as de la calle Perito Moreno.</div>
+  </div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#128739;&#65039; Acceso" data-en="&#128739;&#65039; Access" data-pt="&#128739;&#65039; Acesso">&#128739;&#65039; Acceso</div>
+<div class="info-cards-grid cols1">
+<div class="info-nota" data-es="El Bols&#243;n est&#225; a 130 km al sur de Bariloche por la RN 40. Sin aeropuerto propio &mdash; se llega por Bariloche (BRC) o El Mait&#233;n. Ruta panor&#225;mica con nieve posible en invierno: llev&#225; cadenas entre junio y agosto." data-en="El Bols&#243;n is 130 km south of Bariloche on RN 40. No local airport &mdash; arrive via Bariloche (BRC) or El Mait&#233;n. Scenic route with possible snow in winter: carry chains between June and August." data-pt="El Bols&#243;n fica a 130 km ao sul de Bariloche pela RN 40. Sem aeroporto local &mdash; chegue por Bariloche (BRC) ou El Mait&#233;n. Rota panor&#226;mica com neve poss&#237;vel no inverno: leve correntes de junho a agosto.">El Bols&#243;n est&#225; a 130 km al sur de Bariloche por la RN 40. Sin aeropuerto propio &mdash; se llega por Bariloche (BRC) o El Mait&#233;n. Ruta panor&#225;mica con nieve posible en invierno: llev&#225; cadenas entre junio y agosto.</div>
+<div class="info-card gris">
+  <div class="info-card-icon">&#128652;</div>
+  <div class="info-card-name" data-es="Terminal de &#211;mnibus" data-en="Bus Terminal" data-pt="Terminal Rodovi&#225;ria">Terminal de &#211;mnibus</div>
+  <div class="info-card-sub" data-es="Av. San Mart&#237;n y Perito Moreno. Servicios desde Bariloche (2 hs), Buenos Aires (22 hs), Esquel (2,5 hs)." data-en="Av. San Mart&#237;n y Perito Moreno. Services from Bariloche (2 hrs), Buenos Aires (22 hrs), Esquel (2.5 hrs)." data-pt="Av. San Mart&#237;n y Perito Moreno. Servi&#231;os de Bariloche (2 hs), Buenos Aires (22 hs), Esquel (2,5 hs).">Av. San Mart&#237;n y Perito Moreno. Servicios desde Bariloche (2 hs), Buenos Aires (22 hs), Esquel (2,5 hs).</div>
+</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#128694; Paseos y trekking" data-en="&#128694; Walks & trekking" data-pt="&#128694; Passeios e trekking">&#128694; Paseos y trekking</div>
+<div class="info-cards-grid">
+<div class="info-card paseo" style="grid-column:1/-1;">
+  <div style="display:flex;gap:12px;align-items:flex-start;">
+  <div class="info-card-icon">&#127966;&#65039;</div>
+  <div style="flex:1;">
+    <div class="info-card-name" data-es="Caj&#243;n del Azul" data-en="Caj&#243;n del Azul" data-pt="Caj&#243;n del Azul">Caj&#243;n del Azul</div>
+    <div class="info-card-sub" data-es="Trek estrella de El Bols&#243;n. Salida desde Wharton (15 km al norte), 3&ndash;4 hs de caminata por el R&#237;o Azul hasta el caj&#243;n. Aguas turquesa, paredes de piedra y refugio. Guarda parques en acceso &mdash; consult&#225; apertura seg&#250;n temporada." data-en="El Bols&#243;n's flagship trek. Departs from Wharton (15 km north), 3&ndash;4 hrs hiking along R&#237;o Azul to the canyon. Turquoise waters, rock walls and shelter. Rangers at entrance &mdash; check seasonal opening." data-pt="Trilha estrela de El Bols&#243;n. Sa&#237;da de Wharton (15 km ao norte), 3&ndash;4 hs de caminhada pelo R&#237;o Azul at&#233; o c&#226;nion. &#193;guas turquesa, paredes de pedra e ref&#250;gio. Guarda parques na entrada &mdash; consulte abertura por temporada.">Trek estrella de El Bols&#243;n. Salida desde Wharton (15 km al norte), 3&ndash;4 hs de caminata por el R&#237;o Azul hasta el caj&#243;n. Aguas turquesa, paredes de piedra y refugio. Guarda parques en acceso &mdash; consult&#225; apertura seg&#250;n temporada.</div>
+  </div>
+  </div>
+</div>
+<div class="info-card paseo">
+  <div class="info-card-icon">&#128167;</div>
+  <div class="info-card-name" data-es="Cascada Escondida" data-en="Cascada Escondida" data-pt="Cascada Escondida">Cascada Escondida</div>
+  <div class="info-card-sub" data-es="4 km al norte por RN 40. Trek de 4 hs ida y vuelta &mdash; apto para toda la familia con calzado c&#243;modo." data-en="4 km north on RN 40. 4 hrs round trip &mdash; suitable for all the family with comfortable shoes." data-pt="4 km ao norte pela RN 40. Trilha de 4 hs ida e volta &mdash; adequada para toda a fam&#237;lia com cal&#231;ado confort&#225;vel.">4 km al norte por RN 40. Trek de 4 hs ida y vuelta &mdash; apto para toda la familia con calzado c&#243;modo.</div>
+</div>
+<div class="info-card paseo">
+  <div class="info-card-icon">&#127866;</div>
+  <div class="info-card-name" data-es="Circuito Cervecero" data-en="Craft Beer Circuit" data-pt="Circuito de Cerveja Artesanal">Circuito Cervecero</div>
+  <div class="info-card-sub" data-es="Berlina, Mantra, El Bols&#243;n &mdash; m&#225;s de 10 cervecer&#237;as artesanales en el valle. El Bols&#243;n es la capital nacional de la cerveza artesanal." data-en="Berlina, Mantra, El Bols&#243;n &mdash; over 10 craft breweries in the valley. El Bols&#243;n is the national capital of craft beer." data-pt="Berlina, Mantra, El Bols&#243;n &mdash; mais de 10 cervejarias artesanais no vale. El Bols&#243;n &#233; a capital nacional da cerveja artesanal.">Berlina, Mantra, El Bols&#243;n &mdash; m&#225;s de 10 cervecer&#237;as artesanales en el valle. El Bols&#243;n es la capital nacional de la cerveza artesanal.</div>
+</div>
+<div class="info-card paseo">
+  <div class="info-card-icon">&#127914;</div>
+  <div class="info-card-name" data-es="Feria Regional" data-en="Regional Fair" data-pt="Feira Regional">Feria Regional</div>
+  <div class="info-card-sub" data-es="Plaza Pagano &#183; Mar, Jue, S&#225;b y Dom. Artesan&#237;as, frutas, dulces, l&#250;pulo, quesos y productores locales." data-en="Plaza Pagano &#183; Tue, Thu, Sat and Sun. Crafts, fruit, jams, hops, cheese and local producers." data-pt="Plaza Pagano &#183; Ter, Qui, S&#225;b e Dom. Artesanato, frutas, doces, l&#250;pulo, queijos e produtores locais.">Plaza Pagano &#183; Mar, Jue, S&#225;b y Dom. Artesan&#237;as, frutas, dulces, l&#250;pulo, quesos y productores locales.</div>
+</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#9975;&#65039; Centro de ski &#183; Cerro Perito Moreno" data-en="&#9975;&#65039; Ski resort &#183; Cerro Perito Moreno" data-pt="&#9975;&#65039; Centro de ski &#183; Cerro Perito Moreno">&#9975;&#65039; Centro de ski &#183; Cerro Perito Moreno</div>
+<div class="info-cards-grid cols1">
+<div class="info-card nieve" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:url('centro-ski-foto.jpg') center/cover no-repeat;opacity:0.12;"></div>
+  <div style="position:relative;z-index:1;display:flex;gap:12px;align-items:flex-start;">
+  <div class="info-card-icon">&#127935;</div>
+  <div style="flex:1;">
+    <div class="info-card-name" data-es="Cerro Perito Moreno &mdash; 13 km del centro" data-en="Cerro Perito Moreno &mdash; 13 km from town" data-pt="Cerro Perito Moreno &mdash; 13 km do centro">Cerro Perito Moreno &mdash; 13 km del centro</div>
+    <div class="info-card-sub" data-es="Centro de ski familiar con pistas para todos los niveles. Ski, snowboard, trineos y snowshoeing. Vistas panor&#225;micas al Valle del Bols&#243;n y los Andes. Temporada: junio&ndash;septiembre seg&#250;n nevada. Alquiler de equipo en base." data-en="Family ski resort with slopes for all levels. Ski, snowboard, sleds and snowshoeing. Panoramic views of Valle del Bols&#243;n and the Andes. Season: June&ndash;September depending on snowfall. Equipment rental at base." data-pt="Centro de ski familiar com pistas para todos os n&#237;veis. Ski, snowboard, tren&#243;s e snowshoeing. Vistas panor&#226;micas do Valle del Bols&#243;n e dos Andes. Temporada: junho&ndash;setembro conforme neve. Aluguel de equipamentos na base.">Centro de ski familiar con pistas para todos los niveles. Ski, snowboard, trineos y snowshoeing. Vistas panor&#225;micas al Valle del Bols&#243;n y los Andes. Temporada: junio&ndash;septiembre seg&#250;n nevada. Alquiler de equipo en base.</div>
+  </div>
+  </div>
+</div>
+<div class="info-nota" data-es="Acceso por camino de ripio &mdash; recomendado veh&#237;culo con tracci&#243;n o 4x4 con nieve. Verific&#225; condiciones antes de salir en invierno." data-en="Access via gravel road &mdash; 4WD or high-clearance vehicle recommended in snow. Check conditions before heading out in winter." data-pt="Acesso por estrada de cascalho &mdash; recomendado ve&#237;culo com tra&#231;&#227;o ou 4x4 com neve. Verifique as condi&#231;&#245;es antes de sair no inverno.">Acceso por camino de ripio &mdash; recomendado veh&#237;culo con tracci&#243;n o 4x4 con nieve. Verific&#225; condiciones antes de salir en invierno.</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#127963;&#65039; Cultura y patrimonio" data-en="&#127963;&#65039; Culture & heritage" data-pt="&#127963;&#65039; Cultura e patrim&#244;nio">&#127963;&#65039; Cultura y patrimonio</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+<div class="info-card cultura" style="grid-column:1/-1;">
+  <div style="display:flex;gap:12px;align-items:flex-start;">
+  <div class="info-card-icon">&#127968;</div>
+  <div style="flex:1;">
+    <div class="info-card-name" data-es="Casa de la Cultura El Bols&#243;n" data-en="Casa de la Cultura El Bols&#243;n" data-pt="Casa da Cultura El Bols&#243;n">Casa de la Cultura El Bols&#243;n</div>
+    <div class="info-card-sub" data-es="Av. San Mart&#237;n 2179. Exposiciones, talleres y eventos de artistas locales. Centro de la escena cultural del valle." data-en="Av. San Mart&#237;n 2179. Exhibitions, workshops and events by local artists. Hub of the valley's cultural scene." data-pt="Av. San Mart&#237;n 2179. Exposi&#231;&#245;es, oficinas e eventos de artistas locais. Centro da cena cultural do vale.">Av. San Mart&#237;n 2179. Exposiciones, talleres y eventos de artistas locales. Centro de la escena cultural del valle.</div>
+  </div>
+  </div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">&#127851;</div>
+  <div>
+    <div class="info-card-name" data-es="El Almac&#233;n de Ramos Generales" data-en="El Almac&#233;n de Ramos Generales" data-pt="El Almac&#233;n de Ramos Generales">El Almac&#233;n de Ramos Generales</div>
+    <div class="info-card-sub" data-es="Av. San Mart&#237;n 2586. Patrimonio gastron&#243;mico del pueblo &mdash; chocolates, dulces y productos regionales artesanales." data-en="Av. San Mart&#237;n 2586. Gastronomic heritage of the town &mdash; chocolates, preserves and artisan regional products." data-pt="Av. San Mart&#237;n 2586. Patrim&#244;nio gastron&#244;mico do vilarejo &mdash; chocolates, doces e produtos regionais artesanais.">Av. San Mart&#237;n 2586. Patrimonio gastron&#243;mico del pueblo &mdash; chocolates, dulces y productos regionales artesanales.</div>
+  </div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">&#127807;</div>
+  <div>
+    <div class="info-card-name" data-es="Mall&#237;n Ahogado" data-en="Mall&#237;n Ahogado" data-pt="Mall&#237;n Ahogado">Mall&#237;n Ahogado</div>
+    <div class="info-card-sub" data-es="12 km al norte. Comunidad de productores agroecol&#243;gicos &mdash; chacras, l&#250;pulo, frutas finas y miel. Hito del turismo rural patag&#243;nico." data-en="12 km north. Agroecological producer community &mdash; farms, hops, berries and honey. Icon of Patagonian rural tourism." data-pt="12 km ao norte. Comunidade de produtores agroecol&#243;gicos &mdash; s&#237;tios, l&#250;pulo, frutas finas e mel. &#205;cone do turismo rural patag&#244;nico.">12 km al norte. Comunidad de productores agroecol&#243;gicos &mdash; chacras, l&#250;pulo, frutas finas y miel. Hito del turismo rural patag&#243;nico.</div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#128739;&#65039; Servicios clave" data-en="&#128739;&#65039; Key services" data-pt="&#128739;&#65039; Servi&#231;os essenciais">&#128739;&#65039; Servicios clave</div>
+<div class="info-cards-grid">
+<div class="info-card gris">
+  <div class="info-card-icon">&#128138;</div>
+  <div class="info-card-name" data-es="Farmacia de turno" data-en="On-duty pharmacy" data-pt="Farm&#225;cia de plant&#227;o">Farmacia de turno</div>
+  <div class="info-card-sub" data-es="Consult&#225; en el Hospital o llam&#225; al 0800-222-6768 (SAME provincial 24 hs)." data-en="Check at the hospital or call 0800-222-6768 (provincial SAME 24 hrs)." data-pt="Consulte no hospital ou ligue para 0800-222-6768 (SAME provincial 24 hs).">Consult&#225; en el Hospital o llam&#225; al 0800-222-6768 (SAME provincial 24 hs).</div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">&#127974;</div>
+  <div class="info-card-name" data-es="Cajeros ATM" data-en="ATM machines" data-pt="Caixas eletr&#244;nicos">Cajeros ATM</div>
+  <div class="info-card-sub" data-es="Banco Patagonia y Banco Naci&#243;n en Av. San Mart&#237;n. Cubr&#237; efectivo antes de rutas remotas." data-en="Banco Patagonia and Banco Naci&#243;n on Av. San Mart&#237;n. Get cash before heading to remote routes." data-pt="Banco Patagonia e Banco Na&#231;&#227;o na Av. San Mart&#237;n. Saque dinheiro antes de rotas remotas.">Banco Patagonia y Banco Naci&#243;n en Av. San Mart&#237;n. Cubr&#237; efectivo antes de rutas remotas.</div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">&#9981;</div>
+  <div class="info-card-name" data-es="Estaciones de servicio" data-en="Gas stations" data-pt="Postos de gasolina">Estaciones de servicio</div>
+  <div class="info-card-sub" data-es="YPF y Shell en acceso norte (RN 40). Carg&#225; siempre en El Bols&#243;n &mdash; las pr&#243;ximas estaciones en ruta sur est&#225;n muy distantes." data-en="YPF and Shell at north entrance (RN 40). Always fill up in El Bols&#243;n &mdash; next stations heading south are very far." data-pt="YPF e Shell na entrada norte (RN 40). Sempre abaste&#231;a em El Bols&#243;n &mdash; os pr&#243;ximos postos ao sul ficam muito distantes.">YPF y Shell en acceso norte (RN 40). Carg&#225; siempre en El Bols&#243;n &mdash; las pr&#243;ximas estaciones en ruta sur est&#225;n muy distantes.</div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">&#128246;</div>
+  <div class="info-card-name" data-es="Conectividad" data-en="Connectivity" data-pt="Conectividade">Conectividad</div>
+  <div class="info-card-sub" data-es="Se&#241;al Claro y Personal en el centro. Sin cobertura en zonas de trekking &mdash; descarg&#225; mapas offline (Maps.me, Wikiloc)." data-en="Claro and Personal signal in town. No coverage in trekking areas &mdash; download offline maps (Maps.me, Wikiloc)." data-pt="Sinal Claro e Personal no centro. Sem cobertura em &#225;reas de trekking &mdash; baixe mapas offline (Maps.me, Wikiloc).">Se&#241;al Claro y Personal en el centro. Sin cobertura en zonas de trekking &mdash; descarg&#225; mapas offline (Maps.me, Wikiloc).</div>
+</div>
+</div>
+</div>
+
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#128739;&#65039; C&#xF3;mo llegar" data-en="&#128739;&#65039; Getting there" data-pt="&#128739;&#65039; Como chegar">&#128739;&#65039; C&#xF3;mo llegar</div>
+<div class="stt-grid">
+<div class="stt-card"><div class="stt-tiempo" data-es="Desde Bariloche" data-en="From Bariloche" data-pt="De Bariloche">Desde Bariloche</div><div class="stt-desc" data-es="120 km por RN 40 Sur. C&#xE1;nyon de la Mosca: camino sinuoso, hielo y sombra en invierno. Lagos Guti&#xE9;rrez, Mascardi y Guillelmo en ruta. Sin estaciones entre Mascardi y El Bols&#xF3;n &#x2014; cargar en Bariloche." data-en="120 km on RN 40 South. C&#xE1;nyon de la Mosca: winding road, ice and shade in winter. Lakes Guti&#xE9;rrez, Mascardi and Guillelmo on route. No fuel between Mascardi and El Bols&#xF3;n &#x2014; fill up in Bariloche." data-pt="120 km pela RN 40 Sul. C&#xE1;non de la Mosca: estrada sinuosa, gelo no inverno. Lagos Guti&#xE9;rrez, Mascardi e Guillelmo na rota. Sem postos entre Mascardi e El Bols&#xF3;n &#x2014; abastecer em Bariloche.">120 km por RN 40 Sur. Ca&#xF1;&#xF3;n de la Mosca con hielo en invierno. Cargar en Bariloche.</div></div>
+<div class="stt-card"><div class="stt-tiempo" data-es="Desde Esquel" data-en="From Esquel" data-pt="De Esquel">Desde Esquel</div><div class="stt-desc" data-es="165 km por RN 40 Norte. Tr&#xE1;nsito de camiones internacionales hacia/desde Chile &#x2014; precauci&#xF3;n. Estaci&#xF3;n en Esquel y en El Bols&#xF3;n." data-en="165 km on RN 40 North. International truck traffic to/from Chile &#x2014; drive carefully. Fuel in Esquel and El Bols&#xF3;n." data-pt="165 km pela RN 40 Norte. Tr&#xE2;nsito de caminh&#xF5;es internacionais &#x2014; precau&#xE7;&#xE3;o. Combust&#xED;vel em Esquel e El Bols&#xF3;n.">165 km por RN 40 Norte. Tr&#xE1;nsito de camiones internacionales &#x2014; precauci&#xF3;n.</div></div>
+</div>
+</div>
+
+<div style="height:16px;"></div>
+</div>
+
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="&#127756; El alma de este lugar" data-en="&#127756; The soul of this place" data-pt="&#127756; A alma deste lugar">&#127756; El alma de este lugar</div>
+<div style="background:rgba(255,255,255,0.04);border-radius:14px;padding:18px 16px;border:1px solid rgba(163,196,204,0.12);display:flex;flex-direction:column;gap:16px;">
+<div style="display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid rgba(163,196,204,0.1);">
+<img src="../luna-avatar.jpg" alt="Luna" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:1px solid rgba(163,196,204,0.3);" onerror="this.style.display='none'">
+<div><div style="font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(163,196,204,0.5);" data-es="Curado por Luna &#xB7; CONF&#xCD;N" data-en="Curated by Luna &#xB7; CONF&#xCD;N" data-pt="Curado por Luna &#xB7; CONF&#xCD;N">Curado por Luna &#xB7; CONF&#xCD;N</div><div style="font-family:Georgia,serif;font-size:0.82rem;font-style:italic;color:rgba(220,212,200,0.9);" data-es="Leyendas del valle encantado" data-en="Legends of the enchanted valley" data-pt="Lendas do vale encantado">Leyendas del valle encantado</div></div>
+</div>
+<div>
+<div style="font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(163,196,204,0.45);margin-bottom:6px;" data-es="&#128218; Historia" data-en="&#128218; History" data-pt="&#128218; Hist&#xF3;ria">&#128218; Historia</div>
+<div style="font-size:0.75rem;color:rgba(210,202,190,0.88);line-height:1.6;" data-es="Fundada el 28 de enero de 1926 en un valle protegido entre cordones monta&#xF1;osos. A partir de los a&#xF1;os 60 y 70 se convirti&#xF3; en punto de encuentro de movimientos naturistas y artesanos, d&#225;ndole su identidad libre y ecol&#xF3;gica." data-en="Founded January 28, 1926 in a valley sheltered by mountain ridges. From the 1960s and 70s it became a gathering point for naturalist movements and artisans, giving it its free and ecological identity." data-pt="Fundada em 28 de janeiro de 1926 em um vale protegido entre cadeias montanhosas. A partir dos anos 60 e 70 se tornou ponto de encontro de movimentos naturalistas e artes&#227;os, dando-lhe sua identidade livre e ecol&#xF3;gica.">Fundada el 28 de enero de 1926 en un valle protegido entre cordones monta&#xF1;osos. A partir de los a&#xF1;os 60 y 70 se convirti&#xF3; en punto de encuentro de movimientos naturistas y artesanos, d&#225;ndole su identidad libre y ecol&#xF3;gica.</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+<div style="background:rgba(61,107,115,0.1);border-radius:10px;padding:12px;">
+<div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(163,196,204,0.45);margin-bottom:5px;" data-es="&#127993; Fauna insignia" data-en="&#127993; Wildlife" data-pt="&#127993; Fauna insignia">&#127993; Fauna insignia</div>
+<div style="font-size:0.7rem;color:rgba(196,220,228,0.85);line-height:1.5;" data-es="El Chucao &#x2014; p&#xE1;jaro que camina por el suelo del bosque h&#xFA;medo. Seg&#xFA;n la tradici&#xF3;n, o&#xED;r su canto a la derecha augura buena suerte en la caminata." data-en="The Chucao &#x2014; a bird that walks along the floor of humid forest. According to tradition, hearing its call on the right predicts good luck on the trail." data-pt="O Chucao &#x2014; p&#xE1;ssaro que caminha pelo ch&#xE3;o da floresta &#xFA;mida. Segundo a tradi&#xE7;&#xE3;o, ouvir seu canto &#xE0; direita augura boa sorte na caminhada.">El Chucao &#x2014; p&#xE1;jaro que camina por el suelo del bosque h&#xFA;medo. Seg&#xFA;n la tradici&#xF3;n, o&#xED;r su canto a la derecha augura buena suerte en la caminata.</div>
+</div>
+<div style="background:rgba(92,122,74,0.1);border-radius:10px;padding:12px;">
+<div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(163,196,204,0.45);margin-bottom:5px;" data-es="&#127807; Flora emblema" data-en="&#127807; Flora" data-pt="&#127807; Flora emblema">&#127807; Flora emblema</div>
+<div style="font-size:0.7rem;color:rgba(196,220,228,0.85);line-height:1.5;" data-es="El L&#xFA;pulo &#x2014; vegetaci&#xF3;n introducida que prospera gracias al microclima del valle, haciendo de El Bols&#xF3;n la Capital Nacional del L&#xFA;pulo." data-en="Hops &#x2014; an introduced plant that thrives thanks to the valley&#x27;s microclimate, making El Bols&#xF3;n the National Capital of Hops." data-pt="O L&#xFA;pulo &#x2014; planta introduzida que prospera gra&#xE7;as ao microclima do vale, tornando El Bols&#xF3;n a Capital Nacional do L&#xFA;pulo.">El L&#xFA;pulo &#x2014; vegetaci&#xF3;n introducida que prospera gracias al microclima del valle, haciendo de El Bols&#xF3;n la Capital Nacional del L&#xFA;pulo.</div>
+</div>
+</div>
+<div style="background:rgba(138,106,42,0.1);border-radius:10px;padding:14px;border-left:3px solid rgba(138,106,42,0.5);">
+<div style="font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(200,170,100,0.6);margin-bottom:6px;" data-es="&#128161; &#xBF;Sab&#xED;as que...?" data-en="&#128161; Did you know...?" data-pt="&#128161; Voc&#xEA; sabia...?">&#128161; &#xBF;Sab&#xED;as que...?</div>
+<div style="font-size:0.72rem;color:rgba(220,200,160,0.9);line-height:1.6;font-style:italic;" data-es="El Bosque Tallado, en las laderas del Cerro Pringles, es un museo de arte al aire libre &#xFA;nico: tras un devastador incendio forestal, escultores de todo el pa&#xED;s convirtieron los troncos muertos en intrincadas obras de arte." data-en="The Bosque Tallado on the slopes of Cerro Pringles is a unique open-air art museum: after a devastating forest fire, sculptors from across the country turned dead trunks into intricate works of art." data-pt="O Bosque Tallado nas encostas do Cerro Pringles &#xE9; um museu de arte ao ar livre &#xFA;nico: ap&#xF3;s um devastador inc&#xEA;ndio florestal, escultores de todo o pa&#xED;s transformaram troncos mortos em intricadas obras de arte.">El Bosque Tallado, en las laderas del Cerro Pringles, es un museo de arte al aire libre &#xFA;nico: tras un devastador incendio forestal, escultores de todo el pa&#xED;s convirtieron los troncos muertos en intrincadas obras de arte.</div>
+</div>
+</div>
+</div>
+
+<div class="pronto-section">
+  <div class="pronto-title" data-es="Pr&#243;ximamente en CONF&#205;N El Bols&#243;n" data-en="Coming soon to CONF&#205;N El Bols&#243;n" data-pt="Em breve no CONF&#205;N El Bols&#243;n">Pr&#243;ximamente en CONF&#205;N El Bols&#243;n</div>
+    <div class="pronto-subtitle" style="font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(163,196,204,0.38);margin-bottom:18px;" data-es="Muy pronto disponible" data-en="Coming soon" data-pt="Em breve">Muy pronto disponible</div>
+  <div class="pronto-grid">
+    <div class="pronto-card"><div class="pronto-badge" data-es="Pr&#243;ximamente" data-en="Coming soon" data-pt="Em breve">Pr&#243;ximamente</div><div class="pronto-icon">&#127968;</div><div class="pronto-name" data-es="Alojamiento" data-en="Accommodation" data-pt="Hospedagem">Alojamiento</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Pr&#243;ximamente" data-en="Coming soon" data-pt="Em breve">Pr&#243;ximamente</div><div class="pronto-icon">&#127869;&#65039;</div><div class="pronto-name" data-es="Gastronom&#237;a" data-en="Gastronomy" data-pt="Gastronomia">Gastronom&#237;a</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Pr&#243;ximamente" data-en="Coming soon" data-pt="Em breve">Pr&#243;ximamente</div><div class="pronto-icon">&#127866;</div><div class="pronto-name" data-es="Cervecer&#237;as" data-en="Breweries" data-pt="Cervejarias">Cervecer&#237;as</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Pr&#243;ximamente" data-en="Coming soon" data-pt="Em breve">Pr&#243;ximamente</div><div class="pronto-icon">&#129517;</div><div class="pronto-name" data-es="Gu&#237;as de trekking" data-en="Trekking guides" data-pt="Guias de trilha">Gu&#237;as de trekking</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Pr&#243;ximamente" data-en="Coming soon" data-pt="Em breve">Pr&#243;ximamente</div><div class="pronto-icon">&#128663;</div><div class="pronto-name" data-es="Traslados" data-en="Transfers" data-pt="Traslados">Traslados</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Pr&#243;ximamente" data-en="Coming soon" data-pt="Em breve">Pr&#243;ximamente</div><div class="pronto-icon">&#127914;</div><div class="pronto-name" data-es="Experiencias" data-en="Experiences" data-pt="Experi&#234;ncias">Experiencias</div></div>
+  </div>
+</div>
+<div style="height:16px;"></div>
+<footer data-es="conf&#237;n app &#183; andes australes &#183; el bols&#243;n &#183; r&#237;o negro" data-en="conf&#237;n app &#183; southern andes &#183; el bols&#243;n &#183; r&#237;o negro" data-pt="conf&#237;n app &#183; andes australis &#183; el bols&#243;n &#183; r&#237;o negro">conf&#237;n app &#183; andes australes &#183; el bols&#243;n &#183; r&#237;o negro</footer>
+<script>
+window.addEventListener('DOMContentLoaded',function(){
+  var btns=document.querySelectorAll('.lang-btn-dest');
+  btns.forEach(function(b){b.classList.remove('activo');});
+  var es=document.querySelector('.lang-btn-dest');
+  if(es)es.classList.add('activo');
+  document.querySelectorAll('[data-es]').forEach(function(el){
+    if(el.innerHTML.trim()===''||el.innerHTML===el.getAttribute('data-es').substring(0,3)){
+      el.innerHTML=el.getAttribute('data-es');
+    }
+  });
+});
+function cambiarIdioma(lang,btn){
+  document.querySelectorAll('.lang-btn-dest').forEach(b=>b.classList.remove('activo'));
+  btn.classList.add('activo');
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const txt=lang==='es'?el.dataset.es:lang==='en'?el.dataset.en:el.dataset.pt;
+    if(txt)el.innerHTML=txt;
+  });
+}
+</script>
+</body>
+</html>
