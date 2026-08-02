@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TouristDestination","name":"Ushuaia","description":"Guía útil de viaje para Ushuaia. Emergencias, Cerro Castor, Parque Nacional Tierra del Fuego, Tren del Fin del Mundo y todo lo que necesitás saber antes de llegar.","url":"https://contactoconfinapp-cloud.github.io/Confinapp/ushuaia/","touristType":["Turismo de Montaña","Ski","Turismo de Aventura","Turismo Cultural"],"includesAttraction":[{"@type":"TouristAttraction","name":"Cerro Castor"},{"@type":"TouristAttraction","name":"Parque Nacional Tierra del Fuego"},{"@type":"TouristAttraction","name":"Tren del Fin del Mundo"},{"@type":"TouristAttraction","name":"Canal Beagle"}],"contactPoint":[{"@type":"ContactPoint","telephone":"107","contactType":"emergency","name":"Hospital Regional Ushuaia"}]}
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CONFÍN | Guía Útil y Gratuita de Ushuaia — Emergencias, Cerro Castor, Canal Beagle y Parque Nacional</title>
+<meta name="description" content="Información esencial de Ushuaia: emergencias, Cerro Castor ski, Canal Beagle, Parque Nacional Tierra del Fuego, acceso desde Chile y todo lo que necesitás saber.">
+<meta property="og:title" content="CONFÍN — Ushuaia · Guía útil para el viajero">
+<meta property="og:description" content="Todo lo que necesitás saber antes y durante tu visita a Ushuaia. Gratuito, curado y siempre actualizado.">
+<meta property="og:image" content="https://contactoconfinapp-cloud.github.io/Confinapp/ushuaia-foto.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#3D6B73">
+<link rel="canonical" href="https://contactoconfinapp-cloud.github.io/Confinapp/ushuaia/">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--atlantic:#3D6B73;--fern:#5C7A4A;--cream:#FAF7F2;--fog:#F3F0EA;--night:#1C2B2B;--soil:#44352B;--bark:#8A7A6A;--ash:#D8D2C5;--deep:#0E1A1C;--font-d:'Georgia',serif;}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:var(--cream);color:var(--soil);min-height:100vh;}
+.nav{position:sticky;top:0;z-index:100;background:var(--deep);display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(61,107,115,0.3);}
+.nav-logo{font-family:var(--font-d);font-size:1rem;color:var(--cream);letter-spacing:0.04em;text-decoration:none;}
+.nav-corredor{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(163,196,204,0.5);}
+.nav-back{font-size:0.72rem;color:rgba(163,196,204,0.7);text-decoration:none;display:flex;align-items:center;gap:4px;}
+.hero{background:linear-gradient(160deg,#0E1E2C 0%,var(--deep) 100%);padding:32px 20px 24px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:url('ushuaia-foto.jpg') center/cover no-repeat;opacity:0.22;}
+.hero-content{position:relative;z-index:1;}
+.hero-tag{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(163,196,204,0.6);margin-bottom:8px;}
+.hero-title{font-family:var(--font-d);font-size:clamp(1.8rem,5vw,2.4rem);font-weight:300;color:#fff;line-height:1.15;margin-bottom:6px;}
+.hero-sub{font-size:0.72rem;color:rgba(163,196,204,0.6);letter-spacing:0.06em;}
+.lang-bar{display:flex;gap:6px;margin-top:14px;}
+.lang-btn-dest{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:5px 10px;border-radius:20px;border:1px solid rgba(163,196,204,0.3);background:transparent;color:rgba(163,196,204,0.6);cursor:pointer;font-family:inherit;}
+.lang-btn-dest.activo{background:rgba(61,107,115,0.4);color:#fff;border-color:rgba(163,196,204,0.5);}
+.content{max-width:640px;margin:0 auto;}
+.info-bloque{padding:20px 16px 0;}
+.info-bloque-titulo{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--bark);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.info-bloque-titulo::after{content:'';flex:1;height:1px;background:var(--ash);}
+.info-cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px;}
+.info-cards-grid.cols1{grid-template-columns:1fr;}
+.info-card{background:rgba(255,255,255,0.04);border-radius:12px;padding:16px 14px;box-shadow:0 2px 12px rgba(0,0,0,0.2);border:1px solid rgba(163,196,204,0.12);display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden;transition:border-color 0.2s;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,var(--atlantic));}
+.info-card.emergencia{--card-accent:#B84E3A;}
+.info-card.paseo{--card-accent:#5C7A4A;}
+.info-card.cultura{--card-accent:#8A6A2A;}
+.info-card.nieve{--card-accent:#7AAFC4;}
+.info-card.gris{--card-accent:#6A7A7A;}
+.info-card-icon{font-size:1.6rem;line-height:1;}
+.info-card-name{font-size:0.78rem;font-weight:600;color:var(--cream);line-height:1.3;}
+.info-card-sub{font-size:0.66rem;color:rgba(163,196,204,0.7);line-height:1.4;}
+.info-card-tel{font-size:1rem;font-weight:700;color:var(--atlantic);letter-spacing:0.03em;}
+.info-card-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.65rem;letter-spacing:0.06em;text-transform:uppercase;padding:7px 10px;border-radius:20px;text-decoration:none;background:var(--card-accent,var(--atlantic));color:#fff;font-family:inherit;margin-top:auto;justify-content:center;border:none;cursor:pointer;}
+.info-card-btn.outline{background:transparent;color:var(--card-accent,var(--atlantic));border:1px solid var(--card-accent,var(--atlantic));}
+.info-nota{background:rgba(61,107,115,0.06);border-left:3px solid var(--atlantic);border-radius:0 6px 6px 0;padding:10px 12px;font-size:0.75rem;color:var(--soil);line-height:1.6;margin-bottom:10px;}
+.info-aviso{background:rgba(184,78,58,0.06);border-left:3px solid #B84E3A;border-radius:0 6px 6px 0;padding:10px 12px;font-size:0.75rem;color:var(--soil);line-height:1.6;margin-bottom:10px;}
+.spacer{height:24px;}
+.stt-grid{display:grid;grid-template-columns:1fr;gap:8px;}
+.stt-card{background:rgba(255,255,255,0.04);border-radius:10px;padding:14px;border:1px solid rgba(163,196,204,0.12);display:flex;gap:12px;align-items:flex-start;}
+.stt-tiempo{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--atlantic);font-weight:600;white-space:nowrap;margin-top:2px;min-width:72px;}
+.stt-desc{font-size:0.8rem;color:rgba(196,186,176,0.85);line-height:1.5;}
+.pronto-section{background:rgba(255,255,255,0.025);border-top:1px solid rgba(163,196,204,0.1);padding:24px 16px;}
+.pronto-title{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(163,196,204,0.4);margin-bottom:16px;}
+.pronto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.pronto-card{background:rgba(255,255,255,0.02);border:1px solid rgba(163,196,204,0.08);border-radius:10px;padding:14px 10px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;}
+.pronto-badge{font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(163,196,204,0.35);background:rgba(61,107,115,0.08);padding:3px 7px;border-radius:10px;}
+.pronto-icon{font-size:1.4rem;}
+.pronto-name{font-size:0.6rem;color:rgba(163,196,204,0.4);letter-spacing:0.04em;}
+footer{text-align:center;padding:20px 16px;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(163,196,204,0.25);}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/" class="nav-logo">confín <span class="nav-corredor">· patagonia</span></a>
+  <a href="/" class="nav-back">← volver</a>
+</nav>
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag" data-es="Argentina · Tierra del Fuego · Fin del Mundo" data-en="Argentina · Tierra del Fuego · End of the World" data-pt="Argentina · Tierra del Fuego · Fim do Mundo">Argentina · Tierra del Fuego · Fin del Mundo</div>
+    <h1 class="hero-title">Ushuaia</h1>
+    <div class="hero-sub" data-es="La ciudad más austral del mundo · Canal Beagle · Cerro Castor" data-en="The world's southernmost city · Beagle Channel · Cerro Castor" data-pt="A cidade mais austral do mundo · Canal Beagle · Cerro Castor">La ciudad más austral del mundo · Canal Beagle · Cerro Castor</div>
+    <div class="lang-bar">
+      <button class="lang-btn-dest activo" onclick="cambiarIdioma('es',this)">ES</button>
+      <button class="lang-btn-dest" onclick="cambiarIdioma('en',this)">EN</button>
+      <button class="lang-btn-dest" onclick="cambiarIdioma('pt',this)">PT</button>
+    </div>
+  </div>
+</div>
+<div class="content">
+
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="🚨 Emergencias" data-en="🚨 Emergencies" data-pt="🚨 Emergências">🚨 Emergencias</div>
+<div class="info-cards-grid">
+<div class="info-card emergencia" style="grid-column:1/-1;">
+  <div style="display:flex;gap:12px;align-items:flex-start;">
+  <div class="info-card-icon">🏥</div>
+  <div style="flex:1;">
+    <div class="info-card-name" data-es="Hospital Regional Ushuaia" data-en="Ushuaia Regional Hospital" data-pt="Hospital Regional Ushuaia">Hospital Regional Ushuaia</div>
+    <div class="info-card-sub" data-es="Maipú 1863 (frente al Canal Beagle). Guardia las 24 hs." data-en="Maipú 1863 (facing the Beagle Channel). 24-hour emergency." data-pt="Maipú 1863 (frente ao Canal Beagle). Plantão 24 hs.">Maipú 1863 (frente al Canal Beagle). Guardia las 24 hs.</div>
+    <div class="info-card-tel">107</div>
+  </div>
+  </div>
+  <a href="tel:+542901422950" class="info-card-btn outline">(02901) 422-950</a>
+</div>
+<div class="info-card emergencia">
+  <div class="info-card-icon">🚒</div>
+  <div class="info-card-name" data-es="Bomberos" data-en="Fire Dept." data-pt="Bombeiros">Bomberos</div>
+  <div class="info-card-sub">San Martín 491</div>
+  <div class="info-card-tel">100</div>
+</div>
+<div class="info-card emergencia">
+  <div class="info-card-icon">👮</div>
+  <div class="info-card-name" data-es="Policía" data-en="Police" data-pt="Polícia">Policía</div>
+  <div class="info-card-sub">Yaganes 281</div>
+  <div class="info-card-tel">101</div>
+</div>
+<div class="info-card emergencia">
+  <div class="info-card-icon">⚓</div>
+  <div class="info-card-name" data-es="Prefectura Naval" data-en="Coast Guard" data-pt="Prefeitura Naval">Prefectura Naval</div>
+  <div class="info-card-sub" data-es="Maipú y Laserre — emergencias en el Canal Beagle." data-en="Maipú y Laserre — Beagle Channel emergencies." data-pt="Maipú y Laserre — emergências no Canal Beagle.">Maipú y Laserre — emergencias en el Canal Beagle.</div>
+  <div class="info-card-tel">106</div>
+</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="🛣️ Acceso desde Chile" data-en="🛣️ Access from Chile" data-pt="🛣️ Acesso do Chile">🛣️ Acceso desde Chile</div>
+<div class="info-cards-grid cols1">
+<div class="info-aviso" data-es="Para llegar desde Chile en auto es obligatorio cruzar dos veces territorio chileno. La ruta terrestre implica barcaza — no existe acceso solo por tierra argentina." data-en="To reach Ushuaia from Chile by car you must cross Chilean territory twice. The land route requires a ferry — there is no all-Argentine land access." data-pt="Para chegar do Chile de carro é obrigatório cruzar o território chileno duas vezes. A rota terrestre exige balsa — não existe acesso só por terra argentina.">Para llegar desde Chile en auto es obligatorio cruzar dos veces territorio chileno. La ruta terrestre implica barcaza — no existe acceso solo por tierra argentina.</div>
+<div class="info-card gris" style="grid-column:1/-1;">
+  <div style="display:flex;gap:12px;align-items:flex-start;">
+  <div class="info-card-icon">⛴️</div>
+  <div style="flex:1;">
+    <div class="info-card-name" data-es="Barcaza TABSA — Punta Delgada ↔ Primera Angostura" data-en="TABSA Ferry — Punta Delgada ↔ Primera Angostura" data-pt="Balsa TABSA — Punta Delgada ↔ Primera Angostura">Barcaza TABSA — Punta Delgada ↔ Primera Angostura</div>
+    <div class="info-card-sub" data-es="Cruce obligatorio en el Estrecho de Magallanes. 20 minutos de travesía, salidas frecuentes. Reservá con anticipación en temporada alta (dic–feb y jul). Llevar documentación del vehículo." data-en="Mandatory crossing at the Strait of Magellan. 20-minute crossing, frequent departures. Book ahead in peak season (Dec–Feb and Jul). Carry vehicle documents." data-pt="Travessia obrigatória no Estreito de Magalhães. 20 minutos de travessia, saídas frequentes. Reserve com antecedência na alta temporada (dez–fev e jul). Leve documentação do veículo.">Cruce obligatorio en el Estrecho de Magallanes. 20 minutos de travesía, salidas frecuentes. Reservá con anticipación en temporada alta (dic–feb y jul). Llevar documentación del vehículo.</div>
+  </div>
+  </div>
+  <a href="https://www.tabsa.cl" target="_blank" class="info-card-btn">tabsa.cl →</a>
+</div>
+<div class="info-nota" data-es="Cadenas obligatorias en RN 3 (tramo Tolhuin–Ushuaia) y Paso Garibaldi de mayo a octubre. SAG/Senasa: no ingresar frutas, vegetales ni productos lácteos frescos al cruzar. Combustible anticongelante recomendado en invierno." data-en="Snow chains mandatory on RN 3 (Tolhuin–Ushuaia section) and Paso Garibaldi from May to October. SAG/Senasa: no fresh fruit, vegetables or dairy products when crossing. Antifreeze fuel recommended in winter." data-pt="Correntes obrigatórias na RN 3 (trecho Tolhuin–Ushuaia) e Paso Garibaldi de maio a outubro. SAG/Senasa: não ingresse frutas, vegetais ou laticínios frescos ao cruzar. Combustível anticongelante recomendado no inverno.">Cadenas obligatorias en RN 3 (tramo Tolhuin–Ushuaia) y Paso Garibaldi de mayo a octubre. SAG/Senasa: no ingresar frutas, vegetales ni productos lácteos frescos al cruzar. Combustible anticongelante recomendado en invierno.</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="⏱️ ¿Cuánto tiempo tenés?" data-en="⏱️ How much time do you have?" data-pt="⏱️ Quanto tempo você tem?">⏱️ ¿Cuánto tiempo tenés?</div>
+<div class="stt-grid">
+  <div class="stt-card">
+    <div class="stt-tiempo" data-es="1 día" data-en="1 day" data-pt="1 dia">1 día</div>
+    <div class="stt-desc" data-es="Canal Beagle en catamarán (3 hs, sale del muelle Ushuaia) + Museo del Fin del Mundo + cena con centolla." data-en="Beagle Channel catamaran (3 hrs, departs from Ushuaia pier) + Museo del Fin del Mundo + king crab dinner." data-pt="Catamarã Canal Beagle (3 hs, sai do cais Ushuaia) + Museo del Fin del Mundo + jantar com centolla.">Canal Beagle en catamarán (3 hs, sale del muelle Ushuaia) + Museo del Fin del Mundo + cena con centolla.</div>
+  </div>
+  <div class="stt-card">
+    <div class="stt-tiempo" data-es="2 días" data-en="2 days" data-pt="2 dias">2 días</div>
+    <div class="stt-desc" data-es="Parque Nacional Tierra del Fuego (senderos Lagos Roca y del Turbal) + Tren del Fin del Mundo + Canal Beagle." data-en="Tierra del Fuego National Park (Lago Roca and Turbal trails) + End of the World Train + Beagle Channel." data-pt="Parque Nacional Tierra del Fuego (trilhas Lago Roca e Turbal) + Trem do Fim do Mundo + Canal Beagle.">Parque Nacional Tierra del Fuego (senderos Lagos Roca y del Turbal) + Tren del Fin del Mundo + Canal Beagle.</div>
+  </div>
+  <div class="stt-card">
+    <div class="stt-tiempo" data-es="3+ días" data-en="3+ days" data-pt="3+ dias">3+ días</div>
+    <div class="stt-desc" data-es="Todo lo anterior + Cerro Castor (ski en invierno), Valle de Lobos, kayak en el Canal, circuito lacustre con cabalgata." data-en="All of the above + Cerro Castor (ski in winter), Valle de Lobos, Canal kayaking, lake circuit with horseback riding." data-pt="Tudo acima + Cerro Castor (ski no inverno), Valle de Lobos, caiaque no Canal, circuito lacustre com cavalgada.">Todo lo anterior + Cerro Castor (ski en invierno), Valle de Lobos, kayak en el Canal, circuito lacustre con cabalgata.</div>
+  </div>
+  <div class="stt-card" style="border-left:3px solid #5C7A4A;">
+    <div class="stt-tiempo" style="color:#5C7A4A;" data-es="☔ Si llueve" data-en="☔ If it rains" data-pt="☔ Se chover">☔ Si llueve</div>
+    <div class="stt-desc" data-es="Museo Marítimo y del Presidio + Museo del Fin del Mundo + Casa Beban + cerveza artesanal en Cervecería Beagle." data-en="Maritime and Prison Museum + Museo del Fin del Mundo + Casa Beban + craft beer at Cervecería Beagle." data-pt="Museu Marítimo e do Presídio + Museo del Fin del Mundo + Casa Beban + cerveja artesanal na Cervecería Beagle.">Museo Marítimo y del Presidio + Museo del Fin del Mundo + Casa Beban + cerveza artesanal en Cervecería Beagle.</div>
+  </div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="⛷️ Centro de ski · Cerro Castor" data-en="⛷️ Ski resort · Cerro Castor" data-pt="⛷️ Centro de ski · Cerro Castor">⛷️ Centro de ski · Cerro Castor</div>
+<div class="info-cards-grid cols1">
+<div class="info-card nieve" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:url('centro-ski-foto.jpg') center/cover no-repeat;opacity:0.12;"></div>
+  <div style="position:relative;z-index:1;display:flex;gap:12px;align-items:flex-start;">
+  <div class="info-card-icon">🎿</div>
+  <div style="flex:1;">
+    <div class="info-card-name" data-es="Cerro Castor — 26 km del centro" data-en="Cerro Castor — 26 km from town" data-pt="Cerro Castor — 26 km do centro">Cerro Castor — 26 km del centro</div>
+    <div class="info-card-sub" data-es="El centro de ski más austral del mundo. 39 pistas, 9 medios de elevación, 797 m de desnivel. Temporada: junio–octubre. Ski, snowboard, trineos y snow tubing. Vistas únicas al Canal Beagle y los Andes fueguinos. Alquiler de equipo y escuela de ski en base." data-en="The world's southernmost ski resort. 39 slopes, 9 lifts, 797 m vertical drop. Season: June–October. Ski, snowboard, sleds and snow tubing. Unique views of the Beagle Channel and Fuegian Andes. Equipment rental and ski school at base." data-pt="O centro de ski mais austral do mundo. 39 pistas, 9 meios de elevação, 797 m de desnível. Temporada: junho–outubro. Ski, snowboard, trenós e snow tubing. Vistas únicas ao Canal Beagle e os Andes fueguinos. Aluguel de equipamentos e escola de ski na base.">El centro de ski más austral del mundo. 39 pistas, 9 medios de elevación, 797 m de desnivel. Temporada: junio–octubre. Ski, snowboard, trineos y snow tubing. Vistas únicas al Canal Beagle y los Andes fueguinos. Alquiler de equipo y escuela de ski en base.</div>
+  </div>
+  </div>
+  <a href="https://www.cerrocastor.com" target="_blank" class="info-card-btn">cerrocastor.com →</a>
+</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="🏛️ Cultura y patrimonio" data-en="🏛️ Culture & heritage" data-pt="🏛️ Cultura e patrimônio">🏛️ Cultura y patrimonio</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+<div class="info-card cultura" style="grid-column:1/-1;">
+  <div style="display:flex;gap:12px;align-items:flex-start;">
+  <div class="info-card-icon">⚓</div>
+  <div style="flex:1;">
+    <div class="info-card-name" data-es="Museo Marítimo y del Presidio" data-en="Maritime & Prison Museum" data-pt="Museu Marítimo e do Presídio">Museo Marítimo y del Presidio</div>
+    <div class="info-card-sub" data-es="Yaganes y Gobernador Paz. El antiguo presidio restaurado — historia de la cárcel del fin del mundo, arqueología fueguina y navegación antártica." data-en="Yaganes y Gobernador Paz. The restored former prison — history of the end-of-the-world jail, Fuegian archaeology and Antarctic navigation." data-pt="Yaganes y Gobernador Paz. O antigo presídio restaurado — história da prisão do fim do mundo, arqueologia fueguina e navegação antártica.">Yaganes y Gobernador Paz. El antiguo presidio restaurado — historia de la cárcel del fin del mundo, arqueología fueguina y navegación antártica.</div>
+  </div>
+  </div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">🌍</div>
+  <div>
+    <div class="info-card-name" data-es="Museo del Fin del Mundo" data-en="End of the World Museum" data-pt="Museu do Fim do Mundo">Museo del Fin del Mundo</div>
+    <div class="info-card-sub" data-es="Maipú 173 y Maipú 465. Historia de los pueblos originarios Yaganes y Selknam, flora y fauna fueguina." data-en="Maipú 173 and Maipú 465. History of the Yagán and Selknam peoples, Fuegian flora and fauna." data-pt="Maipú 173 e Maipú 465. História dos povos originários Yaganes e Selknam, flora e fauna fueguina.">Maipú 173 y Maipú 465. Historia de los pueblos originarios Yaganes y Selknam, flora y fauna fueguina.</div>
+  </div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">🏠</div>
+  <div>
+    <div class="info-card-name">Casa Beban</div>
+    <div class="info-card-sub" data-es="Maipú y San Martín. Casa histórica de 1913, arquitectura fueguina tradicional — sede de exposiciones y archivo histórico municipal." data-en="Maipú y San Martín. Historic 1913 house, traditional Fuegian architecture — exhibitions and municipal historical archive." data-pt="Maipú y San Martín. Casa histórica de 1913, arquitetura fueguina tradicional — sede de exposições e arquivo histórico municipal.">Maipú y San Martín. Casa histórica de 1913, arquitectura fueguina tradicional — sede de exposiciones y archivo histórico municipal.</div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="🌲 Parque Nacional Tierra del Fuego" data-en="🌲 Tierra del Fuego National Park" data-pt="🌲 Parque Nacional Terra do Fogo">🌲 Parque Nacional Tierra del Fuego</div>
+<div class="info-cards-grid cols1">
+<div class="info-card paseo" style="grid-column:1/-1;">
+  <div style="display:flex;gap:12px;align-items:flex-start;">
+  <div class="info-card-icon">🏕️</div>
+  <div style="flex:1;">
+    <div class="info-card-name" data-es="Parque Nacional Tierra del Fuego — 12 km del centro" data-en="Tierra del Fuego National Park — 12 km from town" data-pt="Parque Nacional Tierra del Fuego — 12 km do centro">Parque Nacional Tierra del Fuego — 12 km del centro</div>
+    <div class="info-card-sub" data-es="Senderos Lagos Roca, del Castorero, del Turbal, Costera y Hito XXIV (punto más austral del mundo accesible por ruta). Camping habilitado en Lagos Roca. Pago de entrada obligatorio — adquirí en el acceso." data-en="Lago Roca, Castorero, Turbal, Costera and Hito XXIV trails (world's southernmost road-accessible point). Camping permitted at Lago Roca. Entry fee required — pay at the gate." data-pt="Trilhas Lagos Roca, Castorero, Turbal, Costera e Hito XXIV (ponto mais austral do mundo acessível por estrada). Camping permitido em Lago Roca. Taxa de entrada obrigatória — pague na entrada.">Senderos Lagos Roca, del Castorero, del Turbal, Costera y Hito XXIV (punto más austral del mundo accesible por ruta). Camping habilitado en Lagos Roca. Pago de entrada obligatorio — adquirí en el acceso.</div>
+  </div>
+  </div>
+</div>
+<div class="info-nota" data-es="El Tren del Fin del Mundo sale desde dentro del Parque Nacional (Estación del Fin del Mundo). Podés comprarlo por separado — los tickets del tren NO incluyen la entrada al Parque." data-en="The End of the World Train departs from inside the National Park (Estación del Fin del Mundo). Tickets are sold separately — train tickets do NOT include park entry." data-pt="O Trem do Fim do Mundo sai de dentro do Parque Nacional (Estação do Fim do Mundo). Os ingressos do trem são vendidos separadamente — NÃO incluem a entrada no Parque.">El Tren del Fin del Mundo sale desde dentro del Parque Nacional (Estación del Fin del Mundo). Podés comprarlo por separado — los tickets del tren NO incluyen la entrada al Parque.</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="🛣️ Servicios clave" data-en="🛣️ Key services" data-pt="🛣️ Serviços essenciais">🛣️ Servicios clave</div>
+<div class="info-cards-grid">
+<div class="info-card gris">
+  <div class="info-card-icon">✈️</div>
+  <div class="info-card-name" data-es="Aeropuerto Malvinas Argentinas" data-en="Malvinas Argentinas Airport" data-pt="Aeroporto Malvinas Argentinas">Aeropuerto Malvinas Argentinas</div>
+  <div class="info-card-sub" data-es="4 km del centro. Vuelos directos desde Buenos Aires (Aeroparque y Ezeiza) — Aerolíneas y LATAM." data-en="4 km from center. Direct flights from Buenos Aires (Aeroparque and Ezeiza) — Aerolíneas and LATAM." data-pt="4 km do centro. Voos diretos de Buenos Aires (Aeroparque e Ezeiza) — Aerolíneas e LATAM.">4 km del centro. Vuelos directos desde Buenos Aires (Aeroparque y Ezeiza) — Aerolíneas y LATAM.</div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">⛽</div>
+  <div class="info-card-name" data-es="Combustible" data-en="Fuel" data-pt="Combustível">Combustible</div>
+  <div class="info-card-sub" data-es="Precios subsidiados en Tierra del Fuego — más barato que el resto de Argentina. YPF en Malvinas Argentinas y Alem." data-en="Subsidized fuel prices in Tierra del Fuego — cheaper than the rest of Argentina. YPF on Malvinas Argentinas and Alem." data-pt="Preços subsidiados em Tierra del Fuego — mais barato que o restante da Argentina. YPF nas ruas Malvinas Argentinas e Alem.">Precios subsidiados en Tierra del Fuego — más barato que el resto de Argentina. YPF en Malvinas Argentinas y Alem.</div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">🏦</div>
+  <div class="info-card-name" data-es="Cajeros y cambio" data-en="ATM & exchange" data-pt="Caixas e câmbio">Cajeros y cambio</div>
+  <div class="info-card-sub" data-es="Banco Nación y Macro en San Martín. Zona franca — muchos comercios aceptan dólares o pesos chilenos en el centro." data-en="Banco Nación and Macro on San Martín. Free trade zone — many shops accept dollars or Chilean pesos downtown." data-pt="Banco Nação e Macro na San Martín. Zona franca — muitos comércios aceitam dólares ou pesos chilenos no centro.">Banco Nación y Macro en San Martín. Zona franca — muchos comercios aceptan dólares o pesos chilenos en el centro.</div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">🌡️</div>
+  <div class="info-card-name" data-es="Clima y ropa" data-en="Weather & clothing" data-pt="Clima e roupa">Clima y ropa</div>
+  <div class="info-card-sub" data-es="4 estaciones en un día. Siempre llevá impermeable y capas térmicas — en invierno temperatura puede llegar a -15 °C con viento polar." data-en="4 seasons in one day. Always carry waterproofs and thermal layers — in winter temperature can drop to -15 °C with polar wind." data-pt="4 estações em um dia. Sempre leve impermeável e camadas térmicas — no inverno a temperatura pode chegar a -15 °C com vento polar.">4 estaciones en un día. Siempre llevá impermeable y capas térmicas — en invierno temperatura puede llegar a -15 °C con viento polar.</div>
+</div>
+</div>
+</div>
+
+<div style="height:16px;"></div>
+</div>
+
+<div class="pronto-section">
+  <div class="pronto-title" data-es="Próximamente en CONFÍN Ushuaia" data-en="Coming soon to CONFÍN Ushuaia" data-pt="Em breve no CONFÍN Ushuaia">Próximamente en CONFÍN Ushuaia</div>
+  <div class="pronto-grid">
+    <div class="pronto-card"><div class="pronto-badge" data-es="Próximamente" data-en="Coming soon" data-pt="Em breve">Próximamente</div><div class="pronto-icon">🏠</div><div class="pronto-name" data-es="Alojamiento" data-en="Accommodation" data-pt="Hospedagem">Alojamiento</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Próximamente" data-en="Coming soon" data-pt="Em breve">Próximamente</div><div class="pronto-icon">🦀</div><div class="pronto-name" data-es="Gastronomía" data-en="Gastronomy" data-pt="Gastronomia">Gastronomía</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Próximamente" data-en="Coming soon" data-pt="Em breve">Próximamente</div><div class="pronto-icon">⛵</div><div class="pronto-name" data-es="Náutica" data-en="Nautical" data-pt="Náutica">Náutica</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Próximamente" data-en="Coming soon" data-pt="Em breve">Próximamente</div><div class="pronto-icon">🧭</div><div class="pronto-name" data-es="Experiencias" data-en="Experiences" data-pt="Experiências">Experiencias</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Próximamente" data-en="Coming soon" data-pt="Em breve">Próximamente</div><div class="pronto-icon">🚗</div><div class="pronto-name" data-es="Traslados" data-en="Transfers" data-pt="Traslados">Traslados</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Próximamente" data-en="Coming soon" data-pt="Em breve">Próximamente</div><div class="pronto-icon">🐧</div><div class="pronto-name" data-es="Pingüineras" data-en="Penguin colonies" data-pt="Pinguineiras">Pingüineras</div></div>
+  </div>
+</div>
+<div style="height:16px;"></div>
+<footer data-es="confín app · andes australes · ushuaia · tierra del fuego" data-en="confín app · southern andes · ushuaia · tierra del fuego" data-pt="confín app · andes australis · ushuaia · tierra del fuego">confín app · andes australes · ushuaia · tierra del fuego</footer>
+<script>
+function cambiarIdioma(lang,btn){
+  document.querySelectorAll('.lang-btn-dest').forEach(b=>b.classList.remove('activo'));
+  btn.classList.add('activo');
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const txt=lang==='es'?el.dataset.es:lang==='en'?el.dataset.en:el.dataset.pt;
+    if(txt)el.innerHTML=txt;
+  });
+}
+</script>
+</body>
+</html>

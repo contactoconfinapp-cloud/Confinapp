@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TouristDestination","name":"El Bolsón","description":"Guía útil de viaje para El Bolsón. Emergencias, feria artesanal, trekking, Cerro Perito Moreno y todo lo que necesitás saber antes de llegar.","url":"https://contactoconfinapp-cloud.github.io/Confinapp/el-bolson/","touristType":["Turismo de Montaña","Trekking","Turismo Rural","Feria Artesanal"],"includesAttraction":[{"@type":"TouristAttraction","name":"Feria Regional El Bolsón"},{"@type":"TouristAttraction","name":"Cerro Perito Moreno"},{"@type":"TouristAttraction","name":"Río Azul"},{"@type":"TouristAttraction","name":"Cascada Escondida"}],"contactPoint":[{"@type":"ContactPoint","telephone":"107","contactType":"emergency","name":"Hospital Dr. Ramón Carillo El Bolsón"}]}
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CONFÍN | Guía Útil y Gratuita de El Bolsón — Emergencias, Feria, Trekking y Cerro Perito Moreno</title>
+<meta name="description" content="Información esencial de El Bolsón: emergencias, feria regional, trekking al Cajón del Azul, Cerro Perito Moreno y todo lo que necesitás saber antes de llegar.">
+<meta property="og:title" content="CONFÍN — El Bolsón · Guía útil para el viajero">
+<meta property="og:description" content="Todo lo que necesitás saber antes y durante tu visita a El Bolsón. Gratuito, curado y siempre actualizado.">
+<meta property="og:image" content="https://contactoconfinapp-cloud.github.io/Confinapp/el-bolson-foto.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#3D6B73">
+<link rel="canonical" href="https://contactoconfinapp-cloud.github.io/Confinapp/el-bolson/">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--atlantic:#3D6B73;--fern:#5C7A4A;--cream:#FAF7F2;--fog:#F3F0EA;--night:#1C2B2B;--soil:#44352B;--bark:#8A7A6A;--ash:#D8D2C5;--deep:#0E1A1C;--font-d:'Georgia',serif;}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:var(--cream);color:var(--soil);min-height:100vh;}
+.nav{position:sticky;top:0;z-index:100;background:var(--deep);display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(61,107,115,0.3);}
+.nav-logo{font-family:var(--font-d);font-size:1rem;color:var(--cream);letter-spacing:0.04em;text-decoration:none;}
+.nav-corredor{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(163,196,204,0.5);}
+.nav-back{font-size:0.72rem;color:rgba(163,196,204,0.7);text-decoration:none;display:flex;align-items:center;gap:4px;}
+.hero{background:linear-gradient(160deg,#1A3028 0%,var(--deep) 100%);padding:32px 20px 24px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:url('el-bolson-foto.jpg') center/cover no-repeat;opacity:0.22;}
+.hero-content{position:relative;z-index:1;}
+.hero-tag{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(163,196,204,0.6);margin-bottom:8px;}
+.hero-title{font-family:var(--font-d);font-size:clamp(1.8rem,5vw,2.4rem);font-weight:300;color:#fff;line-height:1.15;margin-bottom:6px;}
+.hero-sub{font-size:0.72rem;color:rgba(163,196,204,0.6);letter-spacing:0.06em;}
+.lang-bar{display:flex;gap:6px;margin-top:14px;}
+.lang-btn-dest{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:5px 10px;border-radius:20px;border:1px solid rgba(163,196,204,0.3);background:transparent;color:rgba(163,196,204,0.6);cursor:pointer;font-family:inherit;}
+.lang-btn-dest.activo{background:rgba(61,107,115,0.4);color:#fff;border-color:rgba(163,196,204,0.5);}
+.content{max-width:640px;margin:0 auto;}
+.info-bloque{padding:20px 16px 0;}
+.info-bloque-titulo{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--bark);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.info-bloque-titulo::after{content:'';flex:1;height:1px;background:var(--ash);}
+.info-cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px;}
+.info-cards-grid.cols1{grid-template-columns:1fr;}
+.info-card{background:rgba(255,255,255,0.04);border-radius:12px;padding:16px 14px;box-shadow:0 2px 12px rgba(0,0,0,0.2);border:1px solid rgba(163,196,204,0.12);display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden;transition:border-color 0.2s;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,var(--atlantic));}
+.info-card.emergencia{--card-accent:#B84E3A;}
+.info-card.paseo{--card-accent:#5C7A4A;}
+.info-card.cultura{--card-accent:#8A6A2A;}
+.info-card.nieve{--card-accent:#7AAFC4;}
+.info-card.gris{--card-accent:#6A7A7A;}
+.info-card-icon{font-size:1.6rem;line-height:1;}
+.info-card-name{font-size:0.78rem;font-weight:600;color:var(--cream);line-height:1.3;}
+.info-card-sub{font-size:0.66rem;color:rgba(163,196,204,0.7);line-height:1.4;}
+.info-card-tel{font-size:1rem;font-weight:700;color:var(--atlantic);letter-spacing:0.03em;}
+.info-card-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.65rem;letter-spacing:0.06em;text-transform:uppercase;padding:7px 10px;border-radius:20px;text-decoration:none;background:var(--card-accent,var(--atlantic));color:#fff;font-family:inherit;margin-top:auto;justify-content:center;border:none;cursor:pointer;}
+.info-card-btn.outline{background:transparent;color:var(--card-accent,var(--atlantic));border:1px solid var(--card-accent,var(--atlantic));}
+.info-nota{background:rgba(61,107,115,0.06);border-left:3px solid var(--atlantic);border-radius:0 6px 6px 0;padding:10px 12px;font-size:0.75rem;color:var(--soil);line-height:1.6;margin-bottom:10px;}
+.info-aviso{background:rgba(184,78,58,0.06);border-left:3px solid #B84E3A;border-radius:0 6px 6px 0;padding:10px 12px;font-size:0.75rem;color:var(--soil);line-height:1.6;margin-bottom:10px;}
+.spacer{height:24px;}
+.stt-grid{display:grid;grid-template-columns:1fr;gap:8px;}
+.stt-card{background:rgba(255,255,255,0.04);border-radius:10px;padding:14px;border:1px solid rgba(163,196,204,0.12);display:flex;gap:12px;align-items:flex-start;}
+.stt-tiempo{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--atlantic);font-weight:600;white-space:nowrap;margin-top:2px;min-width:72px;}
+.stt-desc{font-size:0.8rem;color:rgba(196,186,176,0.85);line-height:1.5;}
+.pronto-section{background:rgba(255,255,255,0.025);border-top:1px solid rgba(163,196,204,0.1);padding:24px 16px;}
+.pronto-title{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(163,196,204,0.4);margin-bottom:16px;}
+.pronto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.pronto-card{background:rgba(255,255,255,0.02);border:1px solid rgba(163,196,204,0.08);border-radius:10px;padding:14px 10px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;}
+.pronto-badge{font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(163,196,204,0.35);background:rgba(61,107,115,0.08);padding:3px 7px;border-radius:10px;}
+.pronto-icon{font-size:1.4rem;}
+.pronto-name{font-size:0.6rem;color:rgba(163,196,204,0.4);letter-spacing:0.04em;}
+footer{text-align:center;padding:20px 16px;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(163,196,204,0.25);}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/" class="nav-logo">confín <span class="nav-corredor">· patagonia</span></a>
+  <a href="/" class="nav-back">← volver</a>
+</nav>
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag" data-es="Argentina · Patagonia · Río Negro" data-en="Argentina · Patagonia · Río Negro" data-pt="Argentina · Patagônia · Río Negro">Argentina · Patagonia · Río Negro</div>
+    <h1 class="hero-title">El Bolsón</h1>
+    <div class="hero-sub" data-es="Valle artesanal, treks legendarios y la mejor cerveza artesanal del sur" data-en="Artisan valley, legendary treks and the best craft beer in the south" data-pt="Vale artesanal, trilhas lendárias e a melhor cerveja artesanal do sul">Valle artesanal, treks legendarios y la mejor cerveza artesanal del sur</div>
+    <div class="lang-bar">
+      <button class="lang-btn-dest activo" onclick="cambiarIdioma('es',this)">ES</button>
+      <button class="lang-btn-dest" onclick="cambiarIdioma('en',this)">EN</button>
+      <button class="lang-btn-dest" onclick="cambiarIdioma('pt',this)">PT</button>
+    </div>
+  </div>
+</div>
+<div class="content">
+
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="🚨 Emergencias" data-en="🚨 Emergencies" data-pt="🚨 Emergências">🚨 Emergencias</div>
+<div class="info-cards-grid">
+<div class="info-card emergencia">
+  <div class="info-card-icon">🏥</div>
+  <div class="info-card-name" data-es="Hospital Dr. Ramón Carrillo" data-en="Hospital Dr. Ramón Carrillo" data-pt="Hospital Dr. Ramón Carrillo">Hospital Dr. Ramón Carrillo</div>
+  <div class="info-card-sub" data-es="Av. Belgrano y Perito Moreno" data-en="Av. Belgrano y Perito Moreno" data-pt="Av. Belgrano y Perito Moreno">Av. Belgrano y Perito Moreno</div>
+  <div class="info-card-tel">107</div>
+  <a href="tel:+542944492000" class="info-card-btn outline">(02944) 492-000</a>
+</div>
+<div class="info-card emergencia">
+  <div class="info-card-icon">🚒</div>
+  <div class="info-card-name" data-es="Bomberos Voluntarios" data-en="Volunteer Fire Dept." data-pt="Bombeiros Voluntários">Bomberos Voluntarios</div>
+  <div class="info-card-sub" data-es="San Martín y Pablo Hube" data-en="San Martín y Pablo Hube" data-pt="San Martín y Pablo Hube">San Martín y Pablo Hube</div>
+  <div class="info-card-tel">100</div>
+</div>
+<div class="info-card emergencia">
+  <div class="info-card-icon">👮</div>
+  <div class="info-card-name" data-es="Policía" data-en="Police" data-pt="Polícia">Policía</div>
+  <div class="info-card-sub" data-es="Comisaría El Bolsón" data-en="El Bolsón Police Station" data-pt="Delegacia El Bolsón">Comisaría El Bolsón</div>
+  <div class="info-card-tel">101</div>
+</div>
+<div class="info-card emergencia">
+  <div class="info-card-icon">🏔️</div>
+  <div class="info-card-name" data-es="Defensa Civil / Rescate" data-en="Civil Defense / Rescue" data-pt="Defesa Civil / Resgate">Defensa Civil / Rescate</div>
+  <div class="info-card-sub" data-es="Para emergencias en montaña y ríos — coordiná siempre antes de salir a trekkings largos." data-en="For mountain and river emergencies — always coordinate before long treks." data-pt="Para emergências em montanha e rios — coordene sempre antes de trilhas longas.">Para emergencias en montaña y ríos — coordiná siempre antes de salir a trekkings largos.</div>
+  <div class="info-card-tel">103</div>
+</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="⏱️ ¿Cuánto tiempo tenés?" data-en="⏱️ How much time do you have?" data-pt="⏱️ Quanto tempo você tem?">⏱️ ¿Cuánto tiempo tenés?</div>
+<div class="stt-grid">
+  <div class="stt-card">
+    <div class="stt-tiempo" data-es="Medio día" data-en="Half day" data-pt="Meio dia">Medio día</div>
+    <div class="stt-desc" data-es="Feria Regional (mar, jue, sáb, dom) + helados artesanales + paseo por el centro." data-en="Regional fair (Tue, Thu, Sat, Sun) + artisan ice cream + stroll through the center." data-pt="Feira Regional (ter, qui, sáb, dom) + sorvetes artesanais + passeio pelo centro.">Feria Regional (mar, jue, sáb, dom) + helados artesanales + paseo por el centro.</div>
+  </div>
+  <div class="stt-card">
+    <div class="stt-tiempo" data-es="1 día" data-en="1 day" data-pt="1 dia">1 día</div>
+    <div class="stt-desc" data-es="Feria + Cascada Escondida (4 hs ida y vuelta) o Cajón del Azul (full day desde El Bolsón)." data-en="Fair + Cascada Escondida (4 hrs round trip) or Cajón del Azul (full day from El Bolsón)." data-pt="Feira + Cascada Escondida (4 hs ida e volta) ou Cajón del Azul (dia inteiro).">Feria + Cascada Escondida (4 hs ida y vuelta) o Cajón del Azul (full day desde El Bolsón).</div>
+  </div>
+  <div class="stt-card">
+    <div class="stt-tiempo" data-es="2–3 días" data-en="2–3 days" data-pt="2–3 dias">2–3 días</div>
+    <div class="stt-desc" data-es="Cajón del Azul, Cerro Perito Moreno, Mallín Ahogado, cervecerías artesanales y mercado de productores." data-en="Cajón del Azul, Cerro Perito Moreno, Mallín Ahogado, craft breweries and producers market." data-pt="Cajón del Azul, Cerro Perito Moreno, Mallín Ahogado, cervejarias artesanais e mercado de produtores.">Cajón del Azul, Cerro Perito Moreno, Mallín Ahogado, cervecerías artesanales y mercado de productores.</div>
+  </div>
+  <div class="stt-card" style="border-left:3px solid #5C7A4A;">
+    <div class="stt-tiempo" style="color:#5C7A4A;" data-es="☔ Si llueve" data-en="☔ If it rains" data-pt="☔ Se chover">☔ Si llueve</div>
+    <div class="stt-desc" data-es="Cervecerías con espacio cubierto (Berlina, Mantra) + chocolate artesanal El Almacén de Ramos Generales + librerías de la calle Perito Moreno." data-en="Breweries with covered space (Berlina, Mantra) + artisan chocolate El Almacén de Ramos Generales + bookshops on Perito Moreno street." data-pt="Cervejarias com espaço coberto (Berlina, Mantra) + chocolate artesanal El Almacén de Ramos Generales + livrarias na rua Perito Moreno.">Cervecerías con espacio cubierto (Berlina, Mantra) + chocolate artesanal El Almacén de Ramos Generales + librerías de la calle Perito Moreno.</div>
+  </div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="🛣️ Acceso" data-en="🛣️ Access" data-pt="🛣️ Acesso">🛣️ Acceso</div>
+<div class="info-cards-grid cols1">
+<div class="info-nota" data-es="El Bolsón está a 130 km al sur de Bariloche por la RN 40. Sin aeropuerto propio — se llega por Bariloche (BRC) o El Maitén. Ruta panorámica con nieve posible en invierno: llevá cadenas entre junio y agosto." data-en="El Bolsón is 130 km south of Bariloche on RN 40. No local airport — arrive via Bariloche (BRC) or El Maitén. Scenic route with possible snow in winter: carry chains between June and August." data-pt="El Bolsón fica a 130 km ao sul de Bariloche pela RN 40. Sem aeroporto local — chegue por Bariloche (BRC) ou El Maitén. Rota panorâmica com neve possível no inverno: leve correntes de junho a agosto.">El Bolsón está a 130 km al sur de Bariloche por la RN 40. Sin aeropuerto propio — se llega por Bariloche (BRC) o El Maitén. Ruta panorámica con nieve posible en invierno: llevá cadenas entre junio y agosto.</div>
+<div class="info-card gris">
+  <div class="info-card-icon">🚌</div>
+  <div class="info-card-name" data-es="Terminal de Ómnibus" data-en="Bus Terminal" data-pt="Terminal Rodoviária">Terminal de Ómnibus</div>
+  <div class="info-card-sub" data-es="Av. San Martín y Perito Moreno. Servicios desde Bariloche (2 hs), Buenos Aires (22 hs), Esquel (2,5 hs)." data-en="Av. San Martín y Perito Moreno. Services from Bariloche (2 hrs), Buenos Aires (22 hrs), Esquel (2.5 hrs)." data-pt="Av. San Martín y Perito Moreno. Serviços de Bariloche (2 hs), Buenos Aires (22 hs), Esquel (2,5 hs).">Av. San Martín y Perito Moreno. Servicios desde Bariloche (2 hs), Buenos Aires (22 hs), Esquel (2,5 hs).</div>
+</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="🚶 Paseos y trekking" data-en="🚶 Walks & trekking" data-pt="🚶 Passeios e trekking">🚶 Paseos y trekking</div>
+<div class="info-cards-grid">
+<div class="info-card paseo" style="grid-column:1/-1;">
+  <div style="display:flex;gap:12px;align-items:flex-start;">
+  <div class="info-card-icon">🏞️</div>
+  <div style="flex:1;">
+    <div class="info-card-name" data-es="Cajón del Azul" data-en="Cajón del Azul" data-pt="Cajón del Azul">Cajón del Azul</div>
+    <div class="info-card-sub" data-es="Trek estrella de El Bolsón. Salida desde Wharton (15 km al norte), 3–4 hs de caminata por el Río Azul hasta el cajón. Aguas turquesa, paredes de piedra y refugio. Guarda parques en acceso — consultá apertura según temporada." data-en="El Bolsón's flagship trek. Departs from Wharton (15 km north), 3–4 hrs hiking along Río Azul to the canyon. Turquoise waters, rock walls and shelter. Rangers at entrance — check seasonal opening." data-pt="Trilha estrela de El Bolsón. Saída de Wharton (15 km ao norte), 3–4 hs de caminhada pelo Río Azul até o cânion. Águas turquesa, paredes de pedra e refúgio. Guarda parques na entrada — consulte abertura por temporada.">Trek estrella de El Bolsón. Salida desde Wharton (15 km al norte), 3–4 hs de caminata por el Río Azul hasta el cajón. Aguas turquesa, paredes de piedra y refugio. Guarda parques en acceso — consultá apertura según temporada.</div>
+  </div>
+  </div>
+</div>
+<div class="info-card paseo">
+  <div class="info-card-icon">💧</div>
+  <div class="info-card-name" data-es="Cascada Escondida" data-en="Cascada Escondida" data-pt="Cascada Escondida">Cascada Escondida</div>
+  <div class="info-card-sub" data-es="4 km al norte por RN 40. Trek de 4 hs ida y vuelta — apto para toda la familia con calzado cómodo." data-en="4 km north on RN 40. 4 hrs round trip — suitable for all the family with comfortable shoes." data-pt="4 km ao norte pela RN 40. Trilha de 4 hs ida e volta — adequada para toda a família com calçado confortável.">4 km al norte por RN 40. Trek de 4 hs ida y vuelta — apto para toda la familia con calzado cómodo.</div>
+</div>
+<div class="info-card paseo">
+  <div class="info-card-icon">🍺</div>
+  <div class="info-card-name" data-es="Circuito Cervecero" data-en="Craft Beer Circuit" data-pt="Circuito de Cerveja Artesanal">Circuito Cervecero</div>
+  <div class="info-card-sub" data-es="Berlina, Mantra, El Bolsón — más de 10 cervecerías artesanales en el valle. El Bolsón es la capital nacional de la cerveza artesanal." data-en="Berlina, Mantra, El Bolsón — over 10 craft breweries in the valley. El Bolsón is the national capital of craft beer." data-pt="Berlina, Mantra, El Bolsón — mais de 10 cervejarias artesanais no vale. El Bolsón é a capital nacional da cerveja artesanal.">Berlina, Mantra, El Bolsón — más de 10 cervecerías artesanales en el valle. El Bolsón es la capital nacional de la cerveza artesanal.</div>
+</div>
+<div class="info-card paseo">
+  <div class="info-card-icon">🎪</div>
+  <div class="info-card-name" data-es="Feria Regional" data-en="Regional Fair" data-pt="Feira Regional">Feria Regional</div>
+  <div class="info-card-sub" data-es="Plaza Pagano · Mar, Jue, Sáb y Dom. Artesanías, frutas, dulces, lúpulo, quesos y productores locales." data-en="Plaza Pagano · Tue, Thu, Sat and Sun. Crafts, fruit, jams, hops, cheese and local producers." data-pt="Plaza Pagano · Ter, Qui, Sáb e Dom. Artesanato, frutas, doces, lúpulo, queijos e produtores locais.">Plaza Pagano · Mar, Jue, Sáb y Dom. Artesanías, frutas, dulces, lúpulo, quesos y productores locales.</div>
+</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="⛷️ Centro de ski · Cerro Perito Moreno" data-en="⛷️ Ski resort · Cerro Perito Moreno" data-pt="⛷️ Centro de ski · Cerro Perito Moreno">⛷️ Centro de ski · Cerro Perito Moreno</div>
+<div class="info-cards-grid cols1">
+<div class="info-card nieve" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:url('centro-ski-foto.jpg') center/cover no-repeat;opacity:0.12;"></div>
+  <div style="position:relative;z-index:1;display:flex;gap:12px;align-items:flex-start;">
+  <div class="info-card-icon">🎿</div>
+  <div style="flex:1;">
+    <div class="info-card-name" data-es="Cerro Perito Moreno — 13 km del centro" data-en="Cerro Perito Moreno — 13 km from town" data-pt="Cerro Perito Moreno — 13 km do centro">Cerro Perito Moreno — 13 km del centro</div>
+    <div class="info-card-sub" data-es="Centro de ski familiar con pistas para todos los niveles. Ski, snowboard, trineos y snowshoeing. Vistas panorámicas al Valle del Bolsón y los Andes. Temporada: junio–septiembre según nevada. Alquiler de equipo en base." data-en="Family ski resort with slopes for all levels. Ski, snowboard, sleds and snowshoeing. Panoramic views of Valle del Bolsón and the Andes. Season: June–September depending on snowfall. Equipment rental at base." data-pt="Centro de ski familiar com pistas para todos os níveis. Ski, snowboard, trenós e snowshoeing. Vistas panorâmicas do Valle del Bolsón e dos Andes. Temporada: junho–setembro conforme neve. Aluguel de equipamentos na base.">Centro de ski familiar con pistas para todos los niveles. Ski, snowboard, trineos y snowshoeing. Vistas panorámicas al Valle del Bolsón y los Andes. Temporada: junio–septiembre según nevada. Alquiler de equipo en base.</div>
+  </div>
+  </div>
+</div>
+<div class="info-nota" data-es="Acceso por camino de ripio — recomendado vehículo con tracción o 4x4 con nieve. Verificá condiciones antes de salir en invierno." data-en="Access via gravel road — 4WD or high-clearance vehicle recommended in snow. Check conditions before heading out in winter." data-pt="Acesso por estrada de cascalho — recomendado veículo com tração ou 4x4 com neve. Verifique as condições antes de sair no inverno.">Acceso por camino de ripio — recomendado vehículo con tracción o 4x4 con nieve. Verificá condiciones antes de salir en invierno.</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="🏛️ Cultura y patrimonio" data-en="🏛️ Culture & heritage" data-pt="🏛️ Cultura e patrimônio">🏛️ Cultura y patrimonio</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+<div class="info-card cultura" style="grid-column:1/-1;">
+  <div style="display:flex;gap:12px;align-items:flex-start;">
+  <div class="info-card-icon">🏠</div>
+  <div style="flex:1;">
+    <div class="info-card-name" data-es="Casa de la Cultura El Bolsón" data-en="Casa de la Cultura El Bolsón" data-pt="Casa da Cultura El Bolsón">Casa de la Cultura El Bolsón</div>
+    <div class="info-card-sub" data-es="Av. San Martín 2179. Exposiciones, talleres y eventos de artistas locales. Centro de la escena cultural del valle." data-en="Av. San Martín 2179. Exhibitions, workshops and events by local artists. Hub of the valley's cultural scene." data-pt="Av. San Martín 2179. Exposições, oficinas e eventos de artistas locais. Centro da cena cultural do vale.">Av. San Martín 2179. Exposiciones, talleres y eventos de artistas locales. Centro de la escena cultural del valle.</div>
+  </div>
+  </div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">🍫</div>
+  <div>
+    <div class="info-card-name" data-es="El Almacén de Ramos Generales" data-en="El Almacén de Ramos Generales" data-pt="El Almacén de Ramos Generales">El Almacén de Ramos Generales</div>
+    <div class="info-card-sub" data-es="Av. San Martín 2586. Patrimonio gastronómico del pueblo — chocolates, dulces y productos regionales artesanales." data-en="Av. San Martín 2586. Gastronomic heritage of the town — chocolates, preserves and artisan regional products." data-pt="Av. San Martín 2586. Patrimônio gastronômico do vilarejo — chocolates, doces e produtos regionais artesanais.">Av. San Martín 2586. Patrimonio gastronómico del pueblo — chocolates, dulces y productos regionales artesanales.</div>
+  </div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">🌿</div>
+  <div>
+    <div class="info-card-name" data-es="Mallín Ahogado" data-en="Mallín Ahogado" data-pt="Mallín Ahogado">Mallín Ahogado</div>
+    <div class="info-card-sub" data-es="12 km al norte. Comunidad de productores agroecológicos — chacras, lúpulo, frutas finas y miel. Hito del turismo rural patagónico." data-en="12 km north. Agroecological producer community — farms, hops, berries and honey. Icon of Patagonian rural tourism." data-pt="12 km ao norte. Comunidade de produtores agroecológicos — sítios, lúpulo, frutas finas e mel. Ícone do turismo rural patagônico.">12 km al norte. Comunidad de productores agroecológicos — chacras, lúpulo, frutas finas y miel. Hito del turismo rural patagónico.</div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="🛣️ Servicios clave" data-en="🛣️ Key services" data-pt="🛣️ Serviços essenciais">🛣️ Servicios clave</div>
+<div class="info-cards-grid">
+<div class="info-card gris">
+  <div class="info-card-icon">💊</div>
+  <div class="info-card-name" data-es="Farmacia de turno" data-en="On-duty pharmacy" data-pt="Farmácia de plantão">Farmacia de turno</div>
+  <div class="info-card-sub" data-es="Consultá en el Hospital o llamá al 0800-222-6768 (SAME provincial 24 hs)." data-en="Check at the hospital or call 0800-222-6768 (provincial SAME 24 hrs)." data-pt="Consulte no hospital ou ligue para 0800-222-6768 (SAME provincial 24 hs).">Consultá en el Hospital o llamá al 0800-222-6768 (SAME provincial 24 hs).</div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">🏦</div>
+  <div class="info-card-name" data-es="Cajeros ATM" data-en="ATM machines" data-pt="Caixas eletrônicos">Cajeros ATM</div>
+  <div class="info-card-sub" data-es="Banco Patagonia y Banco Nación en Av. San Martín. Cubrí efectivo antes de rutas remotas." data-en="Banco Patagonia and Banco Nación on Av. San Martín. Get cash before heading to remote routes." data-pt="Banco Patagonia e Banco Nação na Av. San Martín. Saque dinheiro antes de rotas remotas.">Banco Patagonia y Banco Nación en Av. San Martín. Cubrí efectivo antes de rutas remotas.</div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">⛽</div>
+  <div class="info-card-name" data-es="Estaciones de servicio" data-en="Gas stations" data-pt="Postos de gasolina">Estaciones de servicio</div>
+  <div class="info-card-sub" data-es="YPF y Shell en acceso norte (RN 40). Cargá siempre en El Bolsón — las próximas estaciones en ruta sur están muy distantes." data-en="YPF and Shell at north entrance (RN 40). Always fill up in El Bolsón — next stations heading south are very far." data-pt="YPF e Shell na entrada norte (RN 40). Sempre abasteça em El Bolsón — os próximos postos ao sul ficam muito distantes.">YPF y Shell en acceso norte (RN 40). Cargá siempre en El Bolsón — las próximas estaciones en ruta sur están muy distantes.</div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">📶</div>
+  <div class="info-card-name" data-es="Conectividad" data-en="Connectivity" data-pt="Conectividade">Conectividad</div>
+  <div class="info-card-sub" data-es="Señal Claro y Personal en el centro. Sin cobertura en zonas de trekking — descargá mapas offline (Maps.me, Wikiloc)." data-en="Claro and Personal signal in town. No coverage in trekking areas — download offline maps (Maps.me, Wikiloc)." data-pt="Sinal Claro e Personal no centro. Sem cobertura em áreas de trekking — baixe mapas offline (Maps.me, Wikiloc).">Señal Claro y Personal en el centro. Sin cobertura en zonas de trekking — descargá mapas offline (Maps.me, Wikiloc).</div>
+</div>
+</div>
+</div>
+
+<div style="height:16px;"></div>
+</div>
+
+<div class="pronto-section">
+  <div class="pronto-title" data-es="Próximamente en CONFÍN El Bolsón" data-en="Coming soon to CONFÍN El Bolsón" data-pt="Em breve no CONFÍN El Bolsón">Próximamente en CONFÍN El Bolsón</div>
+  <div class="pronto-grid">
+    <div class="pronto-card"><div class="pronto-badge" data-es="Próximamente" data-en="Coming soon" data-pt="Em breve">Próximamente</div><div class="pronto-icon">🏠</div><div class="pronto-name" data-es="Alojamiento" data-en="Accommodation" data-pt="Hospedagem">Alojamiento</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Próximamente" data-en="Coming soon" data-pt="Em breve">Próximamente</div><div class="pronto-icon">🍽️</div><div class="pronto-name" data-es="Gastronomía" data-en="Gastronomy" data-pt="Gastronomia">Gastronomía</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Próximamente" data-en="Coming soon" data-pt="Em breve">Próximamente</div><div class="pronto-icon">🍺</div><div class="pronto-name" data-es="Cervecerías" data-en="Breweries" data-pt="Cervejarias">Cervecerías</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Próximamente" data-en="Coming soon" data-pt="Em breve">Próximamente</div><div class="pronto-icon">🧭</div><div class="pronto-name" data-es="Guías de trekking" data-en="Trekking guides" data-pt="Guias de trilha">Guías de trekking</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Próximamente" data-en="Coming soon" data-pt="Em breve">Próximamente</div><div class="pronto-icon">🚗</div><div class="pronto-name" data-es="Traslados" data-en="Transfers" data-pt="Traslados">Traslados</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Próximamente" data-en="Coming soon" data-pt="Em breve">Próximamente</div><div class="pronto-icon">🎪</div><div class="pronto-name" data-es="Experiencias" data-en="Experiences" data-pt="Experiências">Experiencias</div></div>
+  </div>
+</div>
+<div style="height:16px;"></div>
+<footer data-es="confín app · andes australes · el bolsón · río negro" data-en="confín app · southern andes · el bolsón · río negro" data-pt="confín app · andes australis · el bolsón · río negro">confín app · andes australes · el bolsón · río negro</footer>
+<script>
+function cambiarIdioma(lang,btn){
+  document.querySelectorAll('.lang-btn-dest').forEach(b=>b.classList.remove('activo'));
+  btn.classList.add('activo');
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const txt=lang==='es'?el.dataset.es:lang==='en'?el.dataset.en:el.dataset.pt;
+    if(txt)el.innerHTML=txt;
+  });
+}
+</script>
+</body>
+</html>
