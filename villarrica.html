@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TouristDestination","name":"Villarrica","description":"Guía útil de viaje para Villarrica. Emergencias, Volcán Villarrica, Lago Villarrica, termas y todo lo que necesitás saber antes de llegar.","url":"https://contactoconfinapp-cloud.github.io/Confinapp/villarrica/","touristType":["Turismo de Montaña","Ski","Turismo Termal","Turismo Lacustre"],"includesAttraction":[{"@type":"TouristAttraction","name":"Volcán Villarrica"},{"@type":"TouristAttraction","name":"Lago Villarrica"},{"@type":"TouristAttraction","name":"Termas Geométricas"},{"@type":"TouristAttraction","name":"Centro Ski Volcán Villarrica"}],"contactPoint":[{"@type":"ContactPoint","telephone":"131","contactType":"emergency","name":"Hospital San Francisco de Borja Villarrica"}]}
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CONFÍN | Guía Útil y Gratuita de Villarrica — Volcán, Lago, Termas y Ski</title>
+<meta name="description" content="Información esencial de Villarrica: emergencias, Volcán Villarrica, ski, termas Geométricas, Coñaripe y Trancura, acceso desde Argentina y todo lo que necesitás saber.">
+<meta property="og:title" content="CONFÍN — Villarrica · Guía útil para el viajero">
+<meta property="og:description" content="Todo lo que necesitás saber antes y durante tu visita a Villarrica. Gratuito, curado y siempre actualizado.">
+<meta property="og:image" content="https://contactoconfinapp-cloud.github.io/Confinapp/villarrica-foto.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#3D6B73">
+<link rel="canonical" href="https://contactoconfinapp-cloud.github.io/Confinapp/villarrica/">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--atlantic:#3D6B73;--fern:#5C7A4A;--cream:#FAF7F2;--fog:#F3F0EA;--night:#1C2B2B;--soil:#44352B;--bark:#8A7A6A;--ash:#D8D2C5;--deep:#0E1A1C;--font-d:'Georgia',serif;}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:var(--cream);color:var(--soil);min-height:100vh;}
+.nav{position:sticky;top:0;z-index:100;background:var(--deep);display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(61,107,115,0.3);}
+.nav-logo{font-family:var(--font-d);font-size:1rem;color:var(--cream);letter-spacing:0.04em;text-decoration:none;}
+.nav-corredor{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(163,196,204,0.5);}
+.nav-back{font-size:0.72rem;color:rgba(163,196,204,0.7);text-decoration:none;display:flex;align-items:center;gap:4px;}
+.hero{background:linear-gradient(160deg,#1A1E2C 0%,var(--deep) 100%);padding:32px 20px 24px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:url('villarrica-foto.jpg') center/cover no-repeat;opacity:0.22;}
+.hero-content{position:relative;z-index:1;}
+.hero-tag{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(163,196,204,0.6);margin-bottom:8px;}
+.hero-title{font-family:var(--font-d);font-size:clamp(1.8rem,5vw,2.4rem);font-weight:300;color:#fff;line-height:1.15;margin-bottom:6px;}
+.hero-sub{font-size:0.72rem;color:rgba(163,196,204,0.6);letter-spacing:0.06em;}
+.lang-bar{display:flex;gap:6px;margin-top:14px;}
+.lang-btn-dest{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:5px 10px;border-radius:20px;border:1px solid rgba(163,196,204,0.3);background:transparent;color:rgba(163,196,204,0.6);cursor:pointer;font-family:inherit;}
+.lang-btn-dest.activo{background:rgba(61,107,115,0.4);color:#fff;border-color:rgba(163,196,204,0.5);}
+.content{max-width:640px;margin:0 auto;}
+.info-bloque{padding:20px 16px 0;}
+.info-bloque-titulo{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--bark);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.info-bloque-titulo::after{content:'';flex:1;height:1px;background:var(--ash);}
+.info-cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px;}
+.info-cards-grid.cols1{grid-template-columns:1fr;}
+.info-card{background:rgba(255,255,255,0.04);border-radius:12px;padding:16px 14px;box-shadow:0 2px 12px rgba(0,0,0,0.2);border:1px solid rgba(163,196,204,0.12);display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden;transition:border-color 0.2s;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,var(--atlantic));}
+.info-card.emergencia{--card-accent:#B84E3A;}
+.info-card.paseo{--card-accent:#5C7A4A;}
+.info-card.cultura{--card-accent:#8A6A2A;}
+.info-card.nieve{--card-accent:#7AAFC4;}
+.info-card.gris{--card-accent:#6A7A7A;}
+.info-card-icon{font-size:1.6rem;line-height:1;}
+.info-card-name{font-size:0.78rem;font-weight:600;color:var(--cream);line-height:1.3;}
+.info-card-sub{font-size:0.66rem;color:rgba(163,196,204,0.7);line-height:1.4;}
+.info-card-tel{font-size:1rem;font-weight:700;color:var(--atlantic);letter-spacing:0.03em;}
+.info-card-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.65rem;letter-spacing:0.06em;text-transform:uppercase;padding:7px 10px;border-radius:20px;text-decoration:none;background:var(--card-accent,var(--atlantic));color:#fff;font-family:inherit;margin-top:auto;justify-content:center;border:none;cursor:pointer;}
+.info-card-btn.outline{background:transparent;color:var(--card-accent,var(--atlantic));border:1px solid var(--card-accent,var(--atlantic));}
+.info-nota{background:rgba(61,107,115,0.06);border-left:3px solid var(--atlantic);border-radius:0 6px 6px 0;padding:10px 12px;font-size:0.75rem;color:var(--soil);line-height:1.6;margin-bottom:10px;}
+.info-aviso{background:rgba(184,78,58,0.06);border-left:3px solid #B84E3A;border-radius:0 6px 6px 0;padding:10px 12px;font-size:0.75rem;color:var(--soil);line-height:1.6;margin-bottom:10px;}
+.spacer{height:24px;}
+.stt-grid{display:grid;grid-template-columns:1fr;gap:8px;}
+.stt-card{background:rgba(255,255,255,0.04);border-radius:10px;padding:14px;border:1px solid rgba(163,196,204,0.12);display:flex;gap:12px;align-items:flex-start;}
+.stt-tiempo{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--atlantic);font-weight:600;white-space:nowrap;margin-top:2px;min-width:72px;}
+.stt-desc{font-size:0.8rem;color:rgba(196,186,176,0.85);line-height:1.5;}
+.pronto-section{background:rgba(255,255,255,0.025);border-top:1px solid rgba(163,196,204,0.1);padding:24px 16px;}
+.pronto-title{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(163,196,204,0.4);margin-bottom:16px;}
+.pronto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.pronto-card{background:rgba(255,255,255,0.02);border:1px solid rgba(163,196,204,0.08);border-radius:10px;padding:14px 10px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;}
+.pronto-badge{font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(163,196,204,0.35);background:rgba(61,107,115,0.08);padding:3px 7px;border-radius:10px;}
+.pronto-icon{font-size:1.4rem;}
+.pronto-name{font-size:0.6rem;color:rgba(163,196,204,0.4);letter-spacing:0.04em;}
+footer{text-align:center;padding:20px 16px;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(163,196,204,0.25);}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/" class="nav-logo">confín <span class="nav-corredor">· patagonia</span></a>
+  <a href="/" class="nav-back">← volver</a>
+</nav>
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag" data-es="Chile · Los Ríos / Araucanía · Lago Villarrica" data-en="Chile · Los Ríos / Araucanía · Lake Villarrica" data-pt="Chile · Los Ríos / Araucanía · Lago Villarrica">Chile · Los Ríos / Araucanía · Lago Villarrica</div>
+    <h1 class="hero-title">Villarrica</h1>
+    <div class="hero-sub" data-es="Volcán activo · Lago · Termas · Zona vinculada con Pucón" data-en="Active volcano · Lake · Hot springs · Linked area with Pucón" data-pt="Vulcão ativo · Lago · Termas · Zona vinculada com Pucón">Volcán activo · Lago · Termas · Zona vinculada con Pucón</div>
+    <div class="lang-bar">
+      <button class="lang-btn-dest activo" onclick="cambiarIdioma('es',this)">ES</button>
+      <button class="lang-btn-dest" onclick="cambiarIdioma('en',this)">EN</button>
+      <button class="lang-btn-dest" onclick="cambiarIdioma('pt',this)">PT</button>
+    </div>
+  </div>
+</div>
+<div class="content">
+
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="🚨 Emergencias" data-en="🚨 Emergencies" data-pt="🚨 Emergências">🚨 Emergencias</div>
+<div class="info-cards-grid">
+<div class="info-card emergencia" style="grid-column:1/-1;">
+  <div style="display:flex;gap:12px;align-items:flex-start;">
+  <div class="info-card-icon">🏥</div>
+  <div style="flex:1;">
+    <div class="info-card-name" data-es="Hospital San Francisco de Borja" data-en="Hospital San Francisco de Borja" data-pt="Hospital San Francisco de Borja">Hospital San Francisco de Borja</div>
+    <div class="info-card-sub" data-es="O'Higgins 460, Villarrica. Urgencias 24 hs." data-en="O'Higgins 460, Villarrica. 24-hour emergency." data-pt="O'Higgins 460, Villarrica. Urgências 24 hs.">O'Higgins 460, Villarrica. Urgencias 24 hs.</div>
+    <div class="info-card-tel">131</div>
+  </div>
+  </div>
+  <a href="tel:+5645241100" class="info-card-btn outline">(045) 241-100</a>
+</div>
+<div class="info-card emergencia">
+  <div class="info-card-icon">🚒</div>
+  <div class="info-card-name" data-es="Bomberos" data-en="Fire Dept." data-pt="Bombeiros">Bomberos</div>
+  <div class="info-card-sub">Av. Pedro de Valdivia 1099</div>
+  <div class="info-card-tel">132</div>
+</div>
+<div class="info-card emergencia">
+  <div class="info-card-icon">👮</div>
+  <div class="info-card-name">Carabineros</div>
+  <div class="info-card-sub">Av. Pedro de Valdivia 1023</div>
+  <div class="info-card-tel">133</div>
+</div>
+<div class="info-card emergencia">
+  <div class="info-card-icon">🔍</div>
+  <div class="info-card-name">PDI</div>
+  <div class="info-card-sub" data-es="Policía de Investigaciones · Valentín Letelier 663." data-en="Criminal Investigation Police · Valentín Letelier 663." data-pt="Polícia de Investigações · Valentín Letelier 663.">Policía de Investigaciones · Valentín Letelier 663.</div>
+  <div class="info-card-tel">134</div>
+</div>
+<div class="info-card emergencia">
+  <div class="info-card-icon">⚓</div>
+  <div class="info-card-name" data-es="Capitanía de Puerto" data-en="Port Authority" data-pt="Capitania do Porto">Capitanía de Puerto</div>
+  <div class="info-card-sub" data-es="Lago Villarrica — emergencias en el lago." data-en="Lake Villarrica — lake emergencies." data-pt="Lago Villarrica — emergências no lago.">Lago Villarrica — emergencias en el lago.</div>
+  <div class="info-card-tel">136</div>
+</div>
+<div class="info-card emergencia">
+  <div class="info-card-icon">🌋</div>
+  <div class="info-card-name" data-es="ONEMI / SENAPRED" data-en="ONEMI / SENAPRED" data-pt="ONEMI / SENAPRED">ONEMI / SENAPRED</div>
+  <div class="info-card-sub" data-es="Alerta volcánica y emergencias naturales — Región de La Araucanía." data-en="Volcanic alert and natural emergencies — Araucanía Region." data-pt="Alerta vulcânica e emergências naturais — Região da Araucanía.">Alerta volcánica y emergencias naturales — Región de La Araucanía.</div>
+  <div class="info-card-tel">1449</div>
+</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="🛣️ Acceso desde Argentina" data-en="🛣️ Access from Argentina" data-pt="🛣️ Acesso da Argentina">🛣️ Acceso desde Argentina</div>
+<div class="info-cards-grid cols1">
+<div class="info-nota" data-es="Villarrica se alcanza desde Argentina por dos pasos principales. Desde San Martín de los Andes: Paso Mamuil Malal (Tromen) — temporada estival, verificar apertura. Desde Junín de los Andes: Paso Hua Hum — habilitado todo el año con condiciones." data-en="Villarrica is reached from Argentina via two main crossings. From San Martín de los Andes: Paso Mamuil Malal (Tromen) — summer season, verify opening. From Junín de los Andes: Paso Hua Hum — open year-round depending on conditions." data-pt="Villarrica é alcançada da Argentina por duas passagens principais. De San Martín de los Andes: Paso Mamuil Malal (Tromen) — temporada estival, verificar abertura. De Junín de los Andes: Paso Hua Hum — habilitado o ano todo conforme condições.">Villarrica se alcanza desde Argentina por dos pasos principales. Desde San Martín de los Andes: Paso Mamuil Malal (Tromen) — temporada estival, verificar apertura. Desde Junín de los Andes: Paso Hua Hum — habilitado todo el año con condiciones.</div>
+<div class="info-card gris">
+  <div class="info-card-icon">🛂</div>
+  <div>
+    <div class="info-card-name" data-es="Documentación y SAG" data-en="Documentation & SAG" data-pt="Documentação e SAG">Documentación y SAG</div>
+    <div class="info-card-sub" data-es="DNI argentino suficiente para ciudadanos AR. No ingresar frutas, verduras, carnes ni lácteos frescos — SAG decomisa sin excepción. SOAPEX obligatorio para vehículos argentinos en Chile." data-en="Argentine ID sufficient for AR citizens. No fresh fruit, vegetables, meat or dairy — SAG confiscates without exception. SOAPEX mandatory for Argentine vehicles in Chile." data-pt="RG argentino suficiente para cidadãos AR. Não ingresse frutas, verduras, carnes ou laticínios frescos — SAG apreende sem exceção. SOAPEX obrigatório para veículos argentinos no Chile.">DNI argentino suficiente para ciudadanos AR. No ingresar frutas, verduras, carnes ni lácteos frescos — SAG decomisa sin excepción. SOAPEX obligatorio para vehículos argentinos en Chile.</div>
+  </div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">💱</div>
+  <div>
+    <div class="info-card-name" data-es="Cambio de moneda" data-en="Currency exchange" data-pt="Câmbio de moeda">Cambio de moneda</div>
+    <div class="info-card-sub" data-es="Casas de cambio en Av. Pedro de Valdivia (centro). Aceptan pesos argentinos, dólares y euros. Tarjetas internacionales funcionan bien — Visa y Mastercard preferidas." data-en="Exchange houses on Av. Pedro de Valdivia (center). Accept Argentine pesos, dollars and euros. International cards work well — Visa and Mastercard preferred." data-pt="Casas de câmbio na Av. Pedro de Valdivia (centro). Aceitam pesos argentinos, dólares e euros. Cartões internacionais funcionam bem — Visa e Mastercard preferidos.">Casas de cambio en Av. Pedro de Valdivia (centro). Aceptan pesos argentinos, dólares y euros. Tarjetas internacionales funcionan bien — Visa y Mastercard preferidas.</div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="⏱️ ¿Cuánto tiempo tenés?" data-en="⏱️ How much time do you have?" data-pt="⏱️ Quanto tempo você tem?">⏱️ ¿Cuánto tiempo tenés?</div>
+<div class="stt-grid">
+  <div class="stt-card">
+    <div class="stt-tiempo" data-es="Medio día" data-en="Half day" data-pt="Meio dia">Medio día</div>
+    <div class="stt-desc" data-es="Paseo por la costanera del Lago Villarrica + vista al volcán desde la plaza + mercado artesanal mapuche en Av. Pedro de Valdivia." data-en="Walk along Lake Villarrica waterfront + volcano views from the plaza + Mapuche craft market on Av. Pedro de Valdivia." data-pt="Passeio pela orla do Lago Villarrica + vista ao vulcão da praça + mercado artesanal mapuche na Av. Pedro de Valdivia.">Paseo por la costanera del Lago Villarrica + vista al volcán desde la plaza + mercado artesanal mapuche en Av. Pedro de Valdivia.</div>
+  </div>
+  <div class="stt-card">
+    <div class="stt-tiempo" data-es="1 día" data-en="1 day" data-pt="1 dia">1 día</div>
+    <div class="stt-desc" data-es="Villarrica como base + excursión a Pucón (25 km) para trekking o ski en el volcán. Las dos ciudades funcionan como zona integrada." data-en="Villarrica as base + excursion to Pucón (25 km) for trekking or skiing on the volcano. Both towns work as an integrated area." data-pt="Villarrica como base + excursão a Pucón (25 km) para trekking ou ski no vulcão. As duas cidades funcionam como zona integrada.">Villarrica como base + excursión a Pucón (25 km) para trekking o ski en el volcán. Las dos ciudades funcionan como zona integrada.</div>
+  </div>
+  <div class="stt-card">
+    <div class="stt-tiempo" data-es="2–3 días" data-en="2–3 days" data-pt="2–3 dias">2–3 días</div>
+    <div class="stt-desc" data-es="Termas (Geométricas, Coñaripe o Trancura) + volcán + lago + Pucón. Villarrica es más tranquila y económica que Pucón — ideal como base." data-en="Hot springs (Geométricas, Coñaripe or Trancura) + volcano + lake + Pucón. Villarrica is quieter and cheaper than Pucón — ideal as a base." data-pt="Termas (Geométricas, Coñaripe ou Trancura) + vulcão + lago + Pucón. Villarrica é mais tranquila e econômica que Pucón — ideal como base.">Termas (Geométricas, Coñaripe o Trancura) + volcán + lago + Pucón. Villarrica es más tranquila y económica que Pucón — ideal como base.</div>
+  </div>
+  <div class="stt-card" style="border-left:3px solid #5C7A4A;">
+    <div class="stt-tiempo" style="color:#5C7A4A;" data-es="☔ Si llueve" data-en="☔ If it rains" data-pt="☔ Se chover">☔ Si llueve</div>
+    <div class="stt-desc" data-es="Termas Geométricas (70 km, experiencia de lluvia única) + Museo Mapuche de Villarrica + gastronomía local con curanto y cordero." data-en="Termas Geométricas (70 km, unique rain experience) + Villarrica Mapuche Museum + local gastronomy with curanto and lamb." data-pt="Termas Geométricas (70 km, experiência única na chuva) + Museu Mapuche de Villarrica + gastronomia local com curanto e cordeiro.">Termas Geométricas (70 km, experiencia de lluvia única) + Museo Mapuche de Villarrica + gastronomía local con curanto y cordero.</div>
+  </div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="⛷️ Centro de ski · Volcán Villarrica" data-en="⛷️ Ski resort · Volcán Villarrica" data-pt="⛷️ Centro de ski · Vulcão Villarrica">⛷️ Centro de ski · Volcán Villarrica</div>
+<div class="info-cards-grid cols1">
+<div class="info-card nieve" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:url('centro-ski-foto.jpg') center/cover no-repeat;opacity:0.12;"></div>
+  <div style="position:relative;z-index:1;display:flex;gap:12px;align-items:flex-start;">
+  <div class="info-card-icon">🌋</div>
+  <div style="flex:1;">
+    <div class="info-card-name" data-es="Ski Villarrica-Pucón — 15 km desde Pucón" data-en="Ski Villarrica-Pucón — 15 km from Pucón" data-pt="Ski Villarrica-Pucón — 15 km de Pucón">Ski Villarrica-Pucón — 15 km desde Pucón</div>
+    <div class="info-card-sub" data-es="Esquiar sobre un volcán activo — experiencia única en el mundo. 9 pistas, 3 medios de elevación, 400 m de desnivel. Temporada: junio–septiembre. En verano: trekking de ascenso al cráter (guía obligatorio, 6–8 hs). Estado del volcán condiciona actividades — consultá alerta SERNAGEOMIN antes de salir." data-en="Skiing on an active volcano — a unique experience in the world. 9 slopes, 3 lifts, 400 m vertical drop. Season: June–September. In summer: crater ascent trekking (mandatory guide, 6–8 hrs). Volcano status conditions activities — check SERNAGEOMIN alert before heading out." data-pt="Esquiar em um vulcão ativo — experiência única no mundo. 9 pistas, 3 meios de elevação, 400 m de desnível. Temporada: junho–setembro. No verão: trekking de ascensão à cratera (guia obrigatório, 6–8 hs). O estado do vulcão condiciona as atividades — consulte o alerta SERNAGEOMIN antes de sair.">Esquiar sobre un volcán activo — experiencia única en el mundo. 9 pistas, 3 medios de elevación, 400 m de desnivel. Temporada: junio–septiembre. En verano: trekking de ascenso al cráter (guía obligatorio, 6–8 hs). Estado del volcán condiciona actividades — consultá alerta SERNAGEOMIN antes de salir.</div>
+  </div>
+  </div>
+  <a href="https://www.skivillarrica.cl" target="_blank" class="info-card-btn">skivillarrica.cl →</a>
+</div>
+<div class="info-aviso" data-es="El Volcán Villarrica tiene actividad permanente. Consultá el nivel de alerta en sernageomin.cl antes de cualquier actividad en el volcán — el ascenso puede estar restringido sin previo aviso." data-en="Volcán Villarrica has permanent activity. Check the alert level at sernageomin.cl before any activity on the volcano — ascent may be restricted without prior notice." data-pt="O Vulcão Villarrica tem atividade permanente. Consulte o nível de alerta em sernageomin.cl antes de qualquer atividade no vulcão — a ascensão pode ser restringida sem aviso prévio.">El Volcán Villarrica tiene actividad permanente. Consultá el nivel de alerta en sernageomin.cl antes de cualquier actividad en el volcán — el ascenso puede estar restringido sin previo aviso.</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="♨️ Termas de la zona" data-en="♨️ Area hot springs" data-pt="♨️ Termas da região">♨️ Termas de la zona</div>
+<div class="info-cards-grid">
+<div class="info-card paseo" style="grid-column:1/-1;">
+  <div style="display:flex;gap:12px;align-items:flex-start;">
+  <div class="info-card-icon">♨️</div>
+  <div style="flex:1;">
+    <div class="info-card-name" data-es="Termas Geométricas — 70 km" data-en="Termas Geométricas — 70 km" data-pt="Termas Geométricas — 70 km">Termas Geométricas — 70 km</div>
+    <div class="info-card-sub" data-es="Las termas más icónicas de Chile. 20 pozas de agua termal en pasarelas de madera sobre un cañón selvático. Reserva obligatoria — cupos limitados. Vale cada kilómetro de camino de ripio." data-en="Chile's most iconic hot springs. 20 thermal pools on wooden walkways over a jungle canyon. Reservation required — limited spots. Worth every kilometer of gravel road." data-pt="As termas mais icônicas do Chile. 20 piscinas termais em passarelas de madeira sobre um cânion selvático. Reserva obrigatória — vagas limitadas. Vale cada quilômetro de estrada de cascalho.">Las termas más icónicas de Chile. 20 pozas de agua termal en pasarelas de madera sobre un cañón selvático. Reserva obligatoria — cupos limitados. Vale cada kilómetro de camino de ripio.</div>
+  </div>
+  </div>
+  <a href="https://www.termasgeometricas.cl" target="_blank" class="info-card-btn">termasgeometricas.cl →</a>
+</div>
+<div class="info-card paseo">
+  <div class="info-card-icon">🌿</div>
+  <div>
+    <div class="info-card-name" data-es="Termas de Coñaripe — 35 km" data-en="Termas de Coñaripe — 35 km" data-pt="Termas de Coñaripe — 35 km">Termas de Coñaripe — 35 km</div>
+    <div class="info-card-sub" data-es="Varias termas en el pueblo de Coñaripe a orillas del Lago Pellaifa. Más accesibles y económicas que Geométricas." data-en="Several hot springs in the town of Coñaripe on the shores of Lago Pellaifa. More accessible and affordable than Geométricas." data-pt="Várias termas na cidade de Coñaripe à beira do Lago Pellaifa. Mais acessíveis e econômicas que as Geométricas.">Varias termas en el pueblo de Coñaripe a orillas del Lago Pellaifa. Más accesibles y económicas que Geométricas.</div>
+  </div>
+</div>
+<div class="info-card paseo">
+  <div class="info-card-icon">🏞️</div>
+  <div>
+    <div class="info-card-name" data-es="Termas Trancura — 25 km" data-en="Termas Trancura — 25 km" data-pt="Termas Trancura — 25 km">Termas Trancura — 25 km</div>
+    <div class="info-card-sub" data-es="Camino a Pucón. Pozas termales con vista al volcán — buena opción si combinás con ski o trekking en el mismo día." data-en="On the road to Pucón. Thermal pools with volcano views — a good option if combining with skiing or trekking the same day." data-pt="Caminho a Pucón. Piscinas termais com vista ao vulcão — boa opção se combinando com ski ou trekking no mesmo dia.">Camino a Pucón. Pozas termales con vista al volcán — buena opción si combinás con ski o trekking en el mismo día.</div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="🏛️ Cultura y patrimonio" data-en="🏛️ Culture & heritage" data-pt="🏛️ Cultura e patrimônio">🏛️ Cultura y patrimonio</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+<div class="info-card cultura" style="grid-column:1/-1;">
+  <div style="display:flex;gap:12px;align-items:flex-start;">
+  <div class="info-card-icon">🪶</div>
+  <div style="flex:1;">
+    <div class="info-card-name" data-es="Museo Mapuche de Villarrica" data-en="Villarrica Mapuche Museum" data-pt="Museu Mapuche de Villarrica">Museo Mapuche de Villarrica</div>
+    <div class="info-card-sub" data-es="Av. Pedro de Valdivia 1050. Textiles, platería, cerámicas y cosmovisión del pueblo mapuche-pehuenche. Uno de los museos etnográficos más completos del sur de Chile." data-en="Av. Pedro de Valdivia 1050. Textiles, silverwork, ceramics and worldview of the Mapuche-Pehuenche people. One of the most complete ethnographic museums in southern Chile." data-pt="Av. Pedro de Valdivia 1050. Têxteis, ourivesaria, cerâmicas e cosmovisão do povo mapuche-pehuenche. Um dos museus etnográficos mais completos do sul do Chile.">Av. Pedro de Valdivia 1050. Textiles, platería, cerámicas y cosmovisión del pueblo mapuche-pehuenche. Uno de los museos etnográficos más completos del sur de Chile.</div>
+  </div>
+  </div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">🎭</div>
+  <div>
+    <div class="info-card-name" data-es="Casa de la Cultura" data-en="Casa de la Cultura" data-pt="Casa da Cultura">Casa de la Cultura</div>
+    <div class="info-card-sub" data-es="Henríquez 379. Exposiciones, talleres y eventos — escena cultural local activa durante todo el año." data-en="Henríquez 379. Exhibitions, workshops and events — active local cultural scene year-round." data-pt="Henríquez 379. Exposições, oficinas e eventos — cena cultural local ativa durante todo o ano.">Henríquez 379. Exposiciones, talleres y eventos — escena cultural local activa durante todo el año.</div>
+  </div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">🛖</div>
+  <div>
+    <div class="info-card-name" data-es="Feria Artesanal Mapuche" data-en="Mapuche Craft Market" data-pt="Feira Artesanal Mapuche">Feria Artesanal Mapuche</div>
+    <div class="info-card-sub" data-es="Av. Pedro de Valdivia y costanera. Platería, textiles y artesanías de comunidades locales — directo de manos mapuches." data-en="Av. Pedro de Valdivia and waterfront. Silverwork, textiles and crafts from local communities — directly from Mapuche artisans." data-pt="Av. Pedro de Valdivia e orla. Ourivesaria, têxteis e artesanato de comunidades locais — direto das mãos mapuches.">Av. Pedro de Valdivia y costanera. Platería, textiles y artesanías de comunidades locales — directo de manos mapuches.</div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="spacer"></div>
+<div class="info-bloque">
+<div class="info-bloque-titulo" data-es="🛣️ Servicios clave" data-en="🛣️ Key services" data-pt="🛣️ Serviços essenciais">🛣️ Servicios clave</div>
+<div class="info-cards-grid">
+<div class="info-card gris">
+  <div class="info-card-icon">🚌</div>
+  <div class="info-card-name" data-es="Terminal de buses" data-en="Bus terminal" data-pt="Terminal de ônibus">Terminal de buses</div>
+  <div class="info-card-sub" data-es="Av. Pedro de Valdivia y Muñoz. Conexiones frecuentes a Pucón (30 min), Temuco (1,5 hs), Valdivia (2 hs), Santiago (9 hs)." data-en="Av. Pedro de Valdivia y Muñoz. Frequent connections to Pucón (30 min), Temuco (1.5 hrs), Valdivia (2 hrs), Santiago (9 hrs)." data-pt="Av. Pedro de Valdivia y Muñoz. Conexões frequentes a Pucón (30 min), Temuco (1,5 hs), Valdivia (2 hs), Santiago (9 hs).">Av. Pedro de Valdivia y Muñoz. Conexiones frecuentes a Pucón (30 min), Temuco (1,5 hs), Valdivia (2 hs), Santiago (9 hs).</div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">🏦</div>
+  <div class="info-card-name" data-es="Cajeros y bancos" data-en="ATMs & banks" data-pt="Caixas e bancos">Cajeros y bancos</div>
+  <div class="info-card-sub" data-es="BancoEstado, Santander y BCI en Av. Pedro de Valdivia. Retirá pesos chilenos — en zonas de termas y volcán no hay cajeros." data-en="BancoEstado, Santander and BCI on Av. Pedro de Valdivia. Withdraw Chilean pesos — no ATMs near hot springs or volcano." data-pt="BancoEstado, Santander e BCI na Av. Pedro de Valdivia. Saque pesos chilenos — nas áreas de termas e vulcão não há caixas.">BancoEstado, Santander y BCI en Av. Pedro de Valdivia. Retirá pesos chilenos — en zonas de termas y volcán no hay cajeros.</div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">⛽</div>
+  <div class="info-card-name" data-es="Combustible" data-en="Fuel" data-pt="Combustível">Combustible</div>
+  <div class="info-card-sub" data-es="Copec y Shell en acceso norte (Ruta 199). Cargá en Villarrica — camino a Geométricas es ripio y no hay estaciones." data-en="Copec and Shell at north entrance (Route 199). Fill up in Villarrica — road to Geométricas is gravel with no stations." data-pt="Copec e Shell na entrada norte (Rota 199). Abasteça em Villarrica — caminho às Geométricas é cascalho sem postos.">Copec y Shell en acceso norte (Ruta 199). Cargá en Villarrica — camino a Geométricas es ripio y no hay estaciones.</div>
+</div>
+<div class="info-card gris">
+  <div class="info-card-icon">📶</div>
+  <div class="info-card-name" data-es="Conectividad" data-en="Connectivity" data-pt="Conectividade">Conectividad</div>
+  <div class="info-card-sub" data-es="Entel y Movistar en el centro. Sin señal en Geométricas y zonas de volcán — descargá mapas offline. Roaming AR funciona con Claro y Personal." data-en="Entel and Movistar in town. No signal at Geométricas and volcano areas — download offline maps. AR roaming works with Claro and Personal." data-pt="Entel e Movistar no centro. Sem sinal nas Geométricas e áreas do vulcão — baixe mapas offline. Roaming AR funciona com Claro e Personal.">Entel y Movistar en el centro. Sin señal en Geométricas y zonas de volcán — descargá mapas offline. Roaming AR funciona con Claro y Personal.</div>
+</div>
+</div>
+</div>
+
+<div style="height:16px;"></div>
+</div>
+
+<div class="pronto-section">
+  <div class="pronto-title" data-es="Próximamente en CONFÍN Villarrica" data-en="Coming soon to CONFÍN Villarrica" data-pt="Em breve no CONFÍN Villarrica">Próximamente en CONFÍN Villarrica</div>
+  <div class="pronto-grid">
+    <div class="pronto-card"><div class="pronto-badge" data-es="Próximamente" data-en="Coming soon" data-pt="Em breve">Próximamente</div><div class="pronto-icon">🏠</div><div class="pronto-name" data-es="Alojamiento" data-en="Accommodation" data-pt="Hospedagem">Alojamiento</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Próximamente" data-en="Coming soon" data-pt="Em breve">Próximamente</div><div class="pronto-icon">🍽️</div><div class="pronto-name" data-es="Gastronomía" data-en="Gastronomy" data-pt="Gastronomia">Gastronomía</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Próximamente" data-en="Coming soon" data-pt="Em breve">Próximamente</div><div class="pronto-icon">♨️</div><div class="pronto-name" data-es="Termas" data-en="Hot springs" data-pt="Termas">Termas</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Próximamente" data-en="Coming soon" data-pt="Em breve">Próximamente</div><div class="pronto-icon">🧭</div><div class="pronto-name" data-es="Experiencias" data-en="Experiences" data-pt="Experiências">Experiencias</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Próximamente" data-en="Coming soon" data-pt="Em breve">Próximamente</div><div class="pronto-icon">🚗</div><div class="pronto-name" data-es="Traslados" data-en="Transfers" data-pt="Traslados">Traslados</div></div>
+    <div class="pronto-card"><div class="pronto-badge" data-es="Próximamente" data-en="Coming soon" data-pt="Em breve">Próximamente</div><div class="pronto-icon">🌋</div><div class="pronto-name" data-es="Ski volcán" data-en="Volcano ski" data-pt="Ski vulcão">Ski volcán</div></div>
+  </div>
+</div>
+<div style="height:16px;"></div>
+<footer data-es="confín app · patagonia chile · villarrica · los ríos" data-en="confín app · patagonia chile · villarrica · los ríos" data-pt="confín app · patagônia chile · villarrica · los ríos">confín app · patagonia chile · villarrica · los ríos</footer>
+<script>
+function cambiarIdioma(lang,btn){
+  document.querySelectorAll('.lang-btn-dest').forEach(b=>b.classList.remove('activo'));
+  btn.classList.add('activo');
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const txt=lang==='es'?el.dataset.es:lang==='en'?el.dataset.en:el.dataset.pt;
+    if(txt)el.innerHTML=txt;
+  });
+}
+</script>
+</body>
+</html>
