@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>El Bols&#243;n &#183; CONF&#205;N</title>
+<meta name="description" content="Gu&#237;a &#250;til de El Bols&#243;n. Emergencias, Cerro Perito Moreno, frutos rojos, feria artesanal, trekking y todo lo que necesit&#225;s saber.">
+<style>
+:root{--deep:#0E1A1C;--cream:#FAF7F2;--atlantic:#3D6B73;--ash:rgba(163,196,204,0.2);--font-d:'Georgia',serif;--ember:#B84E3A;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:var(--deep);color:var(--cream);min-height:100vh;}
+.nav{position:sticky;top:0;z-index:100;background:var(--deep);display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(61,107,115,0.3);}
+.nav-logo{font-family:var(--font-d);font-size:1rem;color:var(--cream);letter-spacing:0.04em;text-decoration:none;}
+.nav-back{font-size:0.72rem;color:rgba(163,196,204,0.7);text-decoration:none;}
+.lang-selector{display:flex;gap:4px;}
+.lang-btn-dest{font-size:0.6rem;padding:4px 7px;border:1px solid rgba(163,196,204,0.4);background:rgba(14,26,28,0.9);color:rgba(163,196,204,0.7);cursor:pointer;border-radius:3px;font-family:inherit;letter-spacing:0.05em;}
+.lang-btn-dest.activo{background:var(--atlantic);color:#fff;border-color:var(--atlantic);}
+.hero{position:relative;overflow:hidden;min-height:200px;}
+.hero::before{content:'';position:absolute;inset:0;background:url('el-bolson-foto.jpg') center/cover no-repeat;opacity:0.35;}
+.hero-content{position:relative;z-index:1;padding:32px 20px 28px;}
+.hero-tag{font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.6);margin-bottom:10px;}
+.hero-title{font-family:var(--font-d);font-size:clamp(2rem,8vw,3rem);font-weight:300;line-height:1.05;margin-bottom:8px;}
+.hero-sub{font-size:0.75rem;color:rgba(163,196,204,0.7);}
+.aviso{background:rgba(184,78,58,0.15);border-left:3px solid #B84E3A;border-radius:0 8px 8px 0;padding:12px 14px;font-size:0.75rem;color:rgba(245,205,195,0.9);line-height:1.5;margin:16px 16px 0;}
+.aviso.naranja{background:rgba(196,151,74,0.12);border-left-color:#C4974A;color:rgba(245,225,185,0.9);}
+.seccion{padding:20px 16px 4px;}
+.seccion-titulo{font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--atlantic);display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.seccion-titulo::after{content:'';flex:1;height:1px;background:var(--ash);}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px 4px;}
+.card{background:rgba(255,255,255,0.06);border-radius:12px;padding:14px;border:1px solid rgba(61,107,115,0.2);display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--atlantic);}
+.card.rojo::before{background:#B84E3A;}
+.card.full{grid-column:1/-1;}
+.card-ico{font-size:1.4rem;}
+.card-nombre{font-size:0.82rem;font-weight:600;color:rgba(250,247,242,0.9);}
+.card-desc{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.4;}
+.card-num{font-size:1rem;font-weight:700;color:#B84E3A;}
+.card-btn{display:block;text-align:center;padding:8px;background:#B84E3A;color:#fff;border-radius:8px;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;margin-top:4px;}
+.info-bloque{padding:0 16px 16px;}
+.info-item{padding:12px 0;border-bottom:1px solid rgba(61,107,115,0.15);display:flex;gap:10px;align-items:flex-start;}
+.info-item:last-child{border-bottom:none;}
+.info-ico{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.info-txt{font-size:0.78rem;color:rgba(163,196,204,0.8);line-height:1.5;}
+.info-txt strong{color:var(--cream);display:block;margin-bottom:2px;}
+.dif-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.58rem;font-weight:600;letter-spacing:0.08em;margin-left:6px;}
+.dif-facil{background:rgba(61,107,115,0.3);color:rgba(163,196,204,0.9);}
+.dif-media{background:rgba(196,151,74,0.25);color:rgba(245,225,185,0.9);}
+.dif-exig{background:rgba(184,78,58,0.25);color:rgba(245,205,195,0.9);}
+.inst-card{background:rgba(61,107,115,0.1);border-radius:12px;padding:16px;margin:0 16px 12px;border:1px solid rgba(61,107,115,0.3);}
+.inst-nombre{font-size:0.85rem;font-weight:600;color:var(--cream);margin-bottom:4px;}
+.inst-desc{font-size:0.72rem;color:rgba(163,196,204,0.7);line-height:1.5;margin-bottom:10px;}
+.inst-btn{display:inline-block;padding:6px 12px;background:rgba(61,107,115,0.3);border-radius:6px;font-size:0.6rem;color:rgba(163,196,204,0.9);text-decoration:none;letter-spacing:0.08em;margin-top:4px;margin-right:6px;}
+.ruta-card{background:rgba(255,255,255,0.05);border-radius:10px;padding:14px;margin:0 16px 10px;border:1px solid rgba(61,107,115,0.2);}
+.ruta-titulo{font-size:0.52rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--atlantic);margin-bottom:6px;}
+.ruta-tags{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
+.ruta-tag{background:rgba(61,107,115,0.2);border-radius:4px;padding:3px 8px;font-size:0.6rem;color:rgba(163,196,204,0.8);}
+.ruta-paradas{border-left:2px solid rgba(61,107,115,0.3);padding-left:12px;display:flex;flex-direction:column;gap:12px;}
+.parada-km{font-size:0.58rem;color:var(--atlantic);font-weight:600;}
+.parada-txt{font-size:0.7rem;color:rgba(163,196,204,0.8);line-height:1.4;margin-top:2px;}
+.parada-tiempo{font-size:0.62rem;color:rgba(163,196,204,0.5);margin-top:3px;}
+.dato{background:rgba(255,255,255,0.04);border-radius:8px;padding:12px 14px;border-left:3px solid var(--atlantic);font-size:0.72rem;color:rgba(196,220,228,0.85);line-height:1.5;margin:0 16px 12px;}
+.dato.rojo{border-left-color:#B84E3A;color:rgba(245,205,195,0.85);}
+.mapa-wrap{margin:0 16px 12px;}
+.mapa-label{font-size:0.5rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.45);margin-bottom:8px;}
+.mapa-frame{width:100%;height:200px;border-radius:10px;overflow:hidden;border:1px solid rgba(61,107,115,0.25);}
+.mapa-frame iframe{width:100%;height:100%;border:0;filter:invert(0.85) hue-rotate(180deg) brightness(0.85);}
+.distancias{padding:0 16px 16px;}
+.dist-item{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(61,107,115,0.12);font-size:0.75rem;}
+.dist-item:last-child{border-bottom:none;}
+.dist-lugar{color:rgba(163,196,204,0.8);}
+.dist-val{color:var(--atlantic);font-weight:600;font-size:0.7rem;}
+.alma{background:rgba(61,107,115,0.08);border-radius:12px;padding:18px;margin:0 16px 16px;border:1px solid rgba(61,107,115,0.2);}
+.alma-titulo{font-family:var(--font-d);font-size:1rem;font-weight:300;color:var(--cream);margin-bottom:12px;font-style:italic;}
+.alma p{font-size:0.75rem;color:rgba(163,196,204,0.75);line-height:1.6;margin-bottom:10px;}
+.alma p:last-child{margin-bottom:0;}
+.estab-banner{margin:0 16px 16px;background:rgba(61,107,115,0.08);border:1px solid rgba(61,107,115,0.25);border-radius:12px;padding:16px;text-align:center;}
+.estab-banner-titulo{font-family:var(--font-d);font-size:1rem;color:var(--cream);margin-bottom:6px;}
+.estab-banner-sub{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.5;margin-bottom:12px;}
+.estab-banner-btn{display:block;padding:11px;background:var(--atlantic);color:#fff;text-decoration:none;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;border-radius:6px;}
+.btn-agenda-dest{position:fixed;bottom:24px;left:18px;z-index:890;width:48px;height:48px;border-radius:50%;background:rgba(61,107,115,0.92);border:1.5px solid rgba(163,196,204,0.35);box-shadow:0 4px 16px rgba(0,0,0,0.4);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.3rem;backdrop-filter:blur(8px);text-decoration:none;}
+footer{text-align:center;padding:24px 16px 80px;font-size:0.55rem;color:rgba(163,196,204,0.25);letter-spacing:0.1em;text-transform:uppercase;}
+[data-lang]{display:none;}
+[data-lang].activo{display:block;}
+span[data-lang]{display:none;}
+span[data-lang].activo{display:inline;}
+</style>
+</head>
+<body>
+<a class="btn-agenda-dest" href="../index.html#agenda" title="Mi agenda CONFIN">&#128214;</a>
+<nav class="nav">
+<a href="../index.html" class="nav-back">&#8592; Volver</a>
+<a href="../index.html" class="nav-logo">CONF&#205;N</a>
+<div class="lang-selector">
+<button class="lang-btn-dest activo" onclick="cambiarIdioma('es',this)">ES</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('en',this)">EN</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('pt',this)">PT</button>
+</div>
+</nav>
+<div class="hero">
+<div class="hero-content">
+<div class="hero-tag">&#127462;&#127479; R&#237;o Negro &middot; Argentina &middot; Patagonia Andina</div>
+<h1 class="hero-title">El Bols&#243;n</h1>
+<div class="hero-sub" data-lang="es">Valle Microclim&#225;tico &middot; Cerro Perito Moreno &middot; Capital Nacional del L&#250;pulo &middot; Curado por CONF&#205;N</div>
+<div class="hero-sub" data-lang="en">Microclimatic Valley &middot; Cerro Perito Moreno &middot; National Hop Capital &middot; Curated by CONF&#205;N</div>
+<div class="hero-sub" data-lang="pt">Vale Microclim&#225;tico &middot; Cerro Perito Moreno &middot; Capital Nacional do L&#250;pulo &middot; Curado por CONF&#205;N</div>
+</div>
+</div>
+<div class="aviso naranja" data-lang="es">&#10052; <strong>Temporada Cerro Perito Moreno (jul&ndash;sep):</strong> Centro de esqu&#237; a 14 km del centro. 9 pistas, nieve natural, ambiente familiar y sin las colas de Bariloche. Cubiertas para nieve obligatorias en el acceso al cerro desde junio.</div>
+<div class="aviso naranja" data-lang="en">&#10052; <strong>Cerro Perito Moreno Season (Jul&ndash;Sep):</strong> Ski center 14 km from town. 9 slopes, natural snow, family atmosphere and no Bariloche queues. Snow tyres mandatory on hill access from June.</div>
+<div class="aviso naranja" data-lang="pt">&#10052; <strong>Temporada Cerro Perito Moreno (jul&ndash;set):</strong> Centro de esqui a 14 km do centro. 9 pistas, neve natural, ambiente familiar e sem as filas de Bariloche. Pneus de neve obrigat&#243;rios no acesso ao morro a partir de junho.</div>
+<div class="aviso" style="margin-top:10px;" data-lang="es">&#127822; <strong>Feria Artesanal (jue/s&#225;b/dom):</strong> La feria m&#225;s importante de la Patagonia andina. Artesanos, productores locales, frutos rojos, cervezas artesanales y tejidos. Plaza Pagano. Dic&ndash;feb: todos los d&#237;as.</div>
+<div class="aviso" style="margin-top:10px;" data-lang="en">&#127822; <strong>Artisan Fair (Thu/Sat/Sun):</strong> The most important fair in Andean Patagonia. Artisans, local producers, red fruits, craft beers and textiles. Plaza Pagano. Dec&ndash;Feb: daily.</div>
+<div class="aviso" style="margin-top:10px;" data-lang="pt">&#127822; <strong>Feira Artesanal (qui/s&#225;b/dom):</strong> A feira mais importante da Patagônia andina. Artesanos, produtores locais, frutas vermelhas, cervejas artesanais e tecidos. Plaza Pagano. Dez&ndash;fev: todos os dias.</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128680; <span data-lang="es">Emergencias</span><span data-lang="en">Emergencies</span><span data-lang="pt">Emerg&#234;ncias</span></div>
+</div>
+<div class="card-grid">
+<div class="card rojo full">
+<div class="card-ico">&#127973;</div>
+<div class="card-nombre">Hospital &ldquo;Dr. Ram&#243;n Carre&#241;o&rdquo;</div>
+<div class="card-desc">Av. Belgrano 951 &middot; Alta Complejidad &middot; Guardia 24hs</div>
+<div class="card-num">107 / (02944) 49-2299</div>
+<a href="tel:+542944492299" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#128110;</div>
+<div class="card-nombre">Polic&#237;a / 911</div>
+<div class="card-num">911 / (02944) 49-2233</div>
+<a href="tel:911" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#128657;</div>
+<div class="card-nombre" data-lang="es">Bomberos</div>
+<div class="card-nombre" data-lang="en">Fire Dept.</div>
+<div class="card-nombre" data-lang="pt">Bombeiros</div>
+<div class="card-num">100 / (02944) 49-2336</div>
+<a href="tel:100" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#10052;</div>
+<div class="card-nombre" data-lang="es">Socorristas Cerro Perito Moreno</div>
+<div class="card-nombre" data-lang="en">Cerro Perito Moreno Rescue</div>
+<div class="card-nombre" data-lang="pt">Socorristas Cerro Perito Moreno</div>
+<div class="card-num">(02944) 49-8000</div>
+<a href="tel:+542944498000" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#127807;</div>
+<div class="card-nombre">Guardaparques</div>
+<div class="card-desc" data-lang="es">Reserva Nacional Lago Puelo</div>
+<div class="card-num">(02944) 49-9232</div>
+<a href="tel:+542944499232" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#128737;</div>
+<div class="card-nombre">Defensa Civil</div>
+<div class="card-num">103 / (02944) 49-2200</div>
+<a href="tel:103" class="card-btn">LLAMAR</a>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#10052; <span data-lang="es">Centro de Esqu&#237; Cerro Perito Moreno</span><span data-lang="en">Cerro Perito Moreno Ski Center</span><span data-lang="pt">Centro de Esqui Cerro Perito Moreno</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item">
+<div class="info-ico">&#127940;</div>
+<div class="info-txt">
+<strong data-lang="es">El esqu&#237; tranquilo de la Comarca Andina</strong>
+<strong data-lang="en">The quiet skiing of the Andean Region</strong>
+<strong data-lang="pt">O esqui tranquilo da Comarca Andina</strong>
+<span data-lang="es">14 km al este del centro &middot; 9 pistas (f&#225;ciles e intermedias) &middot; 3 medios de elevaci&#243;n &middot; Desnivel: 450 m &middot; Nieve natural garantizada julio&ndash;agosto &middot; Ambiente 100% familiar &middot; Sin colas &middot; Alquiler de equipo en la base.</span>
+<span data-lang="en">14 km east of center &middot; 9 slopes (easy and intermediate) &middot; 3 lifts &middot; Vertical drop: 450 m &middot; Natural snow guaranteed July&ndash;August &middot; 100% family atmosphere &middot; No queues &middot; Equipment rental at the base.</span>
+<span data-lang="pt">14 km a leste do centro &middot; 9 pistas (f&#225;ceis e intermedi&#225;rias) &middot; 3 elevadores &middot; Desnivel: 450 m &middot; Neve natural garantida julho&ndash;agosto &middot; Ambiente 100% familiar &middot; Sem filas &middot; Aluguel de equipamento na base.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#128241;</div>
+<div class="info-txt">
+<strong data-lang="es">Informaci&#243;n Cerro Perito Moreno</strong>
+<strong data-lang="en">Cerro Perito Moreno Info</strong>
+<strong data-lang="pt">Informa&#231;&#245;es Cerro Perito Moreno</strong>
+<span data-lang="es">Tel: (02944) 49-8000 &middot; Temporada: julio&ndash;septiembre &middot; Acceso por el camino al cerro (14 km, &#250;ltimos 5 km de ripio &mdash; cubiertas para nieve jun&ndash;sep).</span>
+<span data-lang="en">Tel: (02944) 49-8000 &middot; Season: July&ndash;September &middot; Access via hill road (14 km, last 5 km gravel &mdash; snow tyres required Jun&ndash;Sep).</span>
+<span data-lang="pt">Tel: (02944) 49-8000 &middot; Temporada: julho&ndash;setembro &middot; Acesso pela estrada do morro (14 km, &#250;ltimos 5 km cascalho &mdash; pneus neve obrigat&#243;rios jun&ndash;set).</span>
+</div>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#8987; <span data-lang="es">&#191;Cu&#225;nto tiempo ten&#233;s?</span><span data-lang="en">How much time do you have?</span><span data-lang="pt">Quanto tempo voc&#234; tem?</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item">
+<div class="info-ico">&#9203;</div>
+<div class="info-txt">
+<strong data-lang="es">2 horas &mdash; Feria y pueblo</strong><strong data-lang="en">2 hours &mdash; Fair and village</strong><strong data-lang="pt">2 horas &mdash; Feira e village</strong>
+<span data-lang="es">Feria Artesanal Plaza Pagano (jue/s&#225;b/dom) &middot; Cervecerías artesanales en el centro (Otto Tipp, Luar, Berlina) &middot; Chocolaterías y tiendas de frutos rojos en Av. San Martín.</span>
+<span data-lang="en">Plaza Pagano Artisan Fair (Thu/Sat/Sun) &middot; Craft breweries downtown (Otto Tipp, Luar, Berlina) &middot; Chocolate shops and red fruit stores on Av. San Martín.</span>
+<span data-lang="pt">Feira Artesanal Plaza Pagano (qui/s&#225;b/dom) &middot; Microcervejarias no centro (Otto Tipp, Luar, Berlina) &middot; Chocolaterias e lojas de frutas vermelhas na Av. San Martín.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127748;</div>
+<div class="info-txt">
+<strong data-lang="es">Medio d&#237;a &mdash; Cascadas y r&#237;os</strong><strong data-lang="en">Half day &mdash; Waterfalls and rivers</strong><strong data-lang="pt">Meio dia &mdash; Cachoeiras e rios</strong>
+<span data-lang="es">Cascada Mallín Ahogado (8 km, caminata 1h) &middot; Cabeza del Indio (mirador natural sobre el valle) &middot; R&#237;o Azul para kayak y rafting.</span>
+<span data-lang="en">Mallín Ahogado Waterfall (8 km, 1h walk) &middot; Cabeza del Indio (natural viewpoint over the valley) &middot; Río Azul for kayak and rafting.</span>
+<span data-lang="pt">Cascata Mallín Ahogado (8 km, caminhada 1h) &middot; Cabeza del Indio (mirante natural sobre o vale) &middot; Rio Azul para caiaque e rafting.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127775;</div>
+<div class="info-txt">
+<strong data-lang="es">D&#237;a completo &mdash; Lago Puelo</strong><strong data-lang="en">Full day &mdash; Lago Puelo</strong><strong data-lang="pt">Dia completo &mdash; Lago Puelo</strong>
+<span data-lang="es">18 km al sur: PN Lago Puelo con aguas transparentes color turquesa y playas de arena fina. Navegaci&#243;n hasta el extremo sur del lago y el paso a Chile (Paso El L&#233;on). Trekking gratuito al Cerro Plataforma (6 hs).</span>
+<span data-lang="en">18 km south: Lago Puelo NP with transparent turquoise water and fine sand beaches. Cruise to the lake's southern end and the Chile crossing (Paso El León). Free trekking to Cerro Plataforma (6 hs).</span>
+<span data-lang="pt">18 km ao sul: PN Lago Puelo com &#225;guas transparentes cor turquesa e praias de areia fina. Navega&#231;&#227;o at&#233; o extremo sul do lago e a passagem para o Chile (Paso El Le&#243;n). Trekking gratuito ao Cerro Plataforma (6 hs).</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127940;</div>
+<div class="info-txt">
+<strong data-lang="es">D&#237;a completo (invierno) &mdash; Cerro Perito Moreno</strong><strong data-lang="en">Full day (winter) &mdash; Cerro Perito Moreno</strong><strong data-lang="pt">Dia completo (inverno) &mdash; Cerro Perito Moreno</strong>
+<span data-lang="es">14 km al este. El centro de esqu&#237; m&#225;s tranquilo y accesible de la Patagonia andina. Ideal para familias y principiantes. Precios muy por debajo de Bariloche y Chapelco.</span>
+<span data-lang="en">14 km east. The quietest and most accessible ski center in Andean Patagonia. Ideal for families and beginners. Prices well below Bariloche and Chapelco.</span>
+<span data-lang="pt">14 km a leste. O centro de esqui mais tranquilo e acess&#237;vel da Patagônia andina. Ideal para fam&#237;lias e iniciantes. Pre&#231;os bem abaixo de Bariloche e Chapelco.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127783;</div>
+<div class="info-txt">
+<strong data-lang="es">Si llueve &mdash; Cerveza y chocolate</strong><strong data-lang="en">If it rains &mdash; Beer and chocolate</strong><strong data-lang="pt">Se chover &mdash; Cerveja e chocolate</strong>
+<span data-lang="es">Circuito de cervecer&#237;as artesanales en el centro &middot; Chocolaterias con cacao patag&#243;nico &middot; Casas de t&#233; con frutos del bosque &middot; Taller de cerveza artesanal (aprender a hacer la tuya).</span>
+<span data-lang="en">Craft brewery circuit downtown &middot; Chocolaterias with Patagonian cacao &middot; Tea houses with forest berries &middot; Craft beer workshop (learn to brew your own).</span>
+<span data-lang="pt">Circuito de microcervejarias no centro &middot; Chocolaterias com cacau patag&#244;nico &middot; Casas de ch&#225; com frutas do bosque &middot; Oficina de cerveja artesanal.</span>
+</div>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128247; <span data-lang="es">Paseos gratuitos</span><span data-lang="en">Free walks</span><span data-lang="pt">Passeios gratuitos</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item"><div class="info-ico">&#128167;</div><div class="info-txt"><strong data-lang="es">Cascada Mallín Ahogado</strong><strong data-lang="en">Mallín Ahogado Waterfall</strong><strong data-lang="pt">Cascata Mallín Ahogado</strong><span data-lang="es">8 km al norte del centro. Caminata de 1h por bosque nativo hasta una cascada de 30 m sobre basalto negro. Acceso libre. En verano, ba&#241;o posible en el pileta natural.</span><span data-lang="en">8 km north of center. 1h walk through native forest to a 30 m waterfall on black basalt. Free access. In summer, swimming possible in the natural pool.</span><span data-lang="pt">8 km ao norte do centro. Caminhada de 1h por floresta nativa at&#233; uma cascata de 30 m sobre basalto negro. Acesso livre. No ver&#227;o, banho poss&#237;vel na piscina natural.</span></div></div>
+<div class="info-item"><div class="info-ico">&#127956;</div><div class="info-txt"><strong data-lang="es">Cabeza del Indio</strong><strong data-lang="en">Cabeza del Indio</strong><strong data-lang="pt">Cabeza del Indio</strong><span data-lang="es">Formaci&#243;n roc&#237;os en el cerro Piltriquitr&#243;n a 5 km del centro. Vista panor&#225;mica del valle del Bols&#243;n y los lagos. Caminata de 2 hs ida/vuelta. Acceso libre.</span><span data-lang="en">Rock formation on Cerro Piltriquitrón 5 km from center. Panoramic view of the El Bolsón valley and lakes. 2 hs round trip walk. Free access.</span><span data-lang="pt">Forma&#231;&#227;o rochosa no Cerro Piltriquitr&#243;n a 5 km do centro. Vista panor&#226;mica do vale de El Bols&#243;n e dos lagos. Caminhada de 2 hs ida/volta. Acesso livre.</span></div></div>
+<div class="info-item"><div class="info-ico">&#127822;</div><div class="info-txt"><strong data-lang="es">Feria Artesanal Plaza Pagano</strong><strong data-lang="en">Plaza Pagano Artisan Fair</strong><strong data-lang="pt">Feira Artesanal Plaza Pagano</strong><span data-lang="es">Jueves, s&#225;bado y domingo (dic&ndash;feb: todos los d&#237;as). Artesanos locales, productores de frutos del bosque, cervezas artesanales, tejidos y cerámicas. La m&#225;s auténtica de la Patagonia andina. Acceso libre.</span><span data-lang="en">Thursday, Saturday and Sunday (Dec&ndash;Feb: daily). Local artisans, forest fruit producers, craft beers, textiles and ceramics. The most authentic in Andean Patagonia. Free access.</span><span data-lang="pt">Quinta, s&#225;bado e domingo (dez&ndash;fev: todos os dias). Artesanos locais, produtores de frutas do bosque, cervejas artesanais, tecidos e cer&#226;mica. A mais aut&#234;ntica da Patagônia andina. Acesso livre.</span></div></div>
+<div class="info-item"><div class="info-ico">&#127810;</div><div class="info-txt"><strong data-lang="es">Costanera R&#237;o Quemquemtreu</strong><strong data-lang="en">Quemquemtreu River Walk</strong><strong data-lang="pt">Costaneira Rio Quemquemtreu</strong><span data-lang="es">Paseo peatonal y ciclov&#237;a a lo largo del r&#237;o que atraviesa el pueblo. Avistaje de aves, anfibios y vegetaci&#243;n nativa. Acceso libre.</span><span data-lang="en">Pedestrian walk and cycle path along the river crossing the town. Birdwatching, amphibians and native vegetation. Free access.</span><span data-lang="pt">Passeio peat&#244;nal e ciclovia ao longo do rio que atravessa o village. Observa&#231;&#227;o de aves, anf&#237;bios e vegeta&#231;&#227;o nativa. Acesso livre.</span></div></div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128153; <span data-lang="es">Con prop&#243;sito</span><span data-lang="en">With purpose</span><span data-lang="pt">Com prop&#243;sito</span></div>
+</div>
+<div class="inst-card">
+<div class="inst-nombre" data-lang="es">Feria Artesanal El Bols&#243;n &mdash; Cooperativa de Artesanos Independientes</div>
+<div class="inst-nombre" data-lang="en">El Bols&#243;n Artisan Fair &mdash; Independent Artisan Cooperative</div>
+<div class="inst-nombre" data-lang="pt">Feira Artesanal El Bols&#243;n &mdash; Cooperativa de Artesanos Independentes</div>
+<div class="inst-desc" data-lang="es">M&#225;s de 200 artesanos y productores locales autoorganizados desde 1971. Tejidos en lana de oveja te&#241;ida con tintes naturales, cerámicas, maderas nativas, licores artesanales de frutos del bosque (frambuesa, mora, calafate) y dulces regionales. La feria m&#225;s antigua y auténtica de la Patagonia andina. Plaza Pagano s/n. Tel Municipio: (02944) 49-2333.</div>
+<div class="inst-desc" data-lang="en">Over 200 self-organized local artisans and producers since 1971. Wool textiles dyed with natural dyes, ceramics, native woods, artisan forest fruit liqueurs (raspberry, blackberry, calafate) and regional sweets. The oldest and most authentic fair in Andean Patagonia. Plaza Pagano s/n. Municipality: (02944) 49-2333.</div>
+<div class="inst-desc" data-lang="pt">Mais de 200 artesanos e produtores locais auto-organizados desde 1971. Tecidos em l&#227; de ovelha tingida com corantes naturais, cer&#226;mica, madeiras nativas, licores artesanais de frutas do bosque e doces regionais. A feira mais antiga e aut&#234;ntica da Patagônia andina. Plaza Pagano s/n.</div>
+<a href="tel:+542944492333" class="inst-btn">Municipio: (02944) 49-2333</a>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#127760; <span data-lang="es">Paso Fronterizo &mdash; Lago Puelo a Chile</span><span data-lang="en">Border Crossing &mdash; Lago Puelo to Chile</span><span data-lang="pt">Passagem Fronteiri&#231;a &mdash; Lago Puelo ao Chile</span></div>
+</div>
+<div class="inst-card">
+<div class="inst-nombre">&#127462;&#127479; &#8596; &#127464;&#127473; <span data-lang="es">Paso El Le&#243;n / Lago Puelo (&#8596; Carretera Austral, Chile)</span><span data-lang="en">Paso El Le&#243;n / Lago Puelo (&#8596; Carretera Austral, Chile)</span><span data-lang="pt">Paso El Le&#243;n / Lago Puelo (&#8596; Carretera Austral, Chile)</span></div>
+<div class="inst-desc" data-lang="es">El Bols&#243;n &#8594; PN Lago Puelo (18 km) &#8594; Navegaci&#243;n lacustre al extremo sur del lago &#8594; Paso El Le&#243;n &#8594; Llanada Grande (CH) &#8594; Carretera Austral.<br>&#9888;&#65039; Paso <strong>solo peatonal o en bicicleta</strong>. No apto para veh&#237;culos. Navegaci&#243;n sujeta a condiciones del lago. Temporada nov&ndash;abr.<br>&#9203; Horario: 09:00&ndash;19:00 hs.</div>
+<div class="inst-desc" data-lang="en">El Bols&#243;n &#8594; Lago Puelo NP (18 km) &#8594; Lake cruise to the southern end &#8594; Paso El Le&#243;n &#8594; Llanada Grande (CH) &#8594; Carretera Austral.<br>&#9888;&#65039; <strong>On foot or bicycle only</strong>. Not suitable for vehicles. Cruise subject to lake conditions. Season Nov&ndash;Apr.<br>&#9203; Hours: 09:00&ndash;19:00.</div>
+<div class="inst-desc" data-lang="pt">El Bols&#243;n &#8594; PN Lago Puelo (18 km) &#8594; Navega&#231;&#227;o lacustre ao extremo sul do lago &#8594; Paso El Le&#243;n &#8594; Llanada Grande (CH) &#8594; Carretera Austral.<br>&#9888;&#65039; <strong>Apenas a p&#233; ou de bicicleta</strong>. Navega&#231;&#227;o sujeita &#224;s condi&#231;&#245;es do lago. Temporada nov&ndash;abr.</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+<a href="tel:+542944499232" class="inst-btn">Guardaparques AR</a>
+<a href="tel:133" class="inst-btn">Carabineros CH</a>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#9981; <span data-lang="es">Combustible &amp; Servicios</span><span data-lang="en">Fuel &amp; Services</span><span data-lang="pt">Combust&#237;vel &amp; Servi&#231;os</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item"><div class="info-ico">&#9981;</div><div class="info-txt"><strong>YPF El Bols&#243;n</strong><span>Av. San Mart&#237;n y Roca &middot; 24hs</span></div></div>
+<div class="info-item"><div class="info-ico">&#9981;</div><div class="info-txt"><strong>Shell / Puma</strong><span>RN 40 km 1638 (salida norte hacia Bariloche)</span></div></div>
+<div class="info-item"><div class="info-ico">&#128651;</div><div class="info-txt"><strong data-lang="es">Terminal de &#211;mnibus</strong><strong data-lang="en">Bus Terminal</strong><strong data-lang="pt">Terminal de &#212;nibus</strong><span data-lang="es">Av. San Mart&#237;n y Roca. Servicios a Bariloche (2h), Esquel (1h 30m), Buenos Aires y El Hoyo.</span><span data-lang="en">Av. San Mart&#237;n and Roca. Services to Bariloche (2h), Esquel (1h 30m), Buenos Aires and El Hoyo.</span><span data-lang="pt">Av. San Mart&#237;n e Roca. Servi&#231;os para Bariloche (2h), Esquel (1h 30m), Buenos Aires e El Hoyo.</span></div></div>
+<div class="info-item"><div class="info-ico">&#8505;&#65039;</div><div class="info-txt"><strong data-lang="es">Secretar&#237;a de Turismo</strong><strong data-lang="en">Tourism Office</strong><strong data-lang="pt">Secretaria de Turismo</strong><span>Av. San Mart&#237;n y Roca &middot; (02944) 49-2604</span></div></div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo" style="font-size:0.65rem;">&#128690; <span data-lang="es">En Camino &mdash; Rutas desde El Bols&#243;n</span><span data-lang="en">On the Road &mdash; Routes from El Bols&#243;n</span><span data-lang="pt">Na Estrada &mdash; Rotas de El Bols&#243;n</span></div>
+</div>
+<div class="mapa-wrap">
+<div class="mapa-label">
+<span data-lang="es">&#128506; RN 40 &mdash; El Bols&#243;n &#8596; Bariloche / Esquel / Lago Puelo / El Hoyo</span>
+<span data-lang="en">&#128506; RN 40 &mdash; El Bols&#243;n &#8596; Bariloche / Esquel / Lago Puelo / El Hoyo</span>
+<span data-lang="pt">&#128506; RN 40 &mdash; El Bols&#243;n &#8596; Bariloche / Esquel / Lago Puelo / El Hoyo</span>
+</div>
+<div class="mapa-frame"><iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-72.0,-42.5,-70.5,-41.0&layer=mapnik" loading="lazy" title="Mapa En Camino El Bolson"></iframe></div>
+</div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">Circuito Comarca Andina &mdash; El Bols&#243;n &#8596; El Hoyo &#8596; Lago Puelo (30&ndash;50 km)</div>
+<div class="ruta-titulo" data-lang="en">Andean Region Circuit &mdash; El Bols&#243;n &#8596; El Hoyo &#8596; Lago Puelo (30&ndash;50 km)</div>
+<div class="ruta-titulo" data-lang="pt">Circuito Comarca Andina &mdash; El Bols&#243;n &#8596; El Hoyo &#8596; Lago Puelo (30&ndash;50 km)</div>
+<div class="ruta-tags"><span class="ruta-tag">30&ndash;50 km</span><span class="ruta-tag">Asfalto</span><span class="ruta-tag">Comarca Andina</span></div>
+<div class="ruta-paradas">
+<div>
+<div class="parada-km">km 17 &middot; &#127822; El Hoyo &mdash; <span data-lang="es">Frutos rojos y cerezas</span><span data-lang="en">Red fruits and cherries</span><span data-lang="pt">Frutas vermelhas e cerejas</span></div>
+<div class="parada-txt" data-lang="es">Microclima templado en el Valle del R&#237;o Azul. Chacras de cerezas, frambuesas y grosellas. Feria de productores y venta directa. Jardín Bot&#225;nico Municipal gratuito.</div>
+<div class="parada-txt" data-lang="en">Warm microclimate in the Río Azul Valley. Cherry, raspberry and currant farms. Producers fair and direct sale. Free Municipal Botanical Garden.</div>
+<div class="parada-txt" data-lang="pt">Microclima temperado no Vale do Rio Azul. Ch&#225;caras de cerejas, framboesas e groselhas. Feira de produtores e venda direta. Jardim Bot&#226;nico Municipal gratuito.</div>
+<div class="parada-tiempo">&#9201; 20 min desde El Bols&#243;n</div>
+</div>
+<div>
+<div class="parada-km">km 18 &middot; &#127775; PN Lago Puelo</div>
+<div class="parada-txt" data-lang="es">Lago de aguas turquesas con playa de arena fina. Navegaci&#243;n, kayak, pesca y trekking. Paso fronterizo a pie hacia la Carretera Austral (nov&ndash;abr).</div>
+<div class="parada-txt" data-lang="en">Turquoise lake with fine sand beach. Boating, kayak, fishing and trekking. Border crossing on foot to the Carretera Austral (Nov&ndash;Apr).</div>
+<div class="parada-txt" data-lang="pt">Lago de &#225;guas turquesa com praia de areia fina. Navega&#231;&#227;o, caiaque, pesca e trekking. Passagem fronteiri&#231;a a p&#233; para a Carretera Austral (nov&ndash;abr).</div>
+<div class="parada-tiempo">&#9201; 25 min desde El Bols&#243;n</div>
+</div>
+</div>
+</div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">RN 40 Norte &mdash; El Bols&#243;n &#8596; Bariloche (130 km | ~1h 45m)</div>
+<div class="ruta-titulo" data-lang="en">RN 40 North &mdash; El Bols&#243;n &#8596; Bariloche (130 km | ~1h 45m)</div>
+<div class="ruta-titulo" data-lang="pt">RN 40 Norte &mdash; El Bols&#243;n &#8596; Bariloche (130 km | ~1h 45m)</div>
+<div class="ruta-tags"><span class="ruta-tag">130 km</span><span class="ruta-tag">Asfalto</span><span class="ruta-tag">Ruta de los Lagos</span></div>
+<div class="ruta-paradas">
+<div>
+<div class="parada-km">km 40 &middot; &#127748; Villa La Angostura (desvio)</div>
+<div class="parada-txt" data-lang="es">Desviar por RP 65 hacia el lago Nahuel Huapi y el PN Los Arrayanes (bosque de arrayanes &#250;nico en el mundo). Cerro Bayo (esqu&#237;) a 9 km del centro.</div>
+<div class="parada-txt" data-lang="en">Detour via RP 65 to Nahuel Huapi lake and Los Arrayanes NP (unique arrayán forest in the world). Cerro Bayo (skiing) 9 km from center.</div>
+<div class="parada-txt" data-lang="pt">Desvio pela RP 65 ao Lago Nahuel Huapi e PN Los Arrayanes (floresta de arrayán &#250;nica no mundo). Cerro Bayo (esqui) a 9 km do centro.</div>
+<div class="parada-tiempo">&#9201; 45 min desde El Bols&#243;n</div>
+</div>
+<div>
+<div class="parada-km">km 130 &middot; &#9981; Bariloche &mdash; <span data-lang="es">Capital andina</span><span data-lang="en">Andean capital</span><span data-lang="pt">Capital andina</span></div>
+<div class="parada-txt" data-lang="es">Todos los servicios. Aeropuerto BRC, Cerro Catedral (mayor centro de esqu&#237; de Latinoam&#233;rica), circuito del chocolate y Nahuel Huapi.</div>
+<div class="parada-txt" data-lang="en">All services. BRC Airport, Cerro Catedral (largest ski resort in Latin America), chocolate circuit and Nahuel Huapi.</div>
+<div class="parada-txt" data-lang="pt">Todos os servi&#231;os. Aeroporto BRC, Cerro Catedral (maior resort de esqui da Am&#233;rica Latina), circuito do chocolate e Nahuel Huapi.</div>
+<div class="parada-tiempo">&#9201; 1h 45 min desde El Bols&#243;n</div>
+</div>
+</div>
+</div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">RN 40 Sur &mdash; El Bols&#243;n &#8596; Esquel (130 km | ~1h 30m)</div>
+<div class="ruta-titulo" data-lang="en">RN 40 South &mdash; El Bols&#243;n &#8596; Esquel (130 km | ~1h 30m)</div>
+<div class="ruta-titulo" data-lang="pt">RN 40 Sul &mdash; El Bols&#243;n &#8596; Esquel (130 km | ~1h 30m)</div>
+<div class="ruta-tags"><span class="ruta-tag">130 km</span><span class="ruta-tag">Asfalto</span><span class="ruta-tag">Comarca Andina</span></div>
+<div class="ruta-paradas">
+<div>
+<div class="parada-km">km 130 &middot; &#10052; Esquel &mdash; La Hoya &amp; La Trochita</div>
+<div class="parada-txt" data-lang="es">Centro de esqu&#237; La Hoya (15 km de Esquel), La Trochita (tren a vapor histórico), PN Los Alerces (Patrimonio UNESCO) y pueblo gal&#233;s de Trevelin.</div>
+<div class="parada-txt" data-lang="en">La Hoya ski center (15 km from Esquel), La Trochita (historic steam train), Los Alerces NP (UNESCO Heritage) and Welsh village of Trevelin.</div>
+<div class="parada-txt" data-lang="pt">Centro de esqui La Hoya (15 km de Esquel), La Trochita (trem a vapor hist&#243;rico), PN Los Alerces (Patrim&#244;nio UNESCO) e village gal&#234;s de Trevelin.</div>
+<div class="parada-tiempo">&#9201; 1h 30 min desde El Bols&#243;n</div>
+</div>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128205; <span data-lang="es">Distancias desde El Bols&#243;n</span><span data-lang="en">Distances from El Bols&#243;n</span><span data-lang="pt">Dist&#226;ncias de El Bols&#243;n</span></div>
+</div>
+<div class="distancias">
+<div class="dist-item"><span class="dist-lugar">Cerro Perito Moreno (esqu&#237;)</span><span class="dist-val">14 km &middot; 20 min</span></div>
+<div class="dist-item"><span class="dist-lugar">El Hoyo</span><span class="dist-val">17 km &middot; 20 min</span></div>
+<div class="dist-item"><span class="dist-lugar">Lago Puelo</span><span class="dist-val">18 km &middot; 25 min</span></div>
+<div class="dist-item"><span class="dist-lugar">Mallín Ahogado</span><span class="dist-val">8 km &middot; 12 min</span></div>
+<div class="dist-item"><span class="dist-lugar">Villa La Angostura</span><span class="dist-val">90 km &middot; 1h 10 min</span></div>
+<div class="dist-item"><span class="dist-lugar">Esquel</span><span class="dist-val">130 km &middot; 1h 30 min</span></div>
+<div class="dist-item"><span class="dist-lugar">Bariloche</span><span class="dist-val">130 km &middot; 1h 45 min</span></div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#127775; <span data-lang="es">El alma de este lugar</span><span data-lang="en">The soul of this place</span><span data-lang="pt">A alma deste lugar</span></div>
+</div>
+<div class="alma">
+<div class="alma-titulo" data-lang="es">El valle que se declar&#243; no nuclear y vive del fruto que da el bosque</div>
+<div class="alma-titulo" data-lang="en">The valley that declared itself nuclear-free and lives off what the forest gives</div>
+<div class="alma-titulo" data-lang="pt">O vale que se declarou n&#227;o nuclear e vive do fruto que a floresta d&#225;</div>
+<p data-lang="es">&#128218; El Bols&#243;n fue declarada &ldquo;Zona No Nuclear y Ecol&#243;gica&rdquo; por ordenanza municipal en 1984, y &ldquo;Capital Nacional del L&#250;pulo&rdquo; desde 1969. El microclima del valle &mdash; m&#225;s c&#225;lido y h&#250;medo que el resto de la Patagonia andina &mdash; permiti&#243; el desarrollo de una econom&#237;a based on frutos del bosque, l&#250;pulo, cerveza artesanal y una comunidad de artesanos y productores que en 1971 organizaron la primera feria artesanal permanente de la Patagonia.</p>
+<p data-lang="en">&#128218; El Bolsón was declared a &ldquo;Nuclear-Free and Ecological Zone&rdquo; by municipal ordinance in 1984, and &ldquo;National Hop Capital&rdquo; since 1969. The valley's microclimate &mdash; warmer and more humid than the rest of Andean Patagonia &mdash; enabled a forest fruit, hop, craft beer and artisan economy, and in 1971 saw the first permanent artisan fair in Patagonia organized.</p>
+<p data-lang="pt">&#128218; El Bols&#243;n foi declarada &ldquo;Zona N&#227;o Nuclear e Ecol&#243;gica&rdquo; por ordem municipal em 1984, e &ldquo;Capital Nacional do L&#250;pulo&rdquo; desde 1969. O microclima do vale &mdash; mais quente e &#250;mido que o resto da Patagônia andina &mdash; permitiu o desenvolvimento de uma economia de frutas do bosque, l&#250;pulo, cerveja artesanal e artesanato.</p>
+<p data-lang="es">&#129414; <strong>Fauna emblem&#225;tica:</strong> Huemul (en el PN Lago Puelo y Cerro Perito Moreno), Carpintero Magall&#225;nico, Pato de los Torrentes, C&#243;ndor Andino, Trucha Arco Iris y Puma en las cumbres.</p>
+<p data-lang="en">&#129414; <strong>Signature wildlife:</strong> Huemul (in Lago Puelo NP and Cerro Perito Moreno), Magellanic Woodpecker, Torrent Duck, Andean Condor, Rainbow Trout and Puma on the peaks.</p>
+<p data-lang="pt">&#129414; <strong>Fauna emblem&#225;tica:</strong> Huemul (no PN Lago Puelo e Cerro Perito Moreno), Pica-pau Magal&#226;nico, Pato-dos-Torrentes, C&#244;ndor-dos-Andes, Truta Arco-&#237;ris e Puma nos cumes.</p>
+<p data-lang="es">&#127807; <strong>Flora y paisaje:</strong> Bosque andino de Coihue, Cipr&#233;s de la Cordillera y Lenga &middot; Frambuesas, grosellas, moras y cerezas silvestres en el sotobosque &middot; El Cerro Piltriquitr&#243;n (2.284 m) custodiando el valle como centinela de piedra.</p>
+<p data-lang="en">&#127807; <strong>Flora &amp; landscape:</strong> Andean forest of Coihue, Cordillera Cypress and Lenga &middot; Wild raspberries, currants, blackberries and cherries in the undergrowth &middot; Cerro Piltriquitrón (2,284 m) guarding the valley like a stone sentinel.</p>
+<p data-lang="pt">&#127807; <strong>Flora e paisagem:</strong> Floresta andina de Coihue, Cipr&#233; da Cordilheira e Lenga &middot; Framboesas, groselhas, amoras e cerejas silvestres no sub-bosque &middot; Cerro Piltriquitr&#243;n (2.284 m) guardando o vale como sentinela de pedra.</p>
+<p data-lang="es">&#128161; <strong>&#191;Sab&#237;as que...?</strong> El Lago Puelo es el &#250;nico parque nacional de Argentina con salida al Pac&#237;fico: su desag&#252;e corre hacia el R&#237;o Puelo que desemboca en el Estuario de Reloncav&#237; en Chile. Por eso, en la &#233;poca de lluvias es posible cruzar desde El Bols&#243;n hasta la Carretera Austral en kayak sin tocar tierra argentina.</p>
+<p data-lang="en">&#128161; <strong>Did you know?</strong> Lago Puelo is the only national park in Argentina with an outlet to the Pacific: its drainage runs to the Río Puelo which empties into the Reloncaví Estuary in Chile. That's why in the rainy season it's possible to kayak from El Bolsón all the way to the Carretera Austral without touching Argentine soil.</p>
+<p data-lang="pt">&#128161; <strong>Voc&#234; sabia?</strong> O Lago Puelo &#233; o &#250;nico parque nacional da Argentina com sa&#237;da para o Pac&#237;fico: sua drenagem corre para o Rio Puelo que desemboca no Estu&#225;rio de Reloncav&#237; no Chile. Por isso, na &#233;poca de chuvas &#233; poss&#237;vel cruzar de El Bols&#243;n at&#233; a Carretera Austral de caiaque sem tocar o solo argentino.</p>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#127968; <span data-lang="es">Alojamiento, Gastronom&#237;a &amp; Experiencias</span><span data-lang="en">Accommodation, Food &amp; Experiences</span><span data-lang="pt">Hospedagem, Gastronomia &amp; Experi&#234;ncias</span></div>
+</div>
+<div class="estab-banner">
+<div class="estab-banner-titulo" data-lang="es">Explor&#225; todo lo que ofrece El Bols&#243;n</div>
+<div class="estab-banner-titulo" data-lang="en">Explore everything El Bols&#243;n has to offer</div>
+<div class="estab-banner-titulo" data-lang="pt">Explore tudo o que El Bols&#243;n tem a oferecer</div>
+<div class="estab-banner-sub" data-lang="es">Alojamiento &middot; Gastronom&#237;a &middot; Esqu&#237; &middot; Trekking &middot; Cerveza &middot; Artesanías</div>
+<div class="estab-banner-sub" data-lang="en">Accommodation &middot; Food &middot; Skiing &middot; Trekking &middot; Beer &middot; Crafts</div>
+<div class="estab-banner-sub" data-lang="pt">Hospedagem &middot; Gastronomia &middot; Esqui &middot; Trekking &middot; Cerveja &middot; Artesanatos</div>
+<a href="../categorias.html?destino=El+Bolson" class="estab-banner-btn" data-lang="es">Ver establecimientos en El Bols&#243;n &#8594;</a>
+<a href="../categorias.html?destino=El+Bolson&lang=en" class="estab-banner-btn" data-lang="en">Browse El Bols&#243;n listings &#8594;</a>
+<a href="../categorias.html?destino=El+Bolson&lang=pt" class="estab-banner-btn" data-lang="pt">Ver estabelecimentos em El Bols&#243;n &#8594;</a>
+</div>
+<footer>CONF&#205;N &middot; El Bols&#243;n &middot; R&#237;o Negro &middot; Patagonia Andina &middot; Zona No Nuclear y Ecol&#243;gica</footer>
+<script>
+function cambiarIdioma(lang,btn){
+document.querySelectorAll('.lang-btn-dest').forEach(b=>b.classList.remove('activo'));
+if(btn)btn.classList.add('activo');
+document.querySelectorAll('[data-lang]').forEach(el=>{
+el.classList.toggle('activo',el.dataset.lang===lang);
+});
+localStorage.setItem('confin_lang',lang);
+}
+(function(){
+var saved=localStorage.getItem('confin_lang')||'es';
+var btn=document.querySelector('.lang-btn-dest[onclick*="\''+saved+'\'"]');
+cambiarIdioma(saved,btn);
+})();
+</script>
+</body>
+</html>
