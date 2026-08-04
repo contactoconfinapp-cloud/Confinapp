@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Puerto Madryn &#183; CONF&#205;N</title>
+<meta name="description" content="Gu&#237;a &#250;til de Puerto Madryn. Emergencias, ballenas, Pen&#237;nsula Vald&#233;s, buceo y todo lo que necesit&#225;s saber.">
+<style>
+:root{--deep:#0E1A1C;--cream:#FAF7F2;--atlantic:#3D6B73;--ash:rgba(163,196,204,0.2);--font-d:'Georgia',serif;--ember:#B84E3A;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:var(--deep);color:var(--cream);min-height:100vh;}
+.nav{position:sticky;top:0;z-index:100;background:var(--deep);display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(61,107,115,0.3);}
+.nav-logo{font-family:var(--font-d);font-size:1rem;color:var(--cream);letter-spacing:0.04em;text-decoration:none;}
+.nav-back{font-size:0.72rem;color:rgba(163,196,204,0.7);text-decoration:none;}
+.lang-selector{display:flex;gap:4px;}
+.lang-btn-dest{font-size:0.6rem;padding:4px 7px;border:1px solid rgba(163,196,204,0.4);background:rgba(14,26,28,0.9);color:rgba(163,196,204,0.7);cursor:pointer;border-radius:3px;font-family:inherit;letter-spacing:0.05em;}
+.lang-btn-dest.activo{background:var(--atlantic);color:#fff;border-color:var(--atlantic);}
+.hero{position:relative;overflow:hidden;min-height:200px;}
+.hero::before{content:'';position:absolute;inset:0;background:url('puerto-madryn-foto.jpg') center/cover no-repeat;opacity:0.35;}
+.hero-content{position:relative;z-index:1;padding:32px 20px 28px;}
+.hero-tag{font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.6);margin-bottom:10px;}
+.hero-title{font-family:var(--font-d);font-size:clamp(2rem,8vw,3rem);font-weight:300;line-height:1.05;margin-bottom:8px;}
+.hero-sub{font-size:0.75rem;color:rgba(163,196,204,0.7);}
+.aviso{background:rgba(184,78,58,0.15);border-left:3px solid #B84E3A;border-radius:0 8px 8px 0;padding:12px 14px;font-size:0.75rem;color:rgba(245,205,195,0.9);line-height:1.5;margin:16px 16px 0;}
+.aviso.naranja{background:rgba(196,151,74,0.12);border-left-color:#C4974A;color:rgba(245,225,185,0.9);}
+.seccion{padding:20px 16px 4px;}
+.seccion-titulo{font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--atlantic);display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.seccion-titulo::after{content:'';flex:1;height:1px;background:var(--ash);}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px 4px;}
+.card{background:rgba(255,255,255,0.06);border-radius:12px;padding:14px;border:1px solid rgba(61,107,115,0.2);display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--atlantic);}
+.card.rojo::before{background:#B84E3A;}
+.card.full{grid-column:1/-1;}
+.card-ico{font-size:1.4rem;}
+.card-nombre{font-size:0.82rem;font-weight:600;color:rgba(250,247,242,0.9);}
+.card-desc{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.4;}
+.card-num{font-size:1rem;font-weight:700;color:#B84E3A;}
+.card-btn{display:block;text-align:center;padding:8px;background:#B84E3A;color:#fff;border-radius:8px;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;margin-top:4px;}
+.info-bloque{padding:0 16px 16px;}
+.info-item{padding:12px 0;border-bottom:1px solid rgba(61,107,115,0.15);display:flex;gap:10px;align-items:flex-start;}
+.info-item:last-child{border-bottom:none;}
+.info-ico{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.info-txt{font-size:0.78rem;color:rgba(163,196,204,0.8);line-height:1.5;}
+.info-txt strong{color:var(--cream);display:block;margin-bottom:2px;}
+.inst-card{background:rgba(61,107,115,0.1);border-radius:12px;padding:16px;margin:0 16px 12px;border:1px solid rgba(61,107,115,0.3);}
+.inst-nombre{font-size:0.85rem;font-weight:600;color:var(--cream);margin-bottom:4px;}
+.inst-desc{font-size:0.72rem;color:rgba(163,196,204,0.7);line-height:1.5;margin-bottom:10px;}
+.inst-btn{display:inline-block;padding:6px 12px;background:rgba(61,107,115,0.3);border-radius:6px;font-size:0.6rem;color:rgba(163,196,204,0.9);text-decoration:none;letter-spacing:0.08em;margin-top:4px;margin-right:6px;}
+.ruta-card{background:rgba(255,255,255,0.05);border-radius:10px;padding:14px;margin:0 16px 10px;border:1px solid rgba(61,107,115,0.2);}
+.ruta-titulo{font-size:0.52rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--atlantic);margin-bottom:6px;}
+.ruta-tags{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
+.ruta-tag{background:rgba(61,107,115,0.2);border-radius:4px;padding:3px 8px;font-size:0.6rem;color:rgba(163,196,204,0.8);}
+.ruta-paradas{border-left:2px solid rgba(61,107,115,0.3);padding-left:12px;display:flex;flex-direction:column;gap:12px;}
+.parada-km{font-size:0.58rem;color:var(--atlantic);font-weight:600;}
+.parada-txt{font-size:0.7rem;color:rgba(163,196,204,0.8);line-height:1.4;margin-top:2px;}
+.parada-tiempo{font-size:0.62rem;color:rgba(163,196,204,0.5);margin-top:3px;}
+.dato{background:rgba(255,255,255,0.04);border-radius:8px;padding:12px 14px;border-left:3px solid var(--atlantic);font-size:0.72rem;color:rgba(196,220,228,0.85);line-height:1.5;margin:0 16px 12px;}
+.dato.rojo{border-left-color:#B84E3A;color:rgba(245,205,195,0.85);}
+.mapa-wrap{margin:0 16px 12px;}
+.mapa-label{font-size:0.5rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.45);margin-bottom:8px;}
+.mapa-frame{width:100%;height:200px;border-radius:10px;overflow:hidden;border:1px solid rgba(61,107,115,0.25);}
+.mapa-frame iframe{width:100%;height:100%;border:0;filter:invert(0.85) hue-rotate(180deg) brightness(0.85);}
+.distancias{padding:0 16px 16px;}
+.dist-item{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(61,107,115,0.12);font-size:0.75rem;}
+.dist-item:last-child{border-bottom:none;}
+.dist-lugar{color:rgba(163,196,204,0.8);}
+.dist-val{color:var(--atlantic);font-weight:600;font-size:0.7rem;}
+.alma{background:rgba(61,107,115,0.08);border-radius:12px;padding:18px;margin:0 16px 16px;border:1px solid rgba(61,107,115,0.2);}
+.alma-titulo{font-family:var(--font-d);font-size:1rem;font-weight:300;color:var(--cream);margin-bottom:12px;font-style:italic;}
+.alma p{font-size:0.75rem;color:rgba(163,196,204,0.75);line-height:1.6;margin-bottom:10px;}
+.alma p:last-child{margin-bottom:0;}
+.estab-banner{margin:0 16px 16px;background:rgba(61,107,115,0.08);border:1px solid rgba(61,107,115,0.25);border-radius:12px;padding:16px;text-align:center;}
+.estab-banner-titulo{font-family:var(--font-d);font-size:1rem;color:var(--cream);margin-bottom:6px;}
+.estab-banner-sub{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.5;margin-bottom:12px;}
+.estab-banner-btn{display:block;padding:11px;background:var(--atlantic);color:#fff;text-decoration:none;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;border-radius:6px;}
+.btn-agenda-dest{position:fixed;bottom:24px;left:18px;z-index:890;width:48px;height:48px;border-radius:50%;background:rgba(61,107,115,0.92);border:1.5px solid rgba(163,196,204,0.35);box-shadow:0 4px 16px rgba(0,0,0,0.4);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.3rem;backdrop-filter:blur(8px);text-decoration:none;}
+footer{text-align:center;padding:24px 16px 80px;font-size:0.55rem;color:rgba(163,196,204,0.25);letter-spacing:0.1em;text-transform:uppercase;}
+[data-lang]{display:none;}
+[data-lang].activo{display:block;}
+span[data-lang]{display:none;}
+span[data-lang].activo{display:inline;}
+</style>
+</head>
+<body>
+<a class="btn-agenda-dest" href="../index.html#agenda" title="Mi agenda CONFIN">&#128214;</a>
+<nav class="nav">
+<a href="../index.html" class="nav-back">&#8592; Volver</a>
+<a href="../index.html" class="nav-logo">CONF&#205;N</a>
+<div class="lang-selector">
+<button class="lang-btn-dest activo" onclick="cambiarIdioma('es',this)">ES</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('en',this)">EN</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('pt',this)">PT</button>
+</div>
+</nav>
+<div class="hero">
+<div class="hero-content">
+<div class="hero-tag">&#127462;&#127479; Chubut &middot; Argentina &middot; Patagonia Atl&#225;ntica</div>
+<h1 class="hero-title">Puerto Madryn</h1>
+<div class="hero-sub" data-lang="es">Capital Mundial del Avistaje de Ballenas &middot; Patrimonio UNESCO &middot; Curado por CONF&#205;N</div>
+<div class="hero-sub" data-lang="en">World Whale Watching Capital &middot; UNESCO Heritage &middot; Curated by CONF&#205;N</div>
+<div class="hero-sub" data-lang="pt">Capital Mundial do Avistamento de Baleias &middot; Patrim&#244;nio UNESCO &middot; Curado por CONF&#205;N</div>
+</div>
+</div>
+<div class="aviso" data-lang="es">&#128051; <strong>Temporada de ballenas (junio&ndash;diciembre):</strong> La Ballena Franca Austral llega a la Pen&#237;nsula Vald&#233;s a parir y criar. Agosto y septiembre son los meses de mayor actividad. Reservar excursiones con anticipaci&#243;n.</div>
+<div class="aviso" data-lang="en">&#128051; <strong>Whale season (June&ndash;December):</strong> Southern Right Whales arrive at Pen&#237;nsula Vald&#233;s to calve and nurse. August and September are peak activity months. Book excursions in advance.</div>
+<div class="aviso" data-lang="pt">&#128051; <strong>Temporada de baleias (junho&ndash;dezembro):</strong> A Baleia Franca Austral chega &#224; Pen&#237;nsula Vald&#233;s para parir e amamentar. Agosto e setembro s&#227;o os meses de maior atividade. Reservar excurs&#245;es com anteced&#234;ncia.</div>
+<div class="aviso naranja" style="margin-top:10px;" data-lang="es">&#9968;&#65039; <strong>Pen&#237;nsula Vald&#233;s &mdash; Ruta sin asfalto:</strong> Los 230 km de ripio dentro de la Pen&#237;nsula exigen cubiertas en buen estado y llevar agua y alimentos. Sin se&#241;al celular en la mayor parte del trayecto.</div>
+<div class="aviso naranja" style="margin-top:10px;" data-lang="en">&#9968;&#65039; <strong>Pen&#237;nsula Vald&#233;s &mdash; Unpaved route:</strong> The 230 km of gravel inside the Peninsula require good tyres and carrying water and food. No cell signal for most of the route.</div>
+<div class="aviso naranja" style="margin-top:10px;" data-lang="pt">&#9968;&#65039; <strong>Pen&#237;nsula Vald&#233;s &mdash; Rota n&#227;o pavimentada:</strong> Os 230 km de cascalho dentro da Pen&#237;nsula exigem pneus em bom estado e levar &#225;gua e alimentos. Sem sinal celular na maior parte do trajeto.</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128680; <span data-lang="es">Emergencias</span><span data-lang="en">Emergencies</span><span data-lang="pt">Emerg&#234;ncias</span></div>
+</div>
+<div class="card-grid">
+<div class="card rojo full">
+<div class="card-ico">&#127973;</div>
+<div class="card-nombre">Hospital Dr. Ra&#250;l Materi</div>
+<div class="card-desc">Gdor. Matera 100 &middot; Alta Complejidad &middot; Guardia 24hs</div>
+<div class="card-num">107 / (0280) 445-1999</div>
+<a href="tel:+54280445199" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#128110;</div>
+<div class="card-nombre">Polic&#237;a / 911</div>
+<div class="card-num">911 / 101</div>
+<a href="tel:911" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#128657;</div>
+<div class="card-nombre" data-lang="es">Bomberos</div>
+<div class="card-nombre" data-lang="en">Fire Dept.</div>
+<div class="card-nombre" data-lang="pt">Bombeiros</div>
+<div class="card-num">100 / (0280) 445-0007</div>
+<a href="tel:100" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#9875;</div>
+<div class="card-nombre">Prefectura Naval</div>
+<div class="card-desc" data-lang="es">Golfo Nuevo &middot; Av. Roca s/n</div>
+<div class="card-num">106 / (0280) 445-1222</div>
+<a href="tel:106" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#127807;</div>
+<div class="card-nombre" data-lang="es">Guardaparques PN Pen&#237;nsula Vald&#233;s</div>
+<div class="card-nombre" data-lang="en">Park Rangers PN Pen&#237;nsula Vald&#233;s</div>
+<div class="card-nombre" data-lang="pt">Guardas-parques PN Pen&#237;nsula Vald&#233;s</div>
+<div class="card-num">(0280) 445-0489</div>
+<a href="tel:+540280445048" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#128737;</div>
+<div class="card-nombre">Defensa Civil</div>
+<div class="card-num">103 / (0280) 445-5000</div>
+<a href="tel:103" class="card-btn">LLAMAR</a>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#8987; <span data-lang="es">&#191;Cu&#225;nto tiempo ten&#233;s?</span><span data-lang="en">How much time do you have?</span><span data-lang="pt">Quanto tempo voc&#234; tem?</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item">
+<div class="info-ico">&#9203;</div>
+<div class="info-txt">
+<strong data-lang="es">2 horas &mdash; Playa y ciudad</strong><strong data-lang="en">2 hours &mdash; Beach and city</strong><strong data-lang="pt">2 horas &mdash; Praia e cidade</strong>
+<span data-lang="es">Playa El Doradillo (8 km norte, ballenas a metros de la costa jun&ndash;dic) &middot; Monumento al Indio Tehuelche en Av. Roca &middot; Centro de artesanos en la peatonal.</span>
+<span data-lang="en">El Doradillo Beach (8 km north, whales meters from shore Jun&ndash;Dec) &middot; Tehuelche Indian Monument on Av. Roca &middot; Artisan center on the pedestrian street.</span>
+<span data-lang="pt">Praia El Doradillo (8 km norte, baleias a metros da costa jun&ndash;dez) &middot; Monumento ao &#205;ndio Tehuelche na Av. Roca &middot; Centro de artesanos na rua peat&#244;nal.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127748;</div>
+<div class="info-txt">
+<strong data-lang="es">Medio d&#237;a &mdash; Avistaje de ballenas</strong><strong data-lang="en">Half day &mdash; Whale watching</strong><strong data-lang="pt">Meio dia &mdash; Avistamento de baleias</strong>
+<span data-lang="es">Excursi&#243;n en catamar&#225;n desde el Puerto (1h 30m&ndash;2h). La Ballena Franca Austral se acerca a los botes. Operadores: Hydrosport, Peke Motta, Southern Spirit.</span>
+<span data-lang="en">Catamaran excursion from the Port (1h 30m&ndash;2h). Southern Right Whales approach the boats. Operators: Hydrosport, Peke Motta, Southern Spirit.</span>
+<span data-lang="pt">Excurs&#227;o de catamar&#227; do Porto (1h 30m&ndash;2h). A Baleia Franca Austral se aproxima dos barcos. Operadores: Hydrosport, Peke Motta, Southern Spirit.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127775;</div>
+<div class="info-txt">
+<strong data-lang="es">D&#237;a completo &mdash; Pen&#237;nsula Vald&#233;s</strong><strong data-lang="en">Full day &mdash; Pen&#237;nsula Vald&#233;s</strong><strong data-lang="pt">Dia completo &mdash; Pen&#237;nsula Vald&#233;s</strong>
+<span data-lang="es">Circuito de 230 km de ripio: Istmo Ameghino (lobo marino) &#8594; Puerto Pir&#225;mides (ballenas + buceo) &#8594; Punta Norte (orcas y elefantes marinos) &#8594; Punta Delgada (elefantes marinos). Salir bien temprano y con tanque lleno.</span>
+<span data-lang="en">230 km gravel circuit: Ameghino Isthmus (sea lion) &#8594; Puerto Pir&#225;mides (whales + diving) &#8594; Punta Norte (orcas and elephant seals) &#8594; Punta Delgada (elephant seals). Leave early with a full tank.</span>
+<span data-lang="pt">Circuito de 230 km de cascalho: Istmo Ameghino (le&#227;o marinho) &#8594; Puerto Pir&#225;mides (baleias + mergulho) &#8594; Punta Norte (orcas e elefantes marinhos) &#8594; Punta Delgada (elefantes marinhos). Sair cedo com tanque cheio.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#128038;</div>
+<div class="info-txt">
+<strong data-lang="es">D&#237;a completo &mdash; Punta Tombo (170 km sur)</strong><strong data-lang="en">Full day &mdash; Punta Tombo (170 km south)</strong><strong data-lang="pt">Dia completo &mdash; Punta Tombo (170 km sul)</strong>
+<span data-lang="es">La colonia de ping&#252;inos de Magallanes m&#225;s grande del mundo continental: m&#225;s de 1.000.000 de ejemplares (sep&ndash;mar). Por RN 3 sur + RP 1. Carg&#225; combustible en Madryn antes.</span>
+<span data-lang="en">World's largest mainland Magellanic penguin colony: over 1,000,000 specimens (Sep&ndash;Mar). Via RN 3 south + RP 1. Fill up in Madryn before leaving.</span>
+<span data-lang="pt">A maior col&#244;nia de ping&#252;ins de Magalh&#227;es do continente: mais de 1.000.000 de exemplares (set&ndash;mar). Pela RN 3 sul + RP 1. Abastate&#231;a em Madryn antes.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127783;</div>
+<div class="info-txt">
+<strong data-lang="es">Si llueve &mdash; Museos</strong><strong data-lang="en">If it rains &mdash; Museums</strong><strong data-lang="pt">Se chover &mdash; Museus</strong>
+<span data-lang="es">EcoCentro Pampa Azul (Julio Verne 3784, museo interactivo del mar patag&#243;nico) &middot; Museo de Ciencias Naturales y Oceanograf&#237;a (Domecq Garc&#237;a 65).</span>
+<span data-lang="en">EcoCentro Pampa Azul (Julio Verne 3784, interactive Patagonian sea museum) &middot; Natural Sciences and Oceanography Museum (Domecq Garc&#237;a 65).</span>
+<span data-lang="pt">EcoCentro Pampa Azul (Julio Verne 3784, museu interativo do mar patag&#244;nico) &middot; Museu de Ci&#234;ncias Naturais e Oceanografia (Domecq Garc&#237;a 65).</span>
+</div>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128247; <span data-lang="es">Paseos gratuitos</span><span data-lang="en">Free walks</span><span data-lang="pt">Passeios gratuitos</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item"><div class="info-ico">&#127944;</div><div class="info-txt"><strong data-lang="es">Playa El Doradillo &mdash; Ballenas desde la orilla</strong><strong data-lang="en">El Doradillo Beach &mdash; Whales from the shore</strong><strong data-lang="pt">Praia El Doradillo &mdash; Baleias da margem</strong><span data-lang="es">8 km al norte. Las ballenas ingresan a aguas muy someras para reposar. Se las puede ver y escuchar desde la costanera sin pagar excursi&#243;n (jun&ndash;dic). Acceso libre.</span><span data-lang="en">8 km north. Whales enter very shallow waters to rest. You can see and hear them from the shore without paying for an excursion (Jun&ndash;Dec). Free access.</span><span data-lang="pt">8 km ao norte. As baleias entram em &#225;guas rasas para descansar. D&#225; para ver e ouvir da margem sem pagar excurs&#227;o (jun&ndash;dez). Acesso livre.</span></div></div>
+<div class="info-item"><div class="info-ico">&#127810;</div><div class="info-txt"><strong data-lang="es">Costanera Av. Roca &mdash; Golfo Nuevo</strong><strong data-lang="en">Av. Roca Waterfront &mdash; Golfo Nuevo</strong><strong data-lang="pt">Costaneira Av. Roca &mdash; Golfo Novo</strong><span data-lang="es">M&#225;s de 3 km de paseo peatonal sobre el Golfo Nuevo. Atardeceres espectaculares. Acceso libre 24hs.</span><span data-lang="en">Over 3 km of pedestrian walk on Golfo Nuevo. Spectacular sunsets. Free 24hs access.</span><span data-lang="pt">Mais de 3 km de passeio peat&#244;nal sobre o Golfo Novo. P&#244;res do sol espetaculares. Acesso livre 24hs.</span></div></div>
+<div class="info-item"><div class="info-ico">&#127956;</div><div class="info-txt"><strong data-lang="es">Circuito de Playas Urbanas</strong><strong data-lang="en">Urban Beach Circuit</strong><strong data-lang="pt">Circuito de Praias Urbanas</strong><span data-lang="es">Playa Comodoro, Playa Penisola, Playa Paraiso: 7 km de arena oscura con agua c&#225;lida del Golfo Nuevo. Temporada: dic&ndash;mar.</span><span data-lang="en">Playa Comodoro, Playa Penisola, Playa Paraiso: 7 km of dark sand with warm Golfo Nuevo waters. Season: Dec&ndash;Mar.</span><span data-lang="pt">Playa Comodoro, Playa Penisola, Playa Paraiso: 7 km de areia escura com &#225;gua morna do Golfo Novo. Temporada: dez&ndash;mar.</span></div></div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128153; <span data-lang="es">Con prop&#243;sito</span><span data-lang="en">With purpose</span><span data-lang="pt">Com prop&#243;sito</span></div>
+</div>
+<div class="inst-card">
+<div class="inst-nombre" data-lang="es">EcoCentro Pampa Azul &mdash; Museo Interactivo del Mar Patag&#243;nico</div>
+<div class="inst-nombre" data-lang="en">EcoCentro Pampa Azul &mdash; Interactive Patagonian Sea Museum</div>
+<div class="inst-nombre" data-lang="pt">EcoCentro Pampa Azul &mdash; Museu Interativo do Mar Patag&#244;nico</div>
+<div class="inst-desc" data-lang="es">ONG pionera de educaci&#243;n ambiental marina en Argentina. Investigaci&#243;n cient&#237;fica, programas educativos comunitarios y la exposici&#243;n permanente m&#225;s completa sobre la vida marina de la Patagonia. Julio Verne 3784 &middot; (0280) 445-7470.</div>
+<div class="inst-desc" data-lang="en">Pioneer NGO for marine environmental education in Argentina. Scientific research, community educational programs and the most complete permanent exhibition on Patagonian marine life. Julio Verne 3784 &middot; (0280) 445-7470.</div>
+<div class="inst-desc" data-lang="pt">ONG pioneira de educa&#231;&#227;o ambiental marinha na Argentina. Pesquisa cient&#237;fica, programas educativos comunit&#225;rios e a exposi&#231;&#227;o permanente mais completa sobre a vida marinha da Patagônia. Julio Verne 3784 &middot; (0280) 445-7470.</div>
+<a href="tel:+540280445747" class="inst-btn">+0280 445-7470 &middot; EcoCentro</a>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#9981; <span data-lang="es">Combustible &amp; Servicios</span><span data-lang="en">Fuel &amp; Services</span><span data-lang="pt">Combust&#237;vel &amp; Servi&#231;os</span></div>
+</div>
+<div class="dato rojo" data-lang="es">&#9888;&#65039; Para el circuito de Pen&#237;nsula Vald&#233;s (230 km ripio) y para Punta Tombo (170 km), carg&#225; el tanque al 100% en Puerto Madryn. No hay estaciones de servicio dentro de la Pen&#237;nsula.</div>
+<div class="dato rojo" data-lang="en">&#9888;&#65039; For the Peninsula Vald&#233;s circuit (230 km gravel) and Punta Tombo (170 km), fill up to 100% in Puerto Madryn. No gas stations inside the Peninsula.</div>
+<div class="dato rojo" data-lang="pt">&#9888;&#65039; Para o circuito da Pen&#237;nsula Vald&#233;s (230 km cascalho) e Punta Tombo (170 km), encha 100% em Puerto Madryn. Sem postos dentro da Pen&#237;nsula.</div>
+<div class="info-bloque" style="padding-top:4px;">
+<div class="info-item"><div class="info-ico">&#9981;</div><div class="info-txt"><strong>YPF Centro</strong><span>Av. 9 de Julio y Maip&#250; &middot; 24hs</span></div></div>
+<div class="info-item"><div class="info-ico">&#9981;</div><div class="info-txt"><strong>Shell Av. Roca</strong><span>Av. Roca y Mosconi</span></div></div>
+<div class="info-item"><div class="info-ico">&#9981;</div><div class="info-txt"><strong>YPF Ruta Norte</strong><span>RN 3 km 1383 (salida hacia Trelew)</span></div></div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128652; <span data-lang="es">Transporte &amp; Servicios</span><span data-lang="en">Transport &amp; Services</span><span data-lang="pt">Transporte &amp; Servi&#231;os</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item"><div class="info-ico">&#9992;</div><div class="info-txt"><strong data-lang="es">Aeropuerto El Tehuelche (PMY)</strong><strong data-lang="en">El Tehuelche Airport (PMY)</strong><strong data-lang="pt">Aeroporto El Tehuelche (PMY)</strong><span data-lang="es">7 km del centro &middot; Vuelos a Buenos Aires (Aerol&#237;neas, LATAM), Bariloche, Comodoro y temporada a Ushuaia.</span><span data-lang="en">7 km from center &middot; Flights to Buenos Aires (Aerol&#237;neas, LATAM), Bariloche, Comodoro and seasonal to Ushuaia.</span><span data-lang="pt">7 km do centro &middot; Voos para Buenos Aires, Bariloche, Comodoro e temporada para Ushuaia.</span></div></div>
+<div class="info-item"><div class="info-ico">&#128651;</div><div class="info-txt"><strong data-lang="es">Terminal de &#211;mnibus</strong><strong data-lang="en">Bus Terminal</strong><strong data-lang="pt">Terminal de &#212;nibus</strong><span data-lang="es">Independencia e Irigoyen. Servicios a Buenos Aires, Trelew (45 min), Comodoro, Bariloche y Neuqu&#233;n.</span><span data-lang="en">Independencia and Irigoyen. Services to Buenos Aires, Trelew (45 min), Comodoro, Bariloche and Neuqu&#233;n.</span><span data-lang="pt">Independencia e Irigoyen. Servi&#231;os para Buenos Aires, Trelew (45 min), Comodoro, Bariloche e Neuqu&#233;n.</span></div></div>
+<div class="info-item"><div class="info-ico">&#8505;&#65039;</div><div class="info-txt"><strong data-lang="es">Secretar&#237;a de Turismo</strong><strong data-lang="en">Tourism Office</strong><strong data-lang="pt">Secretaria de Turismo</strong><span>Av. Roca 223 &middot; (0280) 445-3504</span></div></div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo" style="font-size:0.65rem;">&#128690; <span data-lang="es">En Camino &mdash; Rutas desde Puerto Madryn</span><span data-lang="en">On the Road &mdash; Routes from Puerto Madryn</span><span data-lang="pt">Na Estrada &mdash; Rotas de Puerto Madryn</span></div>
+</div>
+<div class="mapa-wrap">
+<div class="mapa-label">
+<span data-lang="es">&#128506; RN 3 / RP 2 &mdash; Puerto Madryn &#8596; Pen&#237;nsula Vald&#233;s / Trelew / Punta Tombo</span>
+<span data-lang="en">&#128506; RN 3 / RP 2 &mdash; Puerto Madryn &#8596; Pen&#237;nsula Vald&#233;s / Trelew / Punta Tombo</span>
+<span data-lang="pt">&#128506; RN 3 / RP 2 &mdash; Puerto Madryn &#8596; Pen&#237;nsula Vald&#233;s / Trelew / Punta Tombo</span>
+</div>
+<div class="mapa-frame"><iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-66.5,-43.5,-63.5,-41.5&layer=mapnik" loading="lazy" title="Mapa En Camino Puerto Madryn"></iframe></div>
+</div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">RP 2 &mdash; Puerto Madryn &#8596; Pen&#237;nsula Vald&#233;s (circuito 230 km | d&#237;a completo)</div>
+<div class="ruta-titulo" data-lang="en">RP 2 &mdash; Puerto Madryn &#8596; Pen&#237;nsula Vald&#233;s (230 km circuit | full day)</div>
+<div class="ruta-titulo" data-lang="pt">RP 2 &mdash; Puerto Madryn &#8596; Pen&#237;nsula Vald&#233;s (circuito 230 km | dia completo)</div>
+<div class="ruta-tags"><span class="ruta-tag">230 km</span><span class="ruta-tag">Ripio</span><span class="ruta-tag">4 paradas</span></div>
+<div class="dato rojo" data-lang="es">&#9888;&#65039; Sin se&#241;al celular en la mayor parte del circuito. Sin estaciones de servicio dentro de la Pen&#237;nsula. Llevar agua, alimentos y botiquin.</div>
+<div class="dato rojo" data-lang="en">&#9888;&#65039; No cell signal for most of the circuit. No gas stations inside the Peninsula. Bring water, food and first aid kit.</div>
+<div class="dato rojo" data-lang="pt">&#9888;&#65039; Sem sinal celular na maior parte do circuito. Sem postos dentro da Pen&#237;nsula. Levar &#225;gua, alimentos e kit de primeiros socorros.</div>
+<div class="ruta-paradas">
+<div>
+<div class="parada-km">km 77 &middot; &#128681; Istmo Carlos Ameghino &mdash; <span data-lang="es">Aduana provincial y lobo marino</span><span data-lang="en">Provincial checkpoint and sea lion</span><span data-lang="pt">Posto provincial e le&#227;o marinho</span></div>
+<div class="parada-txt" data-lang="es">Control de acceso a la Pen&#237;nsula. Lobos marinos en la restinga desde la costanera. No requiere pago aparte.</div>
+<div class="parada-txt" data-lang="en">Peninsula access checkpoint. Sea lions on the reef from the waterfront. No additional fee required.</div>
+<div class="parada-txt" data-lang="pt">Controle de acesso &#224; Pen&#237;nsula. Le&#245;es marinhos no recife da costaneira. Sem taxa adicional.</div>
+<div class="parada-tiempo">&#9201; 1h desde Puerto Madryn</div>
+</div>
+<div>
+<div class="parada-km">km 105 &middot; &#128051; Puerto Pir&#225;mides &mdash; <span data-lang="es">Ballenas y buceo</span><span data-lang="en">Whales and diving</span><span data-lang="pt">Baleias e mergulho</span></div>
+<div class="parada-txt" data-lang="es">&#218;nico pueblo dentro de la Pen&#237;nsula. Excursiones de avistaje en catamar&#225;n (jun&ndash;dic). Buceo con lobos marinos y tiburones gatopardo. Hay combustible.</div>
+<div class="parada-txt" data-lang="en">Only village inside the Peninsula. Whale watching catamaran excursions (Jun&ndash;Dec). Diving with sea lions and leopard sharks. Fuel available.</div>
+<div class="parada-txt" data-lang="pt">&#218;nico village dentro da Pen&#237;nsula. Excurs&#245;es de avistamento de baleias (jun&ndash;dez). Mergulho com le&#245;es marinhos. H&#225; combust&#237;vel.</div>
+<div class="parada-tiempo">&#9201; 1h 30 min desde Puerto Madryn &middot; &#9981; hay YPF</div>
+</div>
+<div>
+<div class="parada-km">km 180 &middot; &#129419; Punta Norte &mdash; <span data-lang="es">Orcas y elefantes marinos</span><span data-lang="en">Orcas and elephant seals</span><span data-lang="pt">Orcas e elefantes marinhos</span></div>
+<div class="parada-txt" data-lang="es">La &#250;nica colonia continental de elefantes marinos del mundo &middot; Varamientos voluntarios de orcas (feb&ndash;abr). Presencia de lobos marinos y p&#225;jaros.</div>
+<div class="parada-txt" data-lang="en">The world's only mainland elephant seal colony &middot; Voluntary orca strandings (Feb&ndash;Apr). Sea lions and birds.</div>
+<div class="parada-txt" data-lang="pt">A &#250;nica col&#244;nia continental de elefantes marinhos do mundo &middot; Encalhamentos volunt&#225;rios de orcas (fev&ndash;abr).</div>
+<div class="parada-tiempo">&#9201; 2h 30 min desde Puerto Madryn</div>
+</div>
+<div>
+<div class="parada-km">km 230 &middot; &#129419; Punta Delgada &mdash; <span data-lang="es">Elefantes marinos y faro</span><span data-lang="en">Elephant seals and lighthouse</span><span data-lang="pt">Elefantes marinhos e farol</span></div>
+<div class="parada-txt" data-lang="es">Faro hist&#243;rico y colonia de elefantes marinos a metros del mirador. Hotel y restaurante (reservas anticipadas).</div>
+<div class="parada-txt" data-lang="en">Historic lighthouse and elephant seal colony meters from the viewpoint. Hotel and restaurant (advance booking).</div>
+<div class="parada-txt" data-lang="pt">Farol hist&#243;rico e col&#244;nia de elefantes marinhos a metros do mirante. Hotel e restaurante (reserva antecipada).</div>
+<div class="parada-tiempo">&#9201; 3h desde Puerto Madryn</div>
+</div>
+</div>
+</div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">RN 3 Sur &mdash; Puerto Madryn &#8596; Trelew &#8596; Punta Tombo (170 km | ~2h)</div>
+<div class="ruta-titulo" data-lang="en">RN 3 South &mdash; Puerto Madryn &#8596; Trelew &#8596; Punta Tombo (170 km | ~2h)</div>
+<div class="ruta-titulo" data-lang="pt">RN 3 Sul &mdash; Puerto Madryn &#8596; Trelew &#8596; Punta Tombo (170 km | ~2h)</div>
+<div class="ruta-tags"><span class="ruta-tag">170 km</span><span class="ruta-tag">Asfalto + ripio final</span><span class="ruta-tag">2 paradas</span></div>
+<div class="ruta-paradas">
+<div>
+<div class="parada-km">km 65 &middot; &#127960;&#65039; Trelew &mdash; <span data-lang="es">Ciudad galesa y dinosaurios</span><span data-lang="en">Welsh city and dinosaurs</span><span data-lang="pt">Cidade galesa e dinossauros</span></div>
+<div class="parada-txt" data-lang="es">Museo Paleontol&#243;gico Egidio Feruglio (MEF): el museo de dinosaurios m&#225;s importante de Latinoam&#233;rica. Carg&#225; combustible aqu&#237; antes de Punta Tombo.</div>
+<div class="parada-txt" data-lang="en">Egidio Feruglio Paleontological Museum (MEF): the most important dinosaur museum in Latin America. Fill up here before Punta Tombo.</div>
+<div class="parada-txt" data-lang="pt">Museu Paleontol&#243;gico Egidio Feruglio (MEF): o museu de dinossauros mais importante da Am&#233;rica Latina. Abastate&#231;a aqui antes de Punta Tombo.</div>
+<div class="parada-tiempo">&#9201; 45 min desde Puerto Madryn &middot; &#9981; carg&#225; aqu&#237;</div>
+</div>
+<div>
+<div class="parada-km">km 170 &middot; &#128038; Punta Tombo &mdash; <span data-lang="es">Mayor colonia de ping&#252;inos del mundo continental</span><span data-lang="en">World's largest mainland penguin colony</span><span data-lang="pt">Maior col&#244;nia de ping&#252;ins do continente</span></div>
+<div class="parada-txt" data-lang="es">M&#225;s de 1.000.000 de ping&#252;inos de Magallanes (sep&ndash;mar). Caminar entre los nidos a pocos metros. Entrada Secretar&#237;a de Turismo de Chubut.</div>
+<div class="parada-txt" data-lang="en">Over 1,000,000 Magellanic penguins (Sep&ndash;Mar). Walk among nests just meters away. Entry via Chubut Tourism Office.</div>
+<div class="parada-txt" data-lang="pt">Mais de 1.000.000 ping&#252;ins de Magalh&#227;es (set&ndash;mar). Caminhar entre os ninhos a poucos metros. Entrada pela Secretaria de Turismo do Chubut.</div>
+<div class="parada-tiempo">&#9201; 2h desde Puerto Madryn</div>
+</div>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128205; <span data-lang="es">Distancias desde Puerto Madryn</span><span data-lang="en">Distances from Puerto Madryn</span><span data-lang="pt">Dist&#226;ncias de Puerto Madryn</span></div>
+</div>
+<div class="distancias">
+<div class="dist-item"><span class="dist-lugar">Aeropuerto PMY</span><span class="dist-val">7 km &middot; 10 min</span></div>
+<div class="dist-item"><span class="dist-lugar">El Doradillo</span><span class="dist-val">8 km &middot; 10 min</span></div>
+<div class="dist-item"><span class="dist-lugar">Trelew</span><span class="dist-val">65 km &middot; 45 min</span></div>
+<div class="dist-item"><span class="dist-lugar" data-lang="es">Istmo Ameghino (entrada Pen&#237;nsula)</span><span class="dist-lugar" data-lang="en">Ameghino Isthmus (Peninsula entrance)</span><span class="dist-lugar" data-lang="pt">Istmo Ameghino (entrada Pen&#237;nsula)</span><span class="dist-val">77 km &middot; 1h</span></div>
+<div class="dist-item"><span class="dist-lugar">Puerto Pir&#225;mides</span><span class="dist-val">105 km &middot; 1h 30 min</span></div>
+<div class="dist-item"><span class="dist-lugar">Punta Tombo</span><span class="dist-val">170 km &middot; 2h</span></div>
+<div class="dist-item"><span class="dist-lugar">Punta Norte</span><span class="dist-val">180 km &middot; 2h 30 min</span></div>
+<div class="dist-item"><span class="dist-lugar">Comodoro Rivadavia</span><span class="dist-val">384 km &middot; 4h</span></div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#127775; <span data-lang="es">El alma de este lugar</span><span data-lang="en">The soul of this place</span><span data-lang="pt">A alma deste lugar</span></div>
+</div>
+<div class="alma">
+<div class="alma-titulo" data-lang="es">El golfo que cri&#243; ballenas y la tierra que guarda dinosaurios</div>
+<div class="alma-titulo" data-lang="en">The gulf that raised whales and the land that holds dinosaurs</div>
+<div class="alma-titulo" data-lang="pt">O golfo que criou baleias e a terra que guarda dinossauros</div>
+<p data-lang="es">&#128218; Puerto Madryn fue fundada el 28 de julio de 1865 por 153 colonos galeses que desembarcaron del velero <em>Mimosa</em> buscando preservar su lengua y cultura. La Pen&#237;nsula Vald&#233;s fue declarada Patrimonio Natural de la Humanidad por la UNESCO en 1999 por ser uno de los ecosistemas marinos m&#225;s importantes del planeta.</p>
+<p data-lang="en">&#128218; Puerto Madryn was founded on July 28, 1865 by 153 Welsh settlers who disembarked from the sailing ship <em>Mimosa</em> seeking to preserve their language and culture. Pen&#237;nsula Vald&#233;s was declared a UNESCO World Natural Heritage Site in 1999 as one of the planet's most important marine ecosystems.</p>
+<p data-lang="pt">&#128218; Puerto Madryn foi fundada em 28 de julho de 1865 por 153 colonos galeses que desembarcaram do veleiro <em>Mimosa</em> buscando preservar sua l&#237;ngua e cultura. A Pen&#237;nsula Vald&#233;s foi declarada Patrim&#244;nio Natural da Humanidade pela UNESCO em 1999.</p>
+<p data-lang="es">&#129419; <strong>Fauna emblem&#225;tica:</strong> Ballena Franca Austral (la m&#225;s grande del Atl&#225;ntico Sur), Orca, Elefante Marino, Lobo Marino de Un Pelo, Ping&#252;ino de Magallanes, Delf&#237;n Oscuro y Gaviota Cocinera.</p>
+<p data-lang="en">&#129419; <strong>Signature wildlife:</strong> Southern Right Whale (largest in the South Atlantic), Orca, Elephant Seal, South American Sea Lion, Magellanic Penguin, Dusky Dolphin and Kelp Gull.</p>
+<p data-lang="pt">&#129419; <strong>Fauna emblem&#225;tica:</strong> Baleia Franca Austral (a maior do Atl&#226;ntico Sul), Orca, Elefante Marinho, Le&#227;o Marinho Sul-americano, Ping&#252;im de Magalh&#227;es, Golfinhos e Gaivota.</p>
+<p data-lang="es">&#127807; <strong>Flora y paisaje:</strong> Estepa patag&#243;nica costera de mata negra y jarilla &middot; Restingas y ca&#241;adones de ba&#241;adina &middot; Dunas costeras y el turquesa profundo del Golfo Nuevo.</p>
+<p data-lang="en">&#127807; <strong>Flora &amp; landscape:</strong> Coastal Patagonian steppe of mata negra and jarilla &middot; Reefs and tidal creek systems &middot; Coastal dunes and the deep turquoise of Golfo Nuevo.</p>
+<p data-lang="pt">&#127807; <strong>Flora e paisagem:</strong> Estepe patag&#244;nica costeira de mata negra e jarilla &middot; Recifes e sistemas de ma&#231;&#227; &middot; Dunas costeiras e o turquesa profundo do Golfo Novo.</p>
+<p data-lang="es">&#128161; <strong>&#191;Sab&#237;as que...?</strong> Las ballenas francas australes son las &#250;nicas ballenas del mundo que usan el dorso para hacer vela con el viento: un comportamiento &#250;nico llamado <em>sailing</em> que se observa exclusivamente en las aguas de la Pen&#237;nsula Vald&#233;s.</p>
+<p data-lang="en">&#128161; <strong>Did you know?</strong> Southern Right Whales are the only whales in the world that use their back as a sail in the wind: a unique behavior called <em>sailing</em> observed exclusively in the waters of Pen&#237;nsula Vald&#233;s.</p>
+<p data-lang="pt">&#128161; <strong>Voc&#234; sabia?</strong> As baleias francas austrais s&#227;o as &#250;nicas baleias do mundo que usam o dorso como vela no vento: comportamento &#250;nico chamado <em>sailing</em> observado exclusivamente nas &#225;guas da Pen&#237;nsula Vald&#233;s.</p>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#127968; <span data-lang="es">Alojamiento, Gastronom&#237;a &amp; Experiencias</span><span data-lang="en">Accommodation, Food &amp; Experiences</span><span data-lang="pt">Hospedagem, Gastronomia &amp; Experi&#234;ncias</span></div>
+</div>
+<div class="estab-banner">
+<div class="estab-banner-titulo" data-lang="es">Explor&#225; todo lo que ofrece Puerto Madryn</div>
+<div class="estab-banner-titulo" data-lang="en">Explore everything Puerto Madryn has to offer</div>
+<div class="estab-banner-titulo" data-lang="pt">Explore tudo o que Puerto Madryn tem a oferecer</div>
+<div class="estab-banner-sub" data-lang="es">Alojamiento &middot; Gastronom&#237;a &middot; Excursiones &middot; Comercios &middot; Traslados &middot; Bienestar</div>
+<div class="estab-banner-sub" data-lang="en">Accommodation &middot; Food &middot; Excursions &middot; Shopping &middot; Transfers &middot; Wellness</div>
+<div class="estab-banner-sub" data-lang="pt">Hospedagem &middot; Gastronomia &middot; Excurs&#245;es &middot; Com&#233;rcio &middot; Traslados &middot; Bem-estar</div>
+<a href="../categorias.html?destino=Puerto+Madryn" class="estab-banner-btn" data-lang="es">Ver establecimientos en Puerto Madryn &#8594;</a>
+<a href="../categorias.html?destino=Puerto+Madryn&lang=en" class="estab-banner-btn" data-lang="en">Browse Puerto Madryn listings &#8594;</a>
+<a href="../categorias.html?destino=Puerto+Madryn&lang=pt" class="estab-banner-btn" data-lang="pt">Ver estabelecimentos em Puerto Madryn &#8594;</a>
+</div>
+<footer>CONF&#205;N &middot; Puerto Madryn &middot; Chubut &middot; Patagonia Atl&#225;ntica &middot; Patrimonio UNESCO</footer>
+<script>
+function cambiarIdioma(lang,btn){
+document.querySelectorAll('.lang-btn-dest').forEach(b=>b.classList.remove('activo'));
+if(btn)btn.classList.add('activo');
+document.querySelectorAll('[data-lang]').forEach(el=>{
+el.classList.toggle('activo',el.dataset.lang===lang);
+});
+localStorage.setItem('confin_lang',lang);
+}
+(function(){
+var saved=localStorage.getItem('confin_lang')||'es';
+var btn=document.querySelector('.lang-btn-dest[onclick*="\''+saved+'\'"]');
+cambiarIdioma(saved,btn);
+})();
+</script>
+</body>
+</html>
