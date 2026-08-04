@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Los Antiguos &#183; CONF&#205;N</title>
+<meta name="description" content="Gu&#237;a &#250;til de Los Antiguos. Emergencias, cerezas, Lago Buenos Aires, paso fronterizo Chile Chico y todo lo que necesit&#225;s saber.">
+<style>
+:root{--deep:#0E1A1C;--cream:#FAF7F2;--atlantic:#3D6B73;--ash:rgba(163,196,204,0.2);--font-d:'Georgia',serif;--ember:#B84E3A;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:var(--deep);color:var(--cream);min-height:100vh;}
+.nav{position:sticky;top:0;z-index:100;background:var(--deep);display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(61,107,115,0.3);}
+.nav-logo{font-family:var(--font-d);font-size:1rem;color:var(--cream);letter-spacing:0.04em;text-decoration:none;}
+.nav-back{font-size:0.72rem;color:rgba(163,196,204,0.7);text-decoration:none;}
+.lang-selector{display:flex;gap:4px;}
+.lang-btn-dest{font-size:0.6rem;padding:4px 7px;border:1px solid rgba(163,196,204,0.4);background:rgba(14,26,28,0.9);color:rgba(163,196,204,0.7);cursor:pointer;border-radius:3px;font-family:inherit;letter-spacing:0.05em;}
+.lang-btn-dest.activo{background:var(--atlantic);color:#fff;border-color:var(--atlantic);}
+.hero{position:relative;overflow:hidden;min-height:200px;}
+.hero::before{content:'';position:absolute;inset:0;background:url('los-antiguos-foto.jpg') center/cover no-repeat;opacity:0.35;}
+.hero-content{position:relative;z-index:1;padding:32px 20px 28px;}
+.hero-tag{font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.6);margin-bottom:10px;}
+.hero-title{font-family:var(--font-d);font-size:clamp(2rem,8vw,3rem);font-weight:300;line-height:1.05;margin-bottom:8px;}
+.hero-sub{font-size:0.75rem;color:rgba(163,196,204,0.7);}
+.aviso{background:rgba(184,78,58,0.15);border-left:3px solid #B84E3A;border-radius:0 8px 8px 0;padding:12px 14px;font-size:0.75rem;color:rgba(245,205,195,0.9);line-height:1.5;margin:16px 16px 0;}
+.aviso.naranja{background:rgba(196,151,74,0.12);border-left-color:#C4974A;color:rgba(245,225,185,0.9);}
+.seccion{padding:20px 16px 4px;}
+.seccion-titulo{font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--atlantic);display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.seccion-titulo::after{content:'';flex:1;height:1px;background:var(--ash);}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px 4px;}
+.card{background:rgba(255,255,255,0.06);border-radius:12px;padding:14px;border:1px solid rgba(61,107,115,0.2);display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--atlantic);}
+.card.rojo::before{background:#B84E3A;}
+.card.full{grid-column:1/-1;}
+.card-ico{font-size:1.4rem;}
+.card-nombre{font-size:0.82rem;font-weight:600;color:rgba(250,247,242,0.9);}
+.card-desc{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.4;}
+.card-num{font-size:1rem;font-weight:700;color:#B84E3A;}
+.card-btn{display:block;text-align:center;padding:8px;background:#B84E3A;color:#fff;border-radius:8px;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;margin-top:4px;}
+.info-bloque{padding:0 16px 16px;}
+.info-item{padding:12px 0;border-bottom:1px solid rgba(61,107,115,0.15);display:flex;gap:10px;align-items:flex-start;}
+.info-item:last-child{border-bottom:none;}
+.info-ico{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.info-txt{font-size:0.78rem;color:rgba(163,196,204,0.8);line-height:1.5;}
+.info-txt strong{color:var(--cream);display:block;margin-bottom:2px;}
+.inst-card{background:rgba(61,107,115,0.1);border-radius:12px;padding:16px;margin:0 16px 12px;border:1px solid rgba(61,107,115,0.3);}
+.inst-nombre{font-size:0.85rem;font-weight:600;color:var(--cream);margin-bottom:4px;}
+.inst-desc{font-size:0.72rem;color:rgba(163,196,204,0.7);line-height:1.5;margin-bottom:10px;}
+.inst-btn{display:inline-block;padding:6px 12px;background:rgba(61,107,115,0.3);border-radius:6px;font-size:0.6rem;color:rgba(163,196,204,0.9);text-decoration:none;letter-spacing:0.08em;margin-top:4px;margin-right:6px;}
+.ruta-card{background:rgba(255,255,255,0.05);border-radius:10px;padding:14px;margin:0 16px 10px;border:1px solid rgba(61,107,115,0.2);}
+.ruta-titulo{font-size:0.52rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--atlantic);margin-bottom:6px;}
+.ruta-tags{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
+.ruta-tag{background:rgba(61,107,115,0.2);border-radius:4px;padding:3px 8px;font-size:0.6rem;color:rgba(163,196,204,0.8);}
+.ruta-paradas{border-left:2px solid rgba(61,107,115,0.3);padding-left:12px;display:flex;flex-direction:column;gap:12px;}
+.parada-km{font-size:0.58rem;color:var(--atlantic);font-weight:600;}
+.parada-txt{font-size:0.7rem;color:rgba(163,196,204,0.8);line-height:1.4;margin-top:2px;}
+.parada-tiempo{font-size:0.62rem;color:rgba(163,196,204,0.5);margin-top:3px;}
+.dato{background:rgba(255,255,255,0.04);border-radius:8px;padding:12px 14px;border-left:3px solid var(--atlantic);font-size:0.72rem;color:rgba(196,220,228,0.85);line-height:1.5;margin:0 16px 12px;}
+.dato.rojo{border-left-color:#B84E3A;color:rgba(245,205,195,0.85);}
+.mapa-wrap{margin:0 16px 12px;}
+.mapa-label{font-size:0.5rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.45);margin-bottom:8px;}
+.mapa-frame{width:100%;height:200px;border-radius:10px;overflow:hidden;border:1px solid rgba(61,107,115,0.25);}
+.mapa-frame iframe{width:100%;height:100%;border:0;filter:invert(0.85) hue-rotate(180deg) brightness(0.85);}
+.distancias{padding:0 16px 16px;}
+.dist-item{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(61,107,115,0.12);font-size:0.75rem;}
+.dist-item:last-child{border-bottom:none;}
+.dist-lugar{color:rgba(163,196,204,0.8);}
+.dist-val{color:var(--atlantic);font-weight:600;font-size:0.7rem;}
+.alma{background:rgba(61,107,115,0.08);border-radius:12px;padding:18px;margin:0 16px 16px;border:1px solid rgba(61,107,115,0.2);}
+.alma-titulo{font-family:var(--font-d);font-size:1rem;font-weight:300;color:var(--cream);margin-bottom:12px;font-style:italic;}
+.alma p{font-size:0.75rem;color:rgba(163,196,204,0.75);line-height:1.6;margin-bottom:10px;}
+.alma p:last-child{margin-bottom:0;}
+.estab-banner{margin:0 16px 16px;background:rgba(61,107,115,0.08);border:1px solid rgba(61,107,115,0.25);border-radius:12px;padding:16px;text-align:center;}
+.estab-banner-titulo{font-family:var(--font-d);font-size:1rem;color:var(--cream);margin-bottom:6px;}
+.estab-banner-sub{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.5;margin-bottom:12px;}
+.estab-banner-btn{display:block;padding:11px;background:var(--atlantic);color:#fff;text-decoration:none;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;border-radius:6px;}
+.btn-agenda-dest{position:fixed;bottom:24px;left:18px;z-index:890;width:48px;height:48px;border-radius:50%;background:rgba(61,107,115,0.92);border:1.5px solid rgba(163,196,204,0.35);box-shadow:0 4px 16px rgba(0,0,0,0.4);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.3rem;backdrop-filter:blur(8px);text-decoration:none;}
+footer{text-align:center;padding:24px 16px 80px;font-size:0.55rem;color:rgba(163,196,204,0.25);letter-spacing:0.1em;text-transform:uppercase;}
+[data-lang]{display:none;}
+[data-lang].activo{display:block;}
+span[data-lang]{display:none;}
+span[data-lang].activo{display:inline;}
+</style>
+</head>
+<body>
+<a class="btn-agenda-dest" href="../index.html#agenda" title="Mi agenda CONFIN">&#128214;</a>
+<nav class="nav">
+<a href="../index.html" class="nav-back">&#8592; Volver</a>
+<a href="../index.html" class="nav-logo">CONF&#205;N</a>
+<div class="lang-selector">
+<button class="lang-btn-dest activo" onclick="cambiarIdioma('es',this)">ES</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('en',this)">EN</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('pt',this)">PT</button>
+</div>
+</nav>
+<div class="hero">
+<div class="hero-content">
+<div class="hero-tag">&#127462;&#127479; Santa Cruz &middot; Argentina &middot; Patagonia Central</div>
+<h1 class="hero-title">Los Antiguos</h1>
+<div class="hero-sub" data-lang="es">Capital Nacional de la Cereza &middot; Lago Buenos Aires &middot; Curado por CONF&#205;N</div>
+<div class="hero-sub" data-lang="en">National Cherry Capital &middot; Lake Buenos Aires &middot; Curated by CONF&#205;N</div>
+<div class="hero-sub" data-lang="pt">Capital Nacional da Cereja &middot; Lago Buenos Aires &middot; Curado por CONF&#205;N</div>
+</div>
+</div>
+<div class="aviso" data-lang="es">&#9981; <strong>Combustible:</strong> Los Antiguos tiene YPF. Es la &#250;ltima carga garantizada si vas hacia el norte por RN 40 (Perito Moreno a 63 km) o hacia la Carretera Austral por Chile Chico.</div>
+<div class="aviso" data-lang="en">&#9981; <strong>Fuel:</strong> Los Antiguos has YPF. It is the last guaranteed fill-up if heading north on RN 40 (Perito Moreno 63 km away) or toward Carretera Austral via Chile Chico.</div>
+<div class="aviso" data-lang="pt">&#9981; <strong>Combust&#237;vel:</strong> Los Antiguos tem YPF. &#201; o &#250;ltimo abastecimento garantido se for ao norte pela RN 40 (Perito Moreno 63 km) ou para a Carretera Austral via Chile Chico.</div>
+<div class="aviso naranja" style="margin-top:10px;" data-lang="es">&#127864; <strong>Fiesta Nacional de la Cereza (enero):</strong> Primera semana de enero. Cosecha de cerezas, frambuesas y frutos finos en las chacras locales. Reservar alojamiento con m&#225;s de 60 d&#237;as de anticipaci&#243;n.</div>
+<div class="aviso naranja" style="margin-top:10px;" data-lang="en">&#127864; <strong>National Cherry Festival (January):</strong> First week of January. Cherry, raspberry and fine fruit harvests at local farms. Book accommodation more than 60 days in advance.</div>
+<div class="aviso naranja" style="margin-top:10px;" data-lang="pt">&#127864; <strong>Festa Nacional da Cereja (janeiro):</strong> Primeira semana de janeiro. Colheita de cerejas, framboesas e frutas finas nas ch&#225;caras locais. Reservar hospedagem com mais de 60 dias de anteced&#234;ncia.</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128680; <span data-lang="es">Emergencias</span><span data-lang="en">Emergencies</span><span data-lang="pt">Emerg&#234;ncias</span></div>
+</div>
+<div class="card-grid">
+<div class="card rojo full">
+<div class="card-ico">&#127973;</div>
+<div class="card-nombre" data-lang="es">Hospital de &#193;rea Los Antiguos</div>
+<div class="card-nombre" data-lang="en">Los Antiguos Area Hospital</div>
+<div class="card-nombre" data-lang="pt">Hospital de &#193;rea Los Antiguos</div>
+<div class="card-desc" data-lang="es">Av. Patag&#243;nica s/n &middot; Guardia 24hs &middot; Derivaci&#243;n a Perito Moreno o Comodoro</div>
+<div class="card-desc" data-lang="en">Av. Patag&#243;nica s/n &middot; 24hs emergency &middot; Transfer to Perito Moreno or Comodoro</div>
+<div class="card-desc" data-lang="pt">Av. Patag&#243;nica s/n &middot; Plant&#227;o 24hs &middot; Transfer para Perito Moreno ou Comodoro</div>
+<div class="card-num">107 / (02963) 491-031</div>
+<a href="tel:+5429634910" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#128110;</div>
+<div class="card-nombre">Polic&#237;a</div>
+<div class="card-num">101 / (02963) 491-044</div>
+<a href="tel:+542963491044" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#128657;</div>
+<div class="card-nombre" data-lang="es">Bomberos Voluntarios</div>
+<div class="card-nombre" data-lang="en">Volunteer Fire Dept.</div>
+<div class="card-nombre" data-lang="pt">Bombeiros Volunt&#225;rios</div>
+<div class="card-num">100 / (02963) 491-055</div>
+<a href="tel:100" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#128110;</div>
+<div class="card-nombre">Gendarmer&#237;a &mdash; <span data-lang="es">Paso Chile Chico</span><span data-lang="en">Chile Chico Border</span><span data-lang="pt">Fronteira Chile Chico</span></div>
+<div class="card-num">(02963) 491-020</div>
+<a href="tel:+542963491020" class="card-btn">LLAMAR</a>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#8987; <span data-lang="es">&#191;Cu&#225;nto tiempo ten&#233;s?</span><span data-lang="en">How much time do you have?</span><span data-lang="pt">Quanto tempo voc&#234; tem?</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item">
+<div class="info-ico">&#9203;</div>
+<div class="info-txt">
+<strong data-lang="es">2 horas &mdash; Lago y pueblo</strong><strong data-lang="en">2 hours &mdash; Lake and village</strong><strong data-lang="pt">2 horas &mdash; Lago e village</strong>
+<span data-lang="es">Costanera del Lago Buenos Aires (el segundo lago m&#225;s grande de Sudamérica) &middot; Feria de productores locales en la calle principal &middot; Helader&#237;a artesanal con sabores de cereza y frutos rojos.</span>
+<span data-lang="en">Lake Buenos Aires waterfront (second largest lake in South America) &middot; Local producers fair on the main street &middot; Artisan ice cream with cherry and red fruit flavors.</span>
+<span data-lang="pt">Costaneira do Lago Buenos Aires (segundo maior lago da Am&#233;rica do Sul) &middot; Feira de produtores locais na rua principal &middot; Sorvete artesanal com sabores de cereja e frutas vermelhas.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127864;</div>
+<div class="info-txt">
+<strong data-lang="es">Medio d&#237;a &mdash; Chacras y cosecha</strong><strong data-lang="en">Half day &mdash; Farms and harvest</strong><strong data-lang="pt">Meio dia &mdash; Ch&#225;caras e colheita</strong>
+<span data-lang="es">Visita guiada a las chacras cerealeras: cosecha de cerezas (dic&ndash;ene), frambuesas, grosellas, peras y manzanas. Compra directa al productor.</span>
+<span data-lang="en">Guided visit to the farms: cherry harvest (Dec&ndash;Jan), raspberries, currants, pears and apples. Direct purchase from the producer.</span>
+<span data-lang="pt">Visita guiada &#224;s ch&#225;caras: colheita de cerejas (dez&ndash;jan), framboesas, groselhas, peras e ma&#231;&#227;s. Compra direta ao produtor.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127775;</div>
+<div class="info-txt">
+<strong data-lang="es">D&#237;a completo &mdash; Cueva de las Manos (160 km)</strong><strong data-lang="en">Full day &mdash; Cave of the Hands (160 km)</strong><strong data-lang="pt">Dia completo &mdash; Caverna das M&#227;os (160 km)</strong>
+<span data-lang="es">Desde Los Antiguos: RN 40 Sur hasta Perito Moreno (63 km) + RP 97 / RP 39 hacia Cueva de las Manos (100 km de ripio). Patrimonio UNESCO. Carg&#225; combustible en Los Antiguos y Perito Moreno.</span>
+<span data-lang="en">From Los Antiguos: RN 40 South to Perito Moreno (63 km) + RP 97/RP 39 to Cave of the Hands (100 km gravel). UNESCO Heritage. Fill up in Los Antiguos and Perito Moreno.</span>
+<span data-lang="pt">De Los Antiguos: RN 40 Sul at&#233; Perito Moreno (63 km) + RP 97/RP 39 para Cueva de las Manos (100 km cascalho). Patrim&#244;nio UNESCO. Abastate&#231;a em Los Antiguos e Perito Moreno.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127783;</div>
+<div class="info-txt">
+<strong data-lang="es">Si llueve &mdash; Mermeladas y productos locales</strong><strong data-lang="en">If it rains &mdash; Jams and local products</strong><strong data-lang="pt">Se chover &mdash; Geleias e produtos locais</strong>
+<span data-lang="es">Chacra Don Neno &middot; La Chacra de Toly &middot; Mermeladas artesanales, licores de cereza y dulces regionales disponibles en la calle San Mart&#237;n.</span>
+<span data-lang="en">Chacra Don Neno &middot; La Chacra de Toly &middot; Artisan jams, cherry liqueurs and regional sweets available on San Mart&#237;n street.</span>
+<span data-lang="pt">Chacra Don Neno &middot; La Chacra de Toly &middot; Geleias artesanais, licores de cereja e doces regionais dispon&#237;veis na Rua San Mart&#237;n.</span>
+</div>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128247; <span data-lang="es">Paseos gratuitos</span><span data-lang="en">Free walks</span><span data-lang="pt">Passeios gratuitos</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item"><div class="info-ico">&#127810;</div><div class="info-txt"><strong data-lang="es">Costanera Lago Buenos Aires</strong><strong data-lang="en">Lake Buenos Aires Waterfront</strong><strong data-lang="pt">Costaneira Lago Buenos Aires</strong><span data-lang="es">Paseo peatonal frente al segundo lago m&#225;s grande de Sudamérica (9.830 km²). Compartido con Chile como Lago General Carrera. Aguas de color turquesa &#250;nico. Acceso libre.</span><span data-lang="en">Waterfront walk on the second largest lake in South America (9,830 km²). Shared with Chile as Lago General Carrera. Unique turquoise blue waters. Free access.</span><span data-lang="pt">Passeio peat&#244;nal frente ao segundo maior lago da Am&#233;rica do Sul (9.830 km²). Compartilhado com o Chile como Lago General Carrera. &#193;guas de azul turquesa &#250;nico.</span></div></div>
+<div class="info-item"><div class="info-ico">&#127864;</div><div class="info-txt"><strong data-lang="es">Recorrido de Chacras &mdash; Calle de las Cerezas</strong><strong data-lang="en">Farm Circuit &mdash; Cherry Lane</strong><strong data-lang="pt">Percurso de Ch&#225;caras &mdash; Rua das Cerejas</strong><span data-lang="es">Ruta 43 y calles internas: m&#225;s de 40 chacras frutales con venta directa en temporada (dic&ndash;feb). Caminata o bicicleta libre entre los frutales.</span><span data-lang="en">Route 43 and internal roads: over 40 fruit farms with direct sales in season (Dec&ndash;Feb). Free walk or bike ride through the orchards.</span><span data-lang="pt">Rota 43 e estradas internas: mais de 40 ch&#225;caras fruteiras com venda direta na temporada (dez&ndash;fev). Caminhada ou bike livre entre os pomares.</span></div></div>
+<div class="info-item"><div class="info-ico">&#127956;</div><div class="info-txt"><strong data-lang="es">Sendero al Caj&#243;n del R&#237;o Los Antiguos</strong><strong data-lang="en">Los Antiguos River Canyon Trail</strong><strong data-lang="pt">Trilha do Ca&#241;&#243;n do Rio Los Antiguos</strong><span data-lang="es">Caminata libre de 2 hs por el ca&#241;&#243;n del r&#237;o que cruza el pueblo entre paredes de basalto y chacras. Avistaje de aves.</span><span data-lang="en">Free 2 hs walk through the river canyon that crosses the town between basalt walls and farms. Birdwatching.</span><span data-lang="pt">Caminhada livre de 2 hs pelo ca&#241;&#243;n do rio que atravessa o village entre paredes de basalto e ch&#225;caras.</span></div></div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128153; <span data-lang="es">Con prop&#243;sito</span><span data-lang="en">With purpose</span><span data-lang="pt">Com prop&#243;sito</span></div>
+</div>
+<div class="inst-card">
+<div class="inst-nombre" data-lang="es">Asociaci&#243;n de Productores Frutih&#243;rticolas de Los Antiguos</div>
+<div class="inst-nombre" data-lang="en">Los Antiguos Fruit &amp; Vegetable Producers Association</div>
+<div class="inst-nombre" data-lang="pt">Associa&#231;&#227;o de Produtores Frutih&#243;rticolas de Los Antiguos</div>
+<div class="inst-desc" data-lang="es">M&#225;s de 40 familias productoras que trabajan bajo el microclima &#250;nico del lago (el m&#225;s c&#225;lido de la Patagonia austral). Venta directa de cerezas, frambuesas, peras, duraznos, mermeladas artesanales y licores. Calle San Mart&#237;n s/n. Municipio: (02963) 491-000.</div>
+<div class="inst-desc" data-lang="en">Over 40 farming families working under the lake's unique microclimate (warmest in southern Patagonia). Direct sale of cherries, raspberries, pears, peaches, artisan jams and liqueurs. Calle San Mart&#237;n s/n. Municipality: (02963) 491-000.</div>
+<div class="inst-desc" data-lang="pt">Mais de 40 fam&#237;lias produtoras trabalhando sob o microclima &#250;nico do lago (o mais quente da Patagônia austral). Venda direta de cerejas, framboesas, peras, p&#234;ssegos, geleias artesanais e licores. Calle San Mart&#237;n s/n. Munic&#237;pio: (02963) 491-000.</div>
+<a href="tel:+542963491000" class="inst-btn">Municipio: (02963) 491-000</a>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#127760; <span data-lang="es">Paso Fronterizo &mdash; Chile Chico</span><span data-lang="en">Border Crossing &mdash; Chile Chico</span><span data-lang="pt">Passagem Fronteiri&#231;a &mdash; Chile Chico</span></div>
+</div>
+<div class="inst-card">
+<div class="inst-nombre">&#127462;&#127479; &#8596; &#127464;&#127473; <span data-lang="es">Paso Roballo / Chile Chico (Los Antiguos &#8596; Chile Chico &#8596; Carretera Austral)</span><span data-lang="en">Paso Roballo / Chile Chico (Los Antiguos &#8596; Chile Chico &#8596; Carretera Austral)</span><span data-lang="pt">Paso Roballo / Chile Chico (Los Antiguos &#8596; Chile Chico &#8596; Carretera Austral)</span></div>
+<div class="inst-desc" data-lang="es">Los Antiguos &#8594; <strong>2 km</strong> hasta el paso fronterizo &#8594; Chile Chico (CH) &middot; 8 km &middot; Entrada a la Carretera Austral y Lago General Carrera (el lado chileno del lago).<br>&#9203; Horario: 07:00&ndash;23:00 hs &middot; &#9888;&#65039; SAG Chile: sin frutas, verduras, carnes ni l&#225;cteos.</div>
+<div class="inst-desc" data-lang="en">Los Antiguos &#8594; <strong>2 km</strong> to the border crossing &#8594; Chile Chico (CH) &middot; 8 km &middot; Entry to the Carretera Austral and Lago General Carrera (Chilean side of the lake).<br>&#9203; Hours: 07:00&ndash;23:00 &middot; &#9888;&#65039; SAG Chile: no fresh fruit, vegetables, meat or dairy.</div>
+<div class="inst-desc" data-lang="pt">Los Antiguos &#8594; <strong>2 km</strong> at&#233; a passagem fronteiri&#231;a &#8594; Chile Chico (CH) &middot; 8 km &middot; Entrada para a Carretera Austral e Lago General Carrera (lado chileno do lago).<br>&#9203; Hor&#225;rio: 07:00&ndash;23:00 &middot; &#9888;&#65039; SAG Chile: sem frutas, verduras, carnes ou latic&#237;nios.</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+<a href="tel:+542963491020" class="inst-btn">Gendarmer&#237;a AR</a>
+<a href="tel:133" class="inst-btn">Carabineros CH</a>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#9981; <span data-lang="es">Combustible &amp; Servicios</span><span data-lang="en">Fuel &amp; Services</span><span data-lang="pt">Combust&#237;vel &amp; Servi&#231;os</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item"><div class="info-ico">&#9981;</div><div class="info-txt"><strong>YPF Los Antiguos</strong><span data-lang="es">Av. Patag&#243;nica s/n &middot; Carg&#225; siempre. &#218;ltimo punto garantizado antes de Chile Chico y la Carretera Austral.</span><span data-lang="en">Av. Patag&#243;nica s/n &middot; Always fill up. Last guaranteed point before Chile Chico and the Carretera Austral.</span><span data-lang="pt">Av. Patag&#243;nica s/n &middot; Sempre abastate&#231;a. &#218;ltimo ponto garantido antes do Chile Chico e da Carretera Austral.</span></div></div>
+<div class="info-item"><div class="info-ico">&#128241;</div><div class="info-txt"><strong data-lang="es">Conectividad</strong><strong data-lang="en">Connectivity</strong><strong data-lang="pt">Conectividade</strong><span data-lang="es">Se&#241;al celular en el pueblo. Un cajero autom&#225;tico (Banco Santa Cruz). Para Chile Chico llevar pesos chilenos o d&#243;lares (casas de cambio en Chile Chico).</span><span data-lang="en">Cell signal in town. One ATM (Banco Santa Cruz). For Chile Chico bring Chilean pesos or dollars (exchange houses in Chile Chico).</span><span data-lang="pt">Sinal celular no village. Um caixa eletr&#244;nico (Banco Santa Cruz). Para Chile Chico levar pesos chilenos ou d&#243;lares (casas de c&#226;mbio em Chile Chico).</span></div></div>
+<div class="info-item"><div class="info-ico">&#128651;</div><div class="info-txt"><strong data-lang="es">Transporte</strong><strong data-lang="en">Transport</strong><strong data-lang="pt">Transporte</strong><span data-lang="es">Buses diarios a Perito Moreno (63 km) y Comodoro Rivadavia (520 km). Remises locales para Chile Chico y Cueva de las Manos.</span><span data-lang="en">Daily buses to Perito Moreno (63 km) and Comodoro Rivadavia (520 km). Local taxis for Chile Chico and Cave of the Hands.</span><span data-lang="pt">&#212;nibus di&#225;rios para Perito Moreno (63 km) e Comodoro Rivadavia (520 km). T&#225;xis locais para Chile Chico e Cueva de las Manos.</span></div></div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo" style="font-size:0.65rem;">&#128690; <span data-lang="es">En Camino &mdash; Rutas desde Los Antiguos</span><span data-lang="en">On the Road &mdash; Routes from Los Antiguos</span><span data-lang="pt">Na Estrada &mdash; Rotas de Los Antiguos</span></div>
+</div>
+<div class="mapa-wrap">
+<div class="mapa-label">
+<span data-lang="es">&#128506; RN 40 / Paso Chile Chico &mdash; Los Antiguos &#8596; Perito Moreno / Cueva de las Manos / Carretera Austral</span>
+<span data-lang="en">&#128506; RN 40 / Chile Chico Border &mdash; Los Antiguos &#8596; Perito Moreno / Cave of Hands / Carretera Austral</span>
+<span data-lang="pt">&#128506; RN 40 / Paso Chile Chico &mdash; Los Antiguos &#8596; Perito Moreno / Cueva de las Manos / Carretera Austral</span>
+</div>
+<div class="mapa-frame"><iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-73.0,-47.5,-70.0,-45.5&layer=mapnik" loading="lazy" title="Mapa En Camino Los Antiguos"></iframe></div>
+</div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">RN 40 Sur &mdash; Los Antiguos &#8596; Perito Moreno &#8596; Cueva de las Manos (63&ndash;260 km)</div>
+<div class="ruta-titulo" data-lang="en">RN 40 South &mdash; Los Antiguos &#8596; Perito Moreno &#8596; Cave of the Hands (63&ndash;260 km)</div>
+<div class="ruta-titulo" data-lang="pt">RN 40 Sul &mdash; Los Antiguos &#8596; Perito Moreno &#8596; Cueva de las Manos (63&ndash;260 km)</div>
+<div class="ruta-tags"><span class="ruta-tag">63&ndash;260 km</span><span class="ruta-tag">Asfalto + ripio</span><span class="ruta-tag">Patrimonio UNESCO</span></div>
+<div class="ruta-paradas">
+<div>
+<div class="parada-km">km 63 &middot; &#9981; Perito Moreno &mdash; <span data-lang="es">Ciudad &mdash; carg&#225; aqu&#237;</span><span data-lang="en">City &mdash; fill up here</span><span data-lang="pt">Cidade &mdash; abastate&#231;a aqui</span></div>
+<div class="parada-txt" data-lang="es">Nodo de servicios de la Patagonia Central. YPF, bancos, hospitales y conexi&#243;n a Cueva de las Manos por RP 97 (100 km de ripio).</div>
+<div class="parada-txt" data-lang="en">Central Patagonia service hub. YPF, banks, hospitals and connection to Cave of the Hands via RP 97 (100 km gravel).</div>
+<div class="parada-txt" data-lang="pt">N&#243; de servi&#231;os da Patagônia Central. YPF, bancos, hospitais e conex&#227;o para Cueva de las Manos pela RP 97 (100 km cascalho).</div>
+<div class="parada-tiempo">&#9201; 45 min</div>
+</div>
+<div>
+<div class="parada-km">km 260 &middot; &#129351; Cueva de las Manos (UNESCO)</div>
+<div class="parada-txt" data-lang="es">Arte rupestre de 9.000 a&#241;os de antig&#252;edad en el Ca&#241;&#243;n del R&#237;o Pinturas. M&#225;s de 2.000 manos en negativo y positivo. Patrimonio de la Humanidad desde 1999.</div>
+<div class="parada-txt" data-lang="en">Rock art 9,000 years old in the Rio Pinturas Canyon. Over 2,000 hands in negative and positive. UNESCO World Heritage since 1999.</div>
+<div class="parada-txt" data-lang="pt">Arte rupestre de 9.000 anos no Ca&#241;&#243;n do Rio Pinturas. Mais de 2.000 m&#227;os em negativo e positivo. Patrim&#244;nio da Humanidade desde 1999.</div>
+<div class="parada-tiempo">&#9201; 3h desde Los Antiguos &middot; Ripio desde Perito Moreno</div>
+</div>
+</div>
+</div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">Paso Chile Chico &mdash; Los Antiguos &#8596; Carretera Austral (2 km + ferry)</div>
+<div class="ruta-titulo" data-lang="en">Chile Chico Border &mdash; Los Antiguos &#8596; Carretera Austral (2 km + ferry)</div>
+<div class="ruta-titulo" data-lang="pt">Paso Chile Chico &mdash; Los Antiguos &#8596; Carretera Austral (2 km + ferry)</div>
+<div class="ruta-tags"><span class="ruta-tag">2 km + barcaza</span><span class="ruta-tag">Carretera Austral</span><span class="ruta-tag">Lago General Carrera</span></div>
+<div class="ruta-paradas">
+<div>
+<div class="parada-km">km 2 &middot; &#127760; Paso Chile Chico</div>
+<div class="parada-txt" data-lang="es">Cruce fronterizo a 2 km del centro. Luego 8 km hasta Chile Chico (CH). Desde Chile Chico: barcaza por el Lago General Carrera hacia Puerto Ingeniero Iba&#241;ez (conexi&#243;n Carretera Austral Norte) o ruta costera sur hacia Cochrane.</div>
+<div class="parada-txt" data-lang="en">Border crossing 2 km from center. Then 8 km to Chile Chico (CH). From Chile Chico: ferry across Lago General Carrera to Puerto Ingeniero Iba&#241;ez (Northern Carretera Austral connection) or southern coastal route to Cochrane.</div>
+<div class="parada-txt" data-lang="pt">Passagem fronteiri&#231;a a 2 km do centro. Depois 8 km at&#233; Chile Chico (CH). De Chile Chico: balsa pelo Lago General Carrera at&#233; Puerto Ingeniero Iba&#241;ez (conex&#227;o Carretera Austral Norte) ou rota costeira sul a Cochrane.</div>
+<div class="parada-tiempo">&#9201; 5 min desde Los Antiguos</div>
+</div>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128205; <span data-lang="es">Distancias desde Los Antiguos</span><span data-lang="en">Distances from Los Antiguos</span><span data-lang="pt">Dist&#226;ncias de Los Antiguos</span></div>
+</div>
+<div class="distancias">
+<div class="dist-item"><span class="dist-lugar" data-lang="es">Paso Chile Chico (frontera)</span><span class="dist-lugar" data-lang="en">Chile Chico Border</span><span class="dist-lugar" data-lang="pt">Paso Chile Chico (fronteira)</span><span class="dist-val">2 km &middot; 5 min</span></div>
+<div class="dist-item"><span class="dist-lugar">Chile Chico</span><span class="dist-val">10 km &middot; 15 min</span></div>
+<div class="dist-item"><span class="dist-lugar">Perito Moreno</span><span class="dist-val">63 km &middot; 45 min</span></div>
+<div class="dist-item"><span class="dist-lugar" data-lang="es">Cueva de las Manos (UNESCO)</span><span class="dist-lugar" data-lang="en">Cave of the Hands (UNESCO)</span><span class="dist-lugar" data-lang="pt">Cueva de las Manos (UNESCO)</span><span class="dist-val">260 km &middot; 3h 30 min</span></div>
+<div class="dist-item"><span class="dist-lugar">Comodoro Rivadavia</span><span class="dist-val">520 km &middot; 6h</span></div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#127775; <span data-lang="es">El alma de este lugar</span><span data-lang="en">The soul of this place</span><span data-lang="pt">A alma deste lugar</span></div>
+</div>
+<div class="alma">
+<div class="alma-titulo" data-lang="es">El oasis del fin del mundo y el lago que une dos pa&#237;ses</div>
+<div class="alma-titulo" data-lang="en">The oasis at the end of the world and the lake that unites two countries</div>
+<div class="alma-titulo" data-lang="pt">O oasis no fim do mundo e o lago que une dois pa&#237;ses</div>
+<p data-lang="es">&#128218; El microclima del Lago Buenos Aires (compartido con Chile como &ldquo;Lago General Carrera&rdquo;) genera una temperatura hasta 10&#176;C m&#225;s c&#225;lida que el resto de la Patagonia austral. Esa anomal&#237;a termica permiti&#243; el desarrollo de m&#225;s de 40 chacras frutales desde los a&#241;os 40. Los Antiguos es el &#250;nico lugar de Santa Cruz donde maduran cerezas, duraznos y peras en plena estepa patag&#243;nica.</p>
+<p data-lang="en">&#128218; The microclimate of Lake Buenos Aires (shared with Chile as &ldquo;Lago General Carrera&rdquo;) generates temperatures up to 10&#176;C warmer than the rest of southern Patagonia. That thermal anomaly enabled the development of over 40 fruit farms since the 1940s. Los Antiguos is the only place in Santa Cruz where cherries, peaches and pears ripen in the middle of the Patagonian steppe.</p>
+<p data-lang="pt">&#128218; O microclima do Lago Buenos Aires (compartilhado com o Chile como &ldquo;Lago General Carrera&rdquo;) gera temperaturas at&#233; 10&#176;C mais quentes que o resto da Patagônia austral. Essa anomalia t&#233;rmica permitiu o desenvolvimento de mais de 40 ch&#225;caras fruteiras desde os anos 40.</p>
+<p data-lang="es">&#129414; <strong>Fauna emblem&#225;tica:</strong> Pato Vapor (end&#233;mico del lago), Cisne de Cuello Negro, Flamenco Austral, Gu&#225;naco, Zorro Colorado y Puma en las mesetas circundantes.</p>
+<p data-lang="en">&#129414; <strong>Signature wildlife:</strong> Steamer Duck (endemic to the lake), Black-necked Swan, Austral Flamingo, Guanaco, Red Fox and Puma on surrounding plateaus.</p>
+<p data-lang="pt">&#129414; <strong>Fauna emblem&#225;tica:</strong> Pato-vapor (end&#234;mico do lago), Cisne-de-pesco&#231;o-preto, Flamingo Austral, Guanaco, Raposa Colorada e Puma nos plat&#244;s circundantes.</p>
+<p data-lang="es">&#127807; <strong>Flora y paisaje:</strong> Chacras de frutales en el microclima lacustre &middot; &#193;lamos dorados en oto&#241;o &middot; Mesetas de basalto volcánico y el turquesa profundo del lago que se pierde hacia el horizonte chileno.</p>
+<p data-lang="en">&#127807; <strong>Flora &amp; landscape:</strong> Fruit orchards in the lake microclimate &middot; Golden poplars in autumn &middot; Volcanic basalt plateaus and the deep turquoise of the lake stretching to the Chilean horizon.</p>
+<p data-lang="pt">&#127807; <strong>Flora e paisagem:</strong> Pomares no microclima lacustre &middot; &#193;lamos dourados no outono &middot; Plat&#244;s de basalto vulc&#226;nico e o turquesa profundo do lago que se perde no horizonte chileno.</p>
+<p data-lang="es">&#128161; <strong>&#191;Sab&#237;as que...?</strong> El Lago Buenos Aires / General Carrera es el <strong>segundo lago m&#225;s grande de Sudamérica</strong> con 9.830 km², superado s&#243;lo por el Lago Titicaca. Sus aguas son de un turquesa &#250;nico en el mundo, producto de la sedimentaci&#243;n glacial de cuarcita y mica disueltas en el agua.</p>
+<p data-lang="en">&#128161; <strong>Did you know?</strong> Lake Buenos Aires / General Carrera is <strong>South America's second largest lake</strong> at 9,830 km², surpassed only by Lake Titicaca. Its waters display a unique turquoise color worldwide, the result of glacial sedimentation of quartzite and mica dissolved in the water.</p>
+<p data-lang="pt">&#128161; <strong>Voc&#234; sabia?</strong> O Lago Buenos Aires / General Carrera &#233; o <strong>segundo maior lago da Am&#233;rica do Sul</strong> com 9.830 km², superado apenas pelo Lago Titicaca. Suas &#225;guas t&#234;m um turquesa &#250;nico no mundo, resultado da sedimenta&#231;&#227;o glacial de quartzo e mica dissolvidos na &#225;gua.</p>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#127968; <span data-lang="es">Alojamiento, Gastronom&#237;a &amp; Experiencias</span><span data-lang="en">Accommodation, Food &amp; Experiences</span><span data-lang="pt">Hospedagem, Gastronomia &amp; Experi&#234;ncias</span></div>
+</div>
+<div class="estab-banner">
+<div class="estab-banner-titulo" data-lang="es">Explor&#225; todo lo que ofrece Los Antiguos</div>
+<div class="estab-banner-titulo" data-lang="en">Explore everything Los Antiguos has to offer</div>
+<div class="estab-banner-titulo" data-lang="pt">Explore tudo o que Los Antiguos tem a oferecer</div>
+<div class="estab-banner-sub" data-lang="es">Alojamiento &middot; Gastronom&#237;a &middot; Chacras &middot; Excursiones &middot; Traslados</div>
+<div class="estab-banner-sub" data-lang="en">Accommodation &middot; Food &middot; Farms &middot; Excursions &middot; Transfers</div>
+<div class="estab-banner-sub" data-lang="pt">Hospedagem &middot; Gastronomia &middot; Ch&#225;caras &middot; Excurs&#245;es &middot; Traslados</div>
+<a href="../categorias.html?destino=Los+Antiguos" class="estab-banner-btn" data-lang="es">Ver establecimientos en Los Antiguos &#8594;</a>
+<a href="../categorias.html?destino=Los+Antiguos&lang=en" class="estab-banner-btn" data-lang="en">Browse Los Antiguos listings &#8594;</a>
+<a href="../categorias.html?destino=Los+Antiguos&lang=pt" class="estab-banner-btn" data-lang="pt">Ver estabelecimentos em Los Antiguos &#8594;</a>
+</div>
+<footer>CONF&#205;N &middot; Los Antiguos &middot; Santa Cruz &middot; Capital Nacional de la Cereza</footer>
+<script>
+function cambiarIdioma(lang,btn){
+document.querySelectorAll('.lang-btn-dest').forEach(b=>b.classList.remove('activo'));
+if(btn)btn.classList.add('activo');
+document.querySelectorAll('[data-lang]').forEach(el=>{
+el.classList.toggle('activo',el.dataset.lang===lang);
+});
+localStorage.setItem('confin_lang',lang);
+}
+(function(){
+var saved=localStorage.getItem('confin_lang')||'es';
+var btn=document.querySelector('.lang-btn-dest[onclick*="\''+saved+'\'"]');
+cambiarIdioma(saved,btn);
+})();
+</script>
+</body>
+</html>
