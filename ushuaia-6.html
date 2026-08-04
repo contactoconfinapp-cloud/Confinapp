@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ushuaia · CONFÍN</title>
+<meta name="description" content="Guía útil de Ushuaia. Emergencias, transporte, centros de nieve, Canal Beagle y todo lo que necesitás saber.">
+<style>
+:root{--deep:#0E1A1C;--cream:#FAF7F2;--atlantic:#3D6B73;--ash:rgba(163,196,204,0.2);--font-d:'Georgia',serif;--soil:#8B5E3C;--bark:#C4974A;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:var(--deep);color:var(--cream);min-height:100vh;}
+.nav{position:sticky;top:0;z-index:100;background:var(--deep);display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(61,107,115,0.3);}
+.nav-logo{font-family:var(--font-d);font-size:1rem;color:var(--cream);letter-spacing:0.04em;text-decoration:none;}
+.nav-back{font-size:0.72rem;color:rgba(163,196,204,0.7);text-decoration:none;}
+.lang-selector{display:flex;gap:4px;}
+.lang-btn-dest{font-size:0.6rem;padding:4px 7px;border:1px solid rgba(163,196,204,0.4);background:rgba(14,26,28,0.9);color:rgba(163,196,204,0.7);cursor:pointer;border-radius:3px;font-family:inherit;letter-spacing:0.05em;}
+.lang-btn-dest.activo{background:var(--atlantic);color:#fff;border-color:var(--atlantic);}
+.hero{padding:0;position:relative;overflow:hidden;min-height:200px;}
+.hero::before{content:'';position:absolute;inset:0;background:url('ushuaia-foto.jpg') center/cover no-repeat;opacity:0.35;}
+.hero-content{position:relative;z-index:1;padding:32px 20px 28px;}
+.hero-tag{font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.6);margin-bottom:10px;}
+.hero-title{font-family:var(--font-d);font-size:clamp(2.2rem,9vw,3.2rem);font-weight:300;line-height:1.05;margin-bottom:8px;}
+.hero-sub{font-size:0.75rem;color:rgba(163,196,204,0.7);}
+.aviso{background:rgba(184,78,58,0.15);border-left:3px solid #B84E3A;border-radius:0 8px 8px 0;padding:12px 14px;font-size:0.75rem;color:rgba(245,205,195,0.9);line-height:1.5;margin:16px 16px 0;}
+.seccion{padding:20px 16px 4px;}
+.seccion-titulo{font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--atlantic);display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.seccion-titulo::after{content:'';flex:1;height:1px;background:var(--ash);}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px 4px;}
+.card{background:rgba(255,255,255,0.06);border-radius:12px;padding:14px;border:1px solid rgba(61,107,115,0.2);display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--atlantic);}
+.card.rojo::before{background:#B84E3A;}
+.card.full{grid-column:1/-1;}
+.card-ico{font-size:1.4rem;}
+.card-nombre{font-size:0.82rem;font-weight:600;color:rgba(250,247,242,0.9);}
+.card-desc{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.4;}
+.card-num{font-size:1.1rem;font-weight:700;color:var(--atlantic);}
+.card.rojo .card-num{color:#B84E3A;}
+.card-btn{display:block;text-align:center;padding:8px;background:#B84E3A;color:#fff;border-radius:8px;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;margin-top:4px;}
+.card-btn.verde{background:var(--atlantic);}
+.info-bloque{padding:0 16px 16px;}
+.info-item{padding:12px 0;border-bottom:1px solid rgba(61,107,115,0.15);display:flex;gap:10px;align-items:flex-start;}
+.info-item:last-child{border-bottom:none;}
+.info-ico{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.info-txt{font-size:0.78rem;color:rgba(163,196,204,0.8);line-height:1.5;}
+.info-txt strong{color:var(--cream);display:block;margin-bottom:2px;}
+.ski-card{background:rgba(255,255,255,0.05);border-radius:12px;overflow:hidden;margin:0 16px 12px;border:1px solid rgba(61,107,115,0.25);}
+.ski-foto{width:100%;height:140px;object-fit:cover;opacity:0.7;}
+.ski-body{padding:14px;}
+.ski-nombre{font-family:var(--font-d);font-size:1.1rem;font-weight:300;color:var(--cream);margin-bottom:4px;}
+.ski-tag{font-size:0.52rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--atlantic);margin-bottom:8px;}
+.ski-desc{font-size:0.72rem;color:rgba(163,196,204,0.7);line-height:1.5;}
+.alma{background:rgba(61,107,115,0.08);border-radius:12px;padding:18px;margin:0 16px 16px;border:1px solid rgba(61,107,115,0.2);}
+.alma-titulo{font-family:var(--font-d);font-size:1rem;font-weight:300;color:var(--cream);margin-bottom:12px;font-style:italic;}
+.alma p{font-size:0.75rem;color:rgba(163,196,204,0.75);line-height:1.6;margin-bottom:10px;}
+.alma p:last-child{margin-bottom:0;}
+.dato{background:rgba(255,255,255,0.04);border-radius:8px;padding:12px 14px;border-left:3px solid var(--atlantic);font-size:0.72rem;color:rgba(196,220,228,0.85);line-height:1.5;margin:0 16px 12px;}
+.distancias{padding:0 16px 16px;}
+.dist-item{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(61,107,115,0.12);font-size:0.75rem;}
+.dist-item:last-child{border-bottom:none;}
+.dist-lugar{color:rgba(163,196,204,0.8);}
+.dist-val{color:var(--atlantic);font-weight:600;font-size:0.7rem;}
+.inst-card{background:rgba(61,107,115,0.1);border-radius:12px;padding:16px;margin:0 16px 12px;border:1px solid rgba(61,107,115,0.3);}
+.inst-nombre{font-size:0.85rem;font-weight:600;color:var(--cream);margin-bottom:4px;}
+.inst-desc{font-size:0.72rem;color:rgba(163,196,204,0.7);line-height:1.5;margin-bottom:10px;}
+.inst-btn{display:inline-block;padding:6px 12px;background:rgba(61,107,115,0.3);border-radius:6px;font-size:0.6rem;color:rgba(163,196,204,0.9);text-decoration:none;letter-spacing:0.08em;}
+footer{text-align:center;padding:24px 16px 32px;font-size:0.55rem;color:rgba(163,196,204,0.25);letter-spacing:0.1em;text-transform:uppercase;}
+[data-lang]{display:none;}
+[data-lang].activo{display:block;}
+.estab-banner{margin:0 16px 16px;background:rgba(61,107,115,0.08);border:1px solid rgba(61,107,115,0.25);border-radius:12px;padding:16px;text-align:center;}
+.estab-banner-titulo{font-family:var(--font-d);font-size:1rem;color:var(--cream);margin-bottom:6px;}
+.estab-banner-sub{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.5;margin-bottom:12px;}
+.estab-banner-btn{display:block;padding:11px;background:var(--atlantic);color:#fff;text-decoration:none;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;border-radius:6px;}
+.ruta-card{background:rgba(255,255,255,0.05);border-radius:10px;padding:14px;margin:0 16px 10px;border:1px solid rgba(61,107,115,0.2);}
+.ruta-titulo{font-size:0.52rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--atlantic);margin-bottom:6px;}
+.ruta-tags{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
+.ruta-tag{background:rgba(61,107,115,0.2);border-radius:4px;padding:3px 8px;font-size:0.6rem;color:rgba(163,196,204,0.8);}
+.ruta-paradas{border-left:2px solid rgba(61,107,115,0.3);padding-left:12px;display:flex;flex-direction:column;gap:12px;}
+.parada-km{font-size:0.58rem;color:var(--atlantic);font-weight:600;}
+.parada-txt{font-size:0.7rem;color:rgba(163,196,204,0.8);line-height:1.4;margin-top:2px;}
+.parada-tiempo{font-size:0.62rem;color:rgba(163,196,204,0.5);margin-top:3px;}
+.mapa-wrap{margin:0 16px 12px;}
+.mapa-label{font-size:0.5rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.45);margin-bottom:8px;}
+.mapa-frame{width:100%;height:200px;border-radius:10px;overflow:hidden;border:1px solid rgba(61,107,115,0.25);}
+.mapa-frame iframe{width:100%;height:100%;border:0;filter:invert(0.85) hue-rotate(180deg) brightness(0.85);}
+.btn-agenda-dest{position:fixed;bottom:24px;left:18px;z-index:890;width:48px;height:48px;border-radius:50%;background:rgba(61,107,115,0.92);border:1.5px solid rgba(163,196,204,0.35);box-shadow:0 4px 16px rgba(0,0,0,0.4);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.3rem;backdrop-filter:blur(8px);text-decoration:none;}
+span[data-lang]{display:none;}
+span[data-lang].activo{display:inline;}
+</style>
+</head>
+<body>
+
+<a class="btn-agenda-dest" href="../index.html#agenda" title="Mi agenda CONFIN">&#128214;</a>
+<a class="btn-agenda-dest" href="../index.html#agenda" title="Mi agenda CONFIN">&#128214;</a>
+<nav class="nav">
+<a href="../index.html" class="nav-back">&#8592; Volver</a>
+<a href="../index.html" class="nav-logo">CONF&#205;N</a>
+<div class="lang-selector">
+<button class="lang-btn-dest activo" onclick="cambiarIdioma('es',this)">ES</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('en',this)">EN</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('pt',this)">PT</button>
+</div>
+</nav>
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">&#127462;&#127479; Tierra del Fuego &middot; Argentina &middot; Fin del Mundo</div>
+    <h1 class="hero-title">Ushuaia</h1>
+    <div class="hero-sub" data-lang="es">Todo lo que necesit&#225;s saber &middot; Curado por CONF&#205;N</div>
+    <div class="hero-sub" data-lang="en">Everything you need to know &middot; Curated by CONF&#205;N</div>
+    <div class="hero-sub" data-lang="pt">Tudo que voc&#234; precisa saber &middot; Curado por CONF&#205;N</div>
+  </div>
+</div>
+<div class="aviso" data-lang="es">&#9888;&#65039; <strong>Mayo a Octubre:</strong> Obligatorio circular con cubiertas de invierno en RN 3 (especialmente Paso Garibaldi). Verificar estado de ruta en Defensa Civil: 103.</div>
+<div class="aviso" data-lang="en">&#9888;&#65039; <strong>May to October:</strong> Winter tires mandatory on RN 3 (especially Paso Garibaldi). Check road conditions with Civil Defense: 103.</div>
+<div class="aviso" data-lang="pt">&#9888;&#65039; <strong>Maio a Outubro:</strong> Pneus de inverno obrigat&#243;rios na RN 3 (especialmente Paso Garibaldi). Verificar condi&#231;&#245;es com Defesa Civil: 103.</div>
+<div class="seccion">
+  <div class="seccion-titulo">&#128680; <span data-lang="es">Emergencias</span><span data-lang="en">Emergencies</span><span data-lang="pt">Emerg&#234;ncias</span></div>
+</div>
+<div class="card-grid">
+  <div class="card rojo full">
+    <div class="card-ico">&#127973;</div>
+    <div class="card-nombre">Hospital Regional Ushuaia</div>
+    <div class="card-desc">Av. 12 de Octubre 65 &middot; Guardia 24hs</div>
+    <div class="card-num">107 / (02901) 44-1000</div>
+    <a href="tel:+542901441000" class="card-btn">LLAMAR</a>
+  </div>
+  <div class="card rojo">
+    <div class="card-ico">&#128657;</div>
+    <div class="card-nombre" data-lang="es">Bomberos</div>
+    <div class="card-nombre" data-lang="en">Fire Dept.</div>
+    <div class="card-nombre" data-lang="pt">Bombeiros</div>
+    <div class="card-desc">Av. Magallanes 974</div>
+    <div class="card-num">100</div>
+    <a href="tel:100" class="card-btn">LLAMAR</a>
+  </div>
+  <div class="card rojo">
+    <div class="card-ico">&#128110;</div>
+    <div class="card-nombre">Polic&#237;a / 911</div>
+    <div class="card-desc" data-lang="es">Emergencias generales</div>
+    <div class="card-desc" data-lang="en">General emergencies</div>
+    <div class="card-desc" data-lang="pt">Emerg&#234;ncias gerais</div>
+    <div class="card-num">911 / 101</div>
+    <a href="tel:911" class="card-btn">LLAMAR</a>
+  </div>
+  <div class="card rojo">
+    <div class="card-ico">&#9875;</div>
+    <div class="card-nombre">Prefectura Naval</div>
+    <div class="card-desc">Yaganes 91 &middot; Canal Beagle</div>
+    <div class="card-num">106 / (02901) 42-1111</div>
+    <a href="tel:+542901421111" class="card-btn">LLAMAR</a>
+  </div>
+  <div class="card rojo">
+    <div class="card-ico">&#127956;</div>
+    <div class="card-nombre">Guardaparques</div>
+    <div class="card-desc">Parque Tierra del Fuego</div>
+    <div class="card-num">(02901) 42-1315</div>
+    <a href="tel:+542901421315" class="card-btn">LLAMAR</a>
+  </div>
+  <div class="card rojo">
+    <div class="card-ico">&#128737;</div>
+    <div class="card-nombre">Defensa Civil</div>
+    <div class="card-desc" data-lang="es">Alertas clim&#225;ticas y rutas</div>
+    <div class="card-desc" data-lang="en">Weather alerts &amp; roads</div>
+    <div class="card-desc" data-lang="pt">Alertas clim&#225;ticos e rotas</div>
+    <div class="card-num">103 / (02901) 42-2377</div>
+    <a href="tel:103" class="card-btn">LLAMAR</a>
+  </div>
+  <div class="card rojo">
+    <div class="card-ico">&#127973;</div>
+    <div class="card-nombre">Cl&#237;nica San Jorge</div>
+    <div class="card-desc" data-lang="es">San Mart&#237;n 223 &middot; Privada</div>
+    <div class="card-desc" data-lang="en">San Mart&#237;n 223 &middot; Private clinic</div>
+    <div class="card-desc" data-lang="pt">San Mart&#237;n 223 &middot; Cl&#237;nica privada</div>
+    <div class="card-num">(02901) 42-2635</div>
+    <a href="tel:+542901422635" class="card-btn">LLAMAR</a>
+  </div>
+  <div class="card rojo">
+    <div class="card-ico">&#128110;</div>
+    <div class="card-nombre">Gendarmer&#237;a Nacional</div>
+    <div class="card-desc" data-lang="es">Estado de rutas internacionales</div>
+    <div class="card-desc" data-lang="en">International road conditions</div>
+    <div class="card-desc" data-lang="pt">Estado de rotas internacionais</div>
+    <div class="card-num">(02901) 42-2108</div>
+    <a href="tel:+542901422108" class="card-btn">LLAMAR</a>
+  </div>
+</div>
+<div class="seccion">
+  <div class="seccion-titulo">&#8987; <span data-lang="es">&#191;Cu&#225;nto tiempo ten&#233;s?</span><span data-lang="en">How much time do you have?</span><span data-lang="pt">Quanto tempo voc&#234; tem?</span></div>
+</div>
+<div class="info-bloque">
+  <div class="info-item">
+    <div class="info-ico">&#9203;</div>
+    <div class="info-txt">
+      <strong data-lang="es">2 horas</strong><strong data-lang="en">2 hours</strong><strong data-lang="pt">2 horas</strong>
+      <span data-lang="es">Paseo Mar&#237;timo y Casco Urbano. Foto en el Cartel del Fin del Mundo, recorrido por el Muelle Tur&#237;stico y la peatonal San Mart&#237;n.</span>
+      <span data-lang="en">Maritime promenade and city center. Photo at the End of the World sign, tourist pier and San Mart&#237;n pedestrian street.</span>
+      <span data-lang="pt">Passeio mar&#237;timo e centro hist&#243;rico. Foto na placa do Fim do Mundo, pier tur&#237;stico e rua peatonal San Mart&#237;n.</span>
+    </div>
+  </div>
+  <div class="info-item">
+    <div class="info-ico">&#127748;</div>
+    <div class="info-txt">
+      <strong data-lang="es">Medio d&#237;a</strong><strong data-lang="en">Half day</strong><strong data-lang="pt">Meio dia</strong>
+      <span data-lang="es">Navegaci&#243;n por el Canal Beagle en catamar&#225;n: Isla de los Lobos, Isla de los P&#225;jaros y Faro Les &#201;claireurs.</span>
+      <span data-lang="en">Beagle Channel catamaran cruise: Lobos Island, Birds Island and Les &#201;claireurs Lighthouse.</span>
+      <span data-lang="pt">Cruzeiro de catamar&#227; pelo Canal Beagle: Ilha dos Lobos, Ilha dos P&#225;ssaros e Farol Les &#201;claireurs.</span>
+    </div>
+  </div>
+  <div class="info-item">
+    <div class="info-ico">&#127775;</div>
+    <div class="info-txt">
+      <strong data-lang="es">D&#237;a completo</strong><strong data-lang="en">Full day</strong><strong data-lang="pt">Dia completo</strong>
+      <span data-lang="es">Parque Nacional Tierra del Fuego + Tren del Fin del Mundo: Bah&#237;a Ensenada, Lago Acigami (Roca) y Lapataia (final de la RN 3).</span>
+      <span data-lang="en">Tierra del Fuego National Park + End of the World Train: Ensenada Bay, Lake Acigami and Lapataia (end of RN 3).</span>
+      <span data-lang="pt">Parque Nacional Tierra del Fuego + Trem do Fim do Mundo: Ba&#237;a Ensenada, Lago Acigami e Lapataia (fim da RN 3).</span>
+    </div>
+  </div>
+  <div class="info-item">
+    <div class="info-ico">&#10052;</div>
+    <div class="info-txt">
+      <strong data-lang="es">Temporada de nieve (Junio a Octubre)</strong><strong data-lang="en">Snow season (June to October)</strong><strong data-lang="pt">Temporada de neve (Junho a Outubro)</strong>
+      <span data-lang="es">Cerro Castor (el centro de esqu&#237; m&#225;s austral del planeta) y los Centros Invernales del Valle de Tierra Mayor.</span>
+      <span data-lang="en">Cerro Castor (the world's southernmost ski resort) and the Tierra Mayor Valley winter centers.</span>
+      <span data-lang="pt">Cerro Castor (o centro de esqui mais austral do planeta) e os Centros Invernais do Vale de Tierra Mayor.</span>
+    </div>
+  </div>
+  <div class="info-item">
+    <div class="info-ico">&#127783;</div>
+    <div class="info-txt">
+      <strong data-lang="es">Si llueve / mal tiempo</strong><strong data-lang="en">If it rains / bad weather</strong><strong data-lang="pt">Se chover / mau tempo</strong>
+      <span data-lang="es">Circuito Musiol&#243;gico: Museo del Presidio, Museo del Fin del Mundo y Galer&#237;a Tem&#225;tica Fueguina.</span>
+      <span data-lang="en">Museum circuit: Prison Museum, End of the World Museum and Fuegian Thematic Gallery.</span>
+      <span data-lang="pt">Circuito de museus: Museu do Pres&#237;dio, Museu do Fim do Mundo e Galeria Tem&#225;tica Fueguina.</span>
+    </div>
+  </div>
+</div>
+<div class="seccion">
+  <div class="seccion-titulo">&#128247; <span data-lang="es">Paseos gratuitos imperdibles</span><span data-lang="en">Free must-see walks</span><span data-lang="pt">Passeios gratuitos imperd&#237;veis</span></div>
+</div>
+<div class="info-bloque">
+  <div class="info-item">
+    <div class="info-ico">&#128247;</div>
+    <div class="info-txt"><strong data-lang="es">Cartel del Fin del Mundo</strong><strong data-lang="en">End of the World Sign</strong><strong data-lang="pt">Placa do Fim do Mundo</strong>
+    <span data-lang="es">Punto panor&#225;mico emblem&#225;tico sobre la Av. Costanera frente al puerto.</span>
+    <span data-lang="en">Iconic panoramic viewpoint on the Costanera Ave facing the port.</span>
+    <span data-lang="pt">Ponto panor&#226;mico ic&#244;nico na Av. Costanera em frente ao porto.</span></div>
+  </div>
+  <div class="info-item">
+    <div class="info-ico">&#129406;</div>
+    <div class="info-txt"><strong data-lang="es">Glaciar Martial &mdash; Sendero Base y Mirador</strong><strong data-lang="en">Martial Glacier &mdash; Base Trail &amp; Viewpoint</strong><strong data-lang="pt">Geleira Martial &mdash; Trilha Base e Mirante</strong>
+    <span data-lang="es">Trekking de libre acceso iniciando a 7 km del centro. Vistas panor&#225;micas espectaculares del Canal Beagle.</span>
+    <span data-lang="en">Free access trekking starting 7 km from town center. Spectacular panoramic views of the Beagle Channel.</span>
+    <span data-lang="pt">Trekking de livre acesso a 7 km do centro. Vistas panor&#226;micas espetaculares do Canal Beagle.</span></div>
+  </div>
+  <div class="info-item">
+    <div class="info-ico">&#127807;</div>
+    <div class="info-txt"><strong data-lang="es">Laguna Esmeralda &mdash; Sendero</strong><strong data-lang="en">Esmeralda Lagoon &mdash; Trail</strong><strong data-lang="pt">Lagoa Esmeralda &mdash; Trilha</strong>
+    <span data-lang="es">Inicio libre sobre RN 3, Km 3018. Bosques nativos y turbales. Requiere calzado impermeable y registro previo.</span>
+    <span data-lang="en">Free entry from RN 3, Km 3018. Native forests and peatlands. Waterproof footwear and prior registration required.</span>
+    <span data-lang="pt">Entrada livre na RN 3, Km 3018. Florestas nativas e turfeiras. Exige cal&#231;ado imperme&#225;vel e registro pr&#233;vio.</span></div>
+  </div>
+  <div class="info-item">
+    <div class="info-ico">&#127958;</div>
+    <div class="info-txt"><strong data-lang="es">Playa Larga y Reserva Natural Cultural</strong><strong data-lang="en">Playa Larga Natural Reserve</strong><strong data-lang="pt">Praia Larga &mdash; Reserva Natural Cultural</strong>
+    <span data-lang="es">Zona costera sobre el Canal Beagle con &#225;rboles bandera y yacimientos arqueol&#243;gicos yaganes.</span>
+    <span data-lang="en">Coastal area along the Beagle Channel with wind-shaped trees and Yamana archaeological sites.</span>
+    <span data-lang="pt">&#193;rea costeira no Canal Beagle com &#225;rvores modeladas pelo vento e s&#237;tios arqueol&#243;gicos yamanas.</span></div>
+  </div>
+  <div class="info-item">
+    <div class="info-ico">&#129445;</div>
+    <div class="info-txt"><strong data-lang="es">Reserva Natural Urbana Bah&#237;a Encerrada</strong><strong data-lang="en">Bah&#237;a Encerrada Urban Nature Reserve</strong><strong data-lang="pt">Reserva Natural Urbana Bah&#237;a Encerrada</strong>
+    <span data-lang="es">Pasarelas de madera e interpretaci&#243;n de avifauna en pleno centro urbano.</span>
+    <span data-lang="en">Wooden walkways and birdwatching in the city center.</span>
+    <span data-lang="pt">Passarelas de madeira e observa&#231;&#227;o de aves no centro urbano.</span></div>
+  </div>
+  <div class="info-item">
+    <div class="info-ico">&#9932;</div>
+    <div class="info-txt">
+      <strong data-lang="es">Laguna del Diablo &mdash; Barrio Andino</strong>
+      <strong data-lang="en">Laguna del Diablo &mdash; Andino neighborhood</strong>
+      <strong data-lang="pt">Laguna del Diablo &mdash; Bairro Andino</strong>
+      <span data-lang="es">Senderos en bosque nativo. En invierno, cuando Defensa Civil habilita el grosor del hielo, funciona como pista de patinaje libre.</span>
+      <span data-lang="en">Native forest trails. In winter, when Civil Defense confirms ice thickness, it opens as a free skating rink.</span>
+      <span data-lang="pt">Trilhas em floresta nativa. No inverno, quando a Defesa Civil confirma a espessura do gelo, funciona como pista de patina&ccedil;&atilde;o gratuita.</span>
+    </div>
+  </div>
+</div>
+<div class="seccion">
+  <div class="seccion-titulo">&#10052; <span data-lang="es">Centros de Nieve</span><span data-lang="en">Snow Centers</span><span data-lang="pt">Centros de Neve</span></div>
+</div>
+<div class="ski-card">
+  <img src="../centro-ski-foto.jpg" alt="Cerro Castor" class="ski-foto">
+  <div class="ski-body">
+    <div class="ski-tag" data-lang="es">RN 3, Km 26 &middot; El m&#225;s austral del planeta</div>
+    <div class="ski-tag" data-lang="en">RN 3, Km 26 &middot; World's southernmost ski resort</div>
+    <div class="ski-tag" data-lang="pt">RN 3, Km 26 &middot; O mais austral do planeta</div>
+    <div class="ski-nombre">Cerro Castor</div>
+    <div class="ski-desc" data-lang="es">34 pistas &middot; 12 medios de elevaci&#243;n &middot; Snowpark &middot; La temporada m&#225;s larga y homog&#233;nea de Am&#233;rica del Sur. Nieve en polvo por latitud.</div>
+    <div class="ski-desc" data-lang="en">34 slopes &middot; 12 lifts &middot; Snowpark &middot; South America's longest and most consistent ski season. Powder snow by latitude.</div>
+    <div class="ski-desc" data-lang="pt">34 pistas &middot; 12 telefer&#233;ricos &middot; Snowpark &middot; A temporada mais longa e consistente da Am&#233;rica do Sul. Neve em p&#243; pela latitude.</div>
+    <a href="tel:+5402901499300" class="card-btn verde" style="margin-top:10px;display:block;text-align:center;">(02901) 49-9300 &middot; cerrocastor.com</a>
+  </div>
+</div>
+<div class="ski-card">
+  <div class="ski-body">
+    <div class="ski-tag" data-lang="es">RN 3, Km 14 al 30 &middot; Valle de Tierra Mayor</div>
+    <div class="ski-tag" data-lang="en">RN 3, Km 14 to 30 &middot; Tierra Mayor Valley</div>
+    <div class="ski-tag" data-lang="pt">RN 3, Km 14 a 30 &middot; Vale de Tierra Mayor</div>
+    <div class="ski-nombre" data-lang="es">Centros Invernales del Valle</div>
+    <div class="ski-nombre" data-lang="en">Valley Winter Centers</div>
+    <div class="ski-nombre" data-lang="pt">Centros Invernais do Vale</div>
+    <div class="ski-desc" data-lang="es">Llanos del Castor &middot; Haruwen &middot; Valle Hermoso &middot; Tierra Mayor. Esqu&#237; de fondo, raquetas, trineos, motos de nieve y caminatas nocturnas con fog&#243;n.</div>
+    <div class="ski-desc" data-lang="en">Llanos del Castor &middot; Haruwen &middot; Valle Hermoso &middot; Tierra Mayor. Cross-country skiing, snowshoes, sleds, snowmobiles and night walks with bonfire.</div>
+    <div class="ski-desc" data-lang="pt">Llanos del Castor &middot; Haruwen &middot; Valle Hermoso &middot; Tierra Mayor. Esqui cross-country, raquetes, tren&#243;s, motos de neve e caminhadas noturnas com fogueira.</div>
+  </div>
+</div>
+<div class="seccion">
+  <div class="seccion-titulo">&#128652; <span data-lang="es">Transporte</span><span data-lang="en">Transport</span><span data-lang="pt">Transporte</span></div>
+</div>
+<div class="info-bloque">
+  <div class="info-item">
+    <div class="info-ico">&#9992;</div>
+    <div class="info-txt"><strong data-lang="es">Aeropuerto Internacional Malvinas Argentinas (USH)</strong><strong data-lang="en">Malvinas Argentinas International Airport (USH)</strong><strong data-lang="pt">Aeroporto Internacional Malvinas Argentinas (USH)</strong>
+    <span data-lang="es">Av. Intendente Garramu&#241;o s/n &middot; 5 km del centro &middot; 10 min</span>
+    <span data-lang="en">Av. Intendente Garramu&#241;o s/n &middot; 5 km from center &middot; 10 min</span>
+    <span data-lang="pt">Av. Intendente Garramu&#241;o s/n &middot; 5 km do centro &middot; 10 min</span></div>
+  </div>
+  <div class="info-item">
+    <div class="info-ico">&#128651;</div>
+    <div class="info-txt"><strong data-lang="es">Colectivos Urbanos (UISE)</strong><strong data-lang="en">Urban buses (UISE)</strong><strong data-lang="pt">&#212;nibus urbanos (UISE)</strong>
+    <span data-lang="es">L&#237;neas A y B conectan barrios y centro. Pago exclusivo con tarjeta SUBE.</span>
+    <span data-lang="en">Lines A and B connect neighborhoods and city center. Payment with SUBE card only.</span>
+    <span data-lang="pt">Linhas A e B conectam bairros e centro. Pagamento exclusivo com cart&#227;o SUBE.</span></div>
+  </div>
+  <div class="info-item">
+    <div class="info-ico">&#128652;</div>
+    <div class="info-txt"><strong data-lang="es">Transfers a Centros Invernales y Parque Nacional</strong><strong data-lang="en">Transfers to Snow Centers &amp; National Park</strong><strong data-lang="pt">Transfers para Centros de Neve e Parque Nacional</strong>
+    <span data-lang="es">Salidas continuas desde el Muelle Tur&#237;stico (Av. Ma&#237;pu y Lasserre).</span>
+    <span data-lang="en">Continuous departures from the Tourist Pier (Av. Ma&#237;pu and Lasserre).</span>
+    <span data-lang="pt">Sa&#237;das cont&#237;nuas do Pier Tur&#237;stico (Av. Ma&#237;pu e Lasserre).</span></div>
+  </div>
+</div>
+<div class="dato" data-lang="es">&#9981; <strong>Carg&#225; combustible al m&#225;ximo antes de salir.</strong> No hay estaciones de servicio entre Ushuaia, Tolhuin y R&#237;o Grande por m&#225;s de 100 km.</div>
+<div class="dato" data-lang="en">&#9981; <strong>Fill up your tank before leaving.</strong> No gas stations between Ushuaia, Tolhuin and R&#237;o Grande for over 100 km.</div>
+<div class="dato" data-lang="pt">&#9981; <strong>Abastate&#231;a antes de sair.</strong> N&#227;o h&#225; postos de combust&#237;vel entre Ushuaia, Tolhuin e R&#237;o Grande por mais de 100 km.</div>
+<div class="seccion">
+  <div class="seccion-titulo">&#128138; <span data-lang="es">Servicios &amp; Turismo</span><span data-lang="en">Services &amp; Tourism</span><span data-lang="pt">Servi&ccedil;os &amp; Turismo</span></div>
+</div>
+<div class="info-bloque">
+  <div class="info-item">
+    <div class="info-ico">&#128138;</div>
+    <div class="info-txt">
+      <strong data-lang="es">Farmacias de turno</strong><strong data-lang="en">On-duty pharmacies</strong><strong data-lang="pt">Farm&aacute;cias de plant&atilde;o</strong>
+      <span data-lang="es">San Mart&iacute;n 498 / San Mart&iacute;n 661 &middot; Rotaci&oacute;n diaria.</span>
+      <span data-lang="en">San Mart&iacute;n 498 / San Mart&iacute;n 661 &middot; Daily rotation.</span>
+      <span data-lang="pt">San Mart&iacute;n 498 / San Mart&iacute;n 661 &middot; Rota&ccedil;&atilde;o di&aacute;ria.</span>
+    </div>
+  </div>
+  <div class="info-item">
+    <div class="info-ico">&#8505;&#65039;</div>
+    <div class="info-txt">
+      <strong data-lang="es">Secretar&iacute;a de Turismo Municipal</strong><strong data-lang="en">Municipal Tourism Office</strong><strong data-lang="pt">Secretaria de Turismo Municipal</strong>
+      <span data-lang="es">San Mart&iacute;n 674 y Muelle Tur&iacute;stico &middot; 0800-333-1432 / (02901) 43-2000</span>
+      <span data-lang="en">San Mart&iacute;n 674 and Tourist Pier &middot; 0800-333-1432 / (02901) 43-2000</span>
+      <span data-lang="pt">San Mart&iacute;n 674 e Pier Tur&iacute;stico &middot; 0800-333-1432 / (02901) 43-2000</span>
+    </div>
+  </div>
+</div>
+<div class="seccion">
+  <div class="seccion-titulo">&#128153; <span data-lang="es">Con prop&oacute;sito</span><span data-lang="en">With purpose</span><span data-lang="pt">Com prop&oacute;sito</span></div>
+</div>
+<div class="inst-card">
+  <div class="inst-nombre">CAAD &mdash; <span data-lang="es">Centro de Actividades Alternativas para Discapacidad</span><span data-lang="en">Alternative Activities Center for Disability</span><span data-lang="pt">Centro de Atividades Alternativas para Defici&#234;ncia</span></div>
+  <div class="inst-desc" data-lang="es">Carpinter&#237;a y artesanias en madera de lenga, souvenirs y gastronom&#237;a artesanal elaborados por j&#243;venes y adultos con discapacidad. Karukinka 839 &middot; Tel: (02901) 43-4171</div>
+  <div class="inst-desc" data-lang="en">Lenga wood carpentry and crafts, souvenirs and artisan food made by young people and adults with disabilities. Karukinka 839 &middot; Tel: (02901) 43-4171</div>
+  <div class="inst-desc" data-lang="pt">Marcenaria e artesanato em madeira de lenga, souvenirs e gastronomia artesanal produzidos por jovens e adultos com defici&#234;ncia. Karukinka 839 &middot; Tel: (02901) 43-4171</div>
+  <a href="https://www.instagram.com/caad_ushuaia" class="inst-btn" target="_blank">@caad_ushuaia</a>
+</div>
+<div class="seccion">
+  <div class="seccion-titulo">&#128205; <span data-lang="es">Distancias desde Ushuaia</span><span data-lang="en">Distances from Ushuaia</span><span data-lang="pt">Dist&#226;ncias de Ushuaia</span></div>
+</div>
+<div class="distancias">
+  <div class="dist-item"><span class="dist-lugar" data-lang="es">Aeropuerto Internacional (USH)</span><span class="dist-lugar" data-lang="en">International Airport (USH)</span><span class="dist-lugar" data-lang="pt">Aeroporto Internacional (USH)</span><span class="dist-val">5 km &middot; 10 min</span></div>
+  <div class="dist-item"><span class="dist-lugar">Parque Nacional Tierra del Fuego</span><span class="dist-val">12 km &middot; 25 min</span></div>
+  <div class="dist-item"><span class="dist-lugar">Cerro Castor</span><span class="dist-val">26 km &middot; 25 min</span></div>
+  <div class="dist-item"><span class="dist-lugar" data-lang="es">Tolhu&#237;n (Lago Fagnano)</span><span class="dist-lugar" data-lang="en">Tolhu&#237;n (Fagnano Lake)</span><span class="dist-lugar" data-lang="pt">Tolhu&#237;n (Lago Fagnano)</span><span class="dist-val">100 km &middot; 1h 20min</span></div>
+  <div class="dist-item"><span class="dist-lugar">R&#237;o Grande</span><span class="dist-val">210 km &middot; 2h 40min</span></div>
+</div>
+<div class="seccion">
+  <div class="seccion-titulo">&#127775; <span data-lang="es">El alma de este lugar</span><span data-lang="en">The soul of this place</span><span data-lang="pt">A alma deste lugar</span></div>
+</div>
+<div class="alma">
+  <div class="alma-titulo" data-lang="es">El conf&#237;n de la tierra y el umbral de la Ant&#225;rtida</div>
+  <div class="alma-titulo" data-lang="en">The end of the earth and gateway to Antarctica</div>
+  <div class="alma-titulo" data-lang="pt">O confim da terra e a porta de entrada da Ant&#225;rtida</div>
+  <p data-lang="es">&#128218; Habitada hist&#243;ricamente por el pueblo Y&#225;mana (Yag&#225;n) que navegaba el canal en canoas alimentando fog&#243;nes, la ciudad fue fundada el 12 de octubre de 1884 por el Comodoro Augusto Lasserre. Su desarrollo estuvo ligado al Penal de Reincidentes y luego al polo industrial y tur&#237;stico del extremo sur.</p>
+  <p data-lang="en">&#128218; Historically inhabited by the Y&#225;mana (Yag&#225;n) people who navigated the channel in canoes, the city was founded on October 12, 1884 by Commodore Augusto Lasserre. Its development was tied to the Recidivists Penal Colony and later to the industrial and tourism hub of the far south.</p>
+  <p data-lang="pt">&#128218; Habitada historicamente pelo povo Y&#226;mana (Yag&#225;n) que navegava o canal em canoas, a cidade foi fundada em 12 de outubro de 1884 pelo Comodoro Augusto Lasserre. Seu desenvolvimento esteve ligado ao Col&#244;nia Penal e depois ao polo industrial e tur&#237;stico do extremo sul.</p>
+  <p data-lang="es">&#129414; <strong>Fauna insignia:</strong> Ping&#252;ino Magall&#225;nico y de Pap&#250;a (Isla Martillo), Zorro Colorado Fueguino, Lobo Marino de dos pelos y Corm&#243;ran Imperial.</p>
+  <p data-lang="en">&#129414; <strong>Signature wildlife:</strong> Magellanic and Gentoo Penguins (Martillo Island), Fuegian Red Fox, South American Fur Seal and Imperial Cormorant.</p>
+  <p data-lang="pt">&#129414; <strong>Fauna insignia:</strong> Ping&#252;im-de-Magalh&#227;es e Pap&#250;a (Ilha Martillo), Raposa Vermelha Fueguina, Lobo-marinho e Cormor&#227;o Imperial.</p>
+  <p data-lang="es">&#127807; <strong>Flora emblem&#225;tica:</strong> Lenga, Guindo (Coihue magall&#225;nico), &#209;ire y el musgo Sphagnum que conforma los milenarios turbales fueguinos.</p>
+  <p data-lang="en">&#127807; <strong>Emblematic flora:</strong> Lenga, Guindo (Magellanic Coihue), &#209;ire and Sphagnum moss forming the ancient Fuegian peatlands.</p>
+  <p data-lang="pt">&#127807; <strong>Flora emblem&#225;tica:</strong> Lenga, Guindo (Coihue magal&#226;nico), &#209;ire e musgo Sphagnum que forma as milenares turfeiras fueguinas.</p>
+  <p data-lang="es">&#128161; <strong>&#191;Sab&#237;as que...?</strong> El Canal Beagle lleva ese nombre en homenaje al barco brit&#225;nico HMS Beagle, en el que naveg&#243; Charles Darwin en 1833 al explorar estos fiordos del fin del mundo.</p>
+  <p data-lang="en">&#128161; <strong>Did you know?</strong> The Beagle Channel is named after the British ship HMS Beagle, on which Charles Darwin sailed in 1833 while exploring these end-of-the-world fjords.</p>
+  <p data-lang="pt">&#128161; <strong>Voc&#234; sabia?</strong> O Canal Beagle recebeu esse nome em homenagem ao navio brit&#226;nico HMS Beagle, no qual Charles Darwin navegou em 1833 ao explorar esses fiordes do fim do mundo.</p>
+</div>
+<div class="seccion">
+  <div class="seccion-titulo">&#127760; <span data-lang="es">Pasos Fronterizos &amp; Conexi&oacute;n Binacional</span><span data-lang="en">Border Crossings &amp; Binational Connection</span><span data-lang="pt">Passagens Fronteiri&ccedil;as &amp; Conex&atilde;o Binacional</span></div>
+</div>
+
+<div class="inst-card" style="margin-bottom:12px;">
+  <div class="inst-nombre">&#127991; <span data-lang="es">Paso San Sebasti&aacute;n &mdash; Cruce Terrestre Principal</span><span data-lang="en">Paso San Sebasti&aacute;n &mdash; Main Land Border</span><span data-lang="pt">Paso San Sebasti&aacute;n &mdash; Principal Travessia Terrestre</span></div>
+  <div class="inst-desc" data-lang="es">Ushuaia &rarr; R&iacute;o Grande (RN 3) &rarr; Paso San Sebasti&aacute;n &rarr; Regi&oacute;n de Magallanes (Chile). <strong>~290 km desde Ushuaia.</strong> Uso principal: salir de la isla hacia el continente v&iacute;a ferry en Primera Angostura.<br><br>&#8987; Horario: 08:00 a 22:00 hs (sujeto a modificaciones invernales).<br>&#9888;&#65039; <strong>SAG Chile:</strong> Prohibido ingresar frutas, verduras, carnes o l&aacute;cteos frescos.</div>
+  <div class="inst-desc" data-lang="en">Ushuaia &rarr; R&iacute;o Grande (RN 3) &rarr; Paso San Sebasti&aacute;n &rarr; Magallanes Region (Chile). <strong>~290 km from Ushuaia.</strong> Main use: leaving the island by road toward the continent via ferry at Primera Angostura.<br><br>&#8987; Hours: 08:00 to 22:00 (subject to winter changes).<br>&#9888;&#65039; <strong>SAG Chile:</strong> No fresh fruit, vegetables, meat or dairy products allowed.</div>
+  <div class="inst-desc" data-lang="pt">Ushuaia &rarr; R&iacute;o Grande (RN 3) &rarr; Paso San Sebasti&aacute;n &rarr; Regi&atilde;o de Magalh&atilde;es (Chile). <strong>~290 km de Ushuaia.</strong> Uso principal: sair da ilha em dire&ccedil;&atilde;o ao continente pelo ferry em Primera Angostura.<br><br>&#8987; Hor&aacute;rio: 08:00 &agrave;s 22:00 hs (sujeito a altera&ccedil;&otilde;es no inverno).<br>&#9888;&#65039; <strong>SAG Chile:</strong> Proibido ingressar frutas, verduras, carnes ou latic&iacute;nios frescos.</div>
+  <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
+    <a href="tel:+5429644920002" class="inst-btn" data-lang="es">&#128222; Gendarmer&iacute;a AR</a>
+    <a href="tel:+5561223 8588" class="inst-btn" data-lang="es">&#128222; Frontera CH</a>
+  </div>
+</div>
+
+<div class="inst-card" style="margin-bottom:12px;">
+  <div class="inst-nombre">&#9875; <span data-lang="es">Canal Beagle &mdash; Ushuaia &harr; Puerto Williams (Chile)</span><span data-lang="en">Beagle Channel &mdash; Ushuaia &harr; Puerto Williams (Chile)</span><span data-lang="pt">Canal Beagle &mdash; Ushuaia &harr; Puerto Williams (Chile)</span></div>
+  <div class="inst-desc" data-lang="es">Cruce mar&iacute;timo hacia la ciudad m&aacute;s austral del planeta y el trekking de los Dientes de Navarino. Requiere reserva previa con operador autorizado y tr&aacute;mite migratorio en el Muelle Tur&iacute;stico.<br><strong>No se realiza en veh&iacute;culo particular.</strong></div>
+  <div class="inst-desc" data-lang="en">Maritime crossing to the world's southernmost city and the Dientes de Navarino trekking. Prior booking with authorized operator required, plus immigration at the Tourist Pier.<br><strong>No private vehicles.</strong></div>
+  <div class="inst-desc" data-lang="pt">Travessia mar&iacute;tima para a cidade mais austral do planeta e o trekking dos Dientes de Navarino. Reserva pr&eacute;via com operador autorizado e tr&acirc;mite migrat&oacute;rio no Pier Tur&iacute;stico obrigat&oacute;rios.<br><strong>Sem ve&iacute;culos particulares.</strong></div>
+  <a href="tel:106" class="inst-btn" style="margin-top:10px;display:inline-block;">106 &middot; Prefectura Naval</a>
+</div>
+
+<div class="inst-card" style="margin-bottom:12px;">
+  <div class="inst-nombre">&#9973;&#65039; <span data-lang="es">Estrecho de Magallanes &mdash; Ferry TABSA (Ruta Continental)</span><span data-lang="en">Strait of Magellan &mdash; TABSA Ferry (Continental Route)</span><span data-lang="pt">Estreito de Magalh&atilde;es &mdash; Ferry TABSA (Rota Continental)</span></div>
+  <div class="inst-desc" data-lang="es">Para salir en auto de la isla hacia Santa Cruz / Buenos Aires o el resto de Latinoam&eacute;rica: cruzar Paso San Sebasti&aacute;n, recorrer ~140 km por territorio chileno y tomar el ferry en <strong>Primera Angostura (Bah&iacute;a Azul &harr; Punta Delgada)</strong>.<br>&#9888;&#65039; El ferry se suspende por vientos fuertes. Verificar estado antes de salir.<br>Operador: <strong>Transbordadora Austral Broom (TABSA)</strong></div>
+  <div class="inst-desc" data-lang="en">To drive from the island to Santa Cruz / Buenos Aires or the rest of Latin America: cross Paso San Sebasti&aacute;n, drive ~140 km through Chilean territory and take the ferry at <strong>Primera Angostura (Bah&iacute;a Azul &harr; Punta Delgada)</strong>.<br>&#9888;&#65039; Ferry suspended in strong winds. Check before departing.<br>Operator: <strong>Transbordadora Austral Broom (TABSA)</strong></div>
+  <div class="inst-desc" data-lang="pt">Para sair de carro da ilha em dire&ccedil;&atilde;o a Santa Cruz / Buenos Aires ou o resto da Am&eacute;rica Latina: cruzar Paso San Sebasti&aacute;n, percorrer ~140 km por territ&oacute;rio chileno e tomar o ferry em <strong>Primera Angostura (Bah&iacute;a Azul &harr; Punta Delgada)</strong>.<br>&#9888;&#65039; Ferry suspenso em ventos fortes. Verificar antes de partir.<br>Operador: <strong>Transbordadora Austral Broom (TABSA)</strong></div>
+  <a href="tel:+56612728100" class="inst-btn" style="margin-top:10px;display:inline-block;">+56 61 272-8100 &middot; tabsa.cl</a>
+</div>
+<div class="seccion">
+  <div class="seccion-titulo" style="font-size:0.65rem;">&#128690; <span data-lang="es">En Camino &mdash; Rutas desde Ushuaia</span><span data-lang="en">On the Road &mdash; Routes from Ushuaia</span><span data-lang="pt">Na Estrada &mdash; Rotas de Ushuaia</span></div>
+</div>
+
+<div class="dato rojo" data-lang="es">&#9888;&#65039; <strong>Carg&#225; combustible al m&#225;ximo antes de salir.</strong> No hay estaciones entre Ushuaia y Tolhu&#237;n (~100 km). En invierno, cubiertas t&#233;rmicas o con clavos son obligatorias en toda la RN 3.</div>
+<div class="dato rojo" data-lang="en">&#9888;&#65039; <strong>Fill up before leaving.</strong> No gas stations between Ushuaia and Tolhu&#237;n (~100 km). In winter, snow tires mandatory on all of RN 3.</div>
+<div class="dato rojo" data-lang="pt">&#9888;&#65039; <strong>Abastate&#231;a antes de sair.</strong> Sem postos entre Ushuaia e Tolhu&#237;n (~100 km). No inverno, pneus para neve obrigat&#243;rios em toda a RN 3.</div>
+<div class="mapa-wrap">
+<div class="mapa-label">
+<span data-lang="es">&#128506; RN 3 &mdash; Ushuaia &#8596; Tolhu&#237;n &#8596; R&#237;o Grande</span>
+<span data-lang="en">&#128506; RN 3 &mdash; Ushuaia &#8596; Tolhu&#237;n &#8596; R&#237;o Grande</span>
+<span data-lang="pt">&#128506; RN 3 &mdash; Ushuaia &#8596; Tolhu&#237;n &#8596; R&#237;o Grande</span>
+</div>
+<div class="mapa-frame"><iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-69.0,-55.1,-65.0,-53.5&layer=mapnik" loading="lazy" title="Mapa En Camino Ushuaia"></iframe></div>
+</div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">RN 3 Norte &mdash; Ushuaia &#8596; Tolhu&#237;n &#8596; R&#237;o Grande (210 km | ~2h 40m)</div>
+<div class="ruta-titulo" data-lang="en">RN 3 North &mdash; Ushuaia &#8596; Tolhu&#237;n &#8596; R&#237;o Grande (210 km | ~2h 40m)</div>
+<div class="ruta-titulo" data-lang="pt">RN 3 Norte &mdash; Ushuaia &#8596; Tolhu&#237;n &#8596; R&#237;o Grande (210 km | ~2h 40m)</div>
+<div class="ruta-tags"><span class="ruta-tag">210 km</span><span class="ruta-tag">4 paradas</span><span class="ruta-tag">Asfalto</span></div>
+<div class="ruta-paradas">
+<div>
+<div class="parada-km">km 14&ndash;30 &middot; &#127758; Valle de Tierra Mayor</div>
+<div class="parada-txt" data-lang="es">Centros invernales: Llanos del Castor, Haruwen, Valle Hermoso. Trineos, raquetas y fog&#243;n nocturno en invierno. Senderismo y trekking en verano.</div>
+<div class="parada-txt" data-lang="en">Winter centers: Llanos del Castor, Haruwen, Valle Hermoso. Sleds, snowshoes and night bonfire in winter. Hiking and trekking in summer.</div>
+<div class="parada-txt" data-lang="pt">Centros de inverno: Llanos del Castor, Haruwen, Valle Hermoso. Tren&#243;s, raquetes e fogueira noturna no inverno. Caminhadas no ver&#227;o.</div>
+<div class="parada-tiempo">&#9201; 20&ndash;40 min</div>
+</div>
+<div>
+<div class="parada-km">km 26 &middot; &#127940; Cerro Castor &mdash; <span data-lang="es">Centro de Esqu&#237; m&#225;s Austral del Mundo</span><span data-lang="en">World's Southernmost Ski Resort</span><span data-lang="pt">Centro de Esqui mais Austral do Mundo</span></div>
+<div class="parada-txt" data-lang="es">34 pistas, 12 medios de elevaci&#243;n. Temporada: junio&ndash;octubre. Alquiler de equipos, escuela de ski y restaurante en la cima.</div>
+<div class="parada-txt" data-lang="en">34 slopes, 12 lifts. Season: June&ndash;October. Equipment rental, ski school and summit restaurant.</div>
+<div class="parada-txt" data-lang="pt">34 pistas, 12 elevadores. Temporada: junho&ndash;outubro. Aluguel de equipamentos, escola de esqui e restaurante no cume.</div>
+<div class="parada-tiempo">&#9201; 25 min desde Ushuaia</div>
+</div>
+<div>
+<div class="parada-km">km 100 &middot; &#127810; Tolhu&#237;n &mdash; &#9981; <span data-lang="es">Carg&#225; combustible aqu&#237;</span><span data-lang="en">Fill up here</span><span data-lang="pt">Abastate&#231;a aqui</span></div>
+<div class="parada-txt" data-lang="es">Pueblo del coraz&#243;n de la isla. Parada obligatoria para combustible. Vista al Lago Fagnano sobre la falla tect&#243;nica Magallanes. Panadera La Uni&#243;n &mdash; famosa en toda la Patagonia.</div>
+<div class="parada-txt" data-lang="en">Heart of the island village. Mandatory fuel stop. Views of Lake Fagnano over the Magellan fault. La Uni&#243;n bakery &mdash; famous throughout Patagonia.</div>
+<div class="parada-txt" data-lang="pt">Vila no cora&#231;&#227;o da ilha. Parada obrigat&#243;ria para combust&#237;vel. Vista ao Lago Fagnano sobre a falha de Magalh&#227;es. Padaria La Uni&#243;n &mdash; famosa em toda a Patagônia.</div>
+<div class="parada-tiempo">&#9201; 1h 20 min &middot; &#9981; Carg&#225; aqu&#237;</div>
+</div>
+<div>
+<div class="parada-km">km 210 &middot; &#127462;&#127479; R&#237;o Grande &mdash; <span data-lang="es">Conexi&#243;n al continente</span><span data-lang="en">Gateway to the continent</span><span data-lang="pt">Conex&#227;o ao continente</span></div>
+<div class="parada-txt" data-lang="es">Ciudad industrial y pesquera. Desde aqu&#237; segu&#237;s al norte por RN 3 hacia Paso San Sebasti&#225;n y el ferry del Estrecho de Magallanes (Primera Angostura &mdash; TABSA).</div>
+<div class="parada-txt" data-lang="en">Industrial and fishing city. From here continue north on RN 3 toward Paso San Sebasti&#225;n and the Strait of Magellan ferry (Primera Angostura &mdash; TABSA).</div>
+<div class="parada-txt" data-lang="pt">Cidade industrial e pesqueira. Daqui siga ao norte pela RN 3 em dire&#231;&#227;o ao Paso San Sebasti&#225;n e ao ferry do Estreito de Magalh&#227;es (Primera Angostura &mdash; TABSA).</div>
+<div class="parada-tiempo">&#9201; 2h 40 min</div>
+</div>
+</div>
+</div></div>
+
+
+<div class="seccion">
+<div class="seccion-titulo">&#127968; <span data-lang="es">Alojamiento, Gastronom&#237;a &amp; Experiencias</span><span data-lang="en">Accommodation, Food &amp; Experiences</span><span data-lang="pt">Hospedagem, Gastronomia &amp; Experi&#234;ncias</span></div>
+</div>
+<div class="estab-banner">
+<div class="estab-banner-titulo" data-lang="es">Explor&#225; todo lo que ofrece Ushuaia</div>
+<div class="estab-banner-titulo" data-lang="en">Explore everything Ushuaia has to offer</div>
+<div class="estab-banner-titulo" data-lang="pt">Explore tudo o que Ushuaia tem a oferecer</div>
+<div class="estab-banner-sub" data-lang="es">Alojamiento &middot; Gastronom&#237;a &middot; Excursiones &middot; Comercios &middot; Traslados &middot; Bienestar</div>
+<div class="estab-banner-sub" data-lang="en">Accommodation &middot; Food &middot; Excursions &middot; Shopping &middot; Transfers &middot; Wellness</div>
+<div class="estab-banner-sub" data-lang="pt">Hospedagem &middot; Gastronomia &middot; Excurs&#245;es &middot; Com&#233;rcio &middot; Traslados &middot; Bem-estar</div>
+<a href="../categorias.html?destino=Ushuaia" class="estab-banner-btn" data-lang="es">Ver establecimientos en Ushuaia &#8594;</a>
+<a href="../categorias.html?destino=Ushuaia&lang=en" class="estab-banner-btn" data-lang="en">Browse Ushuaia listings &#8594;</a>
+<a href="../categorias.html?destino=Ushuaia&lang=pt" class="estab-banner-btn" data-lang="pt">Ver estabelecimentos em Ushuaia &#8594;</a>
+</div>
+
+<footer>CONF&#205;N &middot; Ushuaia &middot; Tierra del Fuego &middot; Fin del Mundo</footer>
+
+<script>
+function cambiarIdioma(lang, btn) {
+  document.querySelectorAll('.lang-btn-dest').forEach(b => b.classList.remove('activo'));
+  if (btn) btn.classList.add('activo');
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    el.classList.toggle('activo', el.dataset.lang === lang);
+  });
+  localStorage.setItem('confin_lang', lang);
+}
+(function(){
+  const saved = localStorage.getItem('confin_lang') || 'es';
+  const btn = document.querySelector('.lang-btn-dest[onclick*="' + saved + '"]');
+  cambiarIdioma(saved, btn);
+})();
+</script>
+</body>
+</html>
