@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>San Mart&#237;n de los Andes &#183; CONF&#205;N</title>
+<meta name="description" content="Gu&#237;a &#250;til de San Mart&#237;n de los Andes. Emergencias, Chapelco, Lago Lacar, Ruta de los Siete Lagos y todo lo que necesit&#225;s saber.">
+<style>
+:root{--deep:#0E1A1C;--cream:#FAF7F2;--atlantic:#3D6B73;--ash:rgba(163,196,204,0.2);--font-d:'Georgia',serif;--ember:#B84E3A;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:var(--deep);color:var(--cream);min-height:100vh;}
+.nav{position:sticky;top:0;z-index:100;background:var(--deep);display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(61,107,115,0.3);}
+.nav-logo{font-family:var(--font-d);font-size:1rem;color:var(--cream);letter-spacing:0.04em;text-decoration:none;}
+.nav-back{font-size:0.72rem;color:rgba(163,196,204,0.7);text-decoration:none;}
+.lang-selector{display:flex;gap:4px;}
+.lang-btn-dest{font-size:0.6rem;padding:4px 7px;border:1px solid rgba(163,196,204,0.4);background:rgba(14,26,28,0.9);color:rgba(163,196,204,0.7);cursor:pointer;border-radius:3px;font-family:inherit;letter-spacing:0.05em;}
+.lang-btn-dest.activo{background:var(--atlantic);color:#fff;border-color:var(--atlantic);}
+.hero{position:relative;overflow:hidden;min-height:200px;}
+.hero::before{content:'';position:absolute;inset:0;background:url('sma-foto.jpg') center/cover no-repeat;opacity:0.35;}
+.hero-content{position:relative;z-index:1;padding:32px 20px 28px;}
+.hero-tag{font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.6);margin-bottom:10px;}
+.hero-title{font-family:var(--font-d);font-size:clamp(1.8rem,7vw,3rem);font-weight:300;line-height:1.05;margin-bottom:8px;}
+.hero-sub{font-size:0.75rem;color:rgba(163,196,204,0.7);}
+.aviso{background:rgba(184,78,58,0.15);border-left:3px solid #B84E3A;border-radius:0 8px 8px 0;padding:12px 14px;font-size:0.75rem;color:rgba(245,205,195,0.9);line-height:1.5;margin:16px 16px 0;}
+.aviso.naranja{background:rgba(196,151,74,0.12);border-left-color:#C4974A;color:rgba(245,225,185,0.9);}
+.seccion{padding:20px 16px 4px;}
+.seccion-titulo{font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--atlantic);display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.seccion-titulo::after{content:'';flex:1;height:1px;background:var(--ash);}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px 4px;}
+.card{background:rgba(255,255,255,0.06);border-radius:12px;padding:14px;border:1px solid rgba(61,107,115,0.2);display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--atlantic);}
+.card.rojo::before{background:#B84E3A;}
+.card.full{grid-column:1/-1;}
+.card-ico{font-size:1.4rem;}
+.card-nombre{font-size:0.82rem;font-weight:600;color:rgba(250,247,242,0.9);}
+.card-desc{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.4;}
+.card-num{font-size:1rem;font-weight:700;color:#B84E3A;}
+.card-btn{display:block;text-align:center;padding:8px;background:#B84E3A;color:#fff;border-radius:8px;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;margin-top:4px;}
+.info-bloque{padding:0 16px 16px;}
+.info-item{padding:12px 0;border-bottom:1px solid rgba(61,107,115,0.15);display:flex;gap:10px;align-items:flex-start;}
+.info-item:last-child{border-bottom:none;}
+.info-ico{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.info-txt{font-size:0.78rem;color:rgba(163,196,204,0.8);line-height:1.5;}
+.info-txt strong{color:var(--cream);display:block;margin-bottom:2px;}
+.inst-card{background:rgba(61,107,115,0.1);border-radius:12px;padding:16px;margin:0 16px 12px;border:1px solid rgba(61,107,115,0.3);}
+.inst-nombre{font-size:0.85rem;font-weight:600;color:var(--cream);margin-bottom:4px;}
+.inst-desc{font-size:0.72rem;color:rgba(163,196,204,0.7);line-height:1.5;margin-bottom:10px;}
+.inst-btn{display:inline-block;padding:6px 12px;background:rgba(61,107,115,0.3);border-radius:6px;font-size:0.6rem;color:rgba(163,196,204,0.9);text-decoration:none;letter-spacing:0.08em;margin-top:4px;margin-right:6px;}
+.ruta-card{background:rgba(255,255,255,0.05);border-radius:10px;padding:14px;margin:0 16px 10px;border:1px solid rgba(61,107,115,0.2);}
+.ruta-titulo{font-size:0.52rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--atlantic);margin-bottom:6px;}
+.ruta-tags{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
+.ruta-tag{background:rgba(61,107,115,0.2);border-radius:4px;padding:3px 8px;font-size:0.6rem;color:rgba(163,196,204,0.8);}
+.ruta-paradas{border-left:2px solid rgba(61,107,115,0.3);padding-left:12px;display:flex;flex-direction:column;gap:12px;}
+.parada-km{font-size:0.58rem;color:var(--atlantic);font-weight:600;}
+.parada-txt{font-size:0.7rem;color:rgba(163,196,204,0.8);line-height:1.4;margin-top:2px;}
+.parada-tiempo{font-size:0.62rem;color:rgba(163,196,204,0.5);margin-top:3px;}
+.dato{background:rgba(255,255,255,0.04);border-radius:8px;padding:12px 14px;border-left:3px solid var(--atlantic);font-size:0.72rem;color:rgba(196,220,228,0.85);line-height:1.5;margin:0 16px 12px;}
+.dato.rojo{border-left-color:#B84E3A;color:rgba(245,205,195,0.85);}
+.mapa-wrap{margin:0 16px 12px;}
+.mapa-label{font-size:0.5rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.45);margin-bottom:8px;}
+.mapa-frame{width:100%;height:200px;border-radius:10px;overflow:hidden;border:1px solid rgba(61,107,115,0.25);}
+.mapa-frame iframe{width:100%;height:100%;border:0;filter:invert(0.85) hue-rotate(180deg) brightness(0.85);}
+.distancias{padding:0 16px 16px;}
+.dist-item{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(61,107,115,0.12);font-size:0.75rem;}
+.dist-item:last-child{border-bottom:none;}
+.dist-lugar{color:rgba(163,196,204,0.8);}
+.dist-val{color:var(--atlantic);font-weight:600;font-size:0.7rem;}
+.alma{background:rgba(61,107,115,0.08);border-radius:12px;padding:18px;margin:0 16px 16px;border:1px solid rgba(61,107,115,0.2);}
+.alma-titulo{font-family:var(--font-d);font-size:1rem;font-weight:300;color:var(--cream);margin-bottom:12px;font-style:italic;}
+.alma p{font-size:0.75rem;color:rgba(163,196,204,0.75);line-height:1.6;margin-bottom:10px;}
+.alma p:last-child{margin-bottom:0;}
+.estab-banner{margin:0 16px 16px;background:rgba(61,107,115,0.08);border:1px solid rgba(61,107,115,0.25);border-radius:12px;padding:16px;text-align:center;}
+.estab-banner-titulo{font-family:var(--font-d);font-size:1rem;color:var(--cream);margin-bottom:6px;}
+.estab-banner-sub{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.5;margin-bottom:12px;}
+.estab-banner-btn{display:block;padding:11px;background:var(--atlantic);color:#fff;text-decoration:none;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;border-radius:6px;}
+.btn-agenda-dest{position:fixed;bottom:24px;left:18px;z-index:890;width:48px;height:48px;border-radius:50%;background:rgba(61,107,115,0.92);border:1.5px solid rgba(163,196,204,0.35);box-shadow:0 4px 16px rgba(0,0,0,0.4);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.3rem;backdrop-filter:blur(8px);text-decoration:none;}
+footer{text-align:center;padding:24px 16px 80px;font-size:0.55rem;color:rgba(163,196,204,0.25);letter-spacing:0.1em;text-transform:uppercase;}
+[data-lang]{display:none;}
+[data-lang].activo{display:block;}
+span[data-lang]{display:none;}
+span[data-lang].activo{display:inline;}
+</style>
+</head>
+<body>
+<a class="btn-agenda-dest" href="../index.html#agenda" title="Mi agenda CONFIN">&#128214;</a>
+<nav class="nav">
+<a href="../index.html" class="nav-back">&#8592; Volver</a>
+<a href="../index.html" class="nav-logo">CONF&#205;N</a>
+<div class="lang-selector">
+<button class="lang-btn-dest activo" onclick="cambiarIdioma('es',this)">ES</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('en',this)">EN</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('pt',this)">PT</button>
+</div>
+</nav>
+<div class="hero">
+<div class="hero-content">
+<div class="hero-tag">&#127462;&#127479; Neuqu&#233;n &middot; Argentina &middot; Patagonia Andina</div>
+<h1 class="hero-title">San Mart&#237;n de los Andes</h1>
+<div class="hero-sub" data-lang="es">Lago Lacar &middot; Cerro Chapelco &middot; Ruta de los Siete Lagos &middot; Curado por CONF&#205;N</div>
+<div class="hero-sub" data-lang="en">Lake Lacar &middot; Cerro Chapelco &middot; Seven Lakes Route &middot; Curated by CONF&#205;N</div>
+<div class="hero-sub" data-lang="pt">Lago Lacar &middot; Cerro Chapelco &middot; Rota dos Sete Lagos &middot; Curado por CONF&#205;N</div>
+</div>
+</div>
+<div class="aviso naranja" data-lang="es">&#10052; <strong>Temporada Chapelco (jun&ndash;oct):</strong> 29 pistas, 11 medios de elevaci&#243;n, 720 m de desnivel. Nieve natural garantizada julio&ndash;agosto. El centro de esqu&#237; familiar m&#225;s completo de la Patagonia. Cubiertas o cadenas obligatorias en el acceso.</div>
+<div class="aviso naranja" data-lang="en">&#10052; <strong>Chapelco Season (Jun&ndash;Oct):</strong> 29 slopes, 11 lifts, 720 m vertical drop. Natural snow guaranteed July&ndash;August. The most complete family ski center in Patagonia. Snow tyres or chains mandatory on access road.</div>
+<div class="aviso naranja" data-lang="pt">&#10052; <strong>Temporada Chapelco (jun&ndash;out):</strong> 29 pistas, 11 elevadores, 720 m de desnivel. Neve natural garantida julho&ndash;agosto. O centro de esqui familiar mais completo da Patagônia. Pneus de neve ou correntes obrigat&#243;rios no acesso.</div>
+<div class="aviso" style="margin-top:10px;" data-lang="es">&#9981; <strong>Combustible:</strong> Carg&#225; siempre en SMA antes de salir hacia Jun&#237;n de los Andes (43 km), la Ruta de los Siete Lagos (110 km sin estaciones garantizadas) o el Paso Hua Hum (50 km).</div>
+<div class="aviso" style="margin-top:10px;" data-lang="en">&#9981; <strong>Fuel:</strong> Always fill up in SMA before heading to Jun&#237;n de los Andes (43 km), the Seven Lakes Route (110 km without guaranteed stations) or Paso Hua Hum (50 km).</div>
+<div class="aviso" style="margin-top:10px;" data-lang="pt">&#9981; <strong>Combust&#237;vel:</strong> Sempre abastate&#231;a em SMA antes de sair para Jun&#237;n de los Andes (43 km), a Rota dos Sete Lagos (110 km sem postos garantidos) ou o Paso Hua Hum (50 km).</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128680; <span data-lang="es">Emergencias</span><span data-lang="en">Emergencies</span><span data-lang="pt">Emerg&#234;ncias</span></div>
+</div>
+<div class="card-grid">
+<div class="card rojo full">
+<div class="card-ico">&#127973;</div>
+<div class="card-nombre">Hospital Dr. Emi&#233;vich</div>
+<div class="card-desc">Dr. Emi&#233;vich s/n &middot; Alta Complejidad &middot; Guardia 24hs</div>
+<div class="card-num">107 / (02972) 42-7211</div>
+<a href="tel:+542972427211" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#128110;</div>
+<div class="card-nombre">Polic&#237;a / 911</div>
+<div class="card-num">911 / (02972) 42-7379</div>
+<a href="tel:911" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#128657;</div>
+<div class="card-nombre" data-lang="es">Bomberos</div>
+<div class="card-nombre" data-lang="en">Fire Dept.</div>
+<div class="card-nombre" data-lang="pt">Bombeiros</div>
+<div class="card-num">100 / (02972) 42-7200</div>
+<a href="tel:100" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#10052;</div>
+<div class="card-nombre" data-lang="es">Patrulla de Monta&#241;a Chapelco</div>
+<div class="card-nombre" data-lang="en">Chapelco Mountain Patrol</div>
+<div class="card-nombre" data-lang="pt">Patrulha de Montanha Chapelco</div>
+<div class="card-num">(02972) 42-7845</div>
+<a href="tel:+542972427845" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#127807;</div>
+<div class="card-nombre" data-lang="es">Guardaparques PN Lanín</div>
+<div class="card-nombre" data-lang="en">Lanín NP Rangers</div>
+<div class="card-nombre" data-lang="pt">Guardas-parques PN Lan&#237;n</div>
+<div class="card-desc">Emilio Frey 749</div>
+<div class="card-num">(02972) 42-7233</div>
+<a href="tel:+542972427233" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#128737;</div>
+<div class="card-nombre">Defensa Civil</div>
+<div class="card-num">103 / (02972) 42-7777</div>
+<a href="tel:103" class="card-btn">LLAMAR</a>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#10052; <span data-lang="es">Centro de Esqu&#237; Chapelco</span><span data-lang="en">Chapelco Ski Center</span><span data-lang="pt">Centro de Esqui Chapelco</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item">
+<div class="info-ico">&#127940;</div>
+<div class="info-txt">
+<strong data-lang="es">Chapelco &mdash; El esqu&#237; familiar de la Patagonia neuquina</strong>
+<strong data-lang="en">Chapelco &mdash; Family skiing in Neuqu&#233;n Patagonia</strong>
+<strong data-lang="pt">Chapelco &mdash; O esqui familiar da Patagônia neuquina</strong>
+<span data-lang="es">20 km al sur de SMA &middot; 29 pistas (25% principiante, 50% intermedio, 25% experto) &middot; 11 medios de elevaci&#243;n &middot; Desnivel: 720 m &middot; Nieve natural garantizada &middot; Snow park, kids club y escuela de ski &middot; Gastronom&#237;a en la base y cima.</span>
+<span data-lang="en">20 km south of SMA &middot; 29 slopes (25% beginner, 50% intermediate, 25% expert) &middot; 11 lifts &middot; Vertical drop: 720 m &middot; Guaranteed natural snow &middot; Snow park, kids club and ski school &middot; Dining at base and summit.</span>
+<span data-lang="pt">20 km ao sul de SMA &middot; 29 pistas (25% iniciante, 50% intermedi&#225;rio, 25% expert) &middot; 11 elevadores &middot; Desnivel: 720 m &middot; Neve natural garantida &middot; Snow park, kids club e escola de esqui &middot; Gastronomia na base e no cume.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#128241;</div>
+<div class="info-txt">
+<strong data-lang="es">Informaci&#243;n Chapelco</strong>
+<strong data-lang="en">Chapelco Info</strong>
+<strong data-lang="pt">Informa&#231;&#245;es Chapelco</strong>
+<span data-lang="es">Web: chapelco.com &middot; Tel: (02972) 42-7845 &middot; Temporada: junio&ndash;octubre &middot; Acceso por RP 19 desde SMA (20 km, asfalto) &middot; Remises y combis desde el centro de SMA en temporada.</span>
+<span data-lang="en">Web: chapelco.com &middot; Tel: (02972) 42-7845 &middot; Season: June&ndash;October &middot; Access via RP 19 from SMA (20 km, paved) &middot; Taxis and minibuses from SMA center in season.</span>
+<span data-lang="pt">Web: chapelco.com &middot; Tel: (02972) 42-7845 &middot; Temporada: junho&ndash;outubro &middot; Acesso pela RP 19 de SMA (20 km, asfalto) &middot; T&#225;xis e vans do centro de SMA na temporada.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127940;</div>
+<div class="info-txt">
+<strong data-lang="es">C4 Parque de Nieve &mdash; Opci&#243;n econ&#243;mica y familiar</strong>
+<strong data-lang="en">C4 Snow Park &mdash; Budget-friendly family option</strong>
+<strong data-lang="pt">C4 Parque de Neve &mdash; Op&#231;&#227;o econ&#244;mica e familiar</strong>
+<span data-lang="es">14 km de SMA (antes de Chapelco) &middot; Administrado por la Comunidad Mapuche Vera &middot; Trineos, nieve, gastronom&#237;a ancestral &middot; Precio muy inferior a Chapelco &middot; Ideal familias con ni&#241;os.</span>
+<span data-lang="en">14 km from SMA (before Chapelco) &middot; Managed by Mapuche Vera Community &middot; Sleds, snow, ancestral food &middot; Prices well below Chapelco &middot; Ideal for families with children.</span>
+<span data-lang="pt">14 km de SMA (antes do Chapelco) &middot; Gerenciado pela Comunidade Mapuche Vera &middot; Tren&#243;s, neve, gastronomia ancestral &middot; Pre&#231;os bem abaixo do Chapelco &middot; Ideal para fam&#237;lias com crian&#231;as.</span>
+</div>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#8987; <span data-lang="es">&#191;Cu&#225;nto tiempo ten&#233;s?</span><span data-lang="en">How much time do you have?</span><span data-lang="pt">Quanto tempo voc&#234; tem?</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item">
+<div class="info-ico">&#9203;</div>
+<div class="info-txt">
+<strong data-lang="es">2 horas &mdash; Lago y centro</strong><strong data-lang="en">2 hours &mdash; Lake and center</strong><strong data-lang="pt">2 horas &mdash; Lago e centro</strong>
+<span data-lang="es">Costanera del Lago Lacar &middot; Casco hist&#243;rico con arquitectura de mader&#225;men patag&#243;nico &middot; Circuito de chocolater&#237;as artesanales en Av. San Mart&#237;n &middot; Puerto Canoas (embarcadero municipal).</span>
+<span data-lang="en">Lago Lacar waterfront &middot; Historic district with Patagonian timber architecture &middot; Artisan chocolate circuit on Av. San Mart&#237;n &middot; Puerto Canoas (municipal pier).</span>
+<span data-lang="pt">Costaneira do Lago Lacar &middot; Centro hist&#243;rico com arquitetura de madeira patag&#244;nica &middot; Circuito de chocolaterias artesanais na Av. San Mart&#237;n &middot; Puerto Canoas (pier municipal).</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#9875;</div>
+<div class="info-txt">
+<strong data-lang="es">Medio d&#237;a &mdash; Navegaci&#243;n Lago Lacar</strong><strong data-lang="en">Half day &mdash; Lago Lacar cruise</strong><strong data-lang="pt">Meio dia &mdash; Navega&#231;&#227;o Lago Lacar</strong>
+<span data-lang="es">Catamar&#225;n desde Puerto Canoas hasta Hua Hum (paso fronterizo a Chile) y playas remotas del lago. Avistaje de c&#243;ndores en los acantilados y bosques de arrayanes. Temporada oct&ndash;abr.</span>
+<span data-lang="en">Catamaran from Puerto Canoas to Hua Hum (Chile border) and remote lake beaches. Condor spotting on cliffs and arrayán forests. Season Oct&ndash;Apr.</span>
+<span data-lang="pt">Catamar&#227; de Puerto Canoas at&#233; Hua Hum (fronteira Chile) e praias remotas do lago. Avistagem de c&#244;ndores nos penhascos e florestas de arrayán. Temporada out&ndash;abr.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127775;</div>
+<div class="info-txt">
+<strong data-lang="es">D&#237;a completo &mdash; Ruta de los Siete Lagos</strong><strong data-lang="en">Full day &mdash; Seven Lakes Route</strong><strong data-lang="pt">Dia completo &mdash; Rota dos Sete Lagos</strong>
+<span data-lang="es">110 km hacia Bariloche por la RN 40 / RP 234: Lagos Lacar, Machónico, Falkner, Villarino, Espejo, Correntoso y Nahuel Huapi. Una de las rutas esc&#233;nicas m&#225;s impactantes del mundo. Carg&#225; combustible en SMA antes de salir.</span>
+<span data-lang="en">110 km toward Bariloche via RN 40 / RP 234: Lakes Lacar, Machónico, Falkner, Villarino, Espejo, Correntoso and Nahuel Huapi. One of the world's most stunning scenic routes. Fill up in SMA before leaving.</span>
+<span data-lang="pt">110 km rumo a Bariloche pela RN 40 / RP 234: Lagos Lacar, Mach&#243;nico, Falkner, Villarino, Espejo, Correntoso e Nahuel Huapi. Uma das rotas c&#234;nicas mais impactantes do mundo. Abastate&#231;a em SMA antes de sair.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127940;</div>
+<div class="info-txt">
+<strong data-lang="es">D&#237;a completo (invierno) &mdash; Chapelco</strong><strong data-lang="en">Full day (winter) &mdash; Chapelco</strong><strong data-lang="pt">Dia completo (inverno) &mdash; Chapelco</strong>
+<span data-lang="es">20 km al sur. El mejor centro de esqu&#237; familiar del norte patag&#243;nico. Nieve garantizada, escuela de ski, snow park y gastronomía panorámica en la cima con vista al Lago Lacar y el Volcán Lanín.</span>
+<span data-lang="en">20 km south. The best family ski center in northern Patagonia. Guaranteed snow, ski school, snow park and panoramic dining at the summit overlooking Lago Lacar and Volcán Lanín.</span>
+<span data-lang="pt">20 km ao sul. O melhor centro de esqui familiar do norte patag&#244;nico. Neve garantida, escola de esqui, snow park e gastronomia panor&#226;mica no cume com vista ao Lago Lacar e o Vulc&#227;o Lan&#237;n.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127956;</div>
+<div class="info-txt">
+<strong data-lang="es">D&#237;a completo &mdash; Tromen &amp; Volc&#225;n Lan&#237;n</strong><strong data-lang="en">Full day &mdash; Tromen &amp; Lanín Volcano</strong><strong data-lang="pt">Dia completo &mdash; Tromen &amp; Vulc&#227;o Lan&#237;n</strong>
+<span data-lang="es">70 km al norte por RP 60: Lago Tromen y la base del Volc&#225;n Lan&#237;n (3.776 m). Trekking a la base del c&#243;no nival &middot; Paso Mamuil Malal (frontera con Puc&#243;n, Chile).</span>
+<span data-lang="en">70 km north via RP 60: Lake Tromen and the base of Lanín Volcano (3,776 m). Trekking to the snowy cone base &middot; Paso Mamuil Malal (border with Pucón, Chile).</span>
+<span data-lang="pt">70 km ao norte pela RP 60: Lago Tromen e a base do Vulc&#227;o Lan&#237;n (3.776 m). Trekking &#224; base do cone nevado &middot; Paso Mamuil Malal (fronteira com Puc&#243;n, Chile).</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127783;</div>
+<div class="info-txt">
+<strong data-lang="es">Si llueve &mdash; Chocolate y cultura</strong><strong data-lang="en">If it rains &mdash; Chocolate and culture</strong><strong data-lang="pt">Se chover &mdash; Chocolate e cultura</strong>
+<span data-lang="es">Circuito de chocolater&#237;as artesanales en Av. San Mart&#237;n &middot; Museo Primeros Pobladores (San Mart&#237;n y J.M. de Rosas) &middot; Centro Cultural Cotesma (Gral. Roca 1154) &middot; Sala Lidaura Chapitel (Dr. Drury 665).</span>
+<span data-lang="en">Artisan chocolate circuit on Av. San Mart&#237;n &middot; First Settlers Museum (San Mart&#237;n and J.M. de Rosas) &middot; Cotesma Cultural Center (Gral. Roca 1154) &middot; Lidaura Chapitel Hall (Dr. Drury 665).</span>
+<span data-lang="pt">Circuito de chocolaterias artesanais na Av. San Mart&#237;n &middot; Museu dos Primeiros Colonos (San Mart&#237;n e J.M. de Rosas) &middot; Centro Cultural Cotesma (Gral. Roca 1154) &middot; Sala Lidaura Chapitel (Dr. Drury 665).</span>
+</div>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128247; <span data-lang="es">Paseos gratuitos</span><span data-lang="en">Free walks</span><span data-lang="pt">Passeios gratuitos</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item"><div class="info-ico">&#127810;</div><div class="info-txt"><strong data-lang="es">Costanera del Lago Lacar</strong><strong data-lang="en">Lago Lacar Waterfront</strong><strong data-lang="pt">Costaneira do Lago Lacar</strong><span data-lang="es">Paseo peatonal de 3 km bordeando el lago con vista al Volcán Lanín (3.776 m). Puerto Canoas, playa municipal y miradores. Acceso libre.</span><span data-lang="en">3 km pedestrian walk along the lake with views of Lanín Volcano (3,776 m). Puerto Canoas, municipal beach and viewpoints. Free access.</span><span data-lang="pt">Passeio peat&#244;nal de 3 km ao longo do lago com vista ao Vulc&#227;o Lan&#237;n (3.776 m). Puerto Canoas, praia municipal e mirantes. Acesso livre.</span></div></div>
+<div class="info-item"><div class="info-ico">&#127956;</div><div class="info-txt"><strong data-lang="es">Sendero al Mirador Arrayán</strong><strong data-lang="en">Arrayán Viewpoint Trail</strong><strong data-lang="pt">Trilha ao Mirante Arrayán</strong><span data-lang="es">1h 30m desde el centro. Vista panor&#225;mica al Lago Lacar, el volcán Lanín y los bosques de arrayán. Acceso libre.</span><span data-lang="en">1h 30m from center. Panoramic view of Lago Lacar, Lanín volcano and the arrayán forests. Free access.</span><span data-lang="pt">1h 30m do centro. Vista panor&#226;mica ao Lago Lacar, vulc&#227;o Lan&#237;n e as florestas de arrayán. Acesso livre.</span></div></div>
+<div class="info-item"><div class="info-ico">&#127981;</div><div class="info-txt"><strong data-lang="es">Casco hist&#243;rico &mdash; Arquitectura de mader&#225;men</strong><strong data-lang="en">Historic district &mdash; Timber architecture</strong><strong data-lang="pt">Centro hist&#243;rico &mdash; Arquitetura de madeira</strong><span data-lang="es">Av. San Mart&#237;n y calles adyacentes: arquitectura de mader&#225;men patag&#243;nico de principios del siglo XX. Plaza San Mart&#237;n, Municipalidad, Capilla de la Virgen de las Nieves y el antiguo cuartel de Gendarmer&#237;a.</span><span data-lang="en">Av. San Mart&#237;n and surrounding streets: early 20th-century Patagonian timber architecture. Plaza San Mart&#237;n, Municipality, Chapel of Our Lady of the Snows and the old Gendarmerie barracks.</span><span data-lang="pt">Av. San Mart&#237;n e arredores: arquitetura de madeira patag&#244;nica do in&#237;cio do s&#233;c. XX. Plaza San Mart&#237;n, Municipalidade, Capela da Virgem das Neves e o antigo quartel de Gendarmer&#237;a.</span></div></div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128153; <span data-lang="es">Con prop&#243;sito</span><span data-lang="en">With purpose</span><span data-lang="pt">Com prop&#243;sito</span></div>
+</div>
+<div class="inst-card">
+<div class="inst-nombre" data-lang="es">Puente de Luz &mdash; Asociaci&#243;n Civil para Ni&#241;os con Capacidades Diferentes</div>
+<div class="inst-nombre" data-lang="en">Puente de Luz &mdash; Civil Association for Children with Different Abilities</div>
+<div class="inst-nombre" data-lang="pt">Puente de Luz &mdash; Associa&#231;&#227;o Civil para Crian&#231;as com Capacidades Diferentes</div>
+<div class="inst-desc" data-lang="es">Instituci&#243;n pionera en SMA que brinda terapias, educaci&#243;n especial y contenci&#243;n familiar a ni&#241;os con discapacidad intelectual, motriz y sensorial. Venden productos artesanales en ferias locales para autofinanciar sus talleres. Integrada en CONFÍN de por vida sin costo. Av. Koessler 1750 &middot; (02972) 42-8562.</div>
+<div class="inst-desc" data-lang="en">Pioneer institution in SMA providing therapies, special education and family support for children with intellectual, motor and sensory disabilities. They sell artisan products at local fairs to self-fund their workshops. Integrated into CONFÍN for life at no cost. Av. Koessler 1750 &middot; (02972) 42-8562.</div>
+<div class="inst-desc" data-lang="pt">Institui&#231;&#227;o pioneira em SMA que oferece terapias, educa&#231;&#227;o especial e suporte familiar para crian&#231;as com defici&#234;ncia intelectual, motora e sensorial. Vendem produtos artesanais em feiras locais. Integrada ao CONFÍN de por vida sem custo. Av. Koessler 1750 &middot; (02972) 42-8562.</div>
+<a href="tel:+542972428562" class="inst-btn">(02972) 42-8562</a>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#127760; <span data-lang="es">Pasos Fronterizos &mdash; Chile</span><span data-lang="en">Border Crossings &mdash; Chile</span><span data-lang="pt">Passagens Fronteiri&#231;as &mdash; Chile</span></div>
+</div>
+<div class="inst-card" style="margin-bottom:12px;">
+<div class="inst-nombre">&#127462;&#127479; &#8596; &#127464;&#127473; <span data-lang="es">Paso Hua Hum (&#8596; Puerto Pirihueico &mdash; Carretera Austral)</span><span data-lang="en">Paso Hua Hum (&#8596; Puerto Pirihueico &mdash; Carretera Austral)</span><span data-lang="pt">Paso Hua Hum (&#8596; Puerto Pirihueico &mdash; Carretera Austral)</span></div>
+<div class="inst-desc" data-lang="es">SMA &#8594; RP 48 Oeste (50 km) &#8594; Paso Hua Hum &#8594; Puerto Pirihueico (CH) &#8594; Ferry por Lago Pirihueico &#8594; Puerto Fuy &#8594; Carretera Austral (Panguipulli). Ruta espectacular por el bosque del PN Lan&#237;n.<br>&#9203; Horario: 09:00&ndash;21:00 &middot; &#9888;&#65039; SAG Chile: sin frutas, verduras, carnes ni l&#225;cteos.</div>
+<div class="inst-desc" data-lang="en">SMA &#8594; RP 48 West (50 km) &#8594; Paso Hua Hum &#8594; Puerto Pirihueico (CH) &#8594; Ferry across Lake Pirihueico &#8594; Puerto Fuy &#8594; Carretera Austral (Panguipulli). Spectacular route through Lanín NP forest.<br>&#9203; Hours: 09:00&ndash;21:00 &middot; &#9888;&#65039; SAG Chile: no fresh fruit, vegetables, meat or dairy.</div>
+<div class="inst-desc" data-lang="pt">SMA &#8594; RP 48 Oeste (50 km) &#8594; Paso Hua Hum &#8594; Puerto Pirihueico (CH) &#8594; Ferry pelo Lago Pirihueico &#8594; Puerto Fuy &#8594; Carretera Austral (Panguipulli).<br>&#9203; Hor&#225;rio: 09:00&ndash;21:00 &middot; &#9888;&#65039; SAG Chile: sem frutas, verduras, carnes ou latic&#237;nios.</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+<a href="tel:+542972427379" class="inst-btn">Gendarmer&#237;a AR</a>
+<a href="tel:133" class="inst-btn">Carabineros CH</a>
+</div>
+</div>
+<div class="inst-card">
+<div class="inst-nombre">&#127462;&#127479; &#8596; &#127464;&#127473; <span data-lang="es">Paso Mamuil Malal / Tromen (&#8596; Puc&#243;n, Chile)</span><span data-lang="en">Paso Mamuil Malal / Tromen (&#8596; Puc&#243;n, Chile)</span><span data-lang="pt">Paso Mamuil Malal / Tromen (&#8596; Puc&#243;n, Chile)</span></div>
+<div class="inst-desc" data-lang="es">SMA &#8594; RP 60 Norte (70 km) &#8594; Lago Tromen &#8594; Paso Mamuil Malal &#8594; Puc&#243;n (CH) &mdash; 90 km del paso. Paso de alta monta&#241;a con vista directa al Volc&#225;n Lan&#237;n.<br>&#9203; Horario: 09:00&ndash;20:00 &middot; &#9888;&#65039; SAG Chile: restricciones habituales.</div>
+<div class="inst-desc" data-lang="en">SMA &#8594; RP 60 North (70 km) &#8594; Lago Tromen &#8594; Paso Mamuil Malal &#8594; Puc&#243;n (CH) &mdash; 90 km from the pass. High-altitude pass with direct views of Lanín Volcano.<br>&#9203; Hours: 09:00&ndash;20:00 &middot; &#9888;&#65039; SAG Chile: standard restrictions.</div>
+<div class="inst-desc" data-lang="pt">SMA &#8594; RP 60 Norte (70 km) &#8594; Lago Tromen &#8594; Paso Mamuil Malal &#8594; Puc&#243;n (CH) &mdash; 90 km do passo. Passo de alta montanha com vista direta ao Vulc&#227;o Lan&#237;n.<br>&#9203; Hor&#225;rio: 09:00&ndash;20:00.</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#9981; <span data-lang="es">Combustible &amp; Servicios</span><span data-lang="en">Fuel &amp; Services</span><span data-lang="pt">Combust&#237;vel &amp; Servi&#231;os</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item"><div class="info-ico">&#9981;</div><div class="info-txt"><strong>YPF San Mart&#237;n</strong><span>Av. San Mart&#237;n y Obeid &middot; 24hs</span></div></div>
+<div class="info-item"><div class="info-ico">&#9981;</div><div class="info-txt"><strong>Shell Centro</strong><span>Av. Koessler y Mariano Moreno</span></div></div>
+<div class="info-item"><div class="info-ico">&#9992;</div><div class="info-txt"><strong data-lang="es">Aeropuerto Chapelco (CPC)</strong><strong data-lang="en">Chapelco Airport (CPC)</strong><strong data-lang="pt">Aeroporto Chapelco (CPC)</strong><span data-lang="es">22 km al sur (camino a Chapelco) &middot; Vuelos a Buenos Aires (Aerol&#237;neas, LATAM), Bariloche, Neuqu&#233;n y Comodoro.</span><span data-lang="en">22 km south (Chapelco road) &middot; Flights to Buenos Aires (Aerol&#237;neas, LATAM), Bariloche, Neuquén and Comodoro.</span><span data-lang="pt">22 km ao sul (estrada do Chapelco) &middot; Voos para Buenos Aires, Bariloche, Neuqu&#233;n e Comodoro.</span></div></div>
+<div class="info-item"><div class="info-ico">&#128651;</div><div class="info-txt"><strong data-lang="es">Terminal de &#211;mnibus</strong><strong data-lang="en">Bus Terminal</strong><strong data-lang="pt">Terminal de &#212;nibus</strong><span data-lang="es">Villegas y Juez del Valle. Servicios a Buenos Aires (20 hs), Neuqu&#233;n (5 hs), Bariloche (4 hs), Jun&#237;n de los Andes (45 min).</span><span data-lang="en">Villegas and Juez del Valle. Services to Buenos Aires (20 hs), Neuqu&#233;n (5 hs), Bariloche (4 hs), Jun&#237;n de los Andes (45 min).</span><span data-lang="pt">Villegas e Juez del Valle. Servi&#231;os para Buenos Aires (20 hs), Neuqu&#233;n (5 hs), Bariloche (4 hs), Jun&#237;n de los Andes (45 min).</span></div></div>
+<div class="info-item"><div class="info-ico">&#8505;&#65039;</div><div class="info-txt"><strong data-lang="es">Secretar&#237;a de Turismo</strong><strong data-lang="en">Tourism Office</strong><strong data-lang="pt">Secretaria de Turismo</strong><span>Av. San Mart&#237;n y Roca &middot; (02972) 42-7347</span></div></div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo" style="font-size:0.65rem;">&#128690; <span data-lang="es">En Camino &mdash; Rutas desde San Mart&#237;n de los Andes</span><span data-lang="en">On the Road &mdash; Routes from San Mart&#237;n de los Andes</span><span data-lang="pt">Na Estrada &mdash; Rotas de San Mart&#237;n de los Andes</span></div>
+</div>
+<div class="mapa-wrap">
+<div class="mapa-label">
+<span data-lang="es">&#128506; RN 40 / RP 234 &mdash; SMA &#8596; Siete Lagos / Bariloche / Jun&#237;n / Paso Hua Hum / Mamuil Malal</span>
+<span data-lang="en">&#128506; RN 40 / RP 234 &mdash; SMA &#8596; Seven Lakes / Bariloche / Jun&#237;n / Paso Hua Hum / Mamuil Malal</span>
+<span data-lang="pt">&#128506; RN 40 / RP 234 &mdash; SMA &#8596; Sete Lagos / Bariloche / Jun&#237;n / Paso Hua Hum / Mamuil Malal</span>
+</div>
+<div class="mapa-frame"><iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-72.5,-41.5,-70.5,-39.5&layer=mapnik" loading="lazy" title="Mapa En Camino San Martin de los Andes"></iframe></div>
+</div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">RP 234 &mdash; Ruta de los Siete Lagos (SMA &#8596; Bariloche, 110 km | ~3h)</div>
+<div class="ruta-titulo" data-lang="en">RP 234 &mdash; Seven Lakes Route (SMA &#8596; Bariloche, 110 km | ~3h)</div>
+<div class="ruta-titulo" data-lang="pt">RP 234 &mdash; Rota dos Sete Lagos (SMA &#8596; Bariloche, 110 km | ~3h)</div>
+<div class="ruta-tags"><span class="ruta-tag">110 km</span><span class="ruta-tag">Asfalto + ripio</span><span class="ruta-tag">7 Lagos</span></div>
+<div class="dato rojo" data-lang="es">&#9888;&#65039; Sin estaciones de servicio garantizadas en los 110 km. Carg&#225; el tanque al 100% en SMA antes de salir. En invierno la ruta puede cerrarse por nieve.</div>
+<div class="dato rojo" data-lang="en">&#9888;&#65039; No guaranteed gas stations in the 110 km. Fill to 100% in SMA before leaving. In winter the route may close due to snow.</div>
+<div class="dato rojo" data-lang="pt">&#9888;&#65039; Sem postos garantidos nos 110 km. Encha 100% em SMA antes de sair. No inverno a rota pode fechar por neve.</div>
+<div class="ruta-paradas">
+<div>
+<div class="parada-km">km 0 &middot; &#127748; Lago Lacar &mdash; <span data-lang="es">Partida</span><span data-lang="en">Departure</span><span data-lang="pt">Partida</span></div>
+<div class="parada-txt" data-lang="es">Vista del Volc&#225;n Lan&#237;n al norte. Primer lago de los siete.</div>
+<div class="parada-txt" data-lang="en">View of Lanín Volcano to the north. First of the seven lakes.</div>
+<div class="parada-txt" data-lang="pt">Vista do Vulc&#227;o Lan&#237;n ao norte. Primeiro dos sete lagos.</div>
+</div>
+<div>
+<div class="parada-km">km 35 &middot; &#127748; Lagos Falkner &amp; Villarino</div>
+<div class="parada-txt" data-lang="es">Miradores con vistas a los dos lagos entre bosques de Coihue y Cipr&#233;s. Parada de foto obligatoria.</div>
+<div class="parada-txt" data-lang="en">Viewpoints overlooking both lakes between Coihue and Cypress forests. Mandatory photo stop.</div>
+<div class="parada-txt" data-lang="pt">Mirantes com vistas aos dois lagos entre florestas de Coihue e Cipr&#233;s. Parada obrigat&#243;ria para fotos.</div>
+<div class="parada-tiempo">&#9201; 45 min desde SMA</div>
+</div>
+<div>
+<div class="parada-km">km 70 &middot; &#127748; Lagos Espejo &amp; Correntoso</div>
+<div class="parada-txt" data-lang="es">Lago Espejo: el m&#225;s tranquilo y cristalino de la ruta &middot; Lago Correntoso: r&#237;o m&#225;s corto del mundo (200 m) que lo conecta con el Nahuel Huapi.</div>
+<div class="parada-txt" data-lang="en">Lake Espejo: the calmest and clearest on the route &middot; Lake Correntoso: world's shortest river (200 m) connecting it to Nahuel Huapi.</div>
+<div class="parada-txt" data-lang="pt">Lago Espejo: o mais tranquilo e cristalino da rota &middot; Lago Correntoso: rio mais curto do mundo (200 m) que o conecta ao Nahuel Huapi.</div>
+<div class="parada-tiempo">&#9201; 1h 45 min desde SMA</div>
+</div>
+<div>
+<div class="parada-km">km 110 &middot; &#9981; Villa La Angostura &mdash; <span data-lang="es">Carg&#225; y conectate</span><span data-lang="en">Fill up and connect</span><span data-lang="pt">Abastate&#231;a e conecte</span></div>
+<div class="parada-txt" data-lang="es">Primer punto con servicios completos. YPF disponible. PN Los Arrayanes a 12 km. Cerro Bayo (esqu&#237;) a 9 km.</div>
+<div class="parada-txt" data-lang="en">First point with full services. YPF available. Los Arrayanes NP 12 km away. Cerro Bayo (skiing) 9 km away.</div>
+<div class="parada-txt" data-lang="pt">Primeiro ponto com servi&#231;os completos. YPF dispon&#237;vel. PN Los Arrayanes a 12 km. Cerro Bayo (esqui) a 9 km.</div>
+<div class="parada-tiempo">&#9201; 3h desde SMA &middot; &#9981; carg&#225; aqu&#237;</div>
+</div>
+</div>
+</div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">RN 40 Norte &mdash; SMA &#8596; Jun&#237;n de los Andes &#8596; Tromen (43&ndash;113 km)</div>
+<div class="ruta-titulo" data-lang="en">RN 40 North &mdash; SMA &#8596; Jun&#237;n de los Andes &#8596; Tromen (43&ndash;113 km)</div>
+<div class="ruta-titulo" data-lang="pt">RN 40 Norte &mdash; SMA &#8596; Jun&#237;n de los Andes &#8596; Tromen (43&ndash;113 km)</div>
+<div class="ruta-tags"><span class="ruta-tag">43&ndash;113 km</span><span class="ruta-tag">Asfalto</span><span class="ruta-tag">Volc&#225;n Lan&#237;n</span></div>
+<div class="ruta-paradas">
+<div>
+<div class="parada-km">km 43 &middot; &#9981; Jun&#237;n de los Andes &mdash; <span data-lang="es">Capital de la trucha</span><span data-lang="en">Trout capital</span><span data-lang="pt">Capital da truta</span></div>
+<div class="parada-txt" data-lang="es">Capital nacional de la trucha. Rio Chimehuin y Curruhu&#233; &mdash; los mejores ríos de pesca de trucha de la Patagonia. YPF disponible. Acceso al PN Lan&#237;n.</div>
+<div class="parada-txt" data-lang="en">National trout capital. Chimehuin and Curruhué rivers &mdash; Patagonia's best trout fishing. YPF available. Access to Lanín NP.</div>
+<div class="parada-txt" data-lang="pt">Capital nacional da truta. Rios Chimehuin e Curruh&#250;e &mdash; melhores rios de pesca de truta da Patagônia. YPF dispon&#237;vel. Acesso ao PN Lan&#237;n.</div>
+<div class="parada-tiempo">&#9201; 45 min desde SMA</div>
+</div>
+<div>
+<div class="parada-km">km 113 &middot; &#127956; Lago Tromen &mdash; <span data-lang="es">Base del Lan&#237;n</span><span data-lang="en">Lanín base</span><span data-lang="pt">Base do Lan&#237;n</span></div>
+<div class="parada-txt" data-lang="es">Vista directa al cono nevado del Volc&#225;n Lan&#237;n (3.776 m). Paso Mamuil Malal hacia Puc&#243;n (Chile).</div>
+<div class="parada-txt" data-lang="en">Direct view of the snow-capped Lanín Volcano cone (3,776 m). Paso Mamuil Malal toward Pucón (Chile).</div>
+<div class="parada-txt" data-lang="pt">Vista direta ao cone nevado do Vulc&#227;o Lan&#237;n (3.776 m). Paso Mamuil Malal rumo a Puc&#243;n (Chile).</div>
+<div class="parada-tiempo">&#9201; 1h 30 min desde SMA</div>
+</div>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128205; <span data-lang="es">Distancias desde San Mart&#237;n de los Andes</span><span data-lang="en">Distances from San Mart&#237;n de los Andes</span><span data-lang="pt">Dist&#226;ncias de San Mart&#237;n de los Andes</span></div>
+</div>
+<div class="distancias">
+<div class="dist-item"><span class="dist-lugar">Aeropuerto CPC</span><span class="dist-val">22 km &middot; 25 min</span></div>
+<div class="dist-item"><span class="dist-lugar">Chapelco</span><span class="dist-val">20 km &middot; 25 min</span></div>
+<div class="dist-item"><span class="dist-lugar" data-lang="es">Paso Hua Hum (Chile)</span><span class="dist-lugar" data-lang="en">Paso Hua Hum (Chile)</span><span class="dist-lugar" data-lang="pt">Paso Hua Hum (Chile)</span><span class="dist-val">50 km &middot; 45 min</span></div>
+<div class="dist-item"><span class="dist-lugar">Jun&#237;n de los Andes</span><span class="dist-val">43 km &middot; 45 min</span></div>
+<div class="dist-item"><span class="dist-lugar" data-lang="es">Lago Tromen &amp; Paso Mamuil Malal</span><span class="dist-lugar" data-lang="en">Lago Tromen &amp; Paso Mamuil Malal</span><span class="dist-lugar" data-lang="pt">Lago Tromen &amp; Paso Mamuil Malal</span><span class="dist-val">113 km &middot; 1h 30 min</span></div>
+<div class="dist-item"><span class="dist-lugar">Villa La Angostura</span><span class="dist-val">110 km &middot; 3h (7 Lagos)</span></div>
+<div class="dist-item"><span class="dist-lugar">Bariloche</span><span class="dist-val">200 km &middot; 4h (7 Lagos) / 3h RN 234</span></div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#127775; <span data-lang="es">El alma de este lugar</span><span data-lang="en">The soul of this place</span><span data-lang="pt">A alma deste lugar</span></div>
+</div>
+<div class="alma">
+<div class="alma-titulo" data-lang="es">La villa que el Ejrcito plant&#243; junto al lago y el volc&#225;n que los mapuches consideran sagrado</div>
+<div class="alma-titulo" data-lang="en">The village the Army planted beside the lake and the volcano the Mapuche consider sacred</div>
+<div class="alma-titulo" data-lang="pt">O village que o Ex&#233;rcito plantou &#224; beira do lago e o vulc&#227;o que os Mapuche consideram sagrado</div>
+<p data-lang="es">&#128218; San Mart&#237;n de los Andes fue fundada el 4 de febrero de 1898 como fortaleza militar para asegurar la soberan&#237;a en la frontera con Chile. Desde sus or&#237;genes fue pensada distinta a otras ciudades patag&#243;nicas: tejados de madera, arquitectura arm&#243;nica y restricci&#243;n de carteles luminosos que se mantiene hasta hoy. El Volc&#225;n Lan&#237;n (3.776 m) es sagrado para el pueblo Mapuche &mdash; el permiso para escalar debe tramitarse con la Confederaci&#243;n Mapuche Neuquina.</p>
+<p data-lang="en">&#128218; San Martín de los Andes was founded on February 4, 1898 as a military fortress to secure sovereignty on the Chilean border. From its origins it was designed differently from other Patagonian cities: wooden rooftops, harmonious architecture and restrictions on illuminated signs still in force today. Lanín Volcano (3,776 m) is sacred to the Mapuche people &mdash; climbing permits must be processed with the Neuquén Mapuche Confederation.</p>
+<p data-lang="pt">&#128218; San Mart&#237;n de los Andes foi fundada em 4 de fevereiro de 1898 como fortaleza militar. Desde sua origem foi projetada diferente de outras cidades patag&#244;nicas: telhados de madeira, arquitetura harm&#244;nica e restri&#231;&#227;o de cart&#245;es luminosos que se mant&#233;m at&#233; hoje. O Vulc&#227;o Lan&#237;n (3.776 m) &#233; sagrado para o povo Mapuche.</p>
+<p data-lang="es">&#129414; <strong>Fauna emblem&#225;tica:</strong> Huemul (en el PN Lan&#237;n), C&#243;ndor Andino, Pato de los Torrentes, Carpintero Patag&#243;nico, Trucha Arco Iris y Marrón (los mejores ríos de pesca de la Patagonia) y Puma Concolor.</p>
+<p data-lang="en">&#129414; <strong>Signature wildlife:</strong> Huemul (in Lanín NP), Andean Condor, Torrent Duck, Patagonian Woodpecker, Rainbow and Brown Trout (Patagonia's best fishing rivers) and Puma.</p>
+<p data-lang="pt">&#129414; <strong>Fauna emblem&#225;tica:</strong> Huemul (no PN Lan&#237;n), C&#244;ndor-dos-Andes, Pato-dos-Torrentes, Pica-pau Patag&#244;nico, Truta Arco-&#237;ris e Marrom e Puma.</p>
+<p data-lang="es">&#127807; <strong>Flora y paisaje:</strong> Bosque andino de Coihue, Arrayán (de corteza naranja &#250;nica), Radal y Cipr&#233;s &middot; Araucarias en las laderas altas del Lan&#237;n &middot; El cono nevado del volc&#225;n dominando el lago y el pueblo.</p>
+<p data-lang="en">&#127807; <strong>Flora &amp; landscape:</strong> Andean forest of Coihue, Arrayán (unique orange bark), Radal and Cypress &middot; Araucarias on Lanín's upper slopes &middot; The volcano's snow-capped cone dominating lake and village.</p>
+<p data-lang="pt">&#127807; <strong>Flora e paisagem:</strong> Floresta andina de Coihue, Arrayán (casca laranja &#250;nica), Radal e Cipr&#233;s &middot; Araucárias nas encostas altas do Lan&#237;n &middot; O cone nevado do vulc&#227;o dominando o lago e o village.</p>
+<p data-lang="es">&#128161; <strong>&#191;Sab&#237;as que...?</strong> San Mart&#237;n de los Andes es la &#250;nica ciudad de Argentina que proh&#237;be por ordenanza municipal los carteles luminosos en el casco hist&#243;rico. Eso explica por qu&#233; es la ciudad m&#225;s bella de la Patagonia para muchos visitantes: no tiene el ruido visual del resto de las ciudades turísticas.</p>
+<p data-lang="en">&#128161; <strong>Did you know?</strong> San Martín de los Andes is the only city in Argentina that bans illuminated signs in the historic district by municipal ordinance. That's why many visitors consider it Patagonia's most beautiful city: it lacks the visual noise of other tourist cities.</p>
+<p data-lang="pt">&#128161; <strong>Voc&#234; sabia?</strong> San Mart&#237;n de los Andes &#233; a &#250;nica cidade da Argentina que pro&#237;be por decreto municipal os cart&#245;es luminosos no centro hist&#243;rico. Por isso muitos visitantes a consideram a cidade mais bela da Patagônia: n&#227;o tem o ru&#237;do visual das outras cidades tur&#237;sticas.</p>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#127968; <span data-lang="es">Alojamiento, Gastronom&#237;a &amp; Experiencias</span><span data-lang="en">Accommodation, Food &amp; Experiences</span><span data-lang="pt">Hospedagem, Gastronomia &amp; Experi&#234;ncias</span></div>
+</div>
+<div class="estab-banner">
+<div class="estab-banner-titulo" data-lang="es">Explor&#225; todo lo que ofrece San Mart&#237;n de los Andes</div>
+<div class="estab-banner-titulo" data-lang="en">Explore everything San Mart&#237;n de los Andes has to offer</div>
+<div class="estab-banner-titulo" data-lang="pt">Explore tudo o que San Mart&#237;n de los Andes tem a oferecer</div>
+<div class="estab-banner-sub" data-lang="es">Alojamiento &middot; Gastronom&#237;a &middot; Esqu&#237; &middot; Pesca &middot; Trekking &middot; Navegaci&#243;n</div>
+<div class="estab-banner-sub" data-lang="en">Accommodation &middot; Food &middot; Skiing &middot; Fishing &middot; Trekking &middot; Boating</div>
+<div class="estab-banner-sub" data-lang="pt">Hospedagem &middot; Gastronomia &middot; Esqui &middot; Pesca &middot; Trekking &middot; Navega&#231;&#227;o</div>
+<a href="../categorias.html?destino=San+Martin+de+los+Andes" class="estab-banner-btn" data-lang="es">Ver establecimientos en SMA &#8594;</a>
+<a href="../categorias.html?destino=San+Martin+de+los+Andes&lang=en" class="estab-banner-btn" data-lang="en">Browse San Mart&#237;n listings &#8594;</a>
+<a href="../categorias.html?destino=San+Martin+de+los+Andes&lang=pt" class="estab-banner-btn" data-lang="pt">Ver estabelecimentos em SMA &#8594;</a>
+</div>
+<footer>CONF&#205;N &middot; San Mart&#237;n de los Andes &middot; Neuqu&#233;n &middot; Patagonia Andina &middot; PN Lan&#237;n</footer>
+<script>
+function cambiarIdioma(lang,btn){
+document.querySelectorAll('.lang-btn-dest').forEach(b=>b.classList.remove('activo'));
+if(btn)btn.classList.add('activo');
+document.querySelectorAll('[data-lang]').forEach(el=>{
+el.classList.toggle('activo',el.dataset.lang===lang);
+});
+localStorage.setItem('confin_lang',lang);
+}
+(function(){
+var saved=localStorage.getItem('confin_lang')||'es';
+var btn=document.querySelector('.lang-btn-dest[onclick*="\''+saved+'\'"]');
+cambiarIdioma(saved,btn);
+})();
+</script>
+</body>
+</html>
