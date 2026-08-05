@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>El Bolsón - Teatro del Lago y Lago Llanquihue - CONFIN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FAF8F5;--atlantic:#3D6B73;--deep:#0E1A1C;--ember:#B8673A;--pine:#3D5247;--font-d:'Cormorant Garamond',Georgia,serif;--font-b:'DM Sans',sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--deep);color:var(--cream);font-family:var(--font-b);font-weight:300;}
+.btn-agenda-dest{position:fixed;bottom:22px;right:18px;z-index:100;width:48px;height:48px;border-radius:50%;background:var(--atlantic);color:#fff;font-size:1.3rem;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.4);}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:rgba(14,26,28,0.97);border-bottom:1px solid rgba(61,107,115,0.25);position:sticky;top:0;z-index:50;}
+.nav-back{font-size:0.72rem;color:rgba(163,196,204,0.7);text-decoration:none;letter-spacing:0.06em;}
+.nav-logo{font-family:var(--font-d);font-size:1rem;color:var(--cream);letter-spacing:0.04em;text-decoration:none;}
+.lang-selector{display:flex;gap:4px;}
+.lang-btn-dest{background:none;border:1px solid rgba(61,107,115,0.4);color:rgba(163,196,204,0.6);padding:3px 7px;font-size:0.55rem;letter-spacing:0.1em;cursor:pointer;font-family:var(--font-b);}
+.lang-btn-dest.activo{background:var(--atlantic);color:#fff;border-color:var(--atlantic);}
+.hero{min-height:220px;background:linear-gradient(145deg,#0a1a14,#112218,#0e1c16);display:flex;align-items:flex-end;padding:24px 20px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:url('el-bolson-foto.jpg') center/cover no-repeat;opacity:0.35;}
+.hero-content{position:relative;z-index:2;}
+.hero-tag{font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.7);margin-bottom:6px;}
+.hero-title{font-family:var(--font-d);font-size:2.4rem;font-weight:300;line-height:1;margin-bottom:6px;}
+.hero-sub{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.5;}
+.section{padding:20px 16px;border-bottom:1px solid rgba(61,107,115,0.12);}
+.section-label{font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(163,196,204,0.4);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.section-label::after{content:'';flex:1;height:1px;background:rgba(61,107,115,0.2);}
+.emerg-card{background:rgba(184,78,58,0.12);border:1px solid rgba(184,78,58,0.3);border-radius:10px;padding:14px;margin-bottom:10px;}
+.emerg-nombre{font-size:0.88rem;font-weight:400;margin-bottom:2px;}
+.emerg-sub{font-size:0.65rem;color:rgba(163,196,204,0.5);margin-bottom:8px;}
+.emerg-tel{font-size:1.4rem;font-weight:400;color:#E8A090;margin-bottom:8px;}
+.btn-llamar{display:block;background:rgba(184,78,58,0.8);color:#fff;text-align:center;padding:10px;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;border-radius:6px;font-family:var(--font-b);}
+.emerg-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.ruta-card{background:rgba(61,107,115,0.08);border:1px solid rgba(61,107,115,0.2);border-radius:10px;padding:14px;margin-bottom:10px;cursor:pointer;}
+.ruta-titulo{font-family:var(--font-d);font-size:1.1rem;margin-bottom:4px;}
+.ruta-badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
+.badge{font-size:0.52rem;letter-spacing:0.1em;padding:2px 8px;border:1px solid rgba(61,107,115,0.4);color:rgba(163,196,204,0.7);border-radius:20px;}
+.parada{padding:8px 0;border-bottom:1px solid rgba(61,107,115,0.1);font-size:0.72rem;color:rgba(163,196,204,0.7);line-height:1.5;}
+.parada:last-child{border-bottom:none;}
+.parada strong{color:rgba(163,196,204,0.9);display:block;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2px;}
+.mapa-frame{width:100%;height:240px;border:none;border-radius:10px;display:block;}
+.inst-card{background:rgba(61,107,115,0.06);border-left:3px solid var(--atlantic);padding:12px 14px;margin-bottom:8px;border-radius:0 8px 8px 0;}
+.inst-icon{font-size:1.1rem;margin-bottom:6px;}
+.inst-titulo{font-size:0.8rem;font-weight:400;margin-bottom:4px;}
+.inst-desc{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.5;}
+.dist-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(61,107,115,0.1);font-size:0.78rem;}
+.dist-item:last-child{border-bottom:none;}
+.dist-km{color:var(--atlantic);font-size:0.72rem;letter-spacing:0.04em;}
+.alma-titulo{font-family:var(--font-d);font-size:1.6rem;font-weight:300;font-style:italic;margin-bottom:10px;color:rgba(250,248,245,0.9);}
+.alma-texto{font-size:0.8rem;line-height:1.8;color:rgba(163,196,204,0.7);}
+.banner-estab{display:block;background:linear-gradient(135deg,rgba(61,107,115,0.15),rgba(61,107,115,0.08));border:1px solid rgba(61,107,115,0.3);padding:16px 20px;text-decoration:none;border-radius:10px;margin:16px;}
+.banner-estab-titulo{font-family:var(--font-d);font-size:1.1rem;color:var(--cream);margin-bottom:4px;}
+.banner-estab-sub{font-size:0.65rem;color:rgba(163,196,204,0.6);letter-spacing:0.06em;}
+footer{text-align:center;padding:24px 16px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.25);}
+[data-lang="en"],[data-lang="pt"]{display:none;}
+</style>
+</head>
+<body>
+<a class="btn-agenda-dest" href="../index.html#agenda">&#128214;</a>
+<nav class="nav">
+<a href="../index.html" class="nav-back">&#8592; Volver</a>
+<a href="../index.html" class="nav-logo">CONF&#205;N</a>
+<div class="lang-selector">
+<button class="lang-btn-dest activo" onclick="cambiarIdioma('es',this)">ES</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('en',this)">EN</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('pt',this)">PT</button>
+</div>
+</nav>
+
+<div class="hero">
+<div class="hero-content">
+<div class="hero-tag">🇦🇷 Río Negro &middot; Argentina &middot; Comarca Andina</div>
+<h1 class="hero-title">El Bolsón</h1>
+<div class="hero-sub" data-lang="es">Feria Artesanal &middot; Cerro Piltriquitrón &middot; Lúpulo &middot; Curado por CONFÍN</div>
+<div class="hero-sub" data-lang="en">Craft Fair &middot; Cerro Piltriquitrón &middot; Hops &middot; Curated by CONFÍN</div>
+<div class="hero-sub" data-lang="pt">Teatro del Lago &middot; Patrim&ocirc;nio Alem&atilde;o &middot; Lago Llanquihue &middot; Curado por CONF&Iacute;N</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">&#128680; <span data-lang="es">Emergencias</span><span data-lang="en">Emergencies</span><span data-lang="pt">Emerg&ecirc;ncias</span></div>
+<div class="emerg-card card rojo">
+<div class="emerg-nombre" data-lang="es">Hospital Público de El Bolsón</div>
+<div class="emerg-nombre" data-lang="en">Hospital Público de El Bolsón</div>
+<div class="emerg-nombre" data-lang="pt">Hospital Público de El Bolsón</div>
+<div class="emerg-sub">El Bolsón</div>
+<div class="emerg-tel">(0294) 449-2258 / 107</div>
+<a href="tel:+5402944492258" class="btn-llamar"><span data-lang="es">LLAMAR</span><span data-lang="en">CALL</span><span data-lang="pt">LIGAR</span></a>
+</div>
+<div class="emerg-grid">
+<div class="emerg-card card rojo">
+<div class="emerg-nombre">Policía / Comisaría 12ª</div>
+<div class="emerg-sub">Emergencias</div>
+<div class="emerg-tel">911 / (0294) 449-2200</div>
+<a href="tel:911" class="btn-llamar"><span data-lang="es">LLAMAR</span><span data-lang="en">CALL</span><span data-lang="pt">LIGAR</span></a>
+</div>
+<div class="emerg-card card rojo">
+<div class="emerg-nombre">Bomberos Voluntarios</div>
+<div class="emerg-sub">Emergencias</div>
+<div class="emerg-tel">100 / (0294) 449-2345</div>
+<a href="tel:100" class="btn-llamar"><span data-lang="es">LLAMAR</span><span data-lang="en">CALL</span><span data-lang="pt">LIGAR</span></a>
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">&#128652; <span data-lang="es">En Camino</span><span data-lang="en">On the Way</span><span data-lang="pt">No Caminho</span></div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">Desde Bariloche — RN 40</div>
+<div class="ruta-titulo" data-lang="en">From Bariloche — RN 40</div>
+<div class="ruta-titulo" data-lang="pt">De Bariloche — RN 40</div>
+<div class="ruta-badges"><span class="badge">130 km</span><span class="badge"><span data-lang="es">Asfalto</span><span data-lang="en">Paved</span><span data-lang="pt">Asfalto</span></span></div>
+<div class="parada parada-km"><strong>km 0</strong><span data-lang="es">Bariloche → RN 40 Sur, bordeando el Nahuel Huapi y luego el Río Negro</span><span data-lang="en">Bariloche → RN 40 South, along Nahuel Huapi then Río Negro river</span><span data-lang="pt">Bariloche → RN 40 Sul, margeando o Nahuel Huapi e depois o Rio Negro</span></div>
+<div class="parada parada-km"><strong>km 130</strong><span data-lang="es">El Bolsón → Feria Artesanal (martes y sábados), Plaza Pagano, acceso al Piltriquitrón</span><span data-lang="en">El Bolsón → Craft Fair (Tue & Sat), Plaza Pagano, Piltriquitrón access</span><span data-lang="pt">El Bolsón → Feira Artesanal (ter e sáb), Plaza Pagano, acesso ao Piltriquitrón</span></div>
+<div class="parada parada-km"><strong>km 150</strong><span data-lang="es">Osorno &rarr; Carga de combustible. Ruta 5 Sur hasta El Bolsón</span><span data-lang="en">Osorno &rarr; Fuel stop. Route 5 South to El Bolsón</span><span data-lang="pt">Osorno &rarr; Abastecimento. Rota 5 Sul até El Bolsón</span></div>
+<div class="parada parada-km"><strong>km 330</strong><span data-lang="es">El Bolsón &rarr; Salida Ruta 5, bajar a El Bolsón Bajo</span><span data-lang="en">El Bolsón &rarr; Exit Route 5, descend to El Bolsón Bajo</span><span data-lang="pt">El Bolsón &rarr; Saída Rota 5, descer para El Bolsón Baixo</span></div>
+</div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">Desde Puerto Montt &mdash; Ruta 5 Sur</div>
+<div class="ruta-titulo" data-lang="en">From Puerto Montt &mdash; Route 5 South</div>
+<div class="ruta-titulo" data-lang="pt">De Puerto Montt &mdash; Rota 5 Sul</div>
+<div class="ruta-badges"><span class="badge">55 km</span><span class="badge"><span data-lang="es">Asfalto</span><span data-lang="en">Paved</span><span data-lang="pt">Asfalto</span></span></div>
+<div class="parada parada-km"><strong>km 55</strong><span data-lang="es">Puerto Montt (Aeropuerto Tepual PMC) &rarr; Ruta 5 Norte hasta El Bolsón. Vistas al Llanquihue y Volc&aacute;n Osorno.</span><span data-lang="en">Puerto Montt (Tepual Airport PMC) &rarr; Route 5 North to El Bolsón. Views of Llanquihue and Osorno volcano.</span><span data-lang="pt">Puerto Montt (Aeroporto Tepual PMC) &rarr; Rota 5 Norte até El Bolsón. Vistas ao Llanquihue e Vulcão Osorno.</span></div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">&#128506; <span data-lang="es">Mapa</span><span data-lang="en">Map</span><span data-lang="pt">Mapa</span></div>
+<iframe class="mapa-frame" src="https://www.openstreetmap.org/export/embed.html?bbox=-73.07,-41.15,-73.01,-41.09&layer=mapnik&marker=-41.1194,-73.0442" loading="lazy" title="Mapa El Bolsón"></iframe>
+</div>
+
+<div class="section">
+<div class="section-label">&#9200; <span data-lang="es">Con Prop&oacute;sito</span><span data-lang="en">With Purpose</span><span data-lang="pt">Com Prop&oacute;sito</span></div>
+<div class="inst-card">
+<div class="inst-icon">&#9201;</div>
+<div class="inst-titulo" data-lang="es">2 horas &mdash; Costanera del Lago</div>
+<div class="inst-titulo" data-lang="en">2 hours &mdash; Lakeside Promenade</div>
+<div class="inst-titulo" data-lang="pt">2 horas &mdash; Costaneira do Lago</div>
+<div class="inst-desc" data-lang="es">Costanera de El Bolsón Bajo con vista al Lago Llanquihue y al Volc&aacute;n Osorno. Caf&eacute;s y reposter&iacute;a alemana (Kuchen).</div>
+<div class="inst-desc" data-lang="en">El Bolsón Bajo waterfront with views of Lake Llanquihue and Volc&aacute;n Osorno. Cafes and German pastries (Kuchen).</div>
+<div class="inst-desc" data-lang="pt">Costaneira de El Bolsón Baixo com vista ao Lago Llanquihue e ao Vulcão Osorno. Cafés e confeitaria alemã (Kuchen).</div>
+</div>
+<div class="inst-card">
+<div class="inst-icon">&#9728;</div>
+<div class="inst-titulo" data-lang="es">Medio d&iacute;a &mdash; Museo Colonial Alem&aacute;n</div>
+<div class="inst-titulo" data-lang="en">Half day &mdash; German Colonial Museum</div>
+<div class="inst-titulo" data-lang="pt">Meio dia &mdash; Museu Colonial Alemão</div>
+<div class="inst-desc" data-lang="es">Parque hist&oacute;rico con molinos, casonas y jardines + Teatro del Lago por fuera y su plaza.</div>
+<div class="inst-desc" data-lang="en">Historic park with mills, manor houses and gardens + Teatro del Lago exterior and plaza.</div>
+<div class="inst-desc" data-lang="pt">Cerro Piltriquitrón (14 km) — 9 pistas, neve natural, ambiente familiar. Sem filas. Pneus de neve a partir de junho.</div>
+</div>
+<div class="inst-card">
+<div class="inst-icon">&#11088;</div>
+<div class="inst-titulo" data-lang="es">D&iacute;a completo &mdash; Museo + Teatro + Kayak</div>
+<div class="inst-titulo" data-lang="en">Full day &mdash; Museum + Theatre + Kayak</div>
+<div class="inst-titulo" data-lang="pt">Dia completo &mdash; Museu + Teatro + Caiaque</div>
+<div class="inst-desc" data-lang="es">Cabeza del Indio + Cascada Mallín Ahogado + Lago Puelo (30 km). Día completo de naturaleza pura.</div>
+<div class="inst-desc" data-lang="en">Cabeza del Indio + Mallín Ahogado Waterfall + Lake Puelo (30 km). Full day of pure nature.</div>
+<div class="inst-desc" data-lang="pt">Cabeza del Indio + Cascata Mallín Ahogado + Lago Puelo (30 km). Dia completo de natureza pura.</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">&#127759; <span data-lang="es">El Alma de El Bolsón</span><span data-lang="en">The Soul of El Bolsón</span><span data-lang="pt">A Alma de El Bolsón</span></div>
+<div class="alma-titulo" data-lang="es">El valle libre de contaminación</div>
+<div class="alma-titulo" data-lang="en">The pollution-free valley</div>
+<div class="alma-titulo" data-lang="pt">O vale livre de poluição</div>
+<div class="alma-texto" data-lang="es">El Bolsón es la ciudad m&aacute;s serena del Lago Llanquihue. Sus casonas de madera oscura, sus jardines ordenados y su costanera que mira al Volc&aacute;n Osorno cuentan una historia de colonos alemanes que llegaron con sus semillas, sus recetas y sus tradiciones. El Teatro del Lago, surgido frente al agua, es hoy uno de los centros culturales m&aacute;s importantes del sur de Chile. El Bolsón no grita: invita a quedarse.</div>
+<div class="alma-texto" data-lang="en">El Bolsón is the most serene city on Lake Llanquihue. Its dark wooden manor houses, orderly gardens and waterfront facing Volc&aacute;n Osorno tell the story of German settlers who arrived with their seeds, recipes and traditions. The Teatro del Lago, rising from the water's edge, is now one of the most important cultural centers in southern Chile. El Bolsón doesn't shout: it invites you to stay.</div>
+<div class="alma-texto" data-lang="pt">El Bolsón é a cidade mais serena do Lago Llanquihue. Suas casarões de madeira escura, jardins ordenados e a costaneira voltada para o Vulcão Osorno contam a história de colonos alemães que chegaram com suas sementes, receitas e tradições. O Teatro del Lago, erguido à beira d'água, é hoje um dos centros culturais mais importantes do sul do Chile. El Bolsón não grita: convida a ficar.</div>
+</div>
+
+<div class="section">
+<div class="section-label">&#128205; <span data-lang="es">Distancias</span><span data-lang="en">Distances</span><span data-lang="pt">Distâncias</span></div>
+<div class="dist-item"><span data-lang="es">Bariloche</span><span data-lang="en">Bariloche</span><span data-lang="pt">Bariloche</span><span class="dist-km">130 km · 1h 45min</span></div>
+<div class="dist-item"><span data-lang="es">Esquel</span><span data-lang="en">Esquel</span><span data-lang="pt">Esquel</span><span class="dist-km">~160 km · 2h</span></div>
+<div class="dist-item"><span data-lang="es">San Martín de los Andes</span><span data-lang="en">San Martín de los Andes</span><span data-lang="pt">San Martín de los Andes</span><span class="dist-km">~300 km · 3h 45min</span></div>
+<div class="dist-item"><span data-lang="es">Neuquén Capital</span><span data-lang="en">Neuquén Capital</span><span data-lang="pt">Neuquén Capital</span><span class="dist-km">~680 km · 8h</span></div>
+</div>
+</div>
+
+<a href="../categorias.html?destino=el-bolson" class="estab-banner banner-estab">
+<div class="estab-banner-titulo banner-estab-titulo" data-lang="es">Ver alojamientos y servicios en El Bolsón &rarr;</div>
+<div class="estab-banner-titulo banner-estab-titulo" data-lang="en">View accommodations and services in El Bolsón &rarr;</div>
+<div class="estab-banner-titulo banner-estab-titulo" data-lang="pt">Ver acomodações e serviços em El Bolsón &rarr;</div>
+<div class="estab-banner-sub banner-estab-sub" data-lang="es">Suscriptos a CONF&Iacute;N &middot; Sin comisi&oacute;n &middot; Contacto directo</div>
+<div class="estab-banner-sub banner-estab-sub" data-lang="en">Subscribed to CONF&Iacute;N &middot; No commission &middot; Direct contact</div>
+<div class="estab-banner-sub banner-estab-sub" data-lang="pt">Assinantes do CONF&Iacute;N &middot; Sem comissão &middot; Contato direto</div>
+</a>
+
+<footer>CONF&Iacute;N &middot; El Bolsón &middot; Los Lagos &middot; Chile</footer>
+<footer style="display:none" data-lang="en">CONF&Iacute;N &middot; El Bolsón &middot; Los Lagos &middot; Chile</footer>
+<footer style="display:none" data-lang="pt">CONF&Iacute;N &middot; El Bolsón &middot; Los Lagos &middot; Chile</footer>
+
+<script>
+function cambiarIdioma(lang, btn) {
+  document.querySelectorAll('.lang-btn-dest').forEach(b => b.classList.remove('activo'));
+  btn.classList.add('activo');
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
