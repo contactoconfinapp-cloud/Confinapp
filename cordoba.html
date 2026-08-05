@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Córdoba - Córdoba - Melancolía Rioplatense - CONFIN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FAF8F5;--atlantic:#3D6B73;--deep:#0E1A1C;--ember:#B8673A;--pine:#3D5247;--font-d:'Cormorant Garamond',Georgia,serif;--font-b:'DM Sans',sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--deep);color:var(--cream);font-family:var(--font-b);font-weight:300;}
+.btn-agenda-dest{position:fixed;bottom:22px;right:18px;z-index:100;width:48px;height:48px;border-radius:50%;background:var(--atlantic);color:#fff;font-size:1.3rem;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.4);}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:rgba(14,26,28,0.97);border-bottom:1px solid rgba(61,107,115,0.25);position:sticky;top:0;z-index:50;}
+.nav-back{font-size:0.72rem;color:rgba(163,196,204,0.7);text-decoration:none;letter-spacing:0.06em;}
+.nav-logo{font-family:var(--font-d);font-size:1rem;color:var(--cream);letter-spacing:0.04em;text-decoration:none;}
+.lang-selector{display:flex;gap:4px;}
+.lang-btn-dest{background:none;border:1px solid rgba(61,107,115,0.4);color:rgba(163,196,204,0.6);padding:3px 7px;font-size:0.55rem;letter-spacing:0.1em;cursor:pointer;font-family:var(--font-b);}
+.lang-btn-dest.activo{background:var(--atlantic);color:#fff;border-color:var(--atlantic);}
+.hero{min-height:240px;background:linear-gradient(145deg,#0a1014,#111820,#0e1a20);display:flex;align-items:flex-end;padding:24px 20px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:url('cordoba-foto.jpg') center/cover no-repeat;opacity:0.35;}
+.hero-content{position:relative;z-index:2;}
+.hero-tag{font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.7);margin-bottom:6px;}
+.hero-title{font-family:var(--font-d);font-size:2.4rem;font-weight:300;line-height:1;margin-bottom:6px;}
+.hero-sub{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.5;}
+.section{padding:20px 16px;border-bottom:1px solid rgba(61,107,115,0.12);}
+.section-label{font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(163,196,204,0.4);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.section-label::after{content:'';flex:1;height:1px;background:rgba(61,107,115,0.2);}
+.emerg-card{background:rgba(184,78,58,0.12);border:1px solid rgba(184,78,58,0.3);border-radius:10px;padding:14px;margin-bottom:10px;}
+.emerg-nombre{font-size:0.88rem;font-weight:400;margin-bottom:2px;}
+.emerg-sub{font-size:0.65rem;color:rgba(163,196,204,0.5);margin-bottom:8px;}
+.emerg-tel{font-size:1.4rem;font-weight:400;color:#E8A090;margin-bottom:8px;}
+.btn-llamar{display:block;background:rgba(184,78,58,0.8);color:#fff;text-align:center;padding:10px;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;border-radius:6px;font-family:var(--font-b);}
+.emerg-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.emerg-grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.ruta-card{background:rgba(61,107,115,0.08);border:1px solid rgba(61,107,115,0.2);border-radius:10px;padding:14px;margin-bottom:10px;}
+.ruta-titulo{font-family:var(--font-d);font-size:1.1rem;margin-bottom:4px;}
+.ruta-badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
+.badge{font-size:0.52rem;letter-spacing:0.1em;padding:2px 8px;border:1px solid rgba(61,107,115,0.4);color:rgba(163,196,204,0.7);border-radius:20px;}
+.parada{padding:8px 0;border-bottom:1px solid rgba(61,107,115,0.1);font-size:0.72rem;color:rgba(163,196,204,0.7);line-height:1.5;}
+.parada:last-child{border-bottom:none;}
+.parada strong{color:rgba(163,196,204,0.9);display:block;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2px;}
+.parada parada-km{display:block;}
+.mapa-frame{width:100%;height:240px;border:none;border-radius:10px;display:block;}
+.inst-card{background:rgba(61,107,115,0.06);border-left:3px solid var(--atlantic);padding:12px 14px;margin-bottom:8px;border-radius:0 8px 8px 0;}
+.inst-icon{font-size:1.1rem;margin-bottom:6px;}
+.inst-titulo{font-size:0.8rem;font-weight:400;margin-bottom:4px;}
+.inst-desc{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.5;}
+.dist-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(61,107,115,0.1);font-size:0.78rem;}
+.dist-item:last-child{border-bottom:none;}
+.dist-km{color:var(--atlantic);font-size:0.72rem;letter-spacing:0.04em;}
+.alma-titulo{font-family:var(--font-d);font-size:1.6rem;font-weight:300;font-style:italic;margin-bottom:10px;color:rgba(250,248,245,0.9);}
+.alma-texto{font-size:0.8rem;line-height:1.8;color:rgba(163,196,204,0.7);}
+.estab-banner{display:block;background:linear-gradient(135deg,rgba(61,107,115,0.15),rgba(61,107,115,0.08));border:1px solid rgba(61,107,115,0.3);padding:16px 20px;text-decoration:none;border-radius:10px;margin:16px;}
+.banner-estab-titulo{font-family:var(--font-d);font-size:1.1rem;color:var(--cream);margin-bottom:4px;}
+.banner-estab-sub{font-size:0.65rem;color:rgba(163,196,204,0.6);letter-spacing:0.06em;}
+.papa-card{background:rgba(184,103,58,0.08);border:1px solid rgba(184,103,58,0.3);border-radius:10px;padding:14px;margin-bottom:10px;}
+.papa-titulo{font-size:0.82rem;font-weight:400;color:rgba(230,180,130,0.9);margin-bottom:6px;}
+.papa-texto{font-size:0.72rem;color:rgba(163,196,204,0.7);line-height:1.6;}
+footer{text-align:center;padding:24px 16px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.25);}
+[data-lang="en"],[data-lang="pt"]{display:none;}
+</style>
+</head>
+<body>
+<a class="btn-agenda-dest" href="../index.html#agenda">&#128214;</a>
+<nav class="nav">
+<a href="../index.html" class="nav-back">&#8592; Volver</a>
+<a href="../index.html" class="nav-logo">CONF&#205;N</a>
+<div class="lang-selector">
+<button class="lang-btn-dest activo" onclick="cambiarIdioma('es',this)">ES</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('en',this)">EN</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('pt',this)">PT</button>
+</div>
+</nav>
+
+<div class="hero">
+<div class="hero-content">
+<div class="hero-tag">&#127462;&#127479; Córdoba &middot; Argentina &middot; Córdoba</div>
+<h1 class="hero-title">Córdoba</h1>
+<div class="hero-sub" data-lang="es">Legado Jesu&#237;tico &middot; Esp&#237;ritu Universitario &middot; Latido Mediterr&#225;neo &middot; Curado por CONF&#205;N</div>
+<div class="hero-sub" data-lang="en">Jesuit Heritage &middot; University Spirit &middot; Mediterranean Heartbeat &middot; Curated by CONF&#205;N</div>
+<div class="hero-sub" data-lang="pt">Legado Jesu&#237;tico &middot; Esp&#237;rito Universit&#225;rio &middot; Pulso Mediterr&#226;neo &middot; Curado por CONF&#205;N</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">&#128680; <span data-lang="es">Emergencias</span><span data-lang="en">Emergencies</span><span data-lang="pt">Emerg&#234;ncias</span></div>
+<div class="emerg-card card rojo">
+<div class="emerg-nombre" data-lang="es">Hospital Urgencias de Córdoba</div>
+<div class="emerg-nombre" data-lang="en">Hospital Urgencias de Córdoba</div>
+<div class="emerg-nombre" data-lang="pt">Hospital Urgencias de Córdoba</div>
+<div class="emerg-sub">Córdoba &middot; Guardia 24hs</div>
+<div class="emerg-tel">(0351) 433-2751</div>
+<a href="tel:03514332751" class="btn-llamar"><span data-lang="es">LLAMAR</span><span data-lang="en">CALL</span><span data-lang="pt">LIGAR</span></a>
+</div>
+<div class="emerg-card card rojo">
+<div class="emerg-nombre" data-lang="es">Hospital Privado Universitario de Córdoba</div>
+<div class="emerg-nombre" data-lang="en">Hospital Privado Universitario de Córdoba</div>
+<div class="emerg-nombre" data-lang="pt">Hospital Privado Universitario de Córdoba</div>
+<div class="emerg-sub">Córdoba</div>
+<div class="emerg-tel">(0351) 468-8200</div>
+<a href="tel:03514688200" class="btn-llamar"><span data-lang="es">LLAMAR</span><span data-lang="en">CALL</span><span data-lang="pt">LIGAR</span></a>
+</div>
+<div class="emerg-grid">
+<div class="emerg-card card rojo">
+<div class="emerg-nombre">Polic&#237;a / 911</div>
+<div class="emerg-sub">Córdoba</div>
+<div class="emerg-tel">911</div>
+<a href="tel:911" class="btn-llamar"><span data-lang="es">LLAMAR</span><span data-lang="en">CALL</span><span data-lang="pt">LIGAR</span></a>
+</div>
+<div class="emerg-card card rojo">
+<div class="emerg-nombre">Bomberos</div>
+<div class="emerg-sub">Córdoba</div>
+<div class="emerg-tel">100</div>
+<a href="tel:100" class="btn-llamar"><span data-lang="es">LLAMAR</span><span data-lang="en">CALL</span><span data-lang="pt">LIGAR</span></a>
+</div>
+<div class="emerg-card card rojo">
+<div class="emerg-nombre">SAME</div>
+<div class="emerg-sub"><span data-lang="es">Ambulancias Córdoba</span><span data-lang="en">Córdoba Ambulance</span><span data-lang="pt">Ambu&#226;ncia Córdoba</span></div>
+<div class="emerg-tel">107</div>
+<a href="tel:107" class="btn-llamar"><span data-lang="es">LLAMAR</span><span data-lang="en">CALL</span><span data-lang="pt">LIGAR</span></a>
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">&#128652; <span data-lang="es">En Camino</span><span data-lang="en">On the Way</span><span data-lang="pt">No Caminho</span></div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">Desde Aeropuerto Taravella (COR) &mdash; Av. La Voz del Interior</div>
+<div class="ruta-titulo" data-lang="en">From Taravella Airport (COR) &mdash; Av. La Voz del Interior</div>
+<div class="ruta-titulo" data-lang="pt">Do Aeroporto Taravella (COR) &mdash; Av. La Voz del Interior</div>
+<div class="ruta-badges"><span class="badge">12 km</span><span class="badge">25 min</span><span class="badge"><span data-lang="es">Taxi / Bus / Auto</span><span data-lang="en">Taxi / Bus / Car</span><span data-lang="pt">T&#225;xi / &#244;nibus / Carro</span></span></div>
+<div class="parada parada-km"><strong>Parada 1</strong><span data-lang="es">Rotonda del Aeropuerto / Bv. Los Alemanes</span><span data-lang="en">Airport Roundabout / Bv. Los Alemanes</span><span data-lang="pt">Rotat&#243;ria do Aeroporto / Bv. Los Alemanes</span></div>
+<div class="parada parada-km"><strong>Parada 2</strong><span data-lang="es">Ingreso al Centro Histórico por Plaza San Martín</span><span data-lang="en">Entry to Historic Center via Plaza San Martín</span><span data-lang="pt">Entrada ao Centro Histórico pela Plaza San Martín</span></div>
+</div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">Desde Carlos Paz / Valle de Punilla &mdash; RN 20</div>
+<div class="ruta-titulo" data-lang="en">From Carlos Paz / Valle de Punilla &mdash; RN 20</div>
+<div class="ruta-titulo" data-lang="pt">De Carlos Paz / Valle de Punilla &mdash; RN 20</div>
+<div class="ruta-badges"><span class="badge">36 km</span><span class="badge">35 min</span><span class="badge"><span data-lang="es">Taxi / Bus</span><span data-lang="en">Taxi / Bus</span><span data-lang="pt">T&#225;xi / &#244;nibus</span></span></div>
+<div class="parada parada-km"><strong>Parada 1</strong><span data-lang="es">Peaje Yocsina (RN 20)</span><span data-lang="en">Yocsina Toll (RN 20)</span><span data-lang="pt">Ped&#225;gio Yocsina (RN 20)</span></div>
+<div class="parada parada-km"><strong>Parada 2</strong><span data-lang="es">Av. Fuerza Aérea &mdash; empalme con La Cañada (Av. Figueroa Alcorta)</span><span data-lang="en">Av. Fuerza Aérea &mdash; connection with La Cañada</span><span data-lang="pt">Av. Fuerza Aérea &mdash; conex&#227;o com La Ca&#241;ada</span></div>
+</div>
+<div style="background:rgba(61,107,115,0.08);border:1px solid rgba(61,107,115,0.2);border-radius:10px;padding:14px;margin-bottom:10px;">
+<div style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(163,196,204,0.5);margin-bottom:6px;">&#128650; <span data-lang="es">Transporte dentro de la ciudad</span><span data-lang="en">City transport</span><span data-lang="pt">Transporte na cidade</span></div>
+<div style="font-size:0.74rem;color:rgba(163,196,204,0.7);line-height:1.6;" data-lang="es">Sistema de colectivos urbanos Red Bus Córdoba &middot; Pago contactless. Taxis, remises y apps de movilidad. El centro histórico es recorrible completamente a pie.</div>
+<div style="font-size:0.74rem;color:rgba(163,196,204,0.7);line-height:1.6;" data-lang="en">Urban bus system Red Bus Córdoba &middot; Contactless payment. Taxis, remises and mobility apps. The historic center is fully walkable.</div>
+<div style="font-size:0.74rem;color:rgba(163,196,204,0.7);line-height:1.6;" data-lang="pt">Sistema de &#244;nibus urbano Red Bus Córdoba &middot; Pagamento contactless. T&#225;xis, r&#234;mis e apps de mobilidade. O centro histórico &#233; completamente percorr&#237;vel a p&#233;.</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">&#128506; <span data-lang="es">Mapa</span><span data-lang="en">Map</span><span data-lang="pt">Mapa</span></div>
+<iframe class="mapa-frame" src="https://www.openstreetmap.org/export/embed.html?bbox=-64.1950,-31.4220,-64.1750,-31.4100&layer=mapnik&marker=-31.4167,-64.1833" loading="lazy" title="Mapa Córdoba Córdoba"></iframe>
+</div>
+
+<div class="section">
+<div class="section-label">&#9200; <span data-lang="es">Con Prop&#243;sito</span><span data-lang="en">With Purpose</span><span data-lang="pt">Com Prop&#243;sito</span></div>
+<div class="inst-card">
+<div class="inst-icon">&#9201;</div>
+<div class="inst-titulo" data-lang="es">2 horas &mdash; Plaza San Martín y Casco Histórico</div>
+<div class="inst-titulo" data-lang="en">2 hours &mdash; Plaza San Martín and Historic Center</div>
+<div class="inst-titulo" data-lang="pt">2 horas &mdash; Plaza San Martín e Centro Histórico</div>
+<div class="inst-desc" data-lang="es">Recorrido a pie: Plaza San Martín, Iglesia Catedral de Córdoba y Cabildo Histórico.</div>
+<div class="inst-desc" data-lang="en">Walking tour: Plaza San Martín, Cathedral Church of Córdoba and Historic Cabildo.</div>
+<div class="inst-desc" data-lang="pt">Passeio a p&#233;: Plaza San Martín, Igreja Catedral de Córdoba e Cabildo Histórico.</div>
+</div>
+<div class="inst-card">
+<div class="inst-icon">&#9728;</div>
+<div class="inst-titulo" data-lang="es">Medio d&#237;a &mdash; Manzana Jesu&#237;tica y La Ca&#241;ada</div>
+<div class="inst-titulo" data-lang="en">Half day &mdash; Jesuit Block and La Ca&#241;ada</div>
+<div class="inst-titulo" data-lang="pt">Meio dia &mdash; Quadra Jesu&#237;tica e La Ca&#241;ada</div>
+<div class="inst-desc" data-lang="es">Visita guiada a la Manzana Jesuítica (Iglesia de la Compañía de Jesús y Colegio Montserrat) y caminata vespertina por el Paseo de La Cañada y Barrio Güemes.</div>
+<div class="inst-desc" data-lang="en">Guided tour of the Jesuit Block (Iglesia de la Compañía de Jesús and Colegio Montserrat) and evening walk through Paseo de La Cañada and Barrio Güemes.</div>
+<div class="inst-desc" data-lang="pt">Visita guiada &#224; Quadra Jesu&#237;tica (Igreja da Companhia de Jesus e Col&#233;gio Montserrat) e caminhada vespertina pelo Paseo de La Ca&#241;ada e Bairro Güemes.</div>
+</div>
+<div class="inst-card">
+<div class="inst-icon">&#11088;</div>
+<div class="inst-titulo" data-lang="es">D&#237;a completo &mdash; Patrimonio, museos y Punilla</div>
+<div class="inst-titulo" data-lang="en">Full day &mdash; Heritage, museums and Punilla Valley</div>
+<div class="inst-titulo" data-lang="pt">Dia completo &mdash; Patrim&#244;nio, museus e Punilla</div>
+<div class="inst-desc" data-lang="es">Mañana en el centro histórico barroco &rarr; almuerzo en Barrio Güemes &rarr; tarde en el Palacio Ferreyra (Museo Evita) &rarr; escapada al Valle de Punilla o Alta Gracia.</div>
+<div class="inst-desc" data-lang="en">Morning in the baroque historic center &rarr; lunch in Barrio Güemes &rarr; afternoon at Palacio Ferreyra (Museo Evita) &rarr; excursion to Valle de Punilla or Alta Gracia.</div>
+<div class="inst-desc" data-lang="pt">Manhã no centro histórico barroco &rarr; almoço no Bairro Güemes &rarr; tarde no Pal&#225;cio Ferreyra (Museu Evita) &rarr; excurs&#227;o ao Vale de Punilla ou Alta Gracia.</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">&#127759; <span data-lang="es">El Alma de Córdoba</span><span data-lang="en">The Soul of Córdoba</span><span data-lang="pt">A Alma de Córdoba</span></div>
+<div class="alma-titulo" data-lang="es">La docta y la rebelde</div>
+<div class="alma-titulo" data-lang="en">The learned and the rebellious</div>
+<div class="alma-titulo" data-lang="pt">A douta e a rebelde</div>
+<div class="alma-texto" data-lang="es">Córdoba no duerme; late en un comp&#225;s barroco de nostalgia, arquitectura ecl&#233;ctica y vanguardia. Entre el eco tanguero de San Telmo y los adoquines de sus calles hist&#243;ricas, sus avenidas anchas abrigan la pasi&#243;n literaria, el caf&#233; interminable y la elegancia rioplatense. Es la capital del encuentro, donde cada esquina guarda un relato vivo e ind&#243;mita belleza.</div>
+<div class="alma-texto" data-lang="en">Córdoba never sleeps; it beats to a baroque rhythm of nostalgia, eclectic architecture, and avant-garde spirit. Between the tango echoes of San Telmo and cobblestone alleys, its grand avenues embrace literary passion, endless caf&#233; talks, and River Plate elegance. It is a capital of encounter, where every corner hides a living story and timeless beauty.</div>
+<div class="alma-texto" data-lang="pt">Córdoba nunca dorme; ela pulsa em um ritmo barroco de nostalgia, arquitetura ecl&#233;tica e vanguarda. Entre o eco do tango em San Telmo e suas vielas de pedra, suas grandes avenidas abrigam a paixão liter&#225;ria, as conversas infinitas de caf&#233; e a elegância do Rio da Prata. &#201; a capital do encontro, onde cada esquina guarda uma hist&#243;ria viva.</div>
+</div>
+
+<div class="section">
+<div class="section-label">&#128205; <span data-lang="es">Distancias</span><span data-lang="en">Distances</span><span data-lang="pt">Dist&#226;ncias</span></div>
+<div class="dist-item"><span data-lang="es">Plaza San Mart&#237;n &rarr; Manzana Jesu&#237;tica</span><span data-lang="en">Plaza San Mart&#237;n &rarr; Jesuit Block</span><span data-lang="pt">Plaza San Mart&#237;n &rarr; Quadra Jesu&#237;tica</span><span class="dist-km">0,3 km &middot; 4 min</span></div>
+<div class="dist-item"><span data-lang="es">Plaza San Mart&#237;n &rarr; Barrio G&#252;emes (Paseo de las Artes)</span><span data-lang="en">Plaza San Mart&#237;n &rarr; Barrio G&#252;emes</span><span data-lang="pt">Plaza San Mart&#237;n &rarr; Bairro G&#252;emes</span><span class="dist-km">1,2 km &middot; 15 min</span></div>
+<div class="dist-item"><span data-lang="es">Plaza San Mart&#237;n &rarr; Parque Sarmiento</span><span data-lang="en">Plaza San Mart&#237;n &rarr; Parque Sarmiento</span><span data-lang="pt">Plaza San Mart&#237;n &rarr; Parque Sarmiento</span><span class="dist-km">1,8 km &middot; 20 min</span></div>
+<div class="dist-item"><span data-lang="es">Córdoba Capital &rarr; Villa Carlos Paz (Punilla)</span><span data-lang="en">Córdoba Capital &rarr; Villa Carlos Paz (Punilla)</span><span data-lang="pt">Córdoba Capital &rarr; Villa Carlos Paz (Punilla)</span><span class="dist-km">36 km &middot; 35 min</span></div>
+<div class="dist-item"><span data-lang="es">Córdoba Capital &rarr; Alta Gracia</span><span data-lang="en">Córdoba Capital &rarr; Alta Gracia</span><span data-lang="pt">Córdoba Capital &rarr; Alta Gracia</span><span class="dist-km">38 km &middot; 40 min</span></div>
+</div>
+
+<div class="section">
+<div class="section-label">&#127958; <span data-lang="es">Patrimonio y Cultura</span><span data-lang="en">Heritage and Culture</span><span data-lang="pt">Patrim&#244;nio e Cultura</span></div>
+<div class="inst-card">
+<div class="inst-titulo" data-lang="es">Manzana Jesu&#237;tica &mdash; Obispo Trejo 242</div>
+<div class="inst-titulo" data-lang="en">Manzana Jesu&#237;tica &mdash; Obispo Trejo 242</div>
+<div class="inst-titulo" data-lang="pt">Manzana Jesu&#237;tica &mdash; Obispo Trejo 242</div>
+<div class="inst-desc" data-lang="es">Patrimonio de la Humanidad UNESCO. Sede de la UNC e Iglesia de la Compañía de Jesús.</div>
+<div class="inst-desc" data-lang="en">UNESCO World Heritage Site. Home of the National University of Córdoba and Iglesia de la Compañía de Jesús.</div>
+<div class="inst-desc" data-lang="pt">Patrimônio da Humanidade UNESCO. Sede da UNC e Igreja da Companhia de Jesus.</div>
+</div>
+<div class="inst-card">
+<div class="inst-titulo" data-lang="es">Catedral de Córdoba &mdash; San Mart&#237;n 27</div>
+<div class="inst-titulo" data-lang="en">Catedral de Córdoba &mdash; San Mart&#237;n 27</div>
+<div class="inst-titulo" data-lang="pt">Catedral de Córdoba &mdash; San Mart&#237;n 27</div>
+<div class="inst-desc" data-lang="es">Templo barroco colonial en el corazón histórico frente a la Plaza San Martín. Sede posible de actos del Papa.</div>
+<div class="inst-desc" data-lang="en">Colonial baroque temple at the heart of the historic center facing Plaza San Martín. Likely venue for papal acts.</div>
+<div class="inst-desc" data-lang="pt">Templo barroco colonial no coração histórico em frente à Plaza San Martín. Local provável de atos papais.</div>
+</div>
+<div class="inst-card">
+<div class="inst-titulo">Palacio Ferreyra (Museo Evita) &mdash; Av. Hip&#243;lito Yrigoyen 511</div>
+<div class="inst-desc" data-lang="es">Majestuosa residencia estilo francés con colecciones de arte provincial y nacional.</div>
+<div class="inst-desc" data-lang="en">Majestic French-style residence housing provincial and national art collections.</div>
+<div class="inst-desc" data-lang="pt">Majestuosa residência estilo francês que alberga coleções de arte provincial e nacional.</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">&#10013; <span data-lang="es">Visita Papal &mdash; Noviembre 2026</span><span data-lang="en">Papal Visit &mdash; November 2026</span><span data-lang="pt">Visita Papal &mdash; Novembro 2026</span></div>
+<div class="papa-card">
+<div class="papa-titulo" data-lang="es">&#128205; Puntos neur&#225;lgicos</div>
+<div class="papa-titulo" data-lang="en">&#128205; Key locations</div>
+<div class="papa-titulo" data-lang="pt">&#128205; Pontos neuralg&#237;cos</div>
+<div class="papa-texto" data-lang="es">Catedral Metropolitana de Córdoba &middot; Arzobispado de Córdoba (Av. Hip&#243;lito Yrigoyen)</div>
+<div class="papa-texto" data-lang="en">Córdoba Metropolitan Cathedral &middot; Archdiocese of Córdoba (Av. Hip&#243;lito Yrigoyen)</div>
+<div class="papa-texto" data-lang="pt">Catedral Metropolitana de Córdoba &middot; Arquidiocese de Córdoba (Av. Hip&#243;lito Yrigoyen)</div>
+</div>
+<div class="papa-card">
+<div class="papa-titulo" data-lang="es">&#128101; Concentraciones masivas</div>
+<div class="papa-titulo" data-lang="en">&#128101; Mass gatherings</div>
+<div class="papa-titulo" data-lang="pt">&#128101; Concentra&#231;&#245;es massivas</div>
+<div class="papa-texto" data-lang="es">Complejo Ferial Córdoba (Ch&#226;teau Carreras) o Ciudad Universitaria &middot; Estadio Kempes</div>
+<div class="papa-texto" data-lang="en">Córdoba Fairgrounds (Ch&#226;teau Carreras) or University City &middot; Kempes Stadium</div>
+<div class="papa-texto" data-lang="pt">Complexo Feiral Córdoba (Ch&#226;teau Carreras) ou Cidade Universit&#225;ria &middot; Est&#225;dio Kempes</div>
+</div>
+<div class="papa-card">
+<div class="papa-titulo" data-lang="es">&#9888;&#65039; Log&#237;stica recomendada</div>
+<div class="papa-titulo" data-lang="en">&#9888;&#65039; Recommended logistics</div>
+<div class="papa-titulo" data-lang="pt">&#9888;&#65039; Log&#237;stica recomendada</div>
+<div class="papa-texto" data-lang="es">Priorizar desplazamientos a pie en el radio céntrico. Usar Red Bus hacia Ciudad Universitaria o Kempes. Prever interrupciones severas en Bv. Chacabuco y Av. Hipólito Yrigoyen.</div>
+<div class="papa-texto" data-lang="en">Prioritize walking in the central area. Use Red Bus toward University City or Kempes. Expect severe disruptions on Bv. Chacabuco and Av. Hipólito Yrigoyen.</div>
+<div class="papa-texto" data-lang="pt">Priorizar deslocamentos a p&#233; no raio central. Usar Red Bus para a Cidade Universit&#225;ria ou Kempes. Prever interrup&#231;&#245;es severas no Bv. Chacabuco e Av. Hip&#243;lito Yrigoyen.</div>
+</div>
+</div>
+
+<a href="../categorias.html?destino=cordoba" class="estab-banner">
+<div class="banner-estab-titulo" data-lang="es">Ver alojamientos y servicios en Córdoba &rarr;</div>
+<div class="banner-estab-titulo" data-lang="en">View accommodations and services in Córdoba &rarr;</div>
+<div class="banner-estab-titulo" data-lang="pt">Ver acomoda&#231;&#245;es e servi&#231;os em Córdoba &rarr;</div>
+<div class="banner-estab-sub" data-lang="es">Suscriptos a CONF&#205;N &middot; Sin comisi&#243;n &middot; Contacto directo</div>
+<div class="banner-estab-sub" data-lang="en">Subscribed to CONF&#205;N &middot; No commission &middot; Direct contact</div>
+<div class="banner-estab-sub" data-lang="pt">Assinantes do CONF&#205;N &middot; Sem comiss&#227;o &middot; Contato direto</div>
+</a>
+
+<footer>CONF&#205;N &middot; Córdoba &middot; Córdoba &middot; Argentina</footer>
+
+<script>
+function cambiarIdioma(lang, btn) {
+  document.querySelectorAll('.lang-btn-dest').forEach(b => b.classList.remove('activo'));
+  btn.classList.add('activo');
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

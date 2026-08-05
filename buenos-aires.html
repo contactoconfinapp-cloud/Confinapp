@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Buenos Aires - CABA - Melancolía Rioplatense - CONFIN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FAF8F5;--atlantic:#3D6B73;--deep:#0E1A1C;--ember:#B8673A;--pine:#3D5247;--font-d:'Cormorant Garamond',Georgia,serif;--font-b:'DM Sans',sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--deep);color:var(--cream);font-family:var(--font-b);font-weight:300;}
+.btn-agenda-dest{position:fixed;bottom:22px;right:18px;z-index:100;width:48px;height:48px;border-radius:50%;background:var(--atlantic);color:#fff;font-size:1.3rem;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.4);}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:rgba(14,26,28,0.97);border-bottom:1px solid rgba(61,107,115,0.25);position:sticky;top:0;z-index:50;}
+.nav-back{font-size:0.72rem;color:rgba(163,196,204,0.7);text-decoration:none;letter-spacing:0.06em;}
+.nav-logo{font-family:var(--font-d);font-size:1rem;color:var(--cream);letter-spacing:0.04em;text-decoration:none;}
+.lang-selector{display:flex;gap:4px;}
+.lang-btn-dest{background:none;border:1px solid rgba(61,107,115,0.4);color:rgba(163,196,204,0.6);padding:3px 7px;font-size:0.55rem;letter-spacing:0.1em;cursor:pointer;font-family:var(--font-b);}
+.lang-btn-dest.activo{background:var(--atlantic);color:#fff;border-color:var(--atlantic);}
+.hero{min-height:240px;background:linear-gradient(145deg,#0a1014,#111820,#0e1a20);display:flex;align-items:flex-end;padding:24px 20px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:url('buenos-aires-foto.jpg') center/cover no-repeat;opacity:0.35;}
+.hero-content{position:relative;z-index:2;}
+.hero-tag{font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.7);margin-bottom:6px;}
+.hero-title{font-family:var(--font-d);font-size:2.4rem;font-weight:300;line-height:1;margin-bottom:6px;}
+.hero-sub{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.5;}
+.section{padding:20px 16px;border-bottom:1px solid rgba(61,107,115,0.12);}
+.section-label{font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(163,196,204,0.4);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.section-label::after{content:'';flex:1;height:1px;background:rgba(61,107,115,0.2);}
+.emerg-card{background:rgba(184,78,58,0.12);border:1px solid rgba(184,78,58,0.3);border-radius:10px;padding:14px;margin-bottom:10px;}
+.emerg-nombre{font-size:0.88rem;font-weight:400;margin-bottom:2px;}
+.emerg-sub{font-size:0.65rem;color:rgba(163,196,204,0.5);margin-bottom:8px;}
+.emerg-tel{font-size:1.4rem;font-weight:400;color:#E8A090;margin-bottom:8px;}
+.btn-llamar{display:block;background:rgba(184,78,58,0.8);color:#fff;text-align:center;padding:10px;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;border-radius:6px;font-family:var(--font-b);}
+.emerg-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.emerg-grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.ruta-card{background:rgba(61,107,115,0.08);border:1px solid rgba(61,107,115,0.2);border-radius:10px;padding:14px;margin-bottom:10px;}
+.ruta-titulo{font-family:var(--font-d);font-size:1.1rem;margin-bottom:4px;}
+.ruta-badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
+.badge{font-size:0.52rem;letter-spacing:0.1em;padding:2px 8px;border:1px solid rgba(61,107,115,0.4);color:rgba(163,196,204,0.7);border-radius:20px;}
+.parada{padding:8px 0;border-bottom:1px solid rgba(61,107,115,0.1);font-size:0.72rem;color:rgba(163,196,204,0.7);line-height:1.5;}
+.parada:last-child{border-bottom:none;}
+.parada strong{color:rgba(163,196,204,0.9);display:block;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2px;}
+.parada parada-km{display:block;}
+.mapa-frame{width:100%;height:240px;border:none;border-radius:10px;display:block;}
+.inst-card{background:rgba(61,107,115,0.06);border-left:3px solid var(--atlantic);padding:12px 14px;margin-bottom:8px;border-radius:0 8px 8px 0;}
+.inst-icon{font-size:1.1rem;margin-bottom:6px;}
+.inst-titulo{font-size:0.8rem;font-weight:400;margin-bottom:4px;}
+.inst-desc{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.5;}
+.dist-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(61,107,115,0.1);font-size:0.78rem;}
+.dist-item:last-child{border-bottom:none;}
+.dist-km{color:var(--atlantic);font-size:0.72rem;letter-spacing:0.04em;}
+.alma-titulo{font-family:var(--font-d);font-size:1.6rem;font-weight:300;font-style:italic;margin-bottom:10px;color:rgba(250,248,245,0.9);}
+.alma-texto{font-size:0.8rem;line-height:1.8;color:rgba(163,196,204,0.7);}
+.estab-banner{display:block;background:linear-gradient(135deg,rgba(61,107,115,0.15),rgba(61,107,115,0.08));border:1px solid rgba(61,107,115,0.3);padding:16px 20px;text-decoration:none;border-radius:10px;margin:16px;}
+.banner-estab-titulo{font-family:var(--font-d);font-size:1.1rem;color:var(--cream);margin-bottom:4px;}
+.banner-estab-sub{font-size:0.65rem;color:rgba(163,196,204,0.6);letter-spacing:0.06em;}
+.papa-card{background:rgba(184,103,58,0.08);border:1px solid rgba(184,103,58,0.3);border-radius:10px;padding:14px;margin-bottom:10px;}
+.papa-titulo{font-size:0.82rem;font-weight:400;color:rgba(230,180,130,0.9);margin-bottom:6px;}
+.papa-texto{font-size:0.72rem;color:rgba(163,196,204,0.7);line-height:1.6;}
+footer{text-align:center;padding:24px 16px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.25);}
+[data-lang="en"],[data-lang="pt"]{display:none;}
+</style>
+</head>
+<body>
+<a class="btn-agenda-dest" href="../index.html#agenda">&#128214;</a>
+<nav class="nav">
+<a href="../index.html" class="nav-back">&#8592; Volver</a>
+<a href="../index.html" class="nav-logo">CONF&#205;N</a>
+<div class="lang-selector">
+<button class="lang-btn-dest activo" onclick="cambiarIdioma('es',this)">ES</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('en',this)">EN</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('pt',this)">PT</button>
+</div>
+</nav>
+
+<div class="hero">
+<div class="hero-content">
+<div class="hero-tag">&#127462;&#127479; Buenos Aires &middot; Argentina &middot; CABA</div>
+<h1 class="hero-title">Buenos Aires</h1>
+<div class="hero-sub" data-lang="es">MelanCol&#237;a Rioplatense &middot; Arquitectura Monumental &middot; Cultura Inagotable &middot; Curado por CONF&#205;N</div>
+<div class="hero-sub" data-lang="en">River Plate Melancholy &middot; Monumental Architecture &middot; Endless Culture &middot; Curated by CONF&#205;N</div>
+<div class="hero-sub" data-lang="pt">Melancolia do Rio da Prata &middot; Arquitetura Monumental &middot; Cultura Inesgot&#225;vel &middot; Curado por CONF&#205;N</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">&#128680; <span data-lang="es">Emergencias</span><span data-lang="en">Emergencies</span><span data-lang="pt">Emerg&#234;ncias</span></div>
+<div class="emerg-card card rojo">
+<div class="emerg-nombre" data-lang="es">Hospital de Agudos Dr. Juan A. Fern&#225;ndez</div>
+<div class="emerg-nombre" data-lang="en">Hospital Dr. Juan A. Fern&#225;ndez</div>
+<div class="emerg-nombre" data-lang="pt">Hospital Dr. Juan A. Fern&#225;ndez</div>
+<div class="emerg-sub">Cervi&#241;o 3356 &middot; Palermo &middot; Guardia 24hs</div>
+<div class="emerg-tel">(011) 4808-2600</div>
+<a href="tel:01148082600" class="btn-llamar"><span data-lang="es">LLAMAR</span><span data-lang="en">CALL</span><span data-lang="pt">LIGAR</span></a>
+</div>
+<div class="emerg-card card rojo">
+<div class="emerg-nombre" data-lang="es">Hospital de Agudos Dr. Cosme Argerich</div>
+<div class="emerg-nombre" data-lang="en">Hospital Dr. Cosme Argerich</div>
+<div class="emerg-nombre" data-lang="pt">Hospital Dr. Cosme Argerich</div>
+<div class="emerg-sub">Pi y Margall 750 &middot; La Boca &middot; Guardia 24hs</div>
+<div class="emerg-tel">(011) 4121-0700</div>
+<a href="tel:01141210700" class="btn-llamar"><span data-lang="es">LLAMAR</span><span data-lang="en">CALL</span><span data-lang="pt">LIGAR</span></a>
+</div>
+<div class="emerg-grid3">
+<div class="emerg-card card rojo">
+<div class="emerg-nombre">Polic&#237;a / 911</div>
+<div class="emerg-sub">CABA</div>
+<div class="emerg-tel">911</div>
+<a href="tel:911" class="btn-llamar"><span data-lang="es">LLAMAR</span><span data-lang="en">CALL</span><span data-lang="pt">LIGAR</span></a>
+</div>
+<div class="emerg-card card rojo">
+<div class="emerg-nombre">Bomberos</div>
+<div class="emerg-sub">CABA</div>
+<div class="emerg-tel">100</div>
+<a href="tel:100" class="btn-llamar"><span data-lang="es">LLAMAR</span><span data-lang="en">CALL</span><span data-lang="pt">LIGAR</span></a>
+</div>
+<div class="emerg-card card rojo">
+<div class="emerg-nombre">SAME</div>
+<div class="emerg-sub"><span data-lang="es">Ambulancias CABA</span><span data-lang="en">CABA Ambulance</span><span data-lang="pt">Ambu&#226;ncia CABA</span></div>
+<div class="emerg-tel">107</div>
+<a href="tel:107" class="btn-llamar"><span data-lang="es">LLAMAR</span><span data-lang="en">CALL</span><span data-lang="pt">LIGAR</span></a>
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">&#128652; <span data-lang="es">En Camino</span><span data-lang="en">On the Way</span><span data-lang="pt">No Caminho</span></div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">Desde Aeropuerto Ezeiza (EZE) &mdash; Autopista Riccheri</div>
+<div class="ruta-titulo" data-lang="en">From Ezeiza Airport (EZE) &mdash; Riccheri Highway</div>
+<div class="ruta-titulo" data-lang="pt">Do Aeroporto Ezeiza (EZE) &mdash; Autopista Riccheri</div>
+<div class="ruta-badges"><span class="badge">32 km</span><span class="badge">45 min</span><span class="badge"><span data-lang="es">Taxi / Bus / Auto</span><span data-lang="en">Taxi / Bus / Car</span><span data-lang="pt">T&#225;xi / &#244;nibus / Carro</span></span></div>
+<div class="parada parada-km"><strong>Parada 1</strong><span data-lang="es">Peaje Mercado Central (Autopista Riccheri)</span><span data-lang="en">Mercado Central Toll (Riccheri Highway)</span><span data-lang="pt">Ped&#225;gio Mercado Central (Autopista Riccheri)</span></div>
+<div class="parada parada-km"><strong>Parada 2</strong><span data-lang="es">Ingreso a Microcentro por Av. 9 de Julio / Obelisco</span><span data-lang="en">Entry to Microcentro via Av. 9 de Julio / Obelisco</span><span data-lang="pt">Entrada ao Microcentro pela Av. 9 de Julho / Obelisco</span></div>
+</div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">Desde Aeroparque Jorge Newbery (AEP) &mdash; Costanera</div>
+<div class="ruta-titulo" data-lang="en">From Aeroparque Jorge Newbery (AEP) &mdash; Costanera</div>
+<div class="ruta-titulo" data-lang="pt">Do Aeroparque Jorge Newbery (AEP) &mdash; Costanera</div>
+<div class="ruta-badges"><span class="badge">8 km</span><span class="badge">20 min</span><span class="badge"><span data-lang="es">Taxi / Bus</span><span data-lang="en">Taxi / Bus</span><span data-lang="pt">T&#225;xi / &#244;nibus</span></span></div>
+<div class="parada parada-km"><strong>Parada 1</strong><span data-lang="es">Monumento a la Carta Magna &mdash; Palermo</span><span data-lang="en">Monument to the Magna Carta &mdash; Palermo</span><span data-lang="pt">Monumento &#224; Carta Magna &mdash; Palermo</span></div>
+<div class="parada parada-km"><strong>Parada 2</strong><span data-lang="es">Retiro &mdash; empalme hacia Microcentro / Recoleta</span><span data-lang="en">Retiro &mdash; connection to Microcentro / Recoleta</span><span data-lang="pt">Retiro &mdash; conex&#227;o com Microcentro / Recoleta</span></div>
+</div>
+<div style="background:rgba(61,107,115,0.08);border:1px solid rgba(61,107,115,0.2);border-radius:10px;padding:14px;margin-bottom:10px;">
+<div style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(163,196,204,0.5);margin-bottom:6px;">&#128650; <span data-lang="es">Transporte dentro de la ciudad</span><span data-lang="en">City transport</span><span data-lang="pt">Transporte na cidade</span></div>
+<div style="font-size:0.74rem;color:rgba(163,196,204,0.7);line-height:1.6;" data-lang="es">Subtes L&#237;neas A, B, C, D, E y H &middot; Metrobus 9 de Julio, Del Bajo y Norte &middot; Colectivos urbanos. Pago con <strong>Tarjeta SUBE</strong> (f&#237;sica o digital). Taxis amarillo/negro y apps (Uber, Cabify).</div>
+<div style="font-size:0.74rem;color:rgba(163,196,204,0.7);line-height:1.6;" data-lang="en">Subway Lines A, B, C, D, E and H &middot; Metrobus 9 de Julio, Del Bajo and Norte &middot; Urban buses. Pay with <strong>SUBE Card</strong> (physical or digital). Yellow/black taxis and apps (Uber, Cabify).</div>
+<div style="font-size:0.74rem;color:rgba(163,196,204,0.7);line-height:1.6;" data-lang="pt">Metr&#244; Linhas A, B, C, D, E e H &middot; Metrobus 9 de Julho, Del Bajo e Norte &middot; &#244;nibus urbanos. Pagamento com <strong>Cart&#227;o SUBE</strong> (f&#237;sico ou digital). T&#225;xis amarelo/preto e apps (Uber, Cabify).</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">&#128506; <span data-lang="es">Mapa</span><span data-lang="en">Map</span><span data-lang="pt">Mapa</span></div>
+<iframe class="mapa-frame" src="https://www.openstreetmap.org/export/embed.html?bbox=-58.3950,-34.6180,-58.3600,-34.5950&layer=mapnik&marker=-34.6037,-58.3816" loading="lazy" title="Mapa Buenos Aires CABA"></iframe>
+</div>
+
+<div class="section">
+<div class="section-label">&#9200; <span data-lang="es">Con Prop&#243;sito</span><span data-lang="en">With Purpose</span><span data-lang="pt">Com Prop&#243;sito</span></div>
+<div class="inst-card">
+<div class="inst-icon">&#9201;</div>
+<div class="inst-titulo" data-lang="es">2 horas &mdash; Plaza de Mayo y Puerto Madero</div>
+<div class="inst-titulo" data-lang="en">2 hours &mdash; Plaza de Mayo and Puerto Madero</div>
+<div class="inst-titulo" data-lang="pt">2 horas &mdash; Plaza de Mayo e Puerto Madero</div>
+<div class="inst-desc" data-lang="es">Recorrido a pie: Plaza de Mayo, Cabildo, Catedral Metropolitana, Casa Rosada y Costanera de Puerto Madero (Puente de la Mujer).</div>
+<div class="inst-desc" data-lang="en">Walking tour: Plaza de Mayo, Cabildo, Metropolitan Cathedral, Casa Rosada and Puerto Madero waterfront (Woman's Bridge).</div>
+<div class="inst-desc" data-lang="pt">Passeio a p&#233;: Plaza de Mayo, Cabildo, Catedral Metropolitana, Casa Rosada e orla de Puerto Madero (Ponte da Mulher).</div>
+</div>
+<div class="inst-card">
+<div class="inst-icon">&#9728;</div>
+<div class="inst-titulo" data-lang="es">Medio d&#237;a &mdash; San Telmo y La Boca</div>
+<div class="inst-titulo" data-lang="en">Half day &mdash; San Telmo and La Boca</div>
+<div class="inst-titulo" data-lang="pt">Meio dia &mdash; San Telmo e La Boca</div>
+<div class="inst-desc" data-lang="es">Caminata por Calle Defensa, Feria de Antig&#252;edades (domingos), Pasaje Giuffra y descenso hacia el Caminito en La Boca.</div>
+<div class="inst-desc" data-lang="en">Walk along Defensa St, Antiques Fair (Sundays), Giuffra Passage and descent to Caminito in La Boca.</div>
+<div class="inst-desc" data-lang="pt">Caminhada pela Rua Defensa, Feira de Antig&#252;idades (domingos), Pasagem Giuffra e descida ao Caminito em La Boca.</div>
+</div>
+<div class="inst-card">
+<div class="inst-icon">&#11088;</div>
+<div class="inst-titulo" data-lang="es">D&#237;a completo &mdash; Recoleta, Palermo y Tango</div>
+<div class="inst-titulo" data-lang="en">Full day &mdash; Recoleta, Palermo and Tango</div>
+<div class="inst-titulo" data-lang="pt">Dia completo &mdash; Recoleta, Palermo e Tango</div>
+<div class="inst-desc" data-lang="es">Cementerio de la Recoleta + MNBA &rarr; Bosques de Palermo y Rosedal &rarr; cena y show de tango tradicional en San Telmo.</div>
+<div class="inst-desc" data-lang="en">Recoleta Cemetery + MNBA &rarr; Palermo Woods and Rosedal &rarr; dinner and traditional tango show in San Telmo.</div>
+<div class="inst-desc" data-lang="pt">Cemit&#233;rio da Recoleta + MNBA &rarr; Bosques de Palermo e Rosedal &rarr; jantar e show de tango tradicional em San Telmo.</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">&#127759; <span data-lang="es">El Alma de Buenos Aires</span><span data-lang="en">The Soul of Buenos Aires</span><span data-lang="pt">A Alma de Buenos Aires</span></div>
+<div class="alma-titulo" data-lang="es">La capital del encuentro y la nostalgia</div>
+<div class="alma-titulo" data-lang="en">The capital of encounter and nostalgia</div>
+<div class="alma-titulo" data-lang="pt">A capital do encontro e da nostalgia</div>
+<div class="alma-texto" data-lang="es">Buenos Aires no duerme; late en un comp&#225;s barroco de nostalgia, arquitectura ecl&#233;ctica y vanguardia. Entre el eco tanguero de San Telmo y los adoquines de sus calles hist&#243;ricas, sus avenidas anchas abrigan la pasi&#243;n literaria, el caf&#233; interminable y la elegancia rioplatense. Es la capital del encuentro, donde cada esquina guarda un relato vivo e ind&#243;mita belleza.</div>
+<div class="alma-texto" data-lang="en">Buenos Aires never sleeps; it beats to a baroque rhythm of nostalgia, eclectic architecture, and avant-garde spirit. Between the tango echoes of San Telmo and cobblestone alleys, its grand avenues embrace literary passion, endless caf&#233; talks, and River Plate elegance. It is a capital of encounter, where every corner hides a living story and timeless beauty.</div>
+<div class="alma-texto" data-lang="pt">Buenos Aires nunca dorme; ela pulsa em um ritmo barroco de nostalgia, arquitetura ecl&#233;tica e vanguarda. Entre o eco do tango em San Telmo e suas vielas de pedra, suas grandes avenidas abrigam a paixão liter&#225;ria, as conversas infinitas de caf&#233; e a elegância do Rio da Prata. &#201; a capital do encontro, onde cada esquina guarda uma hist&#243;ria viva.</div>
+</div>
+
+<div class="section">
+<div class="section-label">&#128205; <span data-lang="es">Distancias</span><span data-lang="en">Distances</span><span data-lang="pt">Dist&#226;ncias</span></div>
+<div class="dist-item"><span data-lang="es">Obelisco &rarr; San Telmo (Plaza Dorrego)</span><span data-lang="en">Obelisco &rarr; San Telmo (Plaza Dorrego)</span><span data-lang="pt">Obelisco &rarr; San Telmo (Plaza Dorrego)</span><span class="dist-km">2,5 km &middot; 10 min</span></div>
+<div class="dist-item"><span data-lang="es">Obelisco &rarr; La Boca (Caminito)</span><span data-lang="en">Obelisco &rarr; La Boca (Caminito)</span><span data-lang="pt">Obelisco &rarr; La Boca (Caminito)</span><span class="dist-km">5 km &middot; 18 min</span></div>
+<div class="dist-item"><span data-lang="es">Obelisco &rarr; Recoleta (Cementerio)</span><span data-lang="en">Obelisco &rarr; Recoleta (Cemetery)</span><span data-lang="pt">Obelisco &rarr; Recoleta (Cemit&#233;rio)</span><span class="dist-km">3,2 km &middot; 12 min</span></div>
+<div class="dist-item"><span data-lang="es">Obelisco &rarr; Palermo Soho (Plaza Serrano)</span><span data-lang="en">Obelisco &rarr; Palermo Soho (Plaza Serrano)</span><span data-lang="pt">Obelisco &rarr; Palermo Soho (Plaza Serrano)</span><span class="dist-km">6,5 km &middot; 22 min</span></div>
+<div class="dist-item"><span data-lang="es">Obelisco &rarr; Puerto Madero (Puente de la Mujer)</span><span data-lang="en">Obelisco &rarr; Puerto Madero (Woman's Bridge)</span><span data-lang="pt">Obelisco &rarr; Puerto Madero (Ponte da Mulher)</span><span class="dist-km">2 km &middot; 8 min</span></div>
+</div>
+
+<div class="section">
+<div class="section-label">&#127958; <span data-lang="es">Patrimonio y Cultura</span><span data-lang="en">Heritage and Culture</span><span data-lang="pt">Patrim&#244;nio e Cultura</span></div>
+<div class="inst-card">
+<div class="inst-titulo" data-lang="es">Teatro Col&#243;n &mdash; Cerrito 628</div>
+<div class="inst-titulo" data-lang="en">Teatro Col&#243;n &mdash; Cerrito 628</div>
+<div class="inst-titulo" data-lang="pt">Teatro Col&#243;n &mdash; Cerrito 628</div>
+<div class="inst-desc" data-lang="es">Una de las salas de &#243;pera con mejor ac&#250;stica del mundo. Joya ecl&#233;ctica inaugurada en 1908.</div>
+<div class="inst-desc" data-lang="en">One of the world's finest opera houses. Eclectic masterpiece opened in 1908.</div>
+<div class="inst-desc" data-lang="pt">Uma das melhores salas de &#243;pera do mundo. Obra eclética inaugurada em 1908.</div>
+</div>
+<div class="inst-card">
+<div class="inst-titulo" data-lang="es">El Ateneo Grand Splendid &mdash; Av. Santa Fe 1860</div>
+<div class="inst-titulo" data-lang="en">El Ateneo Grand Splendid &mdash; Av. Santa Fe 1860</div>
+<div class="inst-titulo" data-lang="pt">El Ateneo Grand Splendid &mdash; Av. Santa Fe 1860</div>
+<div class="inst-desc" data-lang="es">Exteatro convertido en una de las librer&#237;as m&#225;s deslumbrantes del planeta.</div>
+<div class="inst-desc" data-lang="en">Former theatre converted into one of the world's most stunning bookshops.</div>
+<div class="inst-desc" data-lang="pt">Antigo teatro convertido em uma das livrarias mais deslumbrantes do planeta.</div>
+</div>
+<div class="inst-card">
+<div class="inst-titulo">MNBA &mdash; Av. del Libertador 1473</div>
+<div class="inst-desc" data-lang="es">Museo Nacional de Bellas Artes &mdash; la colecci&#243;n de arte p&#250;blico m&#225;s importante de Am&#233;rica Latina.</div>
+<div class="inst-desc" data-lang="en">National Museum of Fine Arts &mdash; the most important public art collection in Latin America.</div>
+<div class="inst-desc" data-lang="pt">Museu Nacional de Belas Artes &mdash; a coleção de arte p&#250;blica mais importante da Am&#233;rica Latina.</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">&#10013; <span data-lang="es">Visita Papal &mdash; Noviembre 2026</span><span data-lang="en">Papal Visit &mdash; November 2026</span><span data-lang="pt">Visita Papal &mdash; Novembro 2026</span></div>
+<div class="papa-card">
+<div class="papa-titulo" data-lang="es">&#128205; Puntos neur&#225;lgicos</div>
+<div class="papa-titulo" data-lang="en">&#128205; Key locations</div>
+<div class="papa-titulo" data-lang="pt">&#128205; Pontos neuralg&#237;cos</div>
+<div class="papa-texto" data-lang="es">Catedral Metropolitana (Plaza de Mayo) &middot; Santuario San Cayetano (Liniers)</div>
+<div class="papa-texto" data-lang="en">Metropolitan Cathedral (Plaza de Mayo) &middot; San Cayetano Shrine (Liniers)</div>
+<div class="papa-texto" data-lang="pt">Catedral Metropolitana (Plaza de Mayo) &middot; Santu&#225;rio San Cayetano (Liniers)</div>
+</div>
+<div class="papa-card">
+<div class="papa-titulo" data-lang="es">&#128101; Concentraciones masivas</div>
+<div class="papa-titulo" data-lang="en">&#128101; Mass gatherings</div>
+<div class="papa-titulo" data-lang="pt">&#128101; Concentra&#231;&#245;es massivas</div>
+<div class="papa-texto" data-lang="es">Parque Manuel Belgrano (KDT) &middot; Avenida 9 de Julio para encuentros multitudinarios</div>
+<div class="papa-texto" data-lang="en">Parque Manuel Belgrano (KDT) &middot; Avenida 9 de Julio for mass gatherings</div>
+<div class="papa-texto" data-lang="pt">Parque Manuel Belgrano (KDT) &middot; Avenida 9 de Julho para encontros multitudin&#225;rios</div>
+</div>
+<div class="papa-card">
+<div class="papa-titulo" data-lang="es">&#9888;&#65039; Log&#237;stica recomendada</div>
+<div class="papa-titulo" data-lang="en">&#9888;&#65039; Recommended logistics</div>
+<div class="papa-titulo" data-lang="pt">&#9888;&#65039; Log&#237;stica recomendada</div>
+<div class="papa-texto" data-lang="es">Usar l&#237;neas de subte A y D. Cierre vehicular total en eje Plaza de Mayo&ndash;Congreso&ndash;Retiro. Cargar SUBE con anticipaci&#243;n. Prever movilidad a pie en radio de 20 cuadras al centro del evento.</div>
+<div class="papa-texto" data-lang="en">Use subway lines A and D. Total road closure on Plaza de Mayo&ndash;Congress&ndash;Retiro axis. Load SUBE card in advance. Plan to walk within 20 blocks of the event center.</div>
+<div class="papa-texto" data-lang="pt">Usar linhas de metr&#244; A e D. Fechamento total de ve&#237;culos no eixo Plaza de Mayo&ndash;Congresso&ndash;Retiro. Carregar cart&#227;o SUBE com antecedência. Prever deslocamento a p&#233; em raio de 20 quadras do centro do evento.</div>
+</div>
+</div>
+
+<a href="../categorias.html?destino=buenos-aires" class="estab-banner">
+<div class="banner-estab-titulo" data-lang="es">Ver alojamientos y servicios en Buenos Aires &rarr;</div>
+<div class="banner-estab-titulo" data-lang="en">View accommodations and services in Buenos Aires &rarr;</div>
+<div class="banner-estab-titulo" data-lang="pt">Ver acomoda&#231;&#245;es e servi&#231;os em Buenos Aires &rarr;</div>
+<div class="banner-estab-sub" data-lang="es">Suscriptos a CONF&#205;N &middot; Sin comisi&#243;n &middot; Contacto directo</div>
+<div class="banner-estab-sub" data-lang="en">Subscribed to CONF&#205;N &middot; No commission &middot; Direct contact</div>
+<div class="banner-estab-sub" data-lang="pt">Assinantes do CONF&#205;N &middot; Sem comiss&#227;o &middot; Contato direto</div>
+</a>
+
+<footer>CONF&#205;N &middot; Buenos Aires &middot; CABA &middot; Argentina</footer>
+
+<script>
+function cambiarIdioma(lang, btn) {
+  document.querySelectorAll('.lang-btn-dest').forEach(b => b.classList.remove('activo'));
+  btn.classList.add('activo');
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
