@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Camarones &#183; CONF&#205;N</title>
+<meta name="description" content="Gu&#237;a &#250;til de Camarones. Emergencias, Cabo Dos Bah&#237;as, pesca artesanal, rutas y todo lo que necesit&#225;s saber.">
+<style>
+:root{--deep:#0E1A1C;--cream:#FAF7F2;--atlantic:#3D6B73;--ash:rgba(163,196,204,0.2);--font-d:'Georgia',serif;--ember:#B84E3A;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:var(--deep);color:var(--cream);min-height:100vh;}
+.nav{position:sticky;top:0;z-index:100;background:var(--deep);display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(61,107,115,0.3);}
+.nav-logo{font-family:var(--font-d);font-size:1rem;color:var(--cream);letter-spacing:0.04em;text-decoration:none;}
+.nav-back{font-size:0.72rem;color:rgba(163,196,204,0.7);text-decoration:none;}
+.lang-selector{display:flex;gap:4px;}
+.lang-btn-dest{font-size:0.6rem;padding:4px 7px;border:1px solid rgba(163,196,204,0.4);background:rgba(14,26,28,0.9);color:rgba(163,196,204,0.7);cursor:pointer;border-radius:3px;font-family:inherit;letter-spacing:0.05em;}
+.lang-btn-dest.activo{background:var(--atlantic);color:#fff;border-color:var(--atlantic);}
+.hero{position:relative;overflow:hidden;min-height:200px;}
+.hero::before{content:'';position:absolute;inset:0;background:url('camarones-foto.jpg') center/cover no-repeat;opacity:0.35;}
+.hero-content{position:relative;z-index:1;padding:32px 20px 28px;}
+.hero-tag{font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.6);margin-bottom:10px;}
+.hero-title{font-family:var(--font-d);font-size:clamp(2rem,8vw,3rem);font-weight:300;line-height:1.05;margin-bottom:8px;}
+.hero-sub{font-size:0.75rem;color:rgba(163,196,204,0.7);}
+.aviso{background:rgba(184,78,58,0.15);border-left:3px solid #B84E3A;border-radius:0 8px 8px 0;padding:12px 14px;font-size:0.75rem;color:rgba(245,205,195,0.9);line-height:1.5;margin:16px 16px 0;}
+.aviso.naranja{background:rgba(196,151,74,0.12);border-left-color:#C4974A;color:rgba(245,225,185,0.9);}
+.seccion{padding:20px 16px 4px;}
+.seccion-titulo{font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--atlantic);display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.seccion-titulo::after{content:'';flex:1;height:1px;background:var(--ash);}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px 4px;}
+.card{background:rgba(255,255,255,0.06);border-radius:12px;padding:14px;border:1px solid rgba(61,107,115,0.2);display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--atlantic);}
+.card.rojo::before{background:#B84E3A;}
+.card.full{grid-column:1/-1;}
+.card-ico{font-size:1.4rem;}
+.card-nombre{font-size:0.82rem;font-weight:600;color:rgba(250,247,242,0.9);}
+.card-desc{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.4;}
+.card-num{font-size:1rem;font-weight:700;color:#B84E3A;}
+.card-btn{display:block;text-align:center;padding:8px;background:#B84E3A;color:#fff;border-radius:8px;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;margin-top:4px;}
+.info-bloque{padding:0 16px 16px;}
+.info-item{padding:12px 0;border-bottom:1px solid rgba(61,107,115,0.15);display:flex;gap:10px;align-items:flex-start;}
+.info-item:last-child{border-bottom:none;}
+.info-ico{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.info-txt{font-size:0.78rem;color:rgba(163,196,204,0.8);line-height:1.5;}
+.info-txt strong{color:var(--cream);display:block;margin-bottom:2px;}
+.inst-card{background:rgba(61,107,115,0.1);border-radius:12px;padding:16px;margin:0 16px 12px;border:1px solid rgba(61,107,115,0.3);}
+.inst-nombre{font-size:0.85rem;font-weight:600;color:var(--cream);margin-bottom:4px;}
+.inst-desc{font-size:0.72rem;color:rgba(163,196,204,0.7);line-height:1.5;margin-bottom:10px;}
+.inst-btn{display:inline-block;padding:6px 12px;background:rgba(61,107,115,0.3);border-radius:6px;font-size:0.6rem;color:rgba(163,196,204,0.9);text-decoration:none;letter-spacing:0.08em;margin-top:4px;margin-right:6px;}
+.ruta-card{background:rgba(255,255,255,0.05);border-radius:10px;padding:14px;margin:0 16px 10px;border:1px solid rgba(61,107,115,0.2);}
+.ruta-titulo{font-size:0.52rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--atlantic);margin-bottom:6px;}
+.ruta-tags{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
+.ruta-tag{background:rgba(61,107,115,0.2);border-radius:4px;padding:3px 8px;font-size:0.6rem;color:rgba(163,196,204,0.8);}
+.ruta-paradas{border-left:2px solid rgba(61,107,115,0.3);padding-left:12px;display:flex;flex-direction:column;gap:12px;}
+.parada-km{font-size:0.58rem;color:var(--atlantic);font-weight:600;}
+.parada-txt{font-size:0.7rem;color:rgba(163,196,204,0.8);line-height:1.4;margin-top:2px;}
+.parada-tiempo{font-size:0.62rem;color:rgba(163,196,204,0.5);margin-top:3px;}
+.dato{background:rgba(255,255,255,0.04);border-radius:8px;padding:12px 14px;border-left:3px solid var(--atlantic);font-size:0.72rem;color:rgba(196,220,228,0.85);line-height:1.5;margin:0 16px 12px;}
+.dato.rojo{border-left-color:#B84E3A;color:rgba(245,205,195,0.85);}
+.mapa-wrap{margin:0 16px 12px;}
+.mapa-label{font-size:0.5rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.45);margin-bottom:8px;}
+.mapa-frame{width:100%;height:200px;border-radius:10px;overflow:hidden;border:1px solid rgba(61,107,115,0.25);}
+.mapa-frame iframe{width:100%;height:100%;border:0;filter:invert(0.85) hue-rotate(180deg) brightness(0.85);}
+.distancias{padding:0 16px 16px;}
+.dist-item{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(61,107,115,0.12);font-size:0.75rem;}
+.dist-item:last-child{border-bottom:none;}
+.dist-lugar{color:rgba(163,196,204,0.8);}
+.dist-val{color:var(--atlantic);font-weight:600;font-size:0.7rem;}
+.alma{background:rgba(61,107,115,0.08);border-radius:12px;padding:18px;margin:0 16px 16px;border:1px solid rgba(61,107,115,0.2);}
+.alma-titulo{font-family:var(--font-d);font-size:1rem;font-weight:300;color:var(--cream);margin-bottom:12px;font-style:italic;}
+.alma p{font-size:0.75rem;color:rgba(163,196,204,0.75);line-height:1.6;margin-bottom:10px;}
+.alma p:last-child{margin-bottom:0;}
+.estab-banner{margin:0 16px 16px;background:rgba(61,107,115,0.08);border:1px solid rgba(61,107,115,0.25);border-radius:12px;padding:16px;text-align:center;}
+.estab-banner-titulo{font-family:var(--font-d);font-size:1rem;color:var(--cream);margin-bottom:6px;}
+.estab-banner-sub{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.5;margin-bottom:12px;}
+.estab-banner-btn{display:block;padding:11px;background:var(--atlantic);color:#fff;text-decoration:none;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;border-radius:6px;}
+.btn-agenda-dest{position:fixed;bottom:24px;left:18px;z-index:890;width:48px;height:48px;border-radius:50%;background:rgba(61,107,115,0.92);border:1.5px solid rgba(163,196,204,0.35);box-shadow:0 4px 16px rgba(0,0,0,0.4);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.3rem;backdrop-filter:blur(8px);text-decoration:none;}
+footer{text-align:center;padding:24px 16px 80px;font-size:0.55rem;color:rgba(163,196,204,0.25);letter-spacing:0.1em;text-transform:uppercase;}
+[data-lang]{display:none;}
+[data-lang].activo{display:block;}
+span[data-lang]{display:none;}
+span[data-lang].activo{display:inline;}
+</style>
+</head>
+<body>
+<a class="btn-agenda-dest" href="../index.html#agenda" title="Mi agenda CONFIN">&#128214;</a>
+<nav class="nav">
+<a href="../index.html" class="nav-back">&#8592; Volver</a>
+<a href="../index.html" class="nav-logo">CONF&#205;N</a>
+<div class="lang-selector">
+<button class="lang-btn-dest activo" onclick="cambiarIdioma('es',this)">ES</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('en',this)">EN</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('pt',this)">PT</button>
+</div>
+</nav>
+<div class="hero">
+<div class="hero-content">
+<div class="hero-tag">&#127462;&#127479; Chubut &middot; Argentina &middot; Patagonia Atl&#225;ntica</div>
+<h1 class="hero-title">Camarones</h1>
+<div class="hero-sub" data-lang="es">Puerto Pesquero Artesanal &middot; Reserva Natural Cabo Dos Bah&#237;as &middot; Curado por CONF&#205;N</div>
+<div class="hero-sub" data-lang="en">Artisan Fishing Port &middot; Cabo Dos Bah&#237;as Natural Reserve &middot; Curated by CONF&#205;N</div>
+<div class="hero-sub" data-lang="pt">Porto de Pesca Artesanal &middot; Reserva Natural Cabo Dos Bah&#237;as &middot; Curado por CONF&#205;N</div>
+</div>
+</div>
+<div class="aviso" data-lang="es">&#9981; <strong>Combustible cr&#237;tico:</strong> Camarones tiene una sola estaci&#243;n YPF. Desde Trelew (260 km) o Comodoro Rivadavia (330 km) llegar&#225;s con el tanque bajo. Carg&#225; apenas llegues.</div>
+<div class="aviso" data-lang="en">&#9981; <strong>Critical fuel:</strong> Camarones has only one YPF station. Coming from Trelew (260 km) or Comodoro Rivadavia (330 km) you will arrive with a low tank. Fill up as soon as you arrive.</div>
+<div class="aviso" data-lang="pt">&#9981; <strong>Combust&#237;vel cr&#237;tico:</strong> Camarones tem apenas um posto YPF. Vindo de Trelew (260 km) ou Comodoro Rivadavia (330 km) voc&#234; chegar&#225; com o tanque baixo. Abastate&#231;a assim que chegar.</div>
+<div class="aviso naranja" style="margin-top:10px;" data-lang="es">&#128038; <strong>Reserva Cabo Dos Bah&#237;as (10 km al sur):</strong> Acceso por ripio. Sin se&#241;al celular. Sin agua potable ni sanitarios en la reserva. Llevar todo lo necesario. Temporada de ping&#252;inos: sep&ndash;mar.</div>
+<div class="aviso naranja" style="margin-top:10px;" data-lang="en">&#128038; <strong>Cabo Dos Bah&#237;as Reserve (10 km south):</strong> Gravel access. No cell signal. No drinking water or bathrooms in the reserve. Bring everything you need. Penguin season: Sep&ndash;Mar.</div>
+<div class="aviso naranja" style="margin-top:10px;" data-lang="pt">&#128038; <strong>Reserva Cabo Dos Bah&#237;as (10 km ao sul):</strong> Acesso por cascalho. Sem sinal celular. Sem &#225;gua potável ou banheiros na reserva. Traga tudo o que precisar. Temporada de ping&#252;ins: set&ndash;mar.</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128680; <span data-lang="es">Emergencias</span><span data-lang="en">Emergencies</span><span data-lang="pt">Emerg&#234;ncias</span></div>
+</div>
+<div class="card-grid">
+<div class="card rojo full">
+<div class="card-ico">&#127973;</div>
+<div class="card-nombre" data-lang="es">Sala de Primeros Auxilios Municipal</div>
+<div class="card-nombre" data-lang="en">Municipal First Aid Station</div>
+<div class="card-nombre" data-lang="pt">Posto de Primeiros Socorros Municipal</div>
+<div class="card-desc" data-lang="es">Sarmiento y 9 de Julio &middot; Atenci&#243;n primaria &middot; Derivaci&#243;n al Hospital de Trelew</div>
+<div class="card-desc" data-lang="en">Sarmiento and 9 de Julio &middot; Primary care &middot; Transfer to Trelew Hospital</div>
+<div class="card-desc" data-lang="pt">Sarmiento e 9 de Julio &middot; Aten&#231;&#227;o prim&#225;ria &middot; Transfer para o Hospital de Trelew</div>
+<div class="card-num">107 / (0297) 496-3019</div>
+<a href="tel:+542974963019" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#128110;</div>
+<div class="card-nombre">Polic&#237;a</div>
+<div class="card-desc">Comisaria Camarones</div>
+<div class="card-num">101 / (0297) 496-3010</div>
+<a href="tel:+542974963010" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#128657;</div>
+<div class="card-nombre" data-lang="es">Bomberos Voluntarios</div>
+<div class="card-nombre" data-lang="en">Volunteer Fire Dept.</div>
+<div class="card-nombre" data-lang="pt">Bombeiros Volunt&#225;rios</div>
+<div class="card-num">100 / (0297) 496-3062</div>
+<a href="tel:100" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#9875;</div>
+<div class="card-nombre">Prefectura Naval</div>
+<div class="card-desc" data-lang="es">Puerto de Camarones</div>
+<div class="card-num">(0297) 496-3012</div>
+<a href="tel:+542974963012" class="card-btn">LLAMAR</a>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#8987; <span data-lang="es">&#191;Cu&#225;nto tiempo ten&#233;s?</span><span data-lang="en">How much time do you have?</span><span data-lang="pt">Quanto tempo voc&#234; tem?</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item">
+<div class="info-ico">&#9203;</div>
+<div class="info-txt">
+<strong data-lang="es">2 horas &mdash; Puerto y pueblo</strong><strong data-lang="en">2 hours &mdash; Port and village</strong><strong data-lang="pt">2 horas &mdash; Porto e village</strong>
+<span data-lang="es">Puerto pesquero artesanal con bajadas de langostinos y merluza &middot; Museo Tom&#225;s Lago (historia del pueblo y la pesca) &middot; Costanera sobre la Bah&#237;a Roja.</span>
+<span data-lang="en">Artisan fishing port with prawn and hake landings &middot; Tom&#225;s Lago Museum (town and fishing history) &middot; Waterfront on Bah&#237;a Roja.</span>
+<span data-lang="pt">Porto de pesca artesanal com desembarque de langostinos e merluza &middot; Museu Tom&#225;s Lago (hist&#243;ria do povo e da pesca) &middot; Costaneira sobre a Bah&#237;a Roja.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#128038;</div>
+<div class="info-txt">
+<strong data-lang="es">Medio d&#237;a &mdash; Cabo Dos Bah&#237;as</strong><strong data-lang="en">Half day &mdash; Cabo Dos Bah&#237;as</strong><strong data-lang="pt">Meio dia &mdash; Cabo Dos Bah&#237;as</strong>
+<span data-lang="es">10 km al sur por ripio. Reserva natural con ping&#252;inos de Magallanes (sep&ndash;mar), lobos marinos, nutrias, armadillos y m&#225;s de 100 especies de aves. Muy poca afluencia de turistas.</span>
+<span data-lang="en">10 km south on gravel. Natural reserve with Magellanic penguins (Sep&ndash;Mar), sea lions, otters, armadillos and over 100 bird species. Very few tourists.</span>
+<span data-lang="pt">10 km ao sul por cascalho. Reserva natural com ping&#252;ins de Magalh&#227;es (set&ndash;mar), le&#245;es marinhos, lontras, tatus e mais de 100 esp&#233;cies de aves. Muito poucos turistas.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127775;</div>
+<div class="info-txt">
+<strong data-lang="es">D&#237;a completo &mdash; Pesca deportiva</strong><strong data-lang="en">Full day &mdash; Sport fishing</strong><strong data-lang="pt">Dia completo &mdash; Pesca esportiva</strong>
+<span data-lang="es">Pesca de trucha marr&#243;n, s&#225;balo y langostino en los arroyos y el litoral. Guias locales disponibles desde el puerto. Temporada: sep&ndash;abr.</span>
+<span data-lang="en">Brown trout, shad and prawn fishing in streams and coastal waters. Local guides available from the port. Season: Sep&ndash;Apr.</span>
+<span data-lang="pt">Pesca de truta marrom, s&#225;balo e langostino nos c&#243;rregos e litoral. Guias locais dispon&#237;veis no porto. Temporada: set&ndash;abr.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127783;</div>
+<div class="info-txt">
+<strong data-lang="es">Si llueve &mdash; Museo y productos del mar</strong><strong data-lang="en">If it rains &mdash; Museum and seafood</strong><strong data-lang="pt">Se chover &mdash; Museu e frutos do mar</strong>
+<span data-lang="es">Museo Tom&#225;s Lago + compra directa al pescador en el muelle: langostinos, cholgas, mejillones y merluza frescos a precio de origen.</span>
+<span data-lang="en">Tom&#225;s Lago Museum + direct purchase from fishermen at the dock: fresh prawns, mussels and hake at source prices.</span>
+<span data-lang="pt">Museu Tom&#225;s Lago + compra direta ao pescador no cais: langostinos, mexilh&#245;es e merluza frescos a pre&#231;o de origem.</span>
+</div>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128247; <span data-lang="es">Paseos gratuitos</span><span data-lang="en">Free walks</span><span data-lang="pt">Passeios gratuitos</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item"><div class="info-ico">&#127810;</div><div class="info-txt"><strong data-lang="es">Costanera Bah&#237;a Roja</strong><strong data-lang="en">Bah&#237;a Roja Waterfront</strong><strong data-lang="pt">Costaneira Bah&#237;a Roja</strong><span data-lang="es">Paseo peatonal sobre la bah&#237;a con vista al puerto pesquero. Al atardecer el cielo y el agua se ti&#241;en de rojo &mdash; de ah&#237; el nombre. Acceso libre.</span><span data-lang="en">Waterfront walk overlooking the fishing port. At sunset the sky and water turn red &mdash; hence the name. Free access.</span><span data-lang="pt">Passeio peat&#244;nal sobre a ba&#237;a com vista ao porto pesqueiro. Ao entardecer o c&#233;u e a &#225;gua ficam vermelhos &mdash; da&#237; o nome. Acesso livre.</span></div></div>
+<div class="info-item"><div class="info-ico">&#128038;</div><div class="info-txt"><strong data-lang="es">Reserva Natural Cabo Dos Bah&#237;as (acceso con entrada)</strong><strong data-lang="en">Cabo Dos Bah&#237;as Natural Reserve (entry fee)</strong><strong data-lang="pt">Reserva Natural Cabo Dos Bah&#237;as (entrada paga)</strong><span data-lang="es">10 km de ripio al sur. El circuito pedestre de 3 km por la reserva es el acceso m&#225;s solitario y aut&#233;ntico a ping&#252;inos de la costa patag&#243;nica. Sin multitudes.</span><span data-lang="en">10 km gravel south. The 3 km walking circuit through the reserve is the most solitary and authentic access to penguins on the Patagonian coast. No crowds.</span><span data-lang="pt">10 km cascalho ao sul. O circuito de 3 km pela reserva &#233; o acesso mais solitario e aut&#234;ntico aos ping&#252;ins da costa patag&#244;nica. Sem multid&#245;es.</span></div></div>
+<div class="info-item"><div class="info-ico">&#127981;</div><div class="info-txt"><strong data-lang="es">Muelle Pesquero Artesanal</strong><strong data-lang="en">Artisan Fishing Pier</strong><strong data-lang="pt">Pier de Pesca Artesanal</strong><span data-lang="es">Visita libre al muelle. Ver el desembarque de langostinos patag&#243;nicos y merluza fresca en las ma&#241;anas. Compra directa posible.</span><span data-lang="en">Free pier visit. Watch the landing of Patagonian prawns and fresh hake in the mornings. Direct purchase possible.</span><span data-lang="pt">Visita livre ao cais. Ver o desembarque de langostinos patag&#244;nicos e merluza fresca nas manh&#227;s. Compra direta poss&#237;vel.</span></div></div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128153; <span data-lang="es">Con prop&#243;sito</span><span data-lang="en">With purpose</span><span data-lang="pt">Com prop&#243;sito</span></div>
+</div>
+<div class="inst-card">
+<div class="inst-nombre" data-lang="es">Cooperativa de Pescadores Artesanales de Camarones</div>
+<div class="inst-nombre" data-lang="en">Camarones Artisan Fishermen Cooperative</div>
+<div class="inst-nombre" data-lang="pt">Cooperativa de Pescadores Artesanais de Camarones</div>
+<div class="inst-desc" data-lang="es">Familias pescadoras organizadas que comercializan directamente sus capturas: langostino patag&#243;nico, merluza, cholga y mejill&#243;n. Compra fresca en el muelle los d&#237;as de desembarque. Apoyo al turismo de pesca responsable. Puerto Camarones s/n.</div>
+<div class="inst-desc" data-lang="en">Organized fishing families that market their catches directly: Patagonian prawns, hake, cholga and mussels. Fresh purchase at the dock on landing days. Supporting responsible fishing tourism. Puerto Camarones s/n.</div>
+<div class="inst-desc" data-lang="pt">Fam&#237;lias pescadoras organizadas que comercializam diretamente suas capturas: langostino patag&#244;nico, merluza, cholga e mexilh&#227;o. Compra fresca no cais nos dias de desembarque. Puerto Camarones s/n.</div>
+<a href="tel:+542974963019" class="inst-btn">Municipio: (0297) 496-3019</a>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#9981; <span data-lang="es">Combustible &amp; Servicios</span><span data-lang="en">Fuel &amp; Services</span><span data-lang="pt">Combust&#237;vel &amp; Servi&#231;os</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item"><div class="info-ico">&#9981;</div><div class="info-txt"><strong>YPF Camarones</strong><span data-lang="es">Ruta Provincial 1 s/n (ingreso al pueblo). &#218;nica estaci&#243;n. Carg&#225; siempre al m&#225;ximo.</span><span data-lang="en">Ruta Provincial 1 s/n (town entrance). Only station. Always fill to maximum.</span><span data-lang="pt">Ruta Provincial 1 s/n (entrada do village). &#218;nico posto. Sempre encha ao m&#225;ximo.</span></div></div>
+<div class="info-item"><div class="info-ico">&#128138;</div><div class="info-txt"><strong data-lang="es">Farmacia / Medicamentos</strong><strong data-lang="en">Pharmacy</strong><strong data-lang="pt">Farm&#225;cia</strong><span data-lang="es">Farmacia Municipal en la Sala de Primeros Auxilios &middot; Medicamentos b&#225;sicos. Para medicaci&#243;n espec&#237;fica, proveerse en Trelew o Comodoro.</span><span data-lang="en">Municipal Pharmacy at the First Aid Station &middot; Basic medications. For specific medication, stock up in Trelew or Comodoro.</span><span data-lang="pt">Farm&#225;cia Municipal no Posto de Primeiros Socorros &middot; Medicamentos b&#225;sicos. Para medica&#231;&#227;o espec&#237;fica, abastecer em Trelew ou Comodoro.</span></div></div>
+<div class="info-item"><div class="info-ico">&#128241;</div><div class="info-txt"><strong data-lang="es">Conectividad</strong><strong data-lang="en">Connectivity</strong><strong data-lang="pt">Conectividade</strong><span data-lang="es">Se&#241;al celular disponible en el pueblo. <strong>Sin cobertura en Cabo Dos Bah&#237;as y rutas provinciales.</strong> Sin cajero autom&#225;tico &mdash; llevar efectivo desde Trelew o Comodoro.</span><span data-lang="en">Cell signal in town. <strong>No coverage at Cabo Dos Bah&#237;as and provincial roads.</strong> No ATM &mdash; bring cash from Trelew or Comodoro.</span><span data-lang="pt">Sinal celular no village. <strong>Sem cobertura no Cabo Dos Bah&#237;as e estradas provinciais.</strong> Sem caixa eletr&#244;nico &mdash; levar dinheiro de Trelew ou Comodoro.</span></div></div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo" style="font-size:0.65rem;">&#128690; <span data-lang="es">En Camino &mdash; Rutas desde Camarones</span><span data-lang="en">On the Road &mdash; Routes from Camarones</span><span data-lang="pt">Na Estrada &mdash; Rotas de Camarones</span></div>
+</div>
+<div class="mapa-wrap">
+<div class="mapa-label">
+<span data-lang="es">&#128506; RP 1 / RN 3 &mdash; Camarones &#8596; Trelew / Comodoro Rivadavia / Cabo Dos Bah&#237;as</span>
+<span data-lang="en">&#128506; RP 1 / RN 3 &mdash; Camarones &#8596; Trelew / Comodoro Rivadavia / Cabo Dos Bah&#237;as</span>
+<span data-lang="pt">&#128506; RP 1 / RN 3 &mdash; Camarones &#8596; Trelew / Comodoro Rivadavia / Cabo Dos Bah&#237;as</span>
+</div>
+<div class="mapa-frame"><iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-67.5,-46.0,-64.5,-44.0&layer=mapnik" loading="lazy" title="Mapa En Camino Camarones"></iframe></div>
+</div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">RP 1 &mdash; Camarones &#8596; Trelew (260 km | ~3h 30m)</div>
+<div class="ruta-titulo" data-lang="en">RP 1 &mdash; Camarones &#8596; Trelew (260 km | ~3h 30m)</div>
+<div class="ruta-titulo" data-lang="pt">RP 1 &mdash; Camarones &#8596; Trelew (260 km | ~3h 30m)</div>
+<div class="ruta-tags"><span class="ruta-tag">260 km</span><span class="ruta-tag">Asfalto + ripio</span><span class="ruta-tag">Estepa costera</span></div>
+<div class="dato rojo" data-lang="es">&#9888;&#65039; Tramo largo sin servicios. Carg&#225; el tanque en Camarones antes de salir. Sin estaciones en los 260 km hacia Trelew.</div>
+<div class="dato rojo" data-lang="en">&#9888;&#65039; Long stretch without services. Fill up in Camarones before leaving. No stations in the 260 km to Trelew.</div>
+<div class="dato rojo" data-lang="pt">&#9888;&#65039; Trecho longo sem servi&#231;os. Abastate&#231;a em Camarones antes de sair. Sem postos nos 260 km at&#233; Trelew.</div>
+<div class="ruta-paradas">
+<div>
+<div class="parada-km">km 10 &middot; &#128038; Cabo Dos Bah&#237;as &mdash; <span data-lang="es">Reserva Natural</span><span data-lang="en">Natural Reserve</span><span data-lang="pt">Reserva Natural</span></div>
+<div class="parada-txt" data-lang="es">Desviar 10 km al sur por ripio. Ping&#252;inos (sep&ndash;mar), lobos marinos, nutrias y arm&#225;dillos. Sin servicios. Llevar agua y snacks.</div>
+<div class="parada-txt" data-lang="en">Detour 10 km south on gravel. Penguins (Sep&ndash;Mar), sea lions, otters and armadillos. No services. Bring water and snacks.</div>
+<div class="parada-txt" data-lang="pt">Desvio 10 km ao sul por cascalho. Ping&#252;ins (set&ndash;mar), le&#245;es marinhos, lontras e tatus. Sem servi&#231;os. Levar &#225;gua e lanches.</div>
+<div class="parada-tiempo">&#9203; 2&ndash;3 hs en la reserva</div>
+</div>
+<div>
+<div class="parada-km">km 260 &middot; &#9981; Trelew &mdash; YPF disponible</div>
+<div class="parada-txt" data-lang="es">Ciudad de servicios completos. Carg&#225; combustible, banco y conexi&#243;n onward a Puerto Madryn y aeropuerto REL.</div>
+<div class="parada-txt" data-lang="en">Full service city. Fuel, banking and onward connection to Puerto Madryn and REL airport.</div>
+<div class="parada-txt" data-lang="pt">Cidade de servi&#231;os completos. Combust&#237;vel, banco e conex&#227;o para Puerto Madryn e aeroporto REL.</div>
+<div class="parada-tiempo">&#9201; 3h 30 min desde Camarones</div>
+</div>
+</div>
+</div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">RN 3 Norte &mdash; Camarones &#8596; Comodoro Rivadavia (330 km | ~3h 45m)</div>
+<div class="ruta-titulo" data-lang="en">RN 3 North &mdash; Camarones &#8596; Comodoro Rivadavia (330 km | ~3h 45m)</div>
+<div class="ruta-titulo" data-lang="pt">RN 3 Norte &mdash; Camarones &#8596; Comodoro Rivadavia (330 km | ~3h 45m)</div>
+<div class="ruta-tags"><span class="ruta-tag">330 km</span><span class="ruta-tag">Asfalto</span><span class="ruta-tag">RN 3</span></div>
+<div class="ruta-paradas">
+<div>
+<div class="parada-km">km 330 &middot; &#9981; Comodoro Rivadavia</div>
+<div class="parada-txt" data-lang="es">Capital petrolera de la Patagonia. Servicios completos, aeropuerto CRD con vuelos a Buenos Aires, YPF y todos los bancos.</div>
+<div class="parada-txt" data-lang="en">Patagonia's oil capital. Full services, CRD airport with flights to Buenos Aires, YPF and all banks.</div>
+<div class="parada-txt" data-lang="pt">Capital petrol&#237;fera da Patagônia. Servi&#231;os completos, aeroporto CRD com voos para Buenos Aires, YPF e todos os bancos.</div>
+<div class="parada-tiempo">&#9201; 3h 45 min desde Camarones</div>
+</div>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128205; <span data-lang="es">Distancias desde Camarones</span><span data-lang="en">Distances from Camarones</span><span data-lang="pt">Dist&#226;ncias de Camarones</span></div>
+</div>
+<div class="distancias">
+<div class="dist-item"><span class="dist-lugar">Cabo Dos Bah&#237;as</span><span class="dist-val">10 km &middot; 15 min</span></div>
+<div class="dist-item"><span class="dist-lugar" data-lang="es">Punta Ninfas (lobos marinos)</span><span class="dist-lugar" data-lang="en">Punta Ninfas (sea lions)</span><span class="dist-lugar" data-lang="pt">Punta Ninfas (le&#245;es marinhos)</span><span class="dist-val">60 km &middot; 1h</span></div>
+<div class="dist-item"><span class="dist-lugar">Trelew</span><span class="dist-val">260 km &middot; 3h 30 min</span></div>
+<div class="dist-item"><span class="dist-lugar">Puerto Madryn</span><span class="dist-val">320 km &middot; 4h</span></div>
+<div class="dist-item"><span class="dist-lugar">Comodoro Rivadavia</span><span class="dist-val">330 km &middot; 3h 45 min</span></div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#127775; <span data-lang="es">El alma de este lugar</span><span data-lang="en">The soul of this place</span><span data-lang="pt">A alma deste lugar</span></div>
+</div>
+<div class="alma">
+<div class="alma-titulo" data-lang="es">El pueblo que se neg&#243; a crecer y guard&#243; sus costas para la fauna</div>
+<div class="alma-titulo" data-lang="en">The village that refused to grow and kept its shores for wildlife</div>
+<div class="alma-titulo" data-lang="pt">O village que se recusou a crescer e guardou suas costas para a fauna</div>
+<p data-lang="es">&#128218; Camarones naci&#243; en 1901 como colonia agropecuaria promovida por la familia Lezama. A diferencia de otros puertos patag&#243;nicos que crecieron con el petr&#243;leo o el turismo masivo, Camarones mantuvo su escala humana: menos de 1.000 habitantes, calles de tierra y un muelle donde los pescadores todav&#237;a desembarcan a mano.</p>
+<p data-lang="en">&#128218; Camarones was born in 1901 as an agricultural colony promoted by the Lezama family. Unlike other Patagonian ports that grew with oil or mass tourism, Camarones maintained its human scale: fewer than 1,000 inhabitants, dirt streets and a dock where fishermen still unload by hand.</p>
+<p data-lang="pt">&#128218; Camarones nasceu em 1901 como col&#244;nia agropecu&#225;ria promovida pela fam&#237;lia Lezama. Ao contr&#225;rio de outros portos patag&#244;nicos que cresceram com o petr&#243;leo ou o turismo massivo, Camarones manteve sua escala humana: menos de 1.000 habitantes e um cais onde os pescadores ainda descarregam &#224; m&#227;o.</p>
+<p data-lang="es">&#129414; <strong>Fauna emblem&#225;tica:</strong> Ping&#252;ino de Magallanes (Cabo Dos Bah&#237;as), Lobo Marino de Un Pelo, Nutria Patag&#243;nica, Armadillo de Peludo, Flamenco Austral, Gaviota Cocinera y Cormorana Imperial.</p>
+<p data-lang="en">&#129414; <strong>Signature wildlife:</strong> Magellanic Penguin (Cabo Dos Bah&#237;as), South American Sea Lion, Patagonian Otter, Hairy Armadillo, Austral Flamingo, Kelp Gull and Imperial Shag.</p>
+<p data-lang="pt">&#129414; <strong>Fauna emblem&#225;tica:</strong> Ping&#252;im de Magalh&#227;es (Cabo Dos Bah&#237;as), Le&#227;o Marinho Sul-americano, Lontra Patag&#244;nica, Tatu Peludo, Flamingo Austral, Gaivota e Biguatinga Imperial.</p>
+<p data-lang="es">&#127807; <strong>Flora y paisaje:</strong> Estepa costera de mata negra, quilimbay y jarilla &middot; Acantilados rojizos sobre el Atl&#225;ntico &middot; Ba&#237;as de aguas calmas con fondo de algas patag&#243;nicas.</p>
+<p data-lang="en">&#127807; <strong>Flora &amp; landscape:</strong> Coastal steppe of mata negra, quilimbay and jarilla &middot; Red cliffs over the Atlantic &middot; Calm bays with Patagonian kelp beds.</p>
+<p data-lang="pt">&#127807; <strong>Flora e paisagem:</strong> Estepe costeira de mata negra, quilimbay e jarilla &middot; Falésias avermelh&#225;das sobre o Atl&#226;ntico &middot; Ba&#237;as de &#225;guas calmas com algas patag&#244;nicas.</p>
+<p data-lang="es">&#128161; <strong>&#191;Sab&#237;as que...?</strong> Camarones es el &#250;nico lugar de Argentina donde se caza legalmente el langostino patag&#243;nico de forma completamente artesanal &mdash; con botes peque&#241;os y redes de mano &mdash; sin dragas ni barcos de arrastre industrial. El resultado es un langostino de talla y sabor excepcionales.</p>
+<p data-lang="en">&#128161; <strong>Did you know?</strong> Camarones is the only place in Argentina where Patagonian prawns are legally harvested entirely by hand &mdash; with small boats and hand nets &mdash; without dredges or industrial trawlers. The result is prawns of exceptional size and flavor.</p>
+<p data-lang="pt">&#128161; <strong>Voc&#234; sabia?</strong> Camarones &#233; o &#250;nico lugar da Argentina onde o langostino patag&#244;nico &#233; legalmente capturado de forma completamente artesanal &mdash; com barcos pequenos e redes de m&#227;o &mdash; sem dragas ou arrastreiros industriais.</p>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#127968; <span data-lang="es">Alojamiento, Gastronom&#237;a &amp; Experiencias</span><span data-lang="en">Accommodation, Food &amp; Experiences</span><span data-lang="pt">Hospedagem, Gastronomia &amp; Experi&#234;ncias</span></div>
+</div>
+<div class="estab-banner">
+<div class="estab-banner-titulo" data-lang="es">Explor&#225; todo lo que ofrece Camarones</div>
+<div class="estab-banner-titulo" data-lang="en">Explore everything Camarones has to offer</div>
+<div class="estab-banner-titulo" data-lang="pt">Explore tudo o que Camarones tem a oferecer</div>
+<div class="estab-banner-sub" data-lang="es">Alojamiento &middot; Gastronom&#237;a &middot; Pesca Deportiva &middot; Avifauna &middot; Traslados</div>
+<div class="estab-banner-sub" data-lang="en">Accommodation &middot; Food &middot; Sport Fishing &middot; Birdwatching &middot; Transfers</div>
+<div class="estab-banner-sub" data-lang="pt">Hospedagem &middot; Gastronomia &middot; Pesca Esportiva &middot; Aves &middot; Traslados</div>
+<a href="../categorias.html?destino=Camarones" class="estab-banner-btn" data-lang="es">Ver establecimientos en Camarones &#8594;</a>
+<a href="../categorias.html?destino=Camarones&lang=en" class="estab-banner-btn" data-lang="en">Browse Camarones listings &#8594;</a>
+<a href="../categorias.html?destino=Camarones&lang=pt" class="estab-banner-btn" data-lang="pt">Ver estabelecimentos em Camarones &#8594;</a>
+</div>
+<footer>CONF&#205;N &middot; Camarones &middot; Chubut &middot; Patagonia Atl&#225;ntica</footer>
+<script>
+function cambiarIdioma(lang,btn){
+document.querySelectorAll('.lang-btn-dest').forEach(b=>b.classList.remove('activo'));
+if(btn)btn.classList.add('activo');
+document.querySelectorAll('[data-lang]').forEach(el=>{
+el.classList.toggle('activo',el.dataset.lang===lang);
+});
+localStorage.setItem('confin_lang',lang);
+}
+(function(){
+var saved=localStorage.getItem('confin_lang')||'es';
+var btn=document.querySelector('.lang-btn-dest[onclick*="\'"+saved+"\'"]');
+cambiarIdioma(saved,btn);
+})();
+</script>
+</body>
+</html>

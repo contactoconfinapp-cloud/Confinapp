@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Comodoro Rivadavia &#183; CONF&#205;N</title>
+<meta name="description" content="Gu&#237;a &#250;til de Comodoro Rivadavia. Emergencias, petr&#243;leo, rutas, Bosque Petrificado y todo lo que necesit&#225;s saber.">
+<style>
+:root{--deep:#0E1A1C;--cream:#FAF7F2;--atlantic:#3D6B73;--ash:rgba(163,196,204,0.2);--font-d:'Georgia',serif;--ember:#B84E3A;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:var(--deep);color:var(--cream);min-height:100vh;}
+.nav{position:sticky;top:0;z-index:100;background:var(--deep);display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(61,107,115,0.3);}
+.nav-logo{font-family:var(--font-d);font-size:1rem;color:var(--cream);letter-spacing:0.04em;text-decoration:none;}
+.nav-back{font-size:0.72rem;color:rgba(163,196,204,0.7);text-decoration:none;}
+.lang-selector{display:flex;gap:4px;}
+.lang-btn-dest{font-size:0.6rem;padding:4px 7px;border:1px solid rgba(163,196,204,0.4);background:rgba(14,26,28,0.9);color:rgba(163,196,204,0.7);cursor:pointer;border-radius:3px;font-family:inherit;letter-spacing:0.05em;}
+.lang-btn-dest.activo{background:var(--atlantic);color:#fff;border-color:var(--atlantic);}
+.hero{position:relative;overflow:hidden;min-height:200px;}
+.hero::before{content:'';position:absolute;inset:0;background:url('comodoro-rivadavia-foto.jpg') center/cover no-repeat;opacity:0.35;}
+.hero-content{position:relative;z-index:1;padding:32px 20px 28px;}
+.hero-tag{font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.6);margin-bottom:10px;}
+.hero-title{font-family:var(--font-d);font-size:clamp(1.8rem,7vw,3rem);font-weight:300;line-height:1.05;margin-bottom:8px;}
+.hero-sub{font-size:0.75rem;color:rgba(163,196,204,0.7);}
+.aviso{background:rgba(184,78,58,0.15);border-left:3px solid #B84E3A;border-radius:0 8px 8px 0;padding:12px 14px;font-size:0.75rem;color:rgba(245,205,195,0.9);line-height:1.5;margin:16px 16px 0;}
+.aviso.naranja{background:rgba(196,151,74,0.12);border-left-color:#C4974A;color:rgba(245,225,185,0.9);}
+.seccion{padding:20px 16px 4px;}
+.seccion-titulo{font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--atlantic);display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.seccion-titulo::after{content:'';flex:1;height:1px;background:var(--ash);}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px 4px;}
+.card{background:rgba(255,255,255,0.06);border-radius:12px;padding:14px;border:1px solid rgba(61,107,115,0.2);display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--atlantic);}
+.card.rojo::before{background:#B84E3A;}
+.card.full{grid-column:1/-1;}
+.card-ico{font-size:1.4rem;}
+.card-nombre{font-size:0.82rem;font-weight:600;color:rgba(250,247,242,0.9);}
+.card-desc{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.4;}
+.card-num{font-size:1rem;font-weight:700;color:#B84E3A;}
+.card-btn{display:block;text-align:center;padding:8px;background:#B84E3A;color:#fff;border-radius:8px;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;margin-top:4px;}
+.info-bloque{padding:0 16px 16px;}
+.info-item{padding:12px 0;border-bottom:1px solid rgba(61,107,115,0.15);display:flex;gap:10px;align-items:flex-start;}
+.info-item:last-child{border-bottom:none;}
+.info-ico{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.info-txt{font-size:0.78rem;color:rgba(163,196,204,0.8);line-height:1.5;}
+.info-txt strong{color:var(--cream);display:block;margin-bottom:2px;}
+.inst-card{background:rgba(61,107,115,0.1);border-radius:12px;padding:16px;margin:0 16px 12px;border:1px solid rgba(61,107,115,0.3);}
+.inst-nombre{font-size:0.85rem;font-weight:600;color:var(--cream);margin-bottom:4px;}
+.inst-desc{font-size:0.72rem;color:rgba(163,196,204,0.7);line-height:1.5;margin-bottom:10px;}
+.inst-btn{display:inline-block;padding:6px 12px;background:rgba(61,107,115,0.3);border-radius:6px;font-size:0.6rem;color:rgba(163,196,204,0.9);text-decoration:none;letter-spacing:0.08em;margin-top:4px;margin-right:6px;}
+.ruta-card{background:rgba(255,255,255,0.05);border-radius:10px;padding:14px;margin:0 16px 10px;border:1px solid rgba(61,107,115,0.2);}
+.ruta-titulo{font-size:0.52rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--atlantic);margin-bottom:6px;}
+.ruta-tags{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
+.ruta-tag{background:rgba(61,107,115,0.2);border-radius:4px;padding:3px 8px;font-size:0.6rem;color:rgba(163,196,204,0.8);}
+.ruta-paradas{border-left:2px solid rgba(61,107,115,0.3);padding-left:12px;display:flex;flex-direction:column;gap:12px;}
+.parada-km{font-size:0.58rem;color:var(--atlantic);font-weight:600;}
+.parada-txt{font-size:0.7rem;color:rgba(163,196,204,0.8);line-height:1.4;margin-top:2px;}
+.parada-tiempo{font-size:0.62rem;color:rgba(163,196,204,0.5);margin-top:3px;}
+.dato{background:rgba(255,255,255,0.04);border-radius:8px;padding:12px 14px;border-left:3px solid var(--atlantic);font-size:0.72rem;color:rgba(196,220,228,0.85);line-height:1.5;margin:0 16px 12px;}
+.dato.rojo{border-left-color:#B84E3A;color:rgba(245,205,195,0.85);}
+.mapa-wrap{margin:0 16px 12px;}
+.mapa-label{font-size:0.5rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.45);margin-bottom:8px;}
+.mapa-frame{width:100%;height:200px;border-radius:10px;overflow:hidden;border:1px solid rgba(61,107,115,0.25);}
+.mapa-frame iframe{width:100%;height:100%;border:0;filter:invert(0.85) hue-rotate(180deg) brightness(0.85);}
+.distancias{padding:0 16px 16px;}
+.dist-item{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(61,107,115,0.12);font-size:0.75rem;}
+.dist-item:last-child{border-bottom:none;}
+.dist-lugar{color:rgba(163,196,204,0.8);}
+.dist-val{color:var(--atlantic);font-weight:600;font-size:0.7rem;}
+.alma{background:rgba(61,107,115,0.08);border-radius:12px;padding:18px;margin:0 16px 16px;border:1px solid rgba(61,107,115,0.2);}
+.alma-titulo{font-family:var(--font-d);font-size:1rem;font-weight:300;color:var(--cream);margin-bottom:12px;font-style:italic;}
+.alma p{font-size:0.75rem;color:rgba(163,196,204,0.75);line-height:1.6;margin-bottom:10px;}
+.alma p:last-child{margin-bottom:0;}
+.estab-banner{margin:0 16px 16px;background:rgba(61,107,115,0.08);border:1px solid rgba(61,107,115,0.25);border-radius:12px;padding:16px;text-align:center;}
+.estab-banner-titulo{font-family:var(--font-d);font-size:1rem;color:var(--cream);margin-bottom:6px;}
+.estab-banner-sub{font-size:0.68rem;color:rgba(163,196,204,0.6);line-height:1.5;margin-bottom:12px;}
+.estab-banner-btn{display:block;padding:11px;background:var(--atlantic);color:#fff;text-decoration:none;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;border-radius:6px;}
+.btn-agenda-dest{position:fixed;bottom:24px;left:18px;z-index:890;width:48px;height:48px;border-radius:50%;background:rgba(61,107,115,0.92);border:1.5px solid rgba(163,196,204,0.35);box-shadow:0 4px 16px rgba(0,0,0,0.4);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.3rem;backdrop-filter:blur(8px);text-decoration:none;}
+footer{text-align:center;padding:24px 16px 80px;font-size:0.55rem;color:rgba(163,196,204,0.25);letter-spacing:0.1em;text-transform:uppercase;}
+[data-lang]{display:none;}
+[data-lang].activo{display:block;}
+span[data-lang]{display:none;}
+span[data-lang].activo{display:inline;}
+</style>
+</head>
+<body>
+<a class="btn-agenda-dest" href="../index.html#agenda" title="Mi agenda CONFIN">&#128214;</a>
+<nav class="nav">
+<a href="../index.html" class="nav-back">&#8592; Volver</a>
+<a href="../index.html" class="nav-logo">CONF&#205;N</a>
+<div class="lang-selector">
+<button class="lang-btn-dest activo" onclick="cambiarIdioma('es',this)">ES</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('en',this)">EN</button>
+<button class="lang-btn-dest" onclick="cambiarIdioma('pt',this)">PT</button>
+</div>
+</nav>
+<div class="hero">
+<div class="hero-content">
+<div class="hero-tag">&#127462;&#127479; Chubut &middot; Argentina &middot; Patagonia Atl&#225;ntica</div>
+<h1 class="hero-title">Comodoro Rivadavia</h1>
+<div class="hero-sub" data-lang="es">Capital del Petr&#243;leo Argentino &middot; Nodo de la Patagonia Central &middot; Curado por CONF&#205;N</div>
+<div class="hero-sub" data-lang="en">Argentine Oil Capital &middot; Central Patagonia Hub &middot; Curated by CONF&#205;N</div>
+<div class="hero-sub" data-lang="pt">Capital do Petr&#243;leo Argentino &middot; N&#243; da Patagônia Central &middot; Curado por CONF&#205;N</div>
+</div>
+</div>
+<div class="aviso" data-lang="es">&#9729;&#65039; <strong>Vientos de la Patagonia:</strong> Comodoro es una de las ciudades m&#225;s ventosas del mundo. R&#225;fagas habituales de 80&ndash;120 km/h pueden suspender vuelos y cerrar la ruta costera. Consultar estado de RN 3 antes de salir.</div>
+<div class="aviso" data-lang="en">&#9729;&#65039; <strong>Patagonian winds:</strong> Comodoro is one of the world's windiest cities. Regular gusts of 80&ndash;120 km/h can suspend flights and close the coastal route. Check RN 3 conditions before leaving.</div>
+<div class="aviso" data-lang="pt">&#9729;&#65039; <strong>Ventos patag&#244;nicos:</strong> Comodoro &#233; uma das cidades mais ventosas do mundo. Rajadas habituais de 80&ndash;120 km/h podem suspender voos e fechar a rota costeira. Verificar estado da RN 3 antes de sair.</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128680; <span data-lang="es">Emergencias</span><span data-lang="en">Emergencies</span><span data-lang="pt">Emerg&#234;ncias</span></div>
+</div>
+<div class="card-grid">
+<div class="card rojo full">
+<div class="card-ico">&#127973;</div>
+<div class="card-nombre" data-lang="es">Hospital Regional Dr. Florentino Ameghino</div>
+<div class="card-nombre" data-lang="en">Dr. Florentino Ameghino Regional Hospital</div>
+<div class="card-nombre" data-lang="pt">Hospital Regional Dr. Florentino Ameghino</div>
+<div class="card-desc">Av. Rivadavia 2230 &middot; Alta Complejidad &middot; Guardia 24hs</div>
+<div class="card-num">107 / (0297) 444-2283</div>
+<a href="tel:+542974442283" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#127973;</div>
+<div class="card-nombre">CEPAC &mdash; <span data-lang="es">Privado</span><span data-lang="en">Private</span><span data-lang="pt">Privado</span></div>
+<div class="card-desc">Chacabuco 148</div>
+<div class="card-num">(0297) 447-5500</div>
+<a href="tel:+542974475500" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#128110;</div>
+<div class="card-nombre">Polic&#237;a / 911</div>
+<div class="card-num">911 / 101</div>
+<a href="tel:911" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#128657;</div>
+<div class="card-nombre" data-lang="es">Bomberos</div>
+<div class="card-nombre" data-lang="en">Fire Dept.</div>
+<div class="card-nombre" data-lang="pt">Bombeiros</div>
+<div class="card-num">100 / (0297) 444-0030</div>
+<a href="tel:100" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#9875;</div>
+<div class="card-nombre">Prefectura Naval</div>
+<div class="card-desc">Puerto Comodoro</div>
+<div class="card-num">106 / (0297) 446-0010</div>
+<a href="tel:106" class="card-btn">LLAMAR</a>
+</div>
+<div class="card rojo">
+<div class="card-ico">&#128737;</div>
+<div class="card-nombre">Defensa Civil</div>
+<div class="card-num">103 / (0297) 444-4500</div>
+<a href="tel:103" class="card-btn">LLAMAR</a>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#8987; <span data-lang="es">&#191;Cu&#225;nto tiempo ten&#233;s?</span><span data-lang="en">How much time do you have?</span><span data-lang="pt">Quanto tempo voc&#234; tem?</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item">
+<div class="info-ico">&#9203;</div>
+<div class="info-txt">
+<strong data-lang="es">2 horas &mdash; Puerto y ciudad</strong><strong data-lang="en">2 hours &mdash; Port and city</strong><strong data-lang="pt">2 horas &mdash; Porto e cidade</strong>
+<span data-lang="es">Mirador del Cerro Chenque (panorama de la ciudad y el golfo) &middot; Paseo Costanero Virgen del Valle &middot; Casco hist&#243;rico de Km 3 (barrio del primer pozo de petr&#243;leo).</span>
+<span data-lang="en">Cerro Chenque viewpoint (panorama of city and gulf) &middot; Virgen del Valle Coastal Walk &middot; Km 3 historic district (neighborhood of the first oil well).</span>
+<span data-lang="pt">Mirante do Cerro Chenque (panor&#226;mica da cidade e do golfo) &middot; Passeio Costaneiro Virgen del Valle &middot; Bairro hist&#243;rico Km 3 (do primeiro po&#231;o de petr&#243;leo).</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127748;</div>
+<div class="info-txt">
+<strong data-lang="es">Medio d&#237;a &mdash; Historia del petr&#243;leo</strong><strong data-lang="en">Half day &mdash; Oil history</strong><strong data-lang="pt">Meio dia &mdash; Hist&#243;ria do petr&#243;leo</strong>
+<span data-lang="es">Museo Nacional del Petr&#243;leo (Av. Presidente Figueroa Alcorta s/n, Km 3): el museo m&#225;s completo sobre la historia del descubrimiento y explotaci&#243;n del petr&#243;leo en Argentina.</span>
+<span data-lang="en">National Oil Museum (Av. Presidente Figueroa Alcorta s/n, Km 3): the most comprehensive museum on the history of oil discovery and exploitation in Argentina.</span>
+<span data-lang="pt">Museu Nacional do Petr&#243;leo (Av. Presidente Figueroa Alcorta s/n, Km 3): o museu mais completo sobre a hist&#243;ria da descoberta e explora&#231;&#227;o do petr&#243;leo na Argentina.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127775;</div>
+<div class="info-txt">
+<strong data-lang="es">D&#237;a completo &mdash; Bosque Petrificado de Sarmiento</strong><strong data-lang="en">Full day &mdash; Sarmiento Petrified Forest</strong><strong data-lang="pt">Dia completo &mdash; Floresta Petrificada de Sarmiento</strong>
+<span data-lang="es">150 km al oeste por RN 26: troncos petrificados de hasta 65 millones de a&#241;os en el Parque Provincial Bosque Petrificado de Jaramillo. Carg&#225; combustible en Sarmiento.</span>
+<span data-lang="en">150 km west via RN 26: petrified trunks up to 65 million years old in Jaramillo Petrified Forest Provincial Park. Fill up in Sarmiento.</span>
+<span data-lang="pt">150 km a oeste pela RN 26: troncos petrificados de at&#233; 65 milh&#245;es de anos no Parque Provincial Floresta Petrificada de Jaramillo. Abastate&#231;a em Sarmiento.</span>
+</div>
+</div>
+<div class="info-item">
+<div class="info-ico">&#127783;</div>
+<div class="info-txt">
+<strong data-lang="es">Si llueve &mdash; Museos y gastronomia</strong><strong data-lang="en">If it rains &mdash; Museums and food</strong><strong data-lang="pt">Se chover &mdash; Museus e gastronomia</strong>
+<span data-lang="es">Museo Nacional del Petr&#243;leo &middot; Museo del Desembarco &middot; Circuito de restaurantes de mariscos en el Puerto Viejo &middot; Mermeladas y dulces artesanales de Km 5.</span>
+<span data-lang="en">National Oil Museum &middot; Landing Museum &middot; Seafood restaurant circuit at Puerto Viejo &middot; Artisan jams and sweets from Km 5.</span>
+<span data-lang="pt">Museu Nacional do Petr&#243;leo &middot; Museu do Desembarque &middot; Circuito de restaurantes de frutos do mar no Puerto Viejo &middot; Geleias e doces artesanais do Km 5.</span>
+</div>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128247; <span data-lang="es">Paseos gratuitos</span><span data-lang="en">Free walks</span><span data-lang="pt">Passeios gratuitos</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item"><div class="info-ico">&#127956;</div><div class="info-txt"><strong data-lang="es">Mirador Cerro Chenque</strong><strong data-lang="en">Cerro Chenque Viewpoint</strong><strong data-lang="pt">Mirante Cerro Chenque</strong><span data-lang="es">Sendero de 45 min desde el barrio Km 3. Vista panor&#225;mica de Comodoro, el golfo San Jorge y las plataformas petroleras en el horizonte. Acceso libre.</span><span data-lang="en">45 min trail from Km 3 neighborhood. Panoramic view of Comodoro, San Jorge Gulf and oil platforms on the horizon. Free access.</span><span data-lang="pt">Trilha de 45 min do bairro Km 3. Vista panor&#226;mica de Comodoro, o golfo San Jorge e as plataformas de petr&#243;leo no horizonte.</span></div></div>
+<div class="info-item"><div class="info-ico">&#127810;</div><div class="info-txt"><strong data-lang="es">Paseo Costanero General Mosconi</strong><strong data-lang="en">General Mosconi Coastal Walk</strong><strong data-lang="pt">Passeio Costaneiro General Mosconi</strong><span data-lang="es">3 km de ciclov&#237;a y paseo peatonal sobre el golfo San Jorge. Monumentos a los pioneros del petr&#243;leo y la colonizaci&#243;n patag&#243;nica. Acceso libre.</span><span data-lang="en">3 km of cycling and pedestrian path on San Jorge Gulf. Monuments to oil pioneers and Patagonian colonization. Free access.</span><span data-lang="pt">3 km de ciclovia e passeio peat&#244;nal sobre o golfo San Jorge. Monumentos aos pioneiros do petr&#243;leo e &#224; coloniza&#231;&#227;o patag&#244;nica.</span></div></div>
+<div class="info-item"><div class="info-ico">&#127981;</div><div class="info-txt"><strong data-lang="es">Barrio Km 3 &mdash; El nacimiento del petr&#243;leo</strong><strong data-lang="en">Km 3 District &mdash; The birthplace of oil</strong><strong data-lang="pt">Bairro Km 3 &mdash; O nascimento do petr&#243;leo</strong><span data-lang="es">El sitio exacto donde el 13 de diciembre de 1907 brot&#243; el primer pozo de petr&#243;leo de Argentina. Monumento y cartel hist&#243;rico. Acceso libre.</span><span data-lang="en">The exact site where on December 13, 1907 Argentina's first oil well struck. Monument and historical marker. Free access.</span><span data-lang="pt">O local exato onde em 13 de dezembro de 1907 brotou o primeiro po&#231;o de petr&#243;leo da Argentina. Monumento e marco hist&#243;rico.</span></div></div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128153; <span data-lang="es">Con prop&#243;sito</span><span data-lang="en">With purpose</span><span data-lang="pt">Com prop&#243;sito</span></div>
+</div>
+<div class="inst-card">
+<div class="inst-nombre" data-lang="es">Centro de Integraci&#243;n Comunitaria UNPA &mdash; Talleres Inclusivos</div>
+<div class="inst-nombre" data-lang="en">UNPA Community Integration Center &mdash; Inclusive Workshops</div>
+<div class="inst-nombre" data-lang="pt">Centro de Integra&#231;&#227;o Comunit&#225;ria UNPA &mdash; Oficinas Inclusivas</div>
+<div class="inst-desc" data-lang="es">La Universidad Nacional de la Patagonia San Juan Bosco gestiona talleres de artesan&#237;as en lana, cuero y pintura para j&#243;venes con discapacidad. Ferian sus productos los s&#225;bados en la Plaza Soberan&#237;a Nacional. Km 3, Comodoro. Tel: (0297) 455-7888.</div>
+<div class="inst-desc" data-lang="en">The National University of Patagonia San Juan Bosco runs wool, leather and painting craft workshops for young people with disabilities. They sell their products on Saturdays at Plaza Soberan&#237;a Nacional. Km 3, Comodoro. Tel: (0297) 455-7888.</div>
+<div class="inst-desc" data-lang="pt">A Universidade Nacional da Patagônia San Juan Bosco gerencia oficinas de artesanato em l&#227;, couro e pintura para jovens com defici&#234;ncia. Vendem seus produtos s&#225;bados na Plaza Soberan&#237;a Nacional. Km 3, Comodoro. Tel: (0297) 455-7888.</div>
+<a href="tel:+542974557888" class="inst-btn">UNPA: (0297) 455-7888</a>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#9981; <span data-lang="es">Combustible &amp; Servicios</span><span data-lang="en">Fuel &amp; Services</span><span data-lang="pt">Combust&#237;vel &amp; Servi&#231;os</span></div>
+</div>
+<div class="info-bloque">
+<div class="info-item"><div class="info-ico">&#9981;</div><div class="info-txt"><strong>YPF Centro</strong><span>Av. Rivadavia y San Mart&#237;n &middot; 24hs</span></div></div>
+<div class="info-item"><div class="info-ico">&#9981;</div><div class="info-txt"><strong>Shell Ruta Norte</strong><span>RN 3 km 1817 (salida norte hacia Trelew/Buenos Aires)</span></div></div>
+<div class="info-item"><div class="info-ico">&#9981;</div><div class="info-txt"><strong>Axion Km 5</strong><span>Av. Hipólito Yrigoyen km 5</span></div></div>
+<div class="info-item"><div class="info-ico">&#9992;</div><div class="info-txt"><strong data-lang="es">Aeropuerto General Enrique Mosconi (CRD)</strong><strong data-lang="en">General Enrique Mosconi Airport (CRD)</strong><strong data-lang="pt">Aeroporto General Enrique Mosconi (CRD)</strong><span data-lang="es">9 km al norte &middot; Vuelos a Buenos Aires, Neuqu&#233;n, Bariloche, Trelew, Ushuaia y conexiones a Chile.</span><span data-lang="en">9 km north &middot; Flights to Buenos Aires, Neuqu&#233;n, Bariloche, Trelew, Ushuaia and Chile connections.</span><span data-lang="pt">9 km ao norte &middot; Voos para Buenos Aires, Neuqu&#233;n, Bariloche, Trelew, Ushuaia e conex&#245;es para o Chile.</span></div></div>
+<div class="info-item"><div class="info-ico">&#128651;</div><div class="info-txt"><strong data-lang="es">Terminal de &#211;mnibus</strong><strong data-lang="en">Bus Terminal</strong><strong data-lang="pt">Terminal de &#212;nibus</strong><span data-lang="es">Pellegrini 730. Servicios a Buenos Aires (20 hs), Trelew, Bariloche, Neuqu&#233;n y Los Antiguos.</span><span data-lang="en">Pellegrini 730. Services to Buenos Aires (20 hs), Trelew, Bariloche, Neuqu&#233;n and Los Antiguos.</span><span data-lang="pt">Pellegrini 730. Servi&#231;os para Buenos Aires (20 hs), Trelew, Bariloche, Neuqu&#233;n e Los Antiguos.</span></div></div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo" style="font-size:0.65rem;">&#128690; <span data-lang="es">En Camino &mdash; Rutas desde Comodoro Rivadavia</span><span data-lang="en">On the Road &mdash; Routes from Comodoro Rivadavia</span><span data-lang="pt">Na Estrada &mdash; Rotas de Comodoro Rivadavia</span></div>
+</div>
+<div class="mapa-wrap">
+<div class="mapa-label">
+<span data-lang="es">&#128506; RN 3 / RN 26 / RN 40 &mdash; Comodoro &#8596; Sarmiento / Los Antiguos / Esquel / Buenos Aires</span>
+<span data-lang="en">&#128506; RN 3 / RN 26 / RN 40 &mdash; Comodoro &#8596; Sarmiento / Los Antiguos / Esquel / Buenos Aires</span>
+<span data-lang="pt">&#128506; RN 3 / RN 26 / RN 40 &mdash; Comodoro &#8596; Sarmiento / Los Antiguos / Esquel / Buenos Aires</span>
+</div>
+<div class="mapa-frame"><iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-71.0,-47.0,-66.0,-44.5&layer=mapnik" loading="lazy" title="Mapa En Camino Comodoro Rivadavia"></iframe></div>
+</div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">RN 26 Oeste &mdash; Comodoro &#8596; Sarmiento &#8596; Bosque Petrificado (150&ndash;250 km)</div>
+<div class="ruta-titulo" data-lang="en">RN 26 West &mdash; Comodoro &#8596; Sarmiento &#8596; Petrified Forest (150&ndash;250 km)</div>
+<div class="ruta-titulo" data-lang="pt">RN 26 Oeste &mdash; Comodoro &#8596; Sarmiento &#8596; Floresta Petrificada (150&ndash;250 km)</div>
+<div class="ruta-tags"><span class="ruta-tag">150&ndash;250 km</span><span class="ruta-tag">Asfalto + ripio</span><span class="ruta-tag">2 paradas</span></div>
+<div class="ruta-paradas">
+<div>
+<div class="parada-km">km 150 &middot; &#9981; Sarmiento &mdash; <span data-lang="es">Carg&#225; aqu&#237;</span><span data-lang="en">Fill up here</span><span data-lang="pt">Abastate&#231;a aqui</span></div>
+<div class="parada-txt" data-lang="es">Ciudad del lago Musters y Colhue Huapi. YPF disponible. Conexi&#243;n hacia el Bosque Petrificado de Jaramillo (100 km al sur) y hacia Los Antiguos por la Cuenca del R&#237;o Senguer.</div>
+<div class="parada-txt" data-lang="en">City of Lakes Musters and Colhue Huapi. YPF available. Connection to Jaramillo Petrified Forest (100 km south) and to Los Antiguos via Senguer River Basin.</div>
+<div class="parada-txt" data-lang="pt">Cidade dos Lagos Musters e Colhue Huapi. YPF dispon&#237;vel. Conex&#227;o para a Floresta Petrificada de Jaramillo (100 km ao sul) e Los Antiguos.</div>
+<div class="parada-tiempo">&#9201; 1h 45 min desde Comodoro</div>
+</div>
+<div>
+<div class="parada-km">km 250 &middot; &#129426; Bosque Petrificado de Jaramillo (RP 97)</div>
+<div class="parada-txt" data-lang="es">Troncos petrificados de hasta 65 millones de a&#241;os y 30 metros de largo. Paisaje de badlands y volcanes apagados. Entrada gratuita &middot; Sin servicios en el parque.</div>
+<div class="parada-txt" data-lang="en">Petrified trunks up to 65 million years old and 30 meters long. Badlands and extinct volcanoes landscape. Free entry &middot; No services in the park.</div>
+<div class="parada-txt" data-lang="pt">Troncos petrificados de at&#233; 65 milh&#245;es de anos e 30 metros de comprimento. Paisagem de badlands e vulc&#245;es extintos. Entrada gratuita &middot; Sem servi&#231;os no parque.</div>
+<div class="parada-tiempo">&#9201; 3h desde Comodoro</div>
+</div>
+</div>
+</div>
+<div class="ruta-card">
+<div class="ruta-titulo" data-lang="es">RN 3 Sur &mdash; Comodoro &#8596; Camarones &#8596; Trelew (330&ndash;385 km)</div>
+<div class="ruta-titulo" data-lang="en">RN 3 South &mdash; Comodoro &#8596; Camarones &#8596; Trelew (330&ndash;385 km)</div>
+<div class="ruta-titulo" data-lang="pt">RN 3 Sul &mdash; Comodoro &#8596; Camarones &#8596; Trelew (330&ndash;385 km)</div>
+<div class="ruta-tags"><span class="ruta-tag">330&ndash;385 km</span><span class="ruta-tag">Asfalto</span><span class="ruta-tag">Costa Atl&#225;ntica</span></div>
+<div class="ruta-paradas">
+<div>
+<div class="parada-km">km 330 &middot; &#9981; Camarones &mdash; <span data-lang="es">Langostinos y YPF</span><span data-lang="en">Prawns and YPF</span><span data-lang="pt">Langostinos e YPF</span></div>
+<div class="parada-txt" data-lang="es">Puerto artesanal, YPF y Reserva Cabo Dos Bah&#237;as (ping&#252;inos). Parada estrat&#233;gica en ruta costera sur.</div>
+<div class="parada-txt" data-lang="en">Artisan port, YPF and Cabo Dos Bah&#237;as Reserve (penguins). Strategic stop on southern coastal route.</div>
+<div class="parada-txt" data-lang="pt">Porto artesanal, YPF e Reserva Cabo Dos Bah&#237;as (ping&#252;ins). Parada estrat&#233;gica na rota costeira sul.</div>
+<div class="parada-tiempo">&#9201; 3h 45 min &middot; &#9981; carg&#225; aqu&#237;</div>
+</div>
+</div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#128205; <span data-lang="es">Distancias desde Comodoro Rivadavia</span><span data-lang="en">Distances from Comodoro Rivadavia</span><span data-lang="pt">Dist&#226;ncias de Comodoro Rivadavia</span></div>
+</div>
+<div class="distancias">
+<div class="dist-item"><span class="dist-lugar">Aeropuerto CRD</span><span class="dist-val">9 km &middot; 12 min</span></div>
+<div class="dist-item"><span class="dist-lugar">Sarmiento</span><span class="dist-val">150 km &middot; 1h 45 min</span></div>
+<div class="dist-item"><span class="dist-lugar">Camarones</span><span class="dist-val">330 km &middot; 3h 45 min</span></div>
+<div class="dist-item"><span class="dist-lugar" data-lang="es">Bosque Petrificado de Jaramillo</span><span class="dist-lugar" data-lang="en">Jaramillo Petrified Forest</span><span class="dist-lugar" data-lang="pt">Floresta Petrificada de Jaramillo</span><span class="dist-val">250 km &middot; 3h</span></div>
+<div class="dist-item"><span class="dist-lugar">Trelew</span><span class="dist-val">386 km &middot; 4h</span></div>
+<div class="dist-item"><span class="dist-lugar" data-lang="es">Los Antiguos (Lago Buenos Aires)</span><span class="dist-lugar" data-lang="en">Los Antiguos (Lake Buenos Aires)</span><span class="dist-lugar" data-lang="pt">Los Antiguos (Lago Buenos Aires)</span><span class="dist-val">520 km &middot; 6h</span></div>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#127775; <span data-lang="es">El alma de este lugar</span><span data-lang="en">The soul of this place</span><span data-lang="pt">A alma deste lugar</span></div>
+</div>
+<div class="alma">
+<div class="alma-titulo" data-lang="es">La ciudad que naci&#243; del agua y se hizo famosa por el petr&#243;leo</div>
+<div class="alma-titulo" data-lang="en">The city born from water that became famous for oil</div>
+<div class="alma-titulo" data-lang="pt">A cidade que nasceu da &#225;gua e ficou famosa pelo petr&#243;leo</div>
+<p data-lang="es">&#128218; Fundada en 1901, su nombre fue durante a&#241;os simplemente &ldquo;Km 0&rdquo;. El 13 de diciembre de 1907, buscando agua potable en el barrio Km 3, los perforadores de la empresa Comodoro llegaron a 539 metros de profundidad y encontraron petr&#243;leo. Ese accidente cambi&#243; la historia argentina: naci&#243; la primera explotaci&#243;n petrolera del pa&#237;s y luego YPF (1922).</p>
+<p data-lang="en">&#128218; Founded in 1901, its name was simply &ldquo;Km 0&rdquo; for years. On December 13, 1907, while drilling for drinking water in the Km 3 neighborhood, workers reached 539 meters depth and struck oil. That accident changed Argentine history: it spawned the country's first oil operation and later YPF (1922).</p>
+<p data-lang="pt">&#128218; Fundada em 1901, seu nome era simplesmente &ldquo;Km 0&rdquo; por anos. Em 13 de dezembro de 1907, perfurando em busca de &#225;gua pot&#225;vel no bairro Km 3, os trabalhadores chegaram a 539 metros de profundidade e encontraram petr&#243;leo. Esse acidente mudou a hist&#243;ria argentina.</p>
+<p data-lang="es">&#129414; <strong>Fauna emblem&#225;tica:</strong> Cormorana Imperial (la mayor colonia del golfo San Jorge), Gaviot&#237;n Sudamericano, Delf&#237;n Oscuro, Lobo Marino y Gu&#225;naco en los cerros circundantes.</p>
+<p data-lang="en">&#129414; <strong>Signature wildlife:</strong> Imperial Shag (largest colony in San Jorge Gulf), South American Tern, Dusky Dolphin, Sea Lion and Guanaco on surrounding hills.</p>
+<p data-lang="pt">&#129414; <strong>Fauna emblem&#225;tica:</strong> Biguatinga Imperial (maior col&#244;nia do golfo San Jorge), Andorinha-do-mar Sul-americana, Golfinho Sombrio, Le&#227;o Marinho e Guanaco nos cerros circundantes.</p>
+<p data-lang="es">&#127807; <strong>Flora y paisaje:</strong> Estepa costera de mata negra y molle barrida por el viento del golfo &middot; Cerro Chenque (193 m) dominando la ciudad &middot; Costas de rodados negros sobre el golfo San Jorge.</p>
+<p data-lang="en">&#127807; <strong>Flora &amp; landscape:</strong> Coastal steppe of mata negra and molle swept by gulf winds &middot; Cerro Chenque (193 m) dominating the city &middot; Black pebble shores on San Jorge Gulf.</p>
+<p data-lang="pt">&#127807; <strong>Flora e paisagem:</strong> Estepe costeira de mata negra e molle varrida pelos ventos do golfo &middot; Cerro Chenque (193 m) dominando a cidade &middot; Costas de seixos negros sobre o golfo San Jorge.</p>
+<p data-lang="es">&#128161; <strong>&#191;Sab&#237;as que...?</strong> Comodoro Rivadavia es la ciudad m&#225;s ventosa del mundo con m&#225;s de 200.000 habitantes: registra vientos de m&#225;s de 80 km/h durante el 60% del a&#241;o. Los vecinos dicen que hay dos estaciones: &ldquo;el verano y el viento&rdquo;.</p>
+<p data-lang="en">&#128161; <strong>Did you know?</strong> Comodoro Rivadavia is the world's windiest city with over 200,000 inhabitants: it records winds above 80 km/h for 60% of the year. Locals say there are two seasons: &ldquo;summer and the wind.&rdquo;</p>
+<p data-lang="pt">&#128161; <strong>Voc&#234; sabia?</strong> Comodoro Rivadavia &#233; a cidade mais ventosa do mundo com mais de 200.000 habitantes: registra ventos acima de 80 km/h durante 60% do ano. Os moradores dizem que h&#225; duas esta&#231;&#245;es: &ldquo;o ver&#227;o e o vento.&rdquo;</p>
+</div>
+<div class="seccion">
+<div class="seccion-titulo">&#127968; <span data-lang="es">Alojamiento, Gastronom&#237;a &amp; Experiencias</span><span data-lang="en">Accommodation, Food &amp; Experiences</span><span data-lang="pt">Hospedagem, Gastronomia &amp; Experi&#234;ncias</span></div>
+</div>
+<div class="estab-banner">
+<div class="estab-banner-titulo" data-lang="es">Explor&#225; todo lo que ofrece Comodoro Rivadavia</div>
+<div class="estab-banner-titulo" data-lang="en">Explore everything Comodoro Rivadavia has to offer</div>
+<div class="estab-banner-titulo" data-lang="pt">Explore tudo o que Comodoro Rivadavia tem a oferecer</div>
+<div class="estab-banner-sub" data-lang="es">Alojamiento &middot; Gastronom&#237;a &middot; Excursiones &middot; Comercios &middot; Traslados &middot; Bienestar</div>
+<div class="estab-banner-sub" data-lang="en">Accommodation &middot; Food &middot; Excursions &middot; Shopping &middot; Transfers &middot; Wellness</div>
+<div class="estab-banner-sub" data-lang="pt">Hospedagem &middot; Gastronomia &middot; Excurs&#245;es &middot; Com&#233;rcio &middot; Traslados &middot; Bem-estar</div>
+<a href="../categorias.html?destino=Comodoro+Rivadavia" class="estab-banner-btn" data-lang="es">Ver establecimientos en Comodoro &#8594;</a>
+<a href="../categorias.html?destino=Comodoro+Rivadavia&lang=en" class="estab-banner-btn" data-lang="en">Browse Comodoro Rivadavia listings &#8594;</a>
+<a href="../categorias.html?destino=Comodoro+Rivadavia&lang=pt" class="estab-banner-btn" data-lang="pt">Ver estabelecimentos em Comodoro &#8594;</a>
+</div>
+<footer>CONF&#205;N &middot; Comodoro Rivadavia &middot; Chubut &middot; Capital del Petr&#243;leo Argentino</footer>
+<script>
+function cambiarIdioma(lang,btn){
+document.querySelectorAll('.lang-btn-dest').forEach(b=>b.classList.remove('activo'));
+if(btn)btn.classList.add('activo');
+document.querySelectorAll('[data-lang]').forEach(el=>{
+el.classList.toggle('activo',el.dataset.lang===lang);
+});
+localStorage.setItem('confin_lang',lang);
+}
+(function(){
+var saved=localStorage.getItem('confin_lang')||'es';
+var btn=document.querySelector('.lang-btn-dest[onclick*="\''+saved+'\'"]');
+cambiarIdioma(saved,btn);
+})();
+</script>
+</body>
+</html>
