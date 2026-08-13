@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes">
+<title>San Carlos de Bariloche · CONFÍN</title>
+<meta name="description" content="Guía de información pública de Bariloche. Emergencias, senderos, transporte, clima, patrimonio y servicios útiles. Tu viaje en un solo lugar.">
+<meta property="og:title" content="San Carlos de Bariloche · CONFÍN">
+<meta property="og:image" content="https://contactoconfinapp-cloud.github.io/Confinapp/confin-icon.png">
+<meta name="theme-color" content="#0E1A1C">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="../confin-icon.png">
+<link rel="icon" type="image/png" href="../confin-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FAF8F5;--cream-dim:rgba(250,248,245,0.72);--atlantic:#3D6B73;--atl-light:rgba(163,196,204,0.85);--atl-dim:rgba(163,196,204,0.5);--deep:#0E1A1C;--ember:#B8673A;--ember-dim:rgba(184,103,58,0.15);--rojo:#B84E3A;--font-d:'Cormorant Garamond',Georgia,serif;--font-b:'DM Sans',sans-serif;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--deep);color:var(--cream);font-family:var(--font-b);font-weight:300;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;background:rgba(14,26,28,0.97);border-bottom:1px solid rgba(61,107,115,0.22);position:sticky;top:0;z-index:100;}
+.nav-back{font-size:0.75rem;color:var(--atl-light);text-decoration:none;display:flex;align-items:center;gap:5px;}
+.nav-logo{font-family:var(--font-d);font-size:1.1rem;font-weight:300;letter-spacing:0.12em;color:var(--cream);text-decoration:none;}
+.lang-selector{display:flex;gap:4px;}
+.lang-btn{font-size:0.6rem;padding:4px 8px;border:1px solid rgba(163,196,204,0.35);background:transparent;color:rgba(163,196,204,0.7);cursor:pointer;font-family:var(--font-b);letter-spacing:0.06em;transition:all 0.2s;}
+.lang-btn.activo,.lang-btn:hover{background:var(--atlantic);color:#fff;border-color:var(--atlantic);}
+.hero{position:relative;min-height:220px;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:url('../bariloche-foto.jpg') center/cover no-repeat;opacity:0.32;}
+.hero-fade{position:absolute;bottom:0;left:0;right:0;height:65%;background:linear-gradient(to top,rgba(14,26,28,0.95),transparent);}
+.hero-content{position:relative;z-index:2;padding:36px 20px 30px;}
+.hero-flag{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.85);margin-bottom:10px;}
+.hero-title{font-family:var(--font-d);font-size:clamp(2.6rem,9vw,3.6rem);font-weight:300;line-height:1;margin-bottom:10px;}
+.hero-sub{font-size:0.74rem;color:rgba(163,196,204,0.85);line-height:1.6;}
+.aviso{border-left:3px solid var(--ember);background:rgba(184,103,58,0.1);padding:12px 14px;font-size:0.76rem;color:rgba(245,220,200,0.9);line-height:1.5;margin:14px 16px 0;border-radius:0 8px 8px 0;}
+.aviso strong{color:var(--cream);}
+.sec{padding:22px 16px 6px;margin-top:12px;}
+.sec-label{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(184,103,58,0.85);display:flex;align-items:center;gap:8px;margin-bottom:12px;border-top:1px solid rgba(184,103,58,0.3);padding-top:14px;}
+.sec-label::after{content:'';flex:1;height:1px;background:rgba(61,107,115,0.22);}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px 4px;}
+.card{background:rgba(14,26,28,0.55);border-radius:10px;padding:14px;border:1px solid rgba(184,78,58,0.25);display:flex;flex-direction:column;gap:5px;position:relative;overflow:hidden;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--rojo);}
+.card.full{grid-column:1/-1;}
+.card-ico{font-size:1.4rem;}
+.card-nombre{font-size:0.82rem;font-weight:500;color:var(--cream);line-height:1.2;}
+.card-desc{font-size:0.65rem;color:var(--atl-dim);line-height:1.4;}
+.card-num{font-size:1rem;font-weight:700;color:var(--rojo);}
+.card-btn{display:block;text-align:center;padding:8px;background:var(--rojo);color:#fff;border-radius:6px;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;margin-top:4px;}
+.info-bloque{padding:0 16px 16px;}
+.info-item{padding:13px 0;border-bottom:1px solid rgba(61,107,115,0.15);display:flex;gap:12px;align-items:flex-start;}
+.info-item:last-child{border-bottom:none;}
+.info-ico{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
+.info-txt{font-size:0.78rem;color:rgba(163,196,204,0.85);line-height:1.55;}
+.info-txt strong{color:var(--cream);display:block;margin-bottom:3px;font-weight:500;}
+.inst-card{background:rgba(14,26,28,0.55);border:1px solid rgba(163,196,204,0.12);border-radius:10px;padding:16px;margin:0 16px 12px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 8px 32px rgba(0,0,0,0.35);}
+.inst-nombre{font-size:0.88rem;font-weight:500;color:var(--cream);margin-bottom:5px;line-height:1.3;}
+.inst-desc{font-size:0.73rem;color:rgba(163,196,204,0.8);line-height:1.55;}
+.acord-arrow{font-size:0.7rem;color:rgba(184,103,58,0.7);transition:transform 0.25s;flex-shrink:0;}
+.sec-label.open .acord-arrow{transform:rotate(180deg);}
+.acord-body{display:none;}
+.acord-body.open{display:block;}
+.btn-agenda-dest{position:fixed;bottom:24px;left:18px;z-index:890;width:48px;height:48px;border-radius:50%;background:rgba(61,107,115,0.92);border:1.5px solid rgba(163,196,204,0.35);box-shadow:0 4px 16px rgba(0,0,0,0.4);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.3rem;backdrop-filter:blur(8px);text-decoration:none;}
+.estab-section{padding:24px 16px;}
+.estab-eyebrow{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(163,196,204,0.5);margin-bottom:8px;}
+.estab-titulo{font-family:var(--font-d);font-size:2rem;font-weight:300;line-height:1.1;color:var(--cream);margin-bottom:6px;}
+.estab-sub{font-size:0.78rem;color:rgba(163,196,204,0.5);margin-bottom:20px;}
+.rubros-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.rubro-card{background:rgba(255,255,255,0.04);border:1px solid rgba(163,196,204,0.12);border-radius:10px;padding:14px 12px;position:relative;}
+.rubro-icon{font-size:1.4rem;display:block;margin-bottom:6px;}
+.rubro-nombre{font-size:0.8rem;font-weight:500;color:var(--cream);margin-bottom:3px;}
+.rubro-sub{font-size:0.65rem;color:rgba(163,196,204,0.5);line-height:1.4;}
+.rubro-badge{display:inline-block;margin-top:8px;font-size:0.5rem;letter-spacing:0.1em;background:rgba(184,103,58,0.15);border:1px solid rgba(184,103,58,0.4);color:rgba(184,103,58,0.85);padding:2px 8px;border-radius:3px;}
+.estab-cta{display:block;margin:20px 0 0;padding:16px;background:rgba(184,103,58,0.08);border:1px solid rgba(184,103,58,0.3);border-radius:10px;text-decoration:none;}
+.estab-cta-eyebrow{font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(184,103,58,0.7);margin-bottom:5px;}
+.estab-cta-titulo{font-family:var(--font-d);font-size:1.1rem;color:var(--cream);font-weight:300;}
+[data-lang="en"],[data-lang="pt"]{display:none !important;}
+[data-lang="es"]{display:block !important;}
+span[data-lang="en"],span[data-lang="pt"]{display:none !important;}
+span[data-lang="es"]{display:inline !important;}
+strong[data-lang="en"],strong[data-lang="pt"]{display:none !important;}
+strong[data-lang="es"]{display:inline !important;}
+p[data-lang="en"],p[data-lang="pt"]{display:none !important;}
+p[data-lang="es"]{display:block !important;}
+div[data-lang="en"],div[data-lang="pt"]{display:none !important;}
+div[data-lang="es"]{display:block !important;}
+a[data-lang="en"],a[data-lang="pt"]{display:none !important;}
+a[data-lang="es"]{display:inline !important;}
+[data-lang].activo{display:block !important;}
+span[data-lang].activo{display:inline !important;}
+strong[data-lang].activo{display:inline !important;}
+p[data-lang].activo{display:block !important;}
+div[data-lang].activo{display:block !important;}
+a[data-lang].activo{display:inline !important;}
+</style>
+</head>
+<body>
+<a class="btn-agenda-dest" href="../index.html#agenda" title="Mi agenda CONFÍN">📖</a>
+<nav class="nav">
+  <a href="../index.html#dest-ar" class="nav-back">← Volver</a>
+  <a href="../index.html" class="nav-logo">CONFÍN</a>
+  <div class="lang-selector">
+    <button class="lang-btn activo" onclick="setLang('es',this)">ES</button>
+    <button class="lang-btn" onclick="setLang('en',this)">EN</button>
+    <button class="lang-btn" onclick="setLang('pt',this)">PT</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-fade"></div>
+  <div class="hero-content">
+    <div class="hero-flag">🏔 Río Negro · Argentina · Cordillera de los Andes</div>
+    <h1 class="hero-title">San Carlos<br>de Bariloche</h1>
+    <div class="hero-sub activo" data-lang="es">Lago Nahuel Huapi · Cerro Catedral · Circuito Chico · Parque Nacional Nahuel Huapi</div>
+    <div class="hero-sub" data-lang="en">Lake Nahuel Huapi · Cerro Catedral · Circuito Chico · Nahuel Huapi National Park</div>
+    <div class="hero-sub" data-lang="pt">Lago Nahuel Huapi · Cerro Catedral · Circuito Chico · Parque Nacional Nahuel Huapi</div>
+  </div>
+</div>
+
+<div class="aviso activo" data-lang="es">❄ <strong>Temporada Cerro Catedral (jun–oct):</strong> El centro de esquí más grande de Latinoamérica. 120 pistas, 36 medios de elevación, 1.000 m de desnivel. Cadenas obligatorias en el acceso.</div>
+<div class="aviso" data-lang="en">❄ <strong>Cerro Catedral Season (Jun–Oct):</strong> Latin America's largest ski resort. 120 slopes, 36 lifts, 1,000 m vertical drop. Chains mandatory on access road.</div>
+<div class="aviso" data-lang="pt">❄ <strong>Temporada Cerro Catedral (jun–out):</strong> O maior centro de esqui. 120 pistas, 36 elevadores, 1.000 m de desnível. Correntes obrigatórias no acesso.</div>
+<div class="aviso activo" style="margin-top:10px;" data-lang="es">⛽ <strong>Combustible:</strong> Cargá siempre en Bariloche antes del Circuito Chico o rutas hacia El Bolsón (130 km) y Villa La Angostura (83 km).</div>
+<div class="aviso" style="margin-top:10px;" data-lang="en">⛽ <strong>Fuel:</strong> Always fill up in Bariloche before Circuito Chico or routes to El Bolsón (130 km) and Villa La Angostura (83 km).</div>
+<div class="aviso" style="margin-top:10px;" data-lang="pt">⛽ <strong>Combustível:</strong> Abasteça em Bariloche antes do Circuito Chico ou rutas para El Bolsón (130 km) e Villa La Angostura (83 km).</div>
+
+<!-- ESTABLECIMIENTOS -->
+<div class="estab-section">
+  <div class="estab-eyebrow">✦ <span class="activo" data-lang="es">Dónde estar, comer y vivir Bariloche</span><span data-lang="en">Where to stay, eat and experience Bariloche</span><span data-lang="pt">Onde ficar, comer e viver Bariloche</span></div>
+  <div class="estab-titulo activo" data-lang="es">Establecimientos<br><em style="font-style:italic;font-weight:300;">en Bariloche</em></div>
+  <div class="estab-titulo" data-lang="en">Listings<br><em style="font-style:italic;font-weight:300;">in Bariloche</em></div>
+  <div class="estab-titulo" data-lang="pt">Estabelecimentos<br><em style="font-style:italic;font-weight:300;">em Bariloche</em></div>
+  <div class="estab-sub activo" data-lang="es">Próximamente</div>
+  <div class="estab-sub" data-lang="en">Coming soon</div>
+  <div class="estab-sub" data-lang="pt">Em breve</div>
+  <div class="rubros-grid">
+    <div class="rubro-card"><span class="rubro-icon">🏠</span><div class="rubro-nombre activo" data-lang="es">Alojamiento</div><div class="rubro-nombre" data-lang="en">Accommodation</div><div class="rubro-nombre" data-lang="pt">Hospedagem</div><div class="rubro-sub activo" data-lang="es">Hoteles · Cabañas · Apart Hotels · Hostels · Llao Llao</div><div class="rubro-sub" data-lang="en">Hotels · Cabins · Apart Hotels · Hostels</div><div class="rubro-sub" data-lang="pt">Hotéis · Cabanas · Apart Hotels · Albergues</div><span class="rubro-badge activo" data-lang="es">PRÓXIMAMENTE</span><span class="rubro-badge" data-lang="en">COMING SOON</span><span class="rubro-badge" data-lang="pt">EM BREVE</span></div>
+    <div class="rubro-card"><span class="rubro-icon">☕</span><div class="rubro-nombre activo" data-lang="es">Gastronomía</div><div class="rubro-nombre" data-lang="en">Food & Drink</div><div class="rubro-nombre" data-lang="pt">Gastronomia</div><div class="rubro-sub activo" data-lang="es">Restaurantes · Cervecerías · Chocolaterías · Fondue</div><div class="rubro-sub" data-lang="en">Restaurants · Breweries · Chocolate shops · Fondue</div><div class="rubro-sub" data-lang="pt">Restaurantes · Cervejarias · Chocolaterias · Fondue</div><span class="rubro-badge activo" data-lang="es">PRÓXIMAMENTE</span><span class="rubro-badge" data-lang="en">COMING SOON</span><span class="rubro-badge" data-lang="pt">EM BREVE</span></div>
+    <div class="rubro-card"><span class="rubro-icon">⛷</span><div class="rubro-nombre activo" data-lang="es">Montaña e Invierno</div><div class="rubro-nombre" data-lang="en">Mountain & Winter</div><div class="rubro-nombre" data-lang="pt">Montanha e Inverno</div><div class="rubro-sub activo" data-lang="es">Cerro Catedral · Ski · Snowboard · Equipos</div><div class="rubro-sub" data-lang="en">Cerro Catedral · Ski · Snowboard · Gear</div><div class="rubro-sub" data-lang="pt">Cerro Catedral · Esqui · Snowboard · Equipamentos</div><span class="rubro-badge activo" data-lang="es">PRÓXIMAMENTE</span><span class="rubro-badge" data-lang="en">COMING SOON</span><span class="rubro-badge" data-lang="pt">EM BREVE</span></div>
+    <div class="rubro-card"><span class="rubro-icon">🧭</span><div class="rubro-nombre activo" data-lang="es">Experiencias</div><div class="rubro-nombre" data-lang="en">Experiences</div><div class="rubro-nombre" data-lang="pt">Experiências</div><div class="rubro-sub activo" data-lang="es">Navegación · Trekking · Pesca · Rafting · Kayak</div><div class="rubro-sub" data-lang="en">Boating · Trekking · Fishing · Rafting · Kayaking</div><div class="rubro-sub" data-lang="pt">Navegação · Trekking · Pesca · Rafting · Caiaque</div><span class="rubro-badge activo" data-lang="es">PRÓXIMAMENTE</span><span class="rubro-badge" data-lang="en">COMING SOON</span><span class="rubro-badge" data-lang="pt">EM BREVE</span></div>
+    <div class="rubro-card"><span class="rubro-icon">🛍</span><div class="rubro-nombre activo" data-lang="es">Compras</div><div class="rubro-nombre" data-lang="en">Shopping</div><div class="rubro-nombre" data-lang="pt">Compras</div><div class="rubro-sub activo" data-lang="es">Chocolates · Calle Mitre · Artesanías · Lanas</div><div class="rubro-sub" data-lang="en">Chocolates · Mitre St. · Crafts · Wool goods</div><div class="rubro-sub" data-lang="pt">Chocolates · Rua Mitre · Artesanato · Lãs</div><span class="rubro-badge activo" data-lang="es">PRÓXIMAMENTE</span><span class="rubro-badge" data-lang="en">COMING SOON</span><span class="rubro-badge" data-lang="pt">EM BREVE</span></div>
+    <div class="rubro-card"><span class="rubro-icon">🚗</span><div class="rubro-nombre activo" data-lang="es">Traslados</div><div class="rubro-nombre" data-lang="en">Transfers</div><div class="rubro-nombre" data-lang="pt">Traslados</div><div class="rubro-sub activo" data-lang="es">Taxis · Remises · Transfer aeropuerto</div><div class="rubro-sub" data-lang="en">Taxis · Private cars · Airport transfer</div><div class="rubro-sub" data-lang="pt">Táxis · Veículos privados · Transfer aeroporto</div><span class="rubro-badge activo" data-lang="es">PRÓXIMAMENTE</span><span class="rubro-badge" data-lang="en">COMING SOON</span><span class="rubro-badge" data-lang="pt">EM BREVE</span></div>
+    <div class="rubro-card"><span class="rubro-icon">✨</span><div class="rubro-nombre">Wellness</div><div class="rubro-sub activo" data-lang="es">Spas · Masajes · Termas · Yoga</div><div class="rubro-sub" data-lang="en">Spas · Massages · Hot springs · Yoga</div><div class="rubro-sub" data-lang="pt">Spas · Massagens · Termas · Yoga</div><span class="rubro-badge activo" data-lang="es">PRÓXIMAMENTE</span><span class="rubro-badge" data-lang="en">COMING SOON</span><span class="rubro-badge" data-lang="pt">EM BREVE</span></div>
+    <div class="rubro-card"><span class="rubro-icon">🏪</span><div class="rubro-nombre activo" data-lang="es">Comercios</div><div class="rubro-nombre" data-lang="en">Shops</div><div class="rubro-nombre" data-lang="pt">Comércios</div><div class="rubro-sub activo" data-lang="es">Chocolaterías · Calle Mitre · Librerías</div><div class="rubro-sub" data-lang="en">Chocolate shops · Mitre St. · Bookshops</div><div class="rubro-sub" data-lang="pt">Chocolaterias · Rua Mitre · Livrarias</div><span class="rubro-badge activo" data-lang="es">PRÓXIMAMENTE</span><span class="rubro-badge" data-lang="en">COMING SOON</span><span class="rubro-badge" data-lang="pt">EM BREVE</span></div>
+  </div>
+  <a href="../confinar-establecimientos.html" class="estab-cta">
+    <div class="estab-cta-eyebrow activo" data-lang="es">¿TENÉS UN ESTABLECIMIENTO EN BARILOCHE?</div>
+    <div class="estab-cta-eyebrow" data-lang="en">DO YOU HAVE A BUSINESS IN BARILOCHE?</div>
+    <div class="estab-cta-eyebrow" data-lang="pt">TEM UM ESTABELECIMENTO EM BARILOCHE?</div>
+    <div class="estab-cta-titulo activo" data-lang="es">Sumate a CONFÍN antes del lanzamiento →</div>
+    <div class="estab-cta-titulo" data-lang="en">Join CONFÍN before launch →</div>
+    <div class="estab-cta-titulo" data-lang="pt">Entre no CONFÍN antes do lançamento →</div>
+  </a>
+</div>
+
+<!-- EMERGENCIAS (de Jarvis - datos corregidos) -->
+<div class="sec"><div class="sec-label">🚨 <span class="activo" data-lang="es">Emergencias & Asistencia Pública</span><span data-lang="en">Emergencies & Public Assistance</span><span data-lang="pt">Emergências & Assistência Pública</span></div></div>
+<div class="card-grid">
+  <div class="card full"><div class="card-ico">🏥</div><div class="card-nombre activo" data-lang="es">Hospital Ramón Carrillo</div><div class="card-nombre" data-lang="en">Ramón Carrillo Hospital</div><div class="card-nombre" data-lang="pt">Hospital Ramón Carrillo</div><div class="card-desc activo" data-lang="es">Alta Complejidad · Guardia 24hs · Av. Perito Moreno 601</div><div class="card-desc" data-lang="en">High complexity · 24hs ER · Av. Perito Moreno 601</div><div class="card-desc" data-lang="pt">Alta complexidade · Pronto socorro 24hs</div><div class="card-num">107 / (0294) 442-6100</div><a href="tel:+5492944426100" class="card-btn">LLAMAR</a></div>
+  <div class="card"><div class="card-ico">🏔️</div><div class="card-nombre activo" data-lang="es">Rescate CAX (Montaña)</div><div class="card-nombre" data-lang="en">CAX Mountain Rescue</div><div class="card-nombre" data-lang="pt">Resgate Montanha CAX</div><div class="card-desc activo" data-lang="es">Comisión de Auxilio Club Andino</div><div class="card-num">(0294) 442-3201</div><a href="tel:+5492944423201" class="card-btn">LLAMAR</a></div>
+  <div class="card"><div class="card-ico">👮</div><div class="card-nombre activo" data-lang="es">Policía / 911</div><div class="card-nombre" data-lang="en">Police / 911</div><div class="card-nombre" data-lang="pt">Polícia / 911</div><div class="card-num">911 / (0294) 442-2772</div><a href="tel:911" class="card-btn">LLAMAR</a></div>
+  <div class="card"><div class="card-ico">🚒</div><div class="card-nombre activo" data-lang="es">Bomberos Voluntarios</div><div class="card-nombre" data-lang="en">Fire Dept.</div><div class="card-nombre" data-lang="pt">Bombeiros</div><div class="card-num">100 / (0294) 442-2022</div><a href="tel:100" class="card-btn">LLAMAR</a></div>
+  <div class="card"><div class="card-ico">❄</div><div class="card-nombre activo" data-lang="es">Patrulla Montaña Catedral</div><div class="card-nombre" data-lang="en">Catedral Mountain Patrol</div><div class="card-nombre" data-lang="pt">Patrulha Montanha Catedral</div><div class="card-num">(0294) 440-9000</div><a href="tel:+5492944409000" class="card-btn">LLAMAR</a></div>
+  <div class="card"><div class="card-ico">🌿</div><div class="card-nombre activo" data-lang="es">Guardaparques PN Nahuel Huapi</div><div class="card-nombre" data-lang="en">Nahuel Huapi NP Rangers</div><div class="card-nombre" data-lang="pt">Guardas-parques PN Nahuel Huapi</div><div class="card-num">(0294) 442-3111</div><a href="tel:+5492944423111" class="card-btn">LLAMAR</a></div>
+  <div class="card"><div class="card-ico">🛡</div><div class="card-nombre activo" data-lang="es">Defensa Civil Municipal</div><div class="card-nombre" data-lang="en">Civil Defence</div><div class="card-nombre" data-lang="pt">Defesa Civil</div><div class="card-num">103 / (0294) 442-8276</div><a href="tel:103" class="card-btn">LLAMAR</a></div>
+  <div class="card"><div class="card-ico">⚓</div><div class="card-nombre activo" data-lang="es">Prefectura Naval</div><div class="card-nombre" data-lang="en">Coast Guard</div><div class="card-nombre" data-lang="pt">Prefeitura Naval</div><div class="card-desc activo" data-lang="es">Emergencias en lago y ríos</div><div class="card-num">106 / (0294) 442-2798</div><a href="tel:106" class="card-btn">LLAMAR</a></div>
+</div>
+
+<!-- ALMA E HISTORIA (de Jarvis) -->
+<div class="sec"><div class="sec-label" onclick="acordToggle(this)" style="cursor:pointer;">🌌 <span class="activo" data-lang="es">El Alma del Lugar, Mitos & Historia</span><span data-lang="en">Soul of the Place, Myths & History</span><span data-lang="pt">A Alma do Lugar, Mitos & História</span><span class="acord-arrow">▼</span></div></div>
+<div class="info-bloque acord-body">
+  <div class="info-item"><div class="info-ico">🏔</div><div class="info-txt"><strong class="activo" data-lang="es">Mística de la aldea cordillerana</strong><strong data-lang="en">Mountain village mystique</strong><strong data-lang="pt">Mística de aldeia da montanha</strong><span class="activo" data-lang="es">Bariloche es la puerta de entrada a la Patagonia andina. Su identidad combina las raíces originarias Mapuche y Tehuelche con la impronta de los pioneros europeos que moldearon la arquitectura en piedra y madera proyectada por Alejandro Bustillo en la década de 1930.</span><span data-lang="en">Bariloche is the gateway to Andean Patagonia. Its identity fuses indigenous Mapuche and Tehuelche roots with European pioneers who shaped the stone and wood architecture designed by Alejandro Bustillo in the 1930s.</span><span data-lang="pt">Bariloche é a porta de entrada para a Patagônia andina, fundindo raízes indígenas e a arquitetura de pedra e madeira de Alejandro Bustillo.</span></div></div>
+  <div class="info-item"><div class="info-ico">🐉</div><div class="info-txt"><strong class="activo" data-lang="es">El Mito del Nahuelito</strong><strong data-lang="en">The Nahuelito Myth</strong><strong data-lang="pt">O Mito do Nahuelito</strong><span class="activo" data-lang="es">Según la tradición popular local y leyendas aborígenes, en las profundidades de más de 400 metros del Lago Nahuel Huapi habita una criatura acuática desconocida apodada "Nahuelito". Los avistamientos reportados desde principios del siglo XX forman parte del folclore vivo del lugar.</span><span data-lang="en">Local lore and indigenous legends speak of "Nahuelito", an unknown aquatic creature inhabiting the 400m+ depths of Lake Nahuel Huapi. Reported sightings since the early 20th century remain part of living local folklore.</span><span data-lang="pt">A lenda local fala do "Nahuelito", criatura aquática nas profundezas de mais de 400 metros do Lago Nahuel Huapi.</span></div></div>
+</div>
+
+<!-- FLORA Y FAUNA (de Jarvis) -->
+<div class="sec"><div class="sec-label" onclick="acordToggle(this)" style="cursor:pointer;">🌿 <span class="activo" data-lang="es">Flora, Fauna & Biodiversidad</span><span data-lang="en">Flora, Fauna & Biodiversity</span><span data-lang="pt">Flora, Fauna & Biodiversidade</span><span class="acord-arrow">▼</span></div></div>
+<div class="info-bloque acord-body">
+  <div class="info-item"><div class="info-ico">🦌</div><div class="info-txt"><strong class="activo" data-lang="es">Fauna Autóctona Protegida</strong><strong data-lang="en">Protected Native Fauna</strong><strong data-lang="pt">Fauna Nativa Protegida</strong><span class="activo" data-lang="es">El Parque Nacional Nahuel Huapi alberga especies amenazadas como el Huemul (ciervo nativo), el Pudú-pudú (uno de los ciervos más pequeños del mundo), el Huillín (nutria de agua dulce), el Cóndor Andino y el Monito del Monte.</span><span data-lang="en">Nahuel Huapi NP shelters endangered species such as the Huemul deer, the Pudú (smallest deer), the Huillín river otter, the Andean Condor and the Monito del Monte.</span><span data-lang="pt">O Parque Nacional protege espécies como o Huemul, o Pudú, o Huillín e o Cóndor Andino.</span></div></div>
+  <div class="info-item"><div class="info-ico">🌲</div><div class="info-txt"><strong class="activo" data-lang="es">Bosque Andino Patagónico</strong><strong data-lang="en">Andean Patagonian Forest</strong><strong data-lang="pt">Floresta Andino Patagônica</strong><span class="activo" data-lang="es">Predominan árboles milenarios como el Coihue, el Lenga, el Ñire y el Arrayán (de corteza canela y fría al tacto). En primavera florece el Amancay tiñendo el sotobosque de naranja.</span><span data-lang="en">Dominated by ancient trees like Coihue, Lenga, Ñire and the cinnamon-barked Arrayán. In spring, orange Amancay flowers carpet the forest floor.</span><span data-lang="pt">Árvores como Coihue, Lenga, Ñire e o Arrayán de casca canela. Na primavera, a Amancay floresce em laranja.</span></div></div>
+</div>
+
+<!-- ITINERARIOS -->
+<div class="sec"><div class="sec-label" onclick="acordToggle(this)" style="cursor:pointer;">⏱ <span class="activo" data-lang="es">¿Cuánto tiempo tenés?</span><span data-lang="en">How much time do you have?</span><span data-lang="pt">Quanto tempo você tem?</span><span class="acord-arrow">▼</span></div></div>
+<div class="info-bloque acord-body">
+  <div class="info-item"><div class="info-ico">☀️</div><div class="info-txt"><strong class="activo" data-lang="es">1 día — Lo esencial</strong><strong data-lang="en">1 day — The essentials</strong><strong data-lang="pt">1 dia — O essencial</strong><span class="activo" data-lang="es">Costanera + Centro Cívico → Calle Mitre (chocolates) → Circuito Chico en auto → atardecer en Punto Panorámico.</span><span data-lang="en">Waterfront + Civic Center → Mitre Street (chocolates) → Circuito Chico by car → sunset at Panoramic Point.</span><span data-lang="pt">Orla + Centro Cívico → Rua Mitre (chocolates) → Circuito Chico de carro → pôr do sol no Ponto Panorâmico.</span></div></div>
+  <div class="info-item"><div class="info-ico">🌤</div><div class="info-txt"><strong class="activo" data-lang="es">2–3 días — Con profundidad</strong><strong data-lang="en">2–3 days — Going deeper</strong><strong data-lang="pt">2–3 dias — Com profundidade</strong><span class="activo" data-lang="es">Día 1: Centro y Circuito Chico · Día 2: Isla Victoria + Bosque de Arrayanes (excursión lacustre) · Día 3: Trekking Cerro Llao Llao o Cerro Catedral.</span><span data-lang="en">Day 1: Center & Circuito Chico · Day 2: Victoria Island + Arrayanes Forest · Day 3: Trekking Cerro Llao Llao or Cerro Catedral.</span><span data-lang="pt">Dia 1: Centro e Circuito Chico · Dia 2: Ilha Victoria + Floresta Arrayanes · Dia 3: Trekking Cerro Llao Llao ou Catedral.</span></div></div>
+  <div class="info-item"><div class="info-ico">🗓️</div><div class="info-txt"><strong class="activo" data-lang="es">4–7 días — Explorador</strong><strong data-lang="en">4–7 days — Explorer</strong><strong data-lang="pt">4–7 dias — Explorador</strong><span class="activo" data-lang="es">Agregar: Cruce de Lagos a Chile · Rafting Río Manso · Ruta 40 hacia El Bolsón · Villa La Angostura y San Martín de los Andes por Ruta 7 Lagos.</span><span data-lang="en">Add: Lakes Crossing to Chile · Río Manso rafting · Route 40 to El Bolsón · Villa La Angostura and San Martín via 7 Lakes Route.</span><span data-lang="pt">Adicionar: Cruzamento de Lagos ao Chile · Rafting Rio Manso · Rota 40 para El Bolsón · Villa La Angostura e San Martín pela Rota 7 Lagos.</span></div></div>
+</div>
+
+<!-- SENDEROS GRATUITOS (de Jarvis mejorado) -->
+<div class="sec"><div class="sec-label" onclick="acordToggle(this)" style="cursor:pointer;">🥾 <span class="activo" data-lang="es">Senderos Gratuitos & Recreación Libre</span><span data-lang="en">Free Trails & Outdoor Activities</span><span data-lang="pt">Trilhas Gratuitas e Lazer Livre</span><span class="acord-arrow">▼</span></div></div>
+<div class="info-bloque acord-body">
+  <div class="info-item"><div class="info-ico">🏔️</div><div class="info-txt"><strong class="activo" data-lang="es">Sendero Cerro Llao Llao y Villa Tacul</strong><strong data-lang="en">Cerro Llao Llao & Villa Tacul Trail</strong><strong data-lang="pt">Trilha Cerro Llao Llao e Villa Tacul</strong><span class="activo" data-lang="es">Acceso libre · Dificultad baja-media · 3 hs ida y vuelta. Bosque denso de coihues hasta el mirador panorámico sobre el Brazo Blest. Conecta con playas de Villa Tacul. Registro obligatorio previo en nahuelhuapi.gov.ar</span><span data-lang="en">Free access · Low-medium difficulty · 3 hrs round trip. Coihue forest leads to panoramic viewpoint over Brazo Blest. Connects with Villa Tacul beaches. Mandatory prior registration at nahuelhuapi.gov.ar</span><span data-lang="pt">Acesso livre · 3 horas ida e volta. Vista panorâmica sobre o Brazo Blest. Registro obrigatório em nahuelhuapi.gov.ar</span></div></div>
+  <div class="info-item"><div class="info-ico">🌲</div><div class="info-txt"><strong class="activo" data-lang="es">Parque Municipal Llao Llao</strong><strong data-lang="en">Llao Llao Municipal Park</strong><strong data-lang="pt">Parque Municipal Llao Llao</strong><span class="activo" data-lang="es">Red de senderos autoguiados gratuitos: Sendero de los Arrayanes, Escondido y Puente Romano. Caminatas llanas e ideales para familias entre vegetación autóctona.</span><span data-lang="en">Network of free self-guided trails: Arrayanes, Escondido and Roman Bridge. Easy, family-friendly walks through native forest.</span><span data-lang="pt">Rede de trilhas autoguiadas gratuitas: Arrayanes, Escondido e Ponte Romana. Caminhadas fáceis para famílias.</span></div></div>
+  <div class="info-item"><div class="info-ico">🌊</div><div class="info-txt"><strong class="activo" data-lang="es">Costanera y Playas Públicas</strong><strong data-lang="en">Lake Promenade & Public Beaches</strong><strong data-lang="pt">Orla e Praias Públicas</strong><span class="activo" data-lang="es">Acceso libre a lo largo del Nahuel Huapi. Playa Bonita (Km 8) y Playa Serena (Km 12) con guardavidas en temporada estival. Las más frecuentadas para nadar y picnic.</span><span data-lang="en">Free public access along Lake Nahuel Huapi. Playa Bonita (Km 8) and Playa Serena (Km 12) with lifeguards in summer. Most popular for swimming and picnics.</span><span data-lang="pt">Acesso público ao longo do lago. Playa Bonita (Km 8) e Playa Serena (Km 12) com salva-vidas no verão.</span></div></div>
+  <div class="info-item"><div class="info-ico">🏛</div><div class="info-txt"><strong class="activo" data-lang="es">Centro Cívico y Calle Mitre</strong><strong data-lang="en">Civic Center and Mitre Street</strong><strong data-lang="pt">Centro Cívico e Rua Mitre</strong><span class="activo" data-lang="es">Monumento Histórico Nacional. Plaza libre con vistas al lago. Calle Mitre: chocolaterías artesanales, cervecerías y tiendas de montaña. El paseo urbano imperdible de Bariloche.</span><span data-lang="en">National Historic Monument. Free plaza with lake views. Mitre Street: artisan chocolate shops, breweries and mountain gear stores. Bariloche's must-see urban promenade.</span><span data-lang="pt">Monumento Histórico Nacional. Praça livre com vistas ao lago. Rua Mitre: chocolaterias, cervejarias e lojas de montanha.</span></div></div>
+</div>
+
+<!-- CERRO CATEDRAL (de Jarvis) -->
+<div class="sec"><div class="sec-label" onclick="acordToggle(this)" style="cursor:pointer;">⛷ <span class="activo" data-lang="es">Centro de Esquí Cerro Catedral</span><span data-lang="en">Cerro Catedral Ski Center</span><span data-lang="pt">Centro de Esqui Cerro Catedral</span><span class="acord-arrow">▼</span></div></div>
+<div class="info-bloque acord-body">
+  <div class="info-item"><div class="info-ico">🎿</div><div class="info-txt"><strong class="activo" data-lang="es">Infraestructura del centro invernal</strong><strong data-lang="en">Ski resort infrastructure</strong><strong data-lang="pt">Infraestrutura de esqui</strong><span class="activo" data-lang="es">34 km de Bariloche · 120 pistas · 36 medios de elevación · 1.000 m de desnivel · Base: 1.030 m · Cima: 2.388 m. Escuela de esquí, patrulla de rescate y snow park.</span><span data-lang="en">34 km from Bariloche · 120 slopes · 36 lifts · 1,000 m drop · Base: 1,030 m · Peak: 2,388 m. Ski school, rescue patrol and snow park.</span><span data-lang="pt">34 km de Bariloche · 120 pistas · 36 elevadores. Escola de esqui, patrulha de resgate e snow park.</span></div></div>
+  <div class="info-item"><div class="info-ico">📱</div><div class="info-txt"><strong class="activo" data-lang="es">Contacto e información oficial</strong><strong data-lang="en">Official contact</strong><strong data-lang="pt">Contato oficial</strong><span class="activo" data-lang="es">catedralaltapatagonia.com · Tel: (0294) 440-9000 · Temporada: junio–octubre. Acceso por RP 82 (34 km). Colectivo Línea 55 en temporada. Cadenas obligatorias según condiciones.</span><span data-lang="en">catedralaltapatagonia.com · Tel: (0294) 440-9000 · Season: June–October. Access via RP 82 (34 km). Bus Line 55 in season. Chains mandatory when required.</span><span data-lang="pt">catedralaltapatagonia.com · Tel: (0294) 440-9000. Acesso pela RP 82 (34 km). Correntes obrigatórias.</span><a href="https://catedralaltapatagonia.com" target="_blank" style="color:var(--atlantic);font-size:0.72rem;margin-top:6px;display:inline-block;" class="activo" data-lang="es">catedralaltapatagonia.com →</a></div></div>
+</div>
+
+<!-- EXCURSIONES -->
+<div class="sec"><div class="sec-label" onclick="acordToggle(this)" style="cursor:pointer;">🧭 <span class="activo" data-lang="es">Excursiones Destacadas</span><span data-lang="en">Top Excursions</span><span data-lang="pt">Excursões Destacadas</span><span class="acord-arrow">▼</span></div></div>
+<div class="info-bloque acord-body">
+  <div class="info-item"><div class="info-ico">🚢</div><div class="info-txt"><strong class="activo" data-lang="es">Isla Victoria y Bosque de Arrayanes</strong><strong data-lang="en">Victoria Island & Arrayanes Forest</strong><strong data-lang="pt">Ilha Victoria e Floresta de Arrayanes</strong><span class="activo" data-lang="es">Navegación lacustre desde Puerto Pañuelo. El único bosque de arrayanes del mundo, de troncos color canela. Día completo. Operador: Catedral Turismo. Reservar con anticipación en temporada alta.</span><span data-lang="en">Lake cruise from Puerto Pañuelo. The world's only arrayanes forest. Full day. Operator: Catedral Turismo. Book ahead in high season.</span><span data-lang="pt">Cruzeiro lacustre saindo de Puerto Pañuelo. A única floresta de arrayanes do mundo. Dia inteiro.</span></div></div>
+  <div class="info-item"><div class="info-ico">🌊</div><div class="info-txt"><strong class="activo" data-lang="es">Rafting Río Manso</strong><strong data-lang="en">Río Manso Rafting</strong><strong data-lang="pt">Rafting Rio Manso</strong><span class="activo" data-lang="es">Rápidos Grado 3 y 4 en río de aguas cristalinas. Apto para principiantes y avanzados. Incluye equipo y traslado. Operadores en el centro de Bariloche.</span><span data-lang="en">Grade 3 and 4 rapids on crystal-clear river. Beginners and advanced. Equipment and transfer included. Multiple operators in Bariloche center.</span><span data-lang="pt">Corredeiras Grau 3 e 4. Equipamento e traslado incluídos. Operadores no centro de Bariloche.</span></div></div>
+  <div class="info-item"><div class="info-ico">🚐</div><div class="info-txt"><strong class="activo" data-lang="es">Cruce de Lagos a Chile (Bariloche → Puerto Montt)</strong><strong data-lang="en">Lakes Crossing to Chile</strong><strong data-lang="pt">Cruzamento de Lagos ao Chile</strong><span class="activo" data-lang="es">Bus y catamaranes cruzando lagos y pasos fronterizos. 1 o 2 días. Operador: Cruce Andino · cruce-andino.com · Temporada oct–abril.</span><span data-lang="en">Bus and catamarans crossing lakes and borders. 1 or 2 days. Operator: Cruce Andino · cruce-andino.com · Season Oct–April.</span><span data-lang="pt">Ônibus e catamarãs. 1 ou 2 dias. Operador: Cruce Andino · cruce-andino.com</span></div></div>
+</div>
+
+<!-- CIRCUITO CHICO (de Jarvis) -->
+<div class="sec"><div class="sec-label" onclick="acordToggle(this)" style="cursor:pointer;">🚗 <span class="activo" data-lang="es">Circuito Chico — Ruta Escénica</span><span data-lang="en">Circuito Chico — Scenic Route</span><span data-lang="pt">Circuito Chico — Rota Cênica</span><span class="acord-arrow">▼</span></div></div>
+<div class="info-bloque acord-body">
+  <div class="info-item"><div class="info-ico">🗺</div><div class="info-txt"><strong class="activo" data-lang="es">Recorrido de 60 km</strong><strong data-lang="en">60 km loop</strong><strong data-lang="pt">Percurso de 60 km</strong><span class="activo" data-lang="es">Bariloche → Laguna El Trébol → Lago Perito Moreno → Punto Panorámico → Hotel Llao Llao → Puerto Pañuelo. Circuito asfaltado, libre y gratuito. Accesible en auto, bicicleta o colectivo Línea 20.</span><span data-lang="en">Bariloche → Laguna El Trébol → Perito Moreno Lake → Panoramic Point → Llao Llao → Puerto Pañuelo. Free paved loop. Accessible by car, bike or Bus Line 20.</span><span data-lang="pt">Bariloche → Punto Panorámico → Llao Llao → Puerto Pañuelo. Circuito asfaltado gratuito. Carro, bicicleta ou ônibus Linha 20.</span></div></div>
+</div>
+
+<!-- PASO FRONTERIZO -->
+<div class="sec"><div class="sec-label" onclick="acordToggle(this)" style="cursor:pointer;">🌐 <span class="activo" data-lang="es">Paso Internacional Cardenal Samoré</span><span data-lang="en">Cardenal Samoré Border Crossing</span><span data-lang="pt">Passo Internacional Cardenal Samoré</span><span class="acord-arrow">▼</span></div></div>
+<div class="info-bloque acord-body">
+  <div class="info-item"><div class="info-ico">🇦🇷</div><div class="info-txt"><strong class="activo" data-lang="es">RN 231 — 125 km desde Bariloche</strong><strong data-lang="en">RN 231 — 125 km from Bariloche</strong><strong data-lang="pt">RN 231 — 125 km de Bariloche</strong><span class="activo" data-lang="es">El paso más transitado entre Bariloche y Chile. Conecta con Osorno y la Carretera Austral. Horario: 8:00–19:00 hs. DNI/Pasaporte y seguro del vehículo obligatorios. Puede cerrarse por nieve o ceniza volcánica del Puyehue.</span><span data-lang="en">Most used crossing between Bariloche and Chile. Connects to Osorno and Carretera Austral. Hours: 8:00–19:00. ID/Passport and vehicle insurance required. May close due to snow or Puyehue volcanic ash.</span><span data-lang="pt">A passagem mais movimentada entre Bariloche e Chile. Horário: 8:00–19:00. Documentação e seguro veicular obrigatórios.</span></div></div>
+</div>
+
+<!-- COMBUSTIBLE -->
+<div class="sec"><div class="sec-label" onclick="acordToggle(this)" style="cursor:pointer;">⛽ <span class="activo" data-lang="es">Combustible & Servicios</span><span data-lang="en">Fuel & Services</span><span data-lang="pt">Combustível & Serviços</span><span class="acord-arrow">▼</span></div></div>
+<div class="info-bloque acord-body">
+  <div class="info-item"><div class="info-ico">⛽</div><div class="info-txt"><strong>YPF Bariloche</strong><span class="activo" data-lang="es">Av. 12 de Octubre y Rolando · 24hs</span><span data-lang="en">Av. 12 de Octubre y Rolando · 24hs</span><span data-lang="pt">Av. 12 de Octubre y Rolando · 24hs</span></div></div>
+  <div class="info-item"><div class="info-ico">⛽</div><div class="info-txt"><strong>Shell Centro</strong><span class="activo" data-lang="es">Av. San Martín y O'Connor · Centro</span><span data-lang="en">Av. San Martín y O'Connor · Downtown</span><span data-lang="pt">Av. San Martín y O'Connor · Centro</span></div></div>
+  <div class="info-item"><div class="info-ico">⚠️</div><div class="info-txt"><span class="activo" data-lang="es">Antes del Circuito Chico o rutas hacia El Bolsón (130 km) y Villa La Angostura (83 km), cargá siempre en Bariloche. No hay estaciones garantizadas en el camino.</span><span data-lang="en">Before Circuito Chico or routes to El Bolsón (130 km) and Villa La Angostura (83 km), always fill up in Bariloche.</span><span data-lang="pt">Antes do Circuito Chico ou rutas para El Bolsón (130 km) e Villa La Angostura (83 km), sempre abasteça em Bariloche.</span></div></div>
+</div>
+
+<!-- RUTAS Y DISTANCIAS (de Jarvis) -->
+<div class="sec"><div class="sec-label" onclick="acordToggle(this)" style="cursor:pointer;">🗺 <span class="activo" data-lang="es">Rutas Conectoras & Distancias</span><span data-lang="en">Connecting Routes & Distances</span><span data-lang="pt">Rotas Conectoras & Distâncias</span><span class="acord-arrow">▼</span></div></div>
+<div class="info-bloque acord-body">
+  <div class="info-item"><div class="info-ico">🛣️</div><div class="info-txt"><strong class="activo" data-lang="es">Camino de los 7 Lagos (RN 40)</strong><strong data-lang="en">Seven Lakes Road (RN 40)</strong><strong data-lang="pt">Rota dos 7 Lagos (RN 40)</strong><span class="activo" data-lang="es">Bariloche → Villa La Angostura → San Martín de los Andes por RN 40 (165 km totalmente asfaltados). Transitable todo el año con precaución en invierno.</span><span data-lang="en">Bariloche → Villa La Angostura → San Martín de los Andes via RN 40 (165 km fully paved). Passable year-round; watch for winter ice.</span><span data-lang="pt">Bariloche → Villa La Angostura → San Martín de los Andes pela RN 40 (165 km asfaltados).</span></div></div>
+  <div class="info-item"><div class="info-ico">📍</div><div class="info-txt"><strong class="activo" data-lang="es">Distancias clave desde Bariloche</strong><strong data-lang="en">Key distances from Bariloche</strong><strong data-lang="pt">Distâncias chave de Bariloche</strong><span class="activo" data-lang="es">Villa La Angostura: 83 km · El Bolsón: 130 km · San Martín de los Andes: 165 km · Neuquén Capital: 420 km · Buenos Aires: 1.650 km · Paso Samoré (Chile): 125 km</span><span data-lang="en">Villa La Angostura: 83 km · El Bolsón: 130 km · San Martín de los Andes: 165 km · Neuquén: 420 km · Buenos Aires: 1,650 km · Samoré Pass (Chile): 125 km</span><span data-lang="pt">Villa La Angostura: 83 km · El Bolsón: 130 km · San Martín de los Andes: 165 km · Passo Samoré (Chile): 125 km</span></div></div>
+</div>
+
+<!-- CLIMA (de Jarvis) -->
+<div class="sec"><div class="sec-label" onclick="acordToggle(this)" style="cursor:pointer;">🌤 <span class="activo" data-lang="es">Clima & Alertas Operativas</span><span data-lang="en">Weather & Operational Alerts</span><span data-lang="pt">Clima e Alertas Operacionais</span><span class="acord-arrow">▼</span></div></div>
+<div class="info-bloque acord-body">
+  <div class="info-item"><div class="info-ico">🌡️</div><div class="info-txt"><strong class="activo" data-lang="es">Condiciones climáticas y Viento Blanco</strong><strong data-lang="en">Weather conditions & Snowstorms</strong><strong data-lang="pt">Condições climáticas e Vento Branco</strong><span class="activo" data-lang="es">smn.gob.ar · En invierno pueden registrarse heladas fuertes y temporal de "viento blanco" en zonas altas. Verano seco con temperaturas entre 12°C y 25°C. El tiempo cambia rápido — consultá siempre antes de salir.</span><span data-lang="en">smn.gob.ar · Winter brings hard freezes and whiteout snowstorms on high passes. Dry summers 12°C to 25°C. Weather changes fast — always check before heading out.</span><span data-lang="pt">smn.gob.ar · O inverno traz geadas e vento branco nas montanhas. Verão seco entre 12°C e 25°C.</span><a href="https://www.smn.gob.ar/" target="_blank" style="color:var(--atlantic);font-size:0.72rem;margin-top:6px;display:inline-block;" class="activo" data-lang="es">Ver pronóstico oficial SMN →</a></div></div>
+  <div class="info-item"><div class="info-ico">🛣️</div><div class="info-txt"><strong class="activo" data-lang="es">Estado oficial de rutas</strong><strong data-lang="en">Official road conditions</strong><strong data-lang="pt">Estado oficial das estradas</strong><span class="activo" data-lang="es">Vialidad Nacional: 0800-222-6272 · Consultá el estado de RN 40 y accesos antes de salir.</span><span data-lang="en">National Highway Patrol: 0800-222-6272 · Check RN 40 status before travel.</span><span data-lang="pt">Vialidad Nacional: 0800-222-6272 · Verifique o estado da RN 40.</span></div></div>
+</div>
+
+<!-- TRANSPORTE (de Jarvis - datos corregidos) -->
+<div class="sec"><div class="sec-label" onclick="acordToggle(this)" style="cursor:pointer;">🚌 <span class="activo" data-lang="es">Transporte Público & Terminal</span><span data-lang="en">Public Transit & Bus Terminal</span><span data-lang="pt">Transporte Público & Terminal</span><span class="acord-arrow">▼</span></div></div>
+<div class="info-bloque acord-body">
+  <div class="info-item"><div class="info-ico">🚌</div><div class="info-txt"><strong class="activo" data-lang="es">Colectivos Urbanos (Mi Bus)</strong><strong data-lang="en">City Buses</strong><strong data-lang="pt">Ônibus Urbanos</strong><span class="activo" data-lang="es">Línea 20: Centro – Llao Llao / Circuito Chico · Línea 55: Centro – Cerro Catedral · Línea 72: Centro – Aeropuerto. Pago exclusivo con tarjeta SUBE.</span><span data-lang="en">Line 20: Center – Llao Llao · Line 55: Center – Cerro Catedral · Line 72: Center – Airport. SUBE card only.</span><span data-lang="pt">Linha 20: Centro – Llao Llao · Linha 55: Cerro Catedral · Linha 72: Aeroporto. Pagamento exclusivo com cartão SUBE.</span></div></div>
+  <div class="info-item"><div class="info-ico">✈️</div><div class="info-txt"><strong class="activo" data-lang="es">Aeropuerto Teniente Luis Candelaria</strong><strong data-lang="en">Bariloche Airport</strong><strong data-lang="pt">Aeroporto de Bariloche</strong><span class="activo" data-lang="es">15 km del centro por RN 40 · Tel: (0294) 440-5016. Colectivo Línea 72, taxis de parada o remises.</span><span data-lang="en">15 km from downtown via RN 40 · Tel: (0294) 440-5016. Bus Line 72, taxis or private hires.</span><span data-lang="pt">15 km do centro pela RN 40 · Tel: (0294) 440-5016. Ônibus Linha 72 ou táxi.</span></div></div>
+  <div class="info-item"><div class="info-ico">🏬</div><div class="info-txt"><strong class="activo" data-lang="es">Terminal de Ómnibus</strong><strong data-lang="en">Bus Terminal</strong><strong data-lang="pt">Terminal de Ônibus</strong><span class="activo" data-lang="es">Av. 12 de Octubre 2400 · Tel: (0294) 443-2860. Conexiones interurbanas e internacionales (Chile).</span><span data-lang="en">Av. 12 de Octubre 2400 · Tel: (0294) 443-2860. Regional and international routes (Chile).</span><span data-lang="pt">Av. 12 de Octubre 2400 · Tel: (0294) 443-2860. Conexões regionais e internacionais.</span></div></div>
+  <div class="info-item"><div class="info-ico">🚕</div><div class="info-txt"><strong class="activo" data-lang="es">Taxis y Remises</strong><strong data-lang="en">Taxis & Private Cars</strong><strong data-lang="pt">Táxis e Carros Privados</strong><span class="activo" data-lang="es">Radio Taxi Bariloche: (0294) 442-2222 · Remises disponibles en el centro para traslados a Cerro Catedral, aeropuerto y excursiones.</span><span data-lang="en">Radio Taxi Bariloche: (0294) 442-2222 · Private cars available for Cerro Catedral, airport and excursion transfers.</span><span data-lang="pt">Radio Taxi Bariloche: (0294) 442-2222 · Carros privados para Cerro Catedral, aeroporto e excursões.</span></div></div>
+</div>
+
+<!-- CAJEROS -->
+<div class="sec"><div class="sec-label" onclick="acordToggle(this)" style="cursor:pointer;">🏧 <span class="activo" data-lang="es">Cajeros Automáticos & Bancos</span><span data-lang="en">ATMs & Banks</span><span data-lang="pt">Caixas Eletrônicos & Bancos</span><span class="acord-arrow">▼</span></div></div>
+<div class="info-bloque acord-body">
+  <div class="info-item"><div class="info-ico">🏧</div><div class="info-txt"><strong class="activo" data-lang="es">Cajeros en el centro</strong><strong data-lang="en">ATMs in downtown</strong><strong data-lang="pt">Caixas no centro</strong><span class="activo" data-lang="es">Banco Nación: Mitre 180 · Banco Patagonia: Mitre 300 · Banco Santander: Mitre 433 · Banco Galicia: Quaglia 237. En temporada alta los cajeros se vacían rápido — retirá por las mañanas.</span><span data-lang="en">Banco Nación: Mitre 180 · Banco Patagonia: Mitre 300 · Santander: Mitre 433 · Galicia: Quaglia 237. ATMs run out fast in high season — withdraw in the morning.</span><span data-lang="pt">Banco Nação: Mitre 180 · Banco Patagônia: Mitre 300 · Santander: Mitre 433. Na alta temporada os caixas ficam vazios rápido — retire pela manhã.</span></div></div>
+</div>
+
+<!-- PATRIMONIO (de Jarvis) -->
+<div class="sec"><div class="sec-label" onclick="acordToggle(this)" style="cursor:pointer;">🏛️ <span class="activo" data-lang="es">Patrimonio Público & Cultura</span><span data-lang="en">Public Heritage & Culture</span><span data-lang="pt">Patrimônio Público & Cultura</span><span class="acord-arrow">▼</span></div></div>
+<div class="info-bloque acord-body">
+  <div class="info-item"><div class="info-ico">🏛</div><div class="info-txt"><strong class="activo" data-lang="es">Centro Cívico y Museo de la Patagonia</strong><strong data-lang="en">Civic Center & Patagonia Museum</strong><strong data-lang="pt">Centro Cívico e Museu da Patagônia</strong><span class="activo" data-lang="es">Monumento Histórico Nacional diseñado por Bustillo. Museo de la Patagonia (Parques Nacionales), biblioteca Sarmiento. Acceso libre a la plaza y arquerías.</span><span data-lang="en">National Historic Monument by Bustillo. Patagonia Museum (National Parks), Sarmiento library. Free plaza access.</span><span data-lang="pt">Monumento Histórico Nacional de Bustillo. Museu da Patagônia, biblioteca Sarmiento. Acesso livre à praça.</span></div></div>
+  <div class="info-item"><div class="info-ico">🍫</div><div class="info-txt"><strong class="activo" data-lang="es">Chocolates & Cervecerías artesanales</strong><strong data-lang="en">Chocolates & Craft Breweries</strong><strong data-lang="pt">Chocolates & Cervejarias Artesanais</strong><span class="activo" data-lang="es">Bariloche es la capital del chocolate artesanal (Mamuschka, Rapa Nui, Del Turista) y la cerveza artesanal argentina (Blest, Manush, Antares). Tour cervecero disponible.</span><span data-lang="en">Bariloche is the artisan chocolate capital (Mamuschka, Rapa Nui, Del Turista) and Argentine craft beer hub (Blest, Manush, Antares). Beer tours available.</span><span data-lang="pt">Capital do chocolate artesanal (Mamuschka, Rapa Nui) e da cerveja artesanal (Blest, Manush, Antares).</span></div></div>
+</div>
+
+<!-- SERVICIOS (de Jarvis) -->
+<div class="sec"><div class="sec-label" onclick="acordToggle(this)" style="cursor:pointer;">🔗 <span class="activo" data-lang="es">Servicios Esenciales & Trámites</span><span data-lang="en">Essential Services & Registrations</span><span data-lang="pt">Serviços Essenciais e Registros</span><span class="acord-arrow">▼</span></div></div>
+<div class="info-bloque acord-body">
+  <div class="info-item"><div class="info-ico">💊</div><div class="info-txt"><strong class="activo" data-lang="es">Farmacias de Turno</strong><strong data-lang="en">On-Call Pharmacies</strong><strong data-lang="pt">Farmácias de Plantão</strong><span class="activo" data-lang="es">Farmacity: (0294) 443-5500 · Rotación diaria. Ver cronograma del Colegio Farmacéutico de Río Negro.</span><span data-lang="en">Farmacity: (0294) 443-5500 · Daily on-call rotation. Check Río Negro Pharmacists College.</span><span data-lang="pt">Farmacity: (0294) 443-5500 · Rotação diária. Verifique o Colégio Farmacêutico de Río Negro.</span></div></div>
+  <div class="info-item"><div class="info-ico">📝</div><div class="info-txt"><strong class="activo" data-lang="es">Registro Obligatorio de Trekking</strong><strong data-lang="en">Mandatory Trekking Registration</strong><strong data-lang="pt">Registro Obrigatório de Trekking</strong><span class="activo" data-lang="es">Requisito legal antes de ingresar a cualquier sendero del PN Nahuel Huapi. Registro gratuito digital.</span><span data-lang="en">Mandatory free digital registration before entering any trail in Nahuel Huapi NP.</span><span data-lang="pt">Registro digital gratuito e obrigatório antes de entrar em qualquer trilha do Parque Nacional.</span><a href="https://nahuelhuapi.gov.ar" target="_blank" style="color:var(--atlantic);font-size:0.72rem;margin-top:6px;display:inline-block;" class="activo" data-lang="es">Registro PN Nahuel Huapi →</a></div></div>
+</div>
+
+<!-- SUPERMERCADOS -->
+<div class="sec"><div class="sec-label" onclick="acordToggle(this)" style="cursor:pointer;">🛒 <span class="activo" data-lang="es">Supermercados</span><span data-lang="en">Supermarkets</span><span data-lang="pt">Supermercados</span><span class="acord-arrow">▼</span></div></div>
+<div class="info-bloque acord-body">
+  <div class="info-item"><div class="info-ico">🛒</div><div class="info-txt"><strong class="activo" data-lang="es">La Anónima — Centro</strong><strong data-lang="en">La Anónima — Downtown</strong><strong data-lang="pt">La Anónima — Centro</strong><span class="activo" data-lang="es">Moreno 235 · Lun–Sáb 8:00–21:00 · Dom 9:00–20:00</span><span data-lang="en">Moreno 235 · Mon–Sat 8:00–21:00 · Sun 9:00–20:00</span><span data-lang="pt">Moreno 235 · Seg–Sáb 8:00–21:00 · Dom 9:00–20:00</span></div></div>
+  <div class="info-item"><div class="info-ico">🛒</div><div class="info-txt"><strong>Disco</strong><span class="activo" data-lang="es">Av. 12 de Octubre · Lun–Sáb 8:30–21:00</span><span data-lang="en">Av. 12 de Octubre · Mon–Sat 8:30–21:00</span><span data-lang="pt">Av. 12 de Octubre · Seg–Sáb 8:30–21:00</span></div></div>
+  <div class="info-item"><div class="info-ico">🛒</div><div class="info-txt"><strong>Vital</strong><span class="activo" data-lang="es">Elflein 110 · Centro · Lun–Sáb 8:00–20:30</span><span data-lang="en">Elflein 110 · Downtown · Mon–Sat 8:00–20:30</span><span data-lang="pt">Elflein 110 · Centro · Seg–Sáb 8:00–20:30</span></div></div>
+</div>
+
+<!-- AGENDA DE EVENTOS (de Jarvis + los nuestros) -->
+<div class="sec"><div class="sec-label" onclick="acordToggle(this)" style="cursor:pointer;">📅 <span class="activo" data-lang="es">Calendario Anual de Eventos</span><span data-lang="en">Annual Events Calendar</span><span data-lang="pt">Calendário Anual de Eventos</span><span class="acord-arrow">▼</span></div></div>
+<div class="info-bloque acord-body">
+  <div class="info-item"><div class="info-ico">🍫</div><div class="info-txt"><strong class="activo" data-lang="es">Semana Santa — Fiesta Nacional del Chocolate</strong><strong data-lang="en">Easter — National Chocolate Festival</strong><strong data-lang="pt">Semana Santa — Festa Nacional do Chocolate</strong><span class="activo" data-lang="es">Centro Cívico y calle Mitre. Construcción de la barra de chocolate más grande del mundo y espectáculos gratuitos para la familia.</span><span data-lang="en">Civic Center and Mitre St. Creation of the world's longest chocolate bar plus free family shows.</span><span data-lang="pt">Centro Cívico e Rua Mitre. Maior barra de chocolate do mundo e shows gratuitos.</span></div></div>
+  <div class="info-item"><div class="info-ico">❄</div><div class="info-txt"><strong class="activo" data-lang="es">Agosto — Fiesta Nacional de la Nieve</strong><strong data-lang="en">August — National Snow Festival</strong><strong data-lang="pt">Agosto — Festa Nacional da Neve</strong><span class="activo" data-lang="es">El evento emblema del invierno barilochense. Concurso de hacheros, desfiles institucionales, shows gratuitos en el Centro Cívico y eventos en Cerro Catedral.</span><span data-lang="en">Bariloche's flagship winter festival. Woodchopping contests, parades, free music at Civic Center and Cerro Catedral events.</span><span data-lang="pt">A festa emblemática do inverno. Concurso de lenhadores, desfiles e shows gratuitos no Centro Cívico.</span></div></div>
+  <div class="info-item"><div class="info-ico">🍽</div><div class="info-txt"><strong class="activo" data-lang="es">Octubre — Bariloche a la Carta (BALC)</strong><strong data-lang="en">October — Bariloche a la Carta (BALC)</strong><strong data-lang="pt">Outubro — Bariloche a la Carta (BALC)</strong><span class="activo" data-lang="es">Feria gastronómica patagónica en el Centro Cívico. Productores regionales, circuitos de cata y promociones en restaurantes locales.</span><span data-lang="en">Patagonian food festival at Civic Center. Regional producers, tasting circuits and local restaurant promotions.</span><span data-lang="pt">Feira gastronômica patagônica no Centro Cívico. Produtores regionais e circuitos de degustação.</span></div></div>
+  <div class="info-item"><div class="info-ico">🚴</div><div class="info-txt"><strong class="activo" data-lang="es">Noviembre — Maratón Patagónica</strong><strong data-lang="en">November — Patagonian Marathon</strong><strong data-lang="pt">Novembro — Maratona Patagônica</strong><span class="activo" data-lang="es">Trail running y maratón convencional con el paisaje patagónico como escenario. Atrae corredores de todo el mundo.</span><span data-lang="en">Trail running and conventional marathon with Patagonian landscape as backdrop. Attracts runners worldwide.</span><span data-lang="pt">Trail running e maratona com a paisagem patagônica. Atrai corredores de todo o mundo.</span></div></div>
+</div>
+
+<div style="padding:24px 16px;text-align:center;border-top:1px solid rgba(163,196,204,0.08);margin-top:20px;">
+  <div style="font-family:var(--font-d);font-size:1.1rem;font-weight:300;letter-spacing:0.14em;color:rgba(163,196,204,0.4);margin-bottom:6px;">CONFÍN</div>
+  <div class="activo" data-lang="es" style="font-size:0.65rem;color:rgba(163,196,204,0.3);letter-spacing:0.08em;">Tu viaje en un solo lugar · Sin comisiones · Sin intermediarios</div>
+  <div data-lang="en" style="font-size:0.65rem;color:rgba(163,196,204,0.3);letter-spacing:0.08em;">Your journey, all in one place · No commissions · No middlemen</div>
+  <div data-lang="pt" style="font-size:0.65rem;color:rgba(163,196,204,0.3);letter-spacing:0.08em;">Sua viagem em um só lugar · Sem comissões · Sem intermediários</div>
+</div>
+
+<script>
+function setLang(lang, btn) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('activo'));
+  if (btn) btn.classList.add('activo');
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    el.classList.toggle('activo', el.dataset.lang === lang);
+  });
+  try { localStorage.setItem('confin_lang', lang); } catch(e) {}
+}
+(function() {
+  var saved = 'es';
+  try { saved = localStorage.getItem('confin_lang') || 'es'; } catch(e) {}
+  var btn = document.querySelector('.lang-btn[onclick*="'" + saved + "'"]');
+  setLang(saved, btn);
+})();
+function acordToggle(h) {
+  var b = h.parentElement.nextElementSibling;
+  var isOpen = h.classList.contains("open");
+  document.querySelectorAll(".sec-label.open").forEach(function(l) {
+    l.classList.remove("open");
+    var x = l.parentElement.nextElementSibling;
+    if(x && x.classList.contains("acord-body")) x.style.display = "none";
+  });
+  if(!isOpen && b && b.classList.contains("acord-body")) {
+    h.classList.add("open");
+    b.style.display = "block";
+  }
+}
+document.addEventListener("DOMContentLoaded", function() {
+  var primera = document.querySelector(".sec-label[onclick]");
+  if(primera) acordToggle(primera);
+});
+</script>
+</body>
+</html>
