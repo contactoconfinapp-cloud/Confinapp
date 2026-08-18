@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Sumá tu establecimiento · CONFÍN</title>
+<meta name="description" content="Sumá tu establecimiento a CONFÍN — sin comisiones, sin intermediarios. Alojamiento, gastronomía, experiencias, comercios y servicios — conectados con el viajero.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#0F2B25;--cream:#F3EFE6;--atlantic:#6BA4A5;--atl-light:rgba(107,164,165,0.12);
+  --ember:#B8673A;--ember-dim:rgba(184,103,58,0.12);--bark:#7A6E65;--ash:#C4BAB0;
+  --fog:#F3EFE6;--soil:#0F2B25;--gold:#A3B18A;--gold-dim:rgba(163,177,138,0.2);
+  --salvia:#A3B18A;--arena:#E7DCC5;
+  --font-d:'Cormorant Garamond',Georgia,serif;--font-b:'DM Sans',sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:var(--fog);color:var(--soil);font-family:var(--font-b);font-weight:300;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+.hero{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 24px 40px;text-align:center;position:relative;overflow:hidden;background:var(--fog);}
+.hero-glow{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);width:140%;height:70%;background:radial-gradient(ellipse,rgba(61,107,115,0.18) 0%,transparent 70%);pointer-events:none;}
+.hero-logo{font-family:var(--font-d);font-size:1.2rem;letter-spacing:0.3em;color:var(--atlantic);text-transform:uppercase;margin-bottom:40px;margin-top:16px;position:relative;z-index:2;font-weight:600;}
+.hero-title{font-family:var(--font-d);font-size:clamp(2.2rem,8vw,3.2rem);font-weight:300;line-height:1.05;margin-bottom:20px;position:relative;z-index:2;color:var(--soil);}
+.hero-title em{font-style:italic;color:var(--atlantic);}
+.hero-sub{font-size:0.78rem;color:var(--bark);letter-spacing:0.06em;margin-bottom:32px;position:relative;z-index:2;line-height:1.7;}
+.benefits{display:flex;flex-direction:column;gap:12px;margin-bottom:48px;width:100%;max-width:340px;position:relative;z-index:2;}
+.benefit{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid rgba(61,107,115,0.15);border-radius:10px;padding:14px 16px;text-align:left;}
+.benefit-icon{font-size:1.3rem;flex-shrink:0;}
+.benefit-txt{font-size:0.78rem;color:var(--soil);line-height:1.5;}
+.benefit-txt strong{color:var(--atlantic);display:block;font-weight:600;margin-bottom:1px;}
+.pionero-badge{display:inline-flex;align-items:center;gap:6px;background:#E7DCC5;border:1px solid #A3B18A;color:#0F2B25;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;padding:7px 16px;border-radius:20px;margin-bottom:28px;position:relative;z-index:2;font-weight:600;}
+.hero-presentacion{max-width:340px;text-align:left;margin-bottom:28px;position:relative;z-index:2;display:flex;flex-direction:column;gap:12px;}
+.hero-presentacion p{font-size:0.82rem;color:var(--soil);line-height:1.65;}
+.hero-presentacion strong{color:var(--atlantic);font-weight:600;}
+.hero-conoce{max-width:340px;width:100%;background:rgba(61,107,115,0.06);border:1px solid rgba(61,107,115,0.2);border-radius:10px;padding:16px 18px;text-align:center;margin-bottom:20px;position:relative;z-index:2;}
+.hero-conoce p{font-size:0.78rem;color:var(--soil);margin-bottom:10px;line-height:1.5;}
+.hero-conoce strong{color:var(--atlantic);}
+.btn-conoce{display:inline-block;background:transparent;border:1.5px solid var(--atlantic);color:var(--atlantic);padding:9px 22px;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;border-radius:6px;text-decoration:none;font-family:var(--font-b);transition:all 0.2s;}
+.btn-conoce:hover{background:var(--atlantic);color:var(--cream);}
+
+.hero-tagline{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:24px;position:relative;z-index:2;}
+.hero-tagline span{font-size:0.82rem;font-weight:600;color:#0F2B25;letter-spacing:0.02em;}
+.tagline-sep{color:#A3B18A;font-weight:300;}
+.hero-que-es{width:100%;max-width:360px;background:#fff;border-radius:14px;padding:20px 18px;margin-bottom:24px;position:relative;z-index:2;box-shadow:0 2px 12px rgba(15,43,37,0.08);}
+.que-es-titulo{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#6BA4A5;font-weight:700;margin-bottom:14px;}
+.que-es-items{display:flex;flex-direction:column;gap:14px;}
+.que-es-item{display:flex;align-items:flex-start;gap:12px;font-size:0.82rem;color:#0F2B25;line-height:1.55;}
+.que-es-ico{font-size:1.2rem;flex-shrink:0;margin-top:1px;}
+.luna-item{background:#F3EFE6;border-radius:10px;padding:12px 14px;border:1px solid #A3B18A;}
+.luna-nombre{font-size:1rem;font-family:'Cormorant Garamond',Georgia,serif;color:#0F2B25;font-weight:600;font-style:italic;}
+.luna-desc{font-size:0.8rem;color:#0F2B25;line-height:1.55;}
+.promo-box{width:100%;max-width:360px;background:#0F2B25;border-radius:14px;padding:20px 18px;margin-bottom:24px;position:relative;z-index:2;}
+.promo-titulo{font-size:0.72rem;font-weight:700;color:#E7DCC5;letter-spacing:0.06em;margin-bottom:16px;text-align:center;}
+.promo-items{display:flex;flex-direction:column;gap:12px;margin-bottom:16px;}
+.promo-item{display:flex;align-items:flex-start;gap:12px;}
+.promo-ico{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
+.promo-item strong{display:block;font-size:0.84rem;color:#F3EFE6;margin-bottom:2px;}
+.promo-item p{font-size:0.74rem;color:#A3B18A;line-height:1.45;margin:0;}
+.promo-vence{background:#E7DCC5;border-radius:8px;padding:10px 14px;font-size:0.72rem;color:#0F2B25;line-height:1.6;text-align:center;margin-bottom:10px;}
+.promo-aviso{background:rgba(231,220,197,0.25);border:1px solid rgba(163,177,138,0.4);border-radius:8px;padding:10px 14px;font-size:0.68rem;color:#E7DCC5;line-height:1.6;text-align:center;}
+.promo-vence strong{color:#0F2B25;}
+
+.hero-hint{font-size:0.68rem;color:var(--bark);margin-top:12px;text-align:center;line-height:1.6;max-width:300px;position:relative;z-index:2;}
+.btn-primary{background:var(--atlantic);color:var(--cream);border:none;padding:17px 36px;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;font-family:var(--font-b);border-radius:8px;width:100%;max-width:340px;position:relative;z-index:2;transition:background 0.2s;}
+.btn-primary:hover{background:#2d5560;}
+.zona-screen{display:none;background:var(--fog);min-height:100dvh;}
+.zona-body{padding:28px 20px 40px;}
+.zona-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0;}
+.zona-card{background:#fff;border:2px solid var(--ash);border-radius:12px;padding:20px 14px;cursor:pointer;text-align:center;transition:all 0.2s;-webkit-tap-highlight-color:transparent;}
+.zona-card:hover,.zona-card:active{border-color:#6BA4A5;background:rgba(107,164,165,0.06);box-shadow:0 0 0 1px #6BA4A5;}
+.zona-icon{font-size:1.8rem;margin-bottom:8px;}
+.zona-name{font-size:0.84rem;font-weight:600;color:#0F2B25;line-height:1.3;margin-bottom:4px;}
+.zona-prov{font-size:0.62rem;color:#7A6E65;letter-spacing:0.06em;}
+.zona-otra{border-style:dashed;border-color:#A3B18A;}
+.zona-otra .zona-name{color:#6BA4A5;}
+.zona-otra-msg{background:#fff;border-radius:12px;padding:20px;margin-top:8px;display:flex;flex-direction:column;gap:10px;}
+.zona-otra-msg p{font-size:0.82rem;color:#0F2B25;line-height:1.6;}
+.form-wrap{display:none;background:var(--fog);min-height:100dvh;}
+.form-header{background:var(--deep);padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(61,107,115,0.2);}
+.form-header-logo{font-family:var(--font-d);font-size:1rem;letter-spacing:0.2em;color:rgba(163,196,204,0.6);}
+.back-hero{background:none;border:none;color:rgba(163,196,204,0.6);font-size:0.7rem;letter-spacing:0.1em;cursor:pointer;font-family:var(--font-b);padding:0;}
+.steps-bar{display:flex;gap:0;background:var(--deep);padding:0 20px 16px;}
+.step-dot{flex:1;height:3px;background:rgba(61,107,115,0.25);transition:background 0.3s;}
+.step-dot.active{background:var(--atlantic);}
+.step-dot.done{background:rgba(61,107,115,0.6);}
+.form-section{display:none;padding:12px 20px 24px;}
+.form-section.active{display:block;padding-top:12px;}
+.section-eyebrow{font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--atlantic);margin-bottom:6px;}
+.section-title{font-family:var(--font-d);font-size:1.5rem;font-weight:300;color:var(--soil);margin-bottom:20px;line-height:1.2;}
+.rubro-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px;}
+.rubro-card{background:#fff;border:2px solid var(--ash);border-radius:10px;padding:16px 12px;cursor:pointer;display:flex;flex-direction:column;gap:6px;transition:all 0.2s;-webkit-tap-highlight-color:transparent;}
+.rubro-card:hover,.rubro-card.selected{border-color:var(--atlantic);background:rgba(61,107,115,0.04);}
+.rubro-card.selected{border-color:var(--atlantic);box-shadow:0 0 0 1px var(--atlantic);}
+.rubro-icon{font-size:1.4rem;}
+.rubro-name{font-size:0.8rem;font-weight:500;color:var(--soil);line-height:1.3;}
+.rubro-sub{font-size:0.62rem;color:var(--bark);line-height:1.4;}
+.calificacion-box{background:#fff;border:1px solid var(--ash);border-radius:10px;padding:18px 16px;margin-bottom:16px;display:none;}
+.calificacion-box.visible{display:block;}
+.calificacion-label{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--bark);margin-bottom:10px;}
+.cal-options{display:flex;flex-direction:column;gap:8px;}
+.cal-option{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--ash);border-radius:8px;cursor:pointer;transition:all 0.2s;}
+.cal-option:hover,.cal-option.selected{border-color:var(--atlantic);background:rgba(61,107,115,0.04);}
+.cal-option input{accent-color:var(--atlantic);}
+.cal-option-txt{font-size:0.8rem;color:var(--soil);}
+.precio-box{display:none;background:var(--deep);border-radius:12px;padding:20px 18px;margin-bottom:20px;}
+.precio-box.visible{display:block;}
+.precio-eyebrow{font-size:0.56rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(163,196,204,0.5);margin-bottom:12px;}
+.precio-plan{font-family:var(--font-d);font-size:1.1rem;color:rgba(163,196,204,0.8);margin-bottom:14px;}
+.precio-row{display:flex;align-items:baseline;gap:10px;margin-bottom:6px;}
+.precio-real{font-size:0.78rem;color:rgba(163,196,204,0.4);text-decoration:line-through;}
+.precio-lanzamiento{font-size:1.6rem;font-family:var(--font-d);font-weight:300;color:var(--cream);}
+.precio-mes{font-size:0.7rem;color:rgba(163,196,204,0.5);}
+.precio-condiciones{margin-top:14px;display:flex;flex-direction:column;gap:6px;}
+.precio-cond-item{display:flex;align-items:flex-start;gap:8px;font-size:0.72rem;color:rgba(163,196,204,0.7);line-height:1.5;}
+.precio-cond-item strong{color:var(--cream);}
+.precio-divider{height:1px;background:rgba(61,107,115,0.2);margin:12px 0;}
+.rental-box{display:none;background:var(--deep);border-radius:12px;padding:20px 18px;margin-bottom:20px;}
+.rental-box.visible{display:block;}
+.field-group{margin-bottom:16px;}
+.field-label{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--bark);margin-bottom:6px;display:block;}
+.field-required{color:var(--ember);}
+.field-input{width:100%;border:1px solid var(--ash);background:#fff;color:var(--soil);padding:12px 14px;font-size:0.84rem;font-family:var(--font-b);border-radius:8px;outline:none;transition:border-color 0.2s;}
+.field-input:focus{border-color:var(--atlantic);}
+.field-input::placeholder{color:var(--ash);}
+.field-hint{font-size:0.65rem;color:var(--bark);margin-top:4px;line-height:1.5;}
+textarea.field-input{resize:vertical;min-height:90px;}
+select.field-input{appearance:none;cursor:pointer;}
+.aviso-verif{background:rgba(61,107,115,0.08);border:2px solid rgba(61,107,115,0.3);border-radius:10px;padding:16px;margin-bottom:14px;}
+.aviso-verif-title{font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--atlantic);margin-bottom:10px;}
+.aviso-verif p{font-size:0.76rem;color:var(--soil);line-height:1.7;margin-bottom:8px;}
+.aviso-verif p:last-child{margin-bottom:0;}
+.aviso-verif strong{font-weight:500;}
+.aviso-ember{background:var(--ember-dim);border-left:3px solid var(--ember);border-radius:0 8px 8px 0;padding:12px 14px;margin-bottom:20px;}
+.aviso-ember p{font-size:0.74rem;color:var(--soil);line-height:1.65;}
+.check-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:16px;cursor:pointer;}
+.check-row input{margin-top:3px;accent-color:var(--atlantic);flex-shrink:0;}
+.check-row span{font-size:0.76rem;color:var(--soil);line-height:1.55;}
+.check-row a{color:var(--atlantic);text-decoration:underline;}
+.btn-nav{display:flex;gap:10px;margin-top:8px;}
+.btn-back-step{background:none;border:1px solid var(--ash);color:var(--bark);padding:13px 20px;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;font-family:var(--font-b);border-radius:8px;flex:1;}
+.btn-next-step{background:var(--atlantic);color:#fff;border:none;padding:13px 20px;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;font-family:var(--font-b);border-radius:8px;flex:2;transition:background 0.2s;}
+.btn-next-step:hover{background:#2d5560;}
+.btn-next-step:disabled{opacity:0.5;pointer-events:none;}
+.btn-submit{background:var(--atlantic);color:#fff;border:none;padding:16px;font-size:0.76rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-family:var(--font-b);border-radius:8px;width:100%;margin-top:8px;transition:background 0.2s;}
+.btn-submit:hover{background:#2d5560;}
+.btn-submit:disabled{opacity:0.5;pointer-events:none;}
+.success-screen{display:none;min-height:100dvh;background:var(--deep);align-items:center;justify-content:center;padding:40px 24px;text-align:center;flex-direction:column;}
+.success-screen.visible{display:flex;}
+.success-icon{font-size:3rem;margin-bottom:20px;}
+.success-title{font-family:var(--font-d);font-size:2rem;font-weight:300;color:var(--cream);margin-bottom:12px;}
+.success-sub{font-size:0.8rem;color:rgba(163,196,204,0.7);line-height:1.7;max-width:320px;}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(14,26,28,0.85);z-index:999;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.open{display:flex;}
+.modal-box{background:#fff;max-width:500px;width:100%;max-height:82vh;overflow-y:auto;border-radius:12px;padding:24px 20px;}
+.modal-box h3{font-family:var(--font-d);font-size:1.2rem;color:var(--soil);margin-bottom:16px;}
+.modal-box p{font-size:0.78rem;color:var(--soil);line-height:1.75;margin-bottom:10px;}
+.modal-box strong{color:var(--night);}
+.modal-close{width:100%;margin-top:16px;padding:12px;background:var(--atlantic);color:#fff;border:none;border-radius:8px;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;font-family:var(--font-b);}
+</style>
+</head>
+<body>
+<div class="hero" id="hero-screen" style="display:flex;">
+  <div class="hero-glow"></div>
+  <div class="hero-logo"><img src="confin-logo-transparente.png" alt="CONFÍN" style="height:120px;width:auto;display:block;margin:0 auto;"></div>
+
+  <h1 class="hero-title">Sumá tu establecimiento<br>a la <em>guía inteligente</em><br>de la región</h1>
+
+  <div class="hero-tagline">
+    <span>Sin comisiones</span>
+    <span class="tagline-sep">·</span>
+    <span>Sin intermediarios</span>
+    <span class="tagline-sep">·</span>
+    <span>Contacto directo con el viajero</span>
+  </div>
+
+  <div class="pionero-badge">🏅 Sello Pionero CONFÍN — Válido hasta el 10 de octubre de 2026</div>
+
+  <div class="hero-que-es">
+    <div class="que-es-titulo">¿Qué es CONFÍN?</div>
+    <div class="que-es-items">
+      <div class="que-es-item">
+        <span class="que-es-ico">📍</span>
+        <span>La app donde los viajeros descubren destinos, alojamiento, gastronomía, experiencias y todo lo que necesitan para su viaje</span>
+      </div>
+      <div class="que-es-item">
+        <span class="que-es-ico">🔗</span>
+        <span>No somos una OTA ni una agencia — no cobramos comisión por cada cliente que recibís. El turista te contacta directo y la relación es tuya</span>
+      </div>
+      <div class="que-es-item luna-item">
+        <span class="que-es-ico">✨</span>
+        <div>
+          <strong class="luna-nombre">Luna</strong>
+          <span class="luna-desc"> — la guía inteligente de CONFÍN — acompaña al viajero en tiempo real, le sugiere qué hacer y dónde ir según sus intereses, y puede acercarlo a tu establecimiento de forma personalizada</span>
+        </div>
+      </div>
+      <div class="que-es-item">
+        <span class="que-es-ico">🗺️</span>
+        <span>CONFÍN también ofrece información útil del destino: clima, rutas, transporte, emergencias y actividades. Es la app que el viajero abre antes de llegar y no cierra hasta que se va</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="promo-box">
+    <div class="promo-titulo">🚀 Promoción de lanzamiento — Programa Pionero</div>
+    <div class="promo-items">
+      <div class="promo-item"><span class="promo-ico">🎁</span><div><strong>1er mes sin cargo</strong><p>Publicá tu perfil sin arriesgar un peso</p></div></div>
+      <div class="promo-item"><span class="promo-ico">💳</span><div><strong>3 meses con 50% de descuento</strong><p>Precio especial garantizado de lanzamiento</p></div></div>
+      <div class="promo-item"><span class="promo-ico">🏅</span><div><strong>Sello Pionero CONFÍN</strong><p>Beneficios exclusivos para establecimientos de esta primera etapa</p></div></div>
+      <div class="promo-item"><span class="promo-ico">🔓</span><div><strong>Cancelás cuando quieras</strong><p>Sin penalidades</p></div></div>
+    </div>
+    <div class="promo-vence">⏳ Mes sin cargo + 3 meses al 50% off + Sello Pionero CONFÍN<br>válido para suscripciones hasta el <strong>10 de octubre de 2026</strong></div>
+    <div class="promo-aviso">⚠️ Si cancelás, podés reactivar cuando quieras al valor vigente en ese momento, pero perderás el Sello Pionero CONFÍN y sus beneficios.</div>
+  </div>
+
+  <div class="hero-conoce">
+    <p>Antes de sumarte, <strong>conocé la app como la ve el viajero</strong></p>
+    <a class="btn-conoce" href="https://contactoconfinapp-cloud.github.io/Confinapp/" target="_blank">Explorá CONFÍN →</a>
+  </div>
+
+  
+    <div class="hero-conoce" style="margin-top:16px;">
+      <p>¿Querés ver cómo lucen los establecimientos dentro de CONFÍN?</p>
+      <p style="font-size:0.75rem;color:var(--bark);margin-top:6px;margin-bottom:12px;">Explorá ejemplos de perfiles — alojamiento, gastronomía y artesanos — y descubrí cómo los viajeros encuentran cada negocio en la app.</p>
+      <a class="btn-conoce" href="https://contactoconfinapp-cloud.github.io/Confinapp/confin-mockups.html" target="_blank">Ver ejemplos de perfiles en CONFÍN →</a>
+    </div>
+<button class="btn-primary" onclick="mostrarFormulario()">Quiero sumarme a CONFÍN →</button>
+  <p class="hero-hint">Elegí tu tipo de establecimiento y descubrís el plan y precio que corresponde a tu negocio.</p>
+</div>
+<div class="zona-screen" id="zona-screen" style="display:none;">
+  <div class="form-header">
+    <button class="back-hero" onclick="volverHero()">← Volver</button>
+    <div class="form-header-logo"><img src="confin-logo-transparente.png" alt="CONFÍN" style="height:32px;width:auto;"></div>
+  </div>
+  <div class="zona-body">
+    <div class="section-eyebrow">Antes de comenzar</div>
+    <div class="section-title">¿En qué localidad<br>está tu establecimiento?</div>
+    <div class="zona-grid">
+      <div class="zona-card" onclick="seleccionarZona('SMA')">
+        <div class="zona-icon">🏔️</div>
+        <div class="zona-name">San Martín<br>de los Andes</div>
+        <div class="zona-prov">Neuquén</div>
+      </div>
+      <div class="zona-card" onclick="seleccionarZona('VLA')">
+        <div class="zona-icon">🌊</div>
+        <div class="zona-name">Villa La<br>Angostura</div>
+        <div class="zona-prov">Neuquén</div>
+      </div>
+      <div class="zona-card" onclick="seleccionarZona('BAR')">
+        <div class="zona-icon">⛷️</div>
+        <div class="zona-name">Bariloche</div>
+        <div class="zona-prov">Río Negro</div>
+      </div>
+      <div class="zona-card zona-otra" onclick="seleccionarZonaOtra()">
+        <div class="zona-icon">📍</div>
+        <div class="zona-name">Otra localidad</div>
+        <div class="zona-prov">Próximamente en tu zona</div>
+      </div>
+    </div>
+    <div class="zona-otra-msg" id="zona-otra-msg" style="display:none;">
+      <p>¡Gracias por tu interés! CONFÍN está creciendo y pronto llegamos a tu zona.</p>
+      <p>Dejanos tu email y te avisamos cuando estemos disponibles en tu localidad.</p>
+      <input class="field-input" type="email" id="otra-email" placeholder="Tu email de contacto">
+      <input class="field-input" type="text" id="otra-localidad" placeholder="¿En qué localidad estás?" style="margin-top:8px;">
+      <button class="btn-primary" onclick="enviarInteresOtraZona()" style="margin-top:16px;">Avisame cuando lleguen →</button>
+    </div>
+  </div>
+</div>
+
+<div class="form-wrap" id="form-wrap" style="display:none;">
+  <div class="form-header">
+    <button class="back-hero" onclick="volverHero()">← Volver</button>
+    <div class="form-header-logo">CONFÍN</div>
+  </div>
+  <div class="steps-bar">
+    <div class="step-dot active" id="dot-1"></div>
+    <div class="step-dot" id="dot-2"></div>
+    <div class="step-dot" id="dot-3"></div>
+  </div>
+
+  
+  <div class="form-section active" id="step-1">
+    <div style="background:linear-gradient(135deg,rgba(184,103,58,0.15),rgba(184,103,58,0.05));border:1px solid rgba(184,103,58,0.5);border-radius:8px;padding:10px 14px;margin-bottom:18px;text-align:center;">
+      <span style="font-size:0.72rem;color:#b8673a;font-weight:700;letter-spacing:0.05em;">⏳ PROMOCIÓN PIONERO · VÁLIDA HASTA EL 10 DE OCTUBRE DE 2026</span>
+    </div>
+    <div class="section-eyebrow">Paso 1 de 3</div>
+    <div class="section-title">¿Qué tipo de<br>establecimiento tenés?</div>
+
+    <div id="rubro-grid-wrap"><div class="rubro-grid">
+      <div class="rubro-card" onclick="selectRubro('alojamiento')" id="rc-alojamiento">
+        <div class="rubro-icon">🏠</div>
+        <div class="rubro-name">Alojamiento</div>
+        <div class="rubro-sub">Cabañas, hoteles, hosterías, hostels, apart, domos</div>
+      </div>
+      <div class="rubro-card" onclick="selectRubro('gastronomia')" id="rc-gastronomia">
+        <div class="rubro-icon">☕</div>
+        <div class="rubro-name">Gastronomía</div>
+        <div class="rubro-sub">Restaurantes, cafés, casas de té, bares, cervecerías</div>
+      </div>
+      <div class="rubro-card" onclick="selectRubro('comercio')" id="rc-comercio">
+        <div class="rubro-icon">🛍</div>
+        <div class="rubro-name">Comercio</div>
+        <div class="rubro-sub">Artesanías, indumentaria, chocolates, regalería</div>
+      </div>
+      <div class="rubro-card" onclick="selectRubro('experiencia')" id="rc-experiencia">
+        <div class="rubro-icon">🧭</div>
+        <div class="rubro-name">Experiencias</div>
+        <div class="rubro-sub">Trekking, excursiones, pesca, kayak, cabalgatas</div>
+      </div>
+      <div class="rubro-card" onclick="selectRubro('wellness')" id="rc-wellness">
+        <div class="rubro-icon">✨</div>
+        <div class="rubro-name">Wellness</div>
+        <div class="rubro-sub">Spas, masajes, yoga, estética, kinesiología</div>
+      </div>
+      <div class="rubro-card" onclick="selectRubro('traslado')" id="rc-traslado">
+        <div class="rubro-icon">🚗</div>
+        <div class="rubro-name">Traslados</div>
+        <div class="rubro-sub">Taxis, remises, transfers, combis</div>
+      </div>
+      <div class="rubro-card" onclick="selectRubro('artesano')" id="rc-artesano">
+        <div class="rubro-icon">🧵🪵</div>
+        <div class="rubro-name">Artesanos y<br>Emprendedores</div>
+        <div class="rubro-sub">Artesanos, diseñadores y emprendedores independientes · Sin local comercial fijo</div>
+      </div>
+      <div class="rubro-card" style="grid-column:1/-1;" onclick="selectRubro('rental')" id="rc-rental">
+        <div class="rubro-icon">⛷️🚣🚵</div>
+        <div class="rubro-name">Actividad estacional</div>
+        <div class="rubro-sub">Rental, alquiler de equipos, servicios activos solo durante la temporada</div>
+      </div>
+    </div></div>
+
+    
+    <div class="calificacion-box" id="cal-alojamiento">
+    <button onclick="volverRubros()" style="background:none;border:none;color:var(--lago);font-size:0.78rem;cursor:pointer;margin-bottom:12px;padding:0;display:flex;align-items:center;gap:4px;">← Cambiar tipo de establecimiento</button>
+      <div class="calificacion-label">¿Cuántas plazas (camas) tiene tu establecimiento?</div>
+      <div class="cal-options">
+        <label class="cal-option" onclick="selectCal('alojamiento','hasta20')">
+          <input type="radio" name="cal-aloj" value="hasta20">
+          <div class="cal-option-txt">Hasta 20 plazas</div>
+        </label>
+        <label class="cal-option" onclick="selectCal('alojamiento','mas20')">
+          <input type="radio" name="cal-aloj" value="mas20">
+          <div class="cal-option-txt">Más de 20 plazas</div>
+        </label>
+        <label class="cal-option" onclick="selectCal('alojamiento','lodge')">
+          <input type="radio" name="cal-aloj" value="lodge">
+          <div class="cal-option-txt">Lodge, complejo exclusivo o hotel grande</div>
+        </label>
+        <label class="cal-option" onclick="selectCal('alojamiento','hostel')">
+          <input type="radio" name="cal-aloj" value="hostel">
+          <div class="cal-option-txt">Hostel</div>
+        </label>
+      </div>
+    </div></div>
+
+    
+    <div class="calificacion-box" id="cal-gastronomia">
+    <button onclick="volverRubros()" style="background:none;border:none;color:var(--lago);font-size:0.78rem;cursor:pointer;margin-bottom:12px;padding:0;display:flex;align-items:center;gap:4px;">← Cambiar tipo de establecimiento</button>
+      <div class="calificacion-label">¿Cuántos cubiertos tiene tu local?</div>
+      <div class="cal-options">
+        <label class="cal-option" onclick="selectCal('gastronomia','pequena')">
+          <input type="radio" name="cal-gastro" value="pequena">
+          <div class="cal-option-txt">Hasta 20 cubiertos — cafetería, casa de té, food truck</div>
+        </label>
+        <label class="cal-option" onclick="selectCal('gastronomia','grande')">
+          <input type="radio" name="cal-gastro" value="grande">
+          <div class="cal-option-txt">Más de 20 cubiertos — restaurante, cervecería, parrilla</div>
+        </label>
+      </div>
+    </div>
+
+    
+    <div class="precio-box" id="precio-box">
+      <button onclick="volverRubros()" style="background:none;border:none;color:var(--lago);font-size:0.78rem;cursor:pointer;margin-bottom:12px;padding:0;display:flex;align-items:center;gap:4px;">← Cambiar tipo de establecimiento</button>
+    <div class="precio-eyebrow">Tu plan en CONFÍN</div>
+      <div class="precio-plan" id="precio-plan-nombre">—</div>
+      <div id="precio-nota" style="display:none;background:rgba(107,164,165,0.08);border:1px solid rgba(107,164,165,0.2);border-radius:8px;padding:12px 14px;margin:10px 0;font-size:0.78rem;color:#0F2B25;line-height:1.6;"></div>
+      <div class="precio-row">
+        <span class="precio-real" id="precio-real-txt"></span>
+        <span class="precio-lanzamiento" id="precio-lanz-txt"></span>
+        <span class="precio-mes" id="precio-mes-txt">/mes</span>
+      </div>
+      <div style="font-size:0.68rem;color:rgba(163,196,204,0.6);margin-top:4px;text-align:center;">Importe final en pesos argentinos · Sin cargos adicionales</div>
+      <div class="precio-divider"></div>
+      <div class="precio-condiciones" id="precio-condiciones"></div>
+    </div>
+
+    
+    <div class="rental-box" id="rental-box">
+      <button onclick="volverRubros()" style="background:none;border:none;color:var(--lago);font-size:0.78rem;cursor:pointer;margin-bottom:12px;padding:0;display:flex;align-items:center;gap:4px;">← Cambiar tipo de establecimiento</button>
+    <div class="precio-eyebrow">Tu plan en CONFÍN</div>
+      <div class="precio-plan">Actividad estacional · Pago único por media temporada · Invierno 2026</div>
+      <div class="precio-row">
+        <span class="precio-real">$300.000</span>
+        <span class="precio-lanzamiento">$90.000</span>
+        <span class="precio-mes">pago único</span>
+      </div>
+      <div style="font-size:0.68rem;color:rgba(163,196,204,0.6);margin-top:4px;text-align:center;">Importe final en pesos argentinos · Sin cargos adicionales</div>
+      <div class="precio-divider"></div>
+      <div class="precio-condiciones">
+        <div class="precio-cond-item">✅ <span><strong>Media temporada Invierno 2026</strong> — cubre el período restante desde tu fecha de alta hasta el cierre de temporada</span></div>
+        <div class="precio-cond-item">💳 <span><strong>Un solo pago</strong> — no se renueva automáticamente</span></div>
+        <div class="precio-cond-item">🏅 <span><strong>Sello Pionero CONFÍN</strong> — distinción permanente</span></div>
+        <div class="precio-cond-item">🌿 <span><strong>Fuera de temporada seguís visible</strong> en la app con el Sello. Al inicio de la próxima temporada reactivás la suscripción y mantenés todos los beneficios. Si no la activás, perdés el Sello.</span></div>
+      </div>
+    </div>
+
+    <div class="btn-nav" style="margin-top:20px;">
+      <button class="btn-next-step" id="btn-paso2" onclick="irPaso(2)" disabled>Continuar →</button>
+    </div>
+  </div>
+
+  
+  <div class="form-section" id="step-2">
+    <div class="section-eyebrow">Paso 2 de 3</div>
+    <div class="section-title">Datos de tu<br>establecimiento</div>
+
+    <div class="field-group">
+      <label class="field-label">Nombre del establecimiento <span class="field-required">*</span></label>
+      <input class="field-input" type="text" id="ob-nombre" placeholder="Como aparece en tu local o redes">
+    </div>
+    <div class="field-group">
+      <label class="field-label">Nombre del responsable <span class="field-required">*</span></label>
+      <input class="field-input" type="text" id="ob-responsable" placeholder="Tu nombre y apellido">
+    </div>
+    <div class="field-group">
+      <label class="field-label">Localidad <span class="field-required">*</span></label>
+      <select class="field-input" id="ob-localidad">
+        <option value="">Seleccioná tu localidad</option>
+        <option>San Martín de los Andes</option>
+        <option>Villa La Angostura</option>
+        <option>Bariloche</option>
+        <option>Villa Traful</option>
+        <option>Lago Meliquina</option>
+        <option>Junín de los Andes</option>
+        <option>Aluminé</option>
+        <option>Villa Pehuenia</option>
+        <option>Caviahue / Copahue</option>
+        <option>Otra</option>
+      </select>
+    </div>
+    <div class="field-group">
+      <label class="field-label">WhatsApp de contacto <span class="field-required">*</span></label>
+      <input class="field-input" type="tel" id="ob-wa" placeholder="Ej: 2972 400000">
+    </div>
+    <div class="field-group">
+      <label class="field-label">Email <span class="field-required">*</span></label>
+      <input class="field-input" type="email" id="ob-email" placeholder="Para recibir el link de suscripción">
+      <p class="field-hint" style="color:var(--atlantic);font-weight:500;">📩 El email es nuestra vía oficial exclusiva de comunicación. Asegurate de ingresar uno que revisés con frecuencia.</p>
+    </div>
+    <div class="field-group">
+      <label class="field-label">Instagram</label>
+      <input class="field-input" type="text" id="ob-ig" placeholder="@tu.usuario (opcional)">
+    </div>
+    <div class="field-group" id="field-unidades" style="display:none;">
+      <label class="field-label" id="label-unidades">Cantidad de plazas / camas <span class="field-required">*</span></label>
+      <input class="field-input" type="number" id="ob-unidades" placeholder="Ej: 12" min="1">
+    </div>
+    <div class="field-group">
+      <label class="field-label">Descripción breve</label>
+      <textarea class="field-input" id="ob-descripcion" placeholder="Contanos qué hace especial a tu lugar (opcional)"></textarea>
+    </div>
+
+    <div class="btn-nav">
+      <button class="btn-back-step" onclick="irPaso(1)">← Volver</button>
+      <button class="btn-next-step" onclick="irPaso(3)">Continuar →</button>
+    </div>
+  </div>
+
+  
+  <div class="form-section" id="step-3">
+    <div class="section-eyebrow">Paso 3 de 3</div>
+    <div class="section-title">Casi listo —<br>revisá y enviá</div>
+
+    <div class="aviso-verif">
+      <div class="aviso-verif-title">📋 Cómo funciona el proceso</div>
+      <p><strong>Tu alta será verificada todos los días de 9:00 a 20:00 hs.</strong> Una vez verificado tu establecimiento, recibís el link de suscripción en tu email.</p>
+      <p><strong>Confirmado el pago, tu perfil se publica en un máximo de 1 hora</strong> dentro del horario de verificación. Pagos fuera de ese horario se activan a partir de las 9:00 hs del día siguiente.</p>
+    </div>
+
+    <div class="aviso-ember">
+      <p>⚠️ <strong>Importante:</strong> aunque el primer mes sea sin cargo, la suscripción debe quedar activa desde el inicio para publicar tu perfil. Sin medio de pago confirmado, el perfil no se activa.</p>
+    </div>
+
+    
+    <div class="form-section-titulo" style="margin-top:24px;">🔗 Contacto y presencia digital</div>
+
+    <div class="field-group">
+      <label class="field-label">Dirección física</label>
+      <input class="field-input" id="ob-direccion" type="text" placeholder="Ej: San Martín 450, San Martín de los Andes">
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Página web (opcional)</label>
+      <input class="field-input" id="ob-web" type="url" placeholder="https://www.tunegocio.com">
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Facebook (opcional)</label>
+      <input class="field-input" id="ob-facebook" type="text" placeholder="facebook.com/tunombre">
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Otras redes o enlaces (opcional)</label>
+      <input class="field-input" id="ob-otras-redes" type="text" placeholder="YouTube, TikTok, Booking, Airbnb, etc.">
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Link de reservas (opcional)</label>
+      <input class="field-input" id="ob-link-reservas" type="url" placeholder="Link de tu sistema de reservas, Booking, Airbnb...">
+      <p class="field-hint" style="color:var(--bark);font-size:0.72rem;margin-top:4px;">Si tenés un sistema de reservas online, el turista podrá reservar directamente desde tu perfil en CONFÍN.</p>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Link de carta o menú (opcional)</label>
+      <input class="field-input" id="ob-link-carta" type="url" placeholder="Link a tu carta en PDF, foto o Instagram...">
+      <p class="field-hint" style="color:var(--bark);font-size:0.72rem;margin-top:4px;">Para restaurantes, cafés, casas de té o cualquier establecimiento gastronómico.</p>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Botón de contacto directo (opcional)</label>
+      <p class="field-hint" style="color:var(--bark);font-size:0.72rem;margin-bottom:8px;">Si activás esta opción, los turistas podrán contactarte con un solo clic desde tu perfil.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;"><input type="radio" name="ob-contacto-tipo" value="whatsapp" checked> 💬 WhatsApp</label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;"><input type="radio" name="ob-contacto-tipo" value="telefono"> 📞 Llamada</label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;"><input type="radio" name="ob-contacto-tipo" value="ninguno"> Sin botón de contacto</label>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">¿Aceptás reservas o consultas por WhatsApp?</label>
+      <select class="field-input" id="ob-reservas">
+        <option value="si">Sí</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+
+    <div class="form-section-titulo" style="margin-top:24px;">✨ Descripción para Luna</div>
+    <div class="field-group">
+      <p class="field-hint" style="color:var(--bark);font-size:0.78rem;margin-bottom:8px;">Contanos en pocas palabras qué hace único a tu espacio. Luna usa este texto para presentarlo a los turistas que pregunten.</p>
+      <textarea class="field-input" id="ob-descripcion-luna" maxlength="280" placeholder="Máx. 280 caracteres — Ej: Cabaña de montaña con vista al lago Lácar, a 5 minutos del centro. Ideal para parejas y familias. Chimenea, parrilla y kayak incluidos." style="min-height:90px;"></textarea>
+    </div>
+    <div class="form-section-titulo" style="margin-top:24px;">📸 Fotos de tu establecimiento</div>
+
+    <div class="field-group">
+      <label class="field-label">Foto principal (portada)</label>
+      <input class="field-input" id="ob-foto" type="file" accept="image/*" style="padding:8px;">
+      <p class="field-hint" style="color:var(--bark);font-size:0.72rem;margin-top:4px;">Elegí la imagen que mejor represente tu espacio. Es lo primero que va a ver el turista.</p>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Fotos adicionales — galería (hasta 6)</label>
+      <input class="field-input" id="ob-galeria" type="file" accept="image/*" multiple style="padding:8px;">
+      <p class="field-hint" style="color:var(--bark);font-size:0.72rem;margin-top:4px;">Podés seleccionar varias fotos a la vez: habitaciones, exteriores, detalles, vistas. Cuantas más muestres, más confianza generás en el viajero.</p>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Horario de atención</label>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <input class="field-input" id="ob-hora-desde" type="time" style="flex:1;">
+        <span style="color:var(--bark);">a</span>
+        <input class="field-input" id="ob-hora-hasta" type="time" style="flex:1;">
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Medios de pago que aceptás</label>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="ob-pagos-checks">
+        <label style="display:flex;align-items:center;gap:5px;font-size:0.8rem;"><input type="checkbox" value="efectivo"> Efectivo</label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:0.8rem;"><input type="checkbox" value="credito"> Tarjeta de crédito</label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:0.8rem;"><input type="checkbox" value="debito"> Débito</label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:0.8rem;"><input type="checkbox" value="transferencia"> Transferencia</label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:0.8rem;"><input type="checkbox" value="mp"> Mercado Pago</label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:0.8rem;"><input type="checkbox" value="dolares"> Dólares</label>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Idiomas en que atendés</label>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;">
+        <label style="display:flex;align-items:center;gap:5px;font-size:0.8rem;"><input type="checkbox" value="es" checked> Español</label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:0.8rem;"><input type="checkbox" value="en"> Inglés</label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:0.8rem;"><input type="checkbox" value="pt"> Portugués</label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:0.8rem;"><input type="checkbox" value="fr"> Francés</label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:0.8rem;"><input type="checkbox" value="de"> Alemán</label>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Promoción vigente (opcional)</label>
+      <input class="field-input" id="ob-promo" type="text" maxlength="150" placeholder="Ej: 10% de descuento reservando con 30 días de anticipación">
+    </div>
+
+<label class="check-row">
+      <input type="checkbox" id="ob-responsabilidad">
+      <span>Declaro que la información ingresada es veraz y que CONFÍN actúa como plataforma de conexión, sin responsabilidad sobre los productos, servicios o condiciones ofrecidos por mi establecimiento.</span>
+    </label>
+    <label class="check-row">
+      <input type="checkbox" id="ob-tyc">
+      <span>Leí y acepto las <a href="#" onclick="abrirTyC();return false;">condiciones de publicación en CONFÍN</a></span>
+    </label>
+
+    <div style="background:rgba(107,164,165,0.08);border:1px solid rgba(107,164,165,0.2);border-radius:10px;padding:14px 16px;margin-bottom:20px;text-align:center;"><p style="font-size:0.78rem;color:#0F2B25;line-height:1.6;">¿Tenés alguna consulta antes de enviar?<br>Escribinos a <a href="mailto:contacto.confinapp@gmail.com" style="color:#6BA4A5;font-weight:600;">contacto.confinapp@gmail.com</a> y te respondemos a la brevedad.</p></div><button class="btn-submit" id="btn-submit" onclick="enviarOnboarding()">Enviar mi alta a CONFÍN →</button>
+    <p style="font-size:0.62rem;color:var(--bark);text-align:center;margin-top:12px;line-height:1.6;">Una vez verificado, te contactamos exclusivamente por email. Cancelás cuando quieras, sin permanencia mínima ni penalidades. Si cancelás, perdés el Sello Pionero CONFÍN; podés reactivar al valor vigente en ese momento.</p>
+  </div>
+</div>
+<div class="success-screen" id="success-screen" style="display:none;">
+  <div class="success-icon">🌿</div>
+  <div class="success-title">¡Alta recibida!</div>
+  <p class="success-sub">Verificamos tu establecimiento todos los días de 9:00 a 20:00 hs.<br><br>Cuando esté todo ok, te enviamos el link de pago por email. Una vez confirmado el pago, tu perfil aparece en CONFÍN en menos de 1 hora. Cancelás cuando quieras. Si cancelás, perdés el Sello Pionero CONFÍN; podés reactivar al valor vigente en ese momento.</p>
+</div>
+<div class="modal-overlay" id="tyc-modal">
+  <div class="modal-box">
+    <h3>Condiciones de publicación en CONFÍN</h3>
+    <p><strong>1. Veracidad.</strong> Los datos que cargues deben ser reales y actualizados. CONFÍN no se responsabiliza por diferencias entre lo publicado y lo cobrado al turista.</p>
+    <p><strong>2. Contacto directo.</strong> El vínculo con el turista es directo. CONFÍN no interviene en reservas ni cobra comisión.</p>
+    <p><strong>3. Verificación y publicación.</strong> Tu alta será verificada todos los días de 9:00 a 20:00 hs. Una vez verificado, recibirás el link de suscripción. Tu perfil se publica en un máximo de 1 hora tras confirmar el pago, dentro del horario de verificación. Pagos fuera de ese horario se activan a las 9:00 hs del día siguiente.</p>
+    <p><strong>4. Precios de lanzamiento.</strong> El primer mes es sin cargo. Los 2 meses siguientes se facturan al precio de lanzamiento de tu categoría. A partir del 4to mes, se aplica el precio real. El alquiler temporario es un pago único por el resto de la temporada.</p>
+    <p><strong>5. Traslados / remises / taxis.</strong> Precio fijo de lanzamiento sin ajuste posterior, con las mismas condiciones del primer mes sin cargo y 2 meses al precio de lanzamiento.</p>
+    <p><strong>6. Baja.</strong> La suscripción es mensual y sin permanencia mínima. Se da de baja desde tu medio de pago antes de la fecha de renovación.</p>
+    <p><strong>7. Sello Pionero.</strong> Disponible para altas recibidas hasta el 31 de octubre de 2026.</p>
+    <p><strong>8. Varios rubros.</strong> Cada rubro es una suscripción independiente.</p>
+    <button class="modal-close" onclick="cerrarTyC()">Entendido</button>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://cstaurdeiyulzaqymexa.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNzdGF1cmRlaXl1bHphcXltZXhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE3MTE0NzEsImV4cCI6MjA5NzI4NzQ3MX0.Fy0qqp6MhcryEkttW2fMUAB_N50PlvSwjfmeRv3HJjA';
+
+let rubroSeleccionado = null;
+let calSeleccionada = null;
+let planAsignado = null;
+
+const ZONAS = {
+  'SMA': { nombre: 'San Martín de los Andes', provincia: 'Neuquén',   pais: 'Argentina' },
+  'VLA': { nombre: 'Villa La Angostura',       provincia: 'Neuquén',   pais: 'Argentina' },
+  'BAR': { nombre: 'Bariloche',                provincia: 'Río Negro', pais: 'Argentina' },
+  'JDA': { nombre: 'Junín de los Andes',       provincia: 'Neuquén',   pais: 'Argentina' },
+  'VPE': { nombre: 'Villa Pehuenia',           provincia: 'Neuquén',   pais: 'Argentina' },
+  'ALU': { nombre: 'Aluminé',                  provincia: 'Neuquén',   pais: 'Argentina' },
+  'CAV': { nombre: 'Caviahue / Copahue',       provincia: 'Neuquén',   pais: 'Argentina' },
+  'VTR': { nombre: 'Villa Traful',             provincia: 'Neuquén',   pais: 'Argentina' },
+  'NQN': { nombre: 'Neuquén capital',          provincia: 'Neuquén',   pais: 'Argentina' },
+};
+const urlParams = new URLSearchParams(window.location.search);
+const zonaParam = (urlParams.get('zona') || 'SMA').toUpperCase();
+let zonaActual = ZONAS[zonaParam] || ZONAS['SMA'];
+let zonaCodigoActual = zonaParam;
+
+function generarCodigo(rubro) {
+  const rubroAbrev = {
+    alojamiento:'ALO', gastronomia:'GAS', comercio:'COM',
+    experiencia:'EXP', wellness:'WEL', traslado:'TRA', rental:'RNT'
+  }[rubro] || 'OTR';
+  const ts = Date.now().toString().slice(-5);
+  return zonaParam + '-' + rubroAbrev + '-' + ts;
+}
+
+const PLANES = {
+  'alojamiento-hasta20':  { nombre:'Plan Estándar', real:'$120.000', lanz:'$60.000', mes:'/mes', condiciones:[
+    {ico:'🎁', txt:'<strong>1er mes sin cargo</strong>'},
+    {ico:'💳', txt:'Meses 2, 3 y 4: <strong>$60.000/mes</strong> (50% off)'},
+    {ico:'📅', txt:'Desde el 5to mes: <strong>$120.000/mes</strong>'},
+    {ico:'🏅', txt:'<strong>Sello Pionero CONFÍN</strong> — beneficios exclusivos'},
+    {ico:'⏳', txt:'🗓️ Mes sin cargo + 3 meses al 50% off + <strong>Sello Pionero CONFÍN</strong> — válido para suscripciones hasta el <strong>10 de octubre de 2026</strong>'},
+    {ico:'🔓', txt:'<strong>Cancelás cuando quieras</strong>, sin penalidades. Lo que está pago, está pago. Si cancelás, perdés el Sello Pionero CONFÍN; podés reactivar cuando quieras al valor vigente en ese momento'},
+  ]},
+  'alojamiento-mas20':    { nombre:'Plan Superior', real:'$180.000', lanz:'$90.000', mes:'/mes', condiciones:[
+    {ico:'🎁', txt:'<strong>1er mes sin cargo</strong>'},
+    {ico:'💳', txt:'Meses 2, 3 y 4: <strong>$90.000/mes</strong> (50% off)'},
+    {ico:'📅', txt:'Desde el 5to mes: <strong>$180.000/mes</strong>'},
+    {ico:'🏅', txt:'<strong>Sello Pionero CONFÍN</strong> — beneficios exclusivos'},
+    {ico:'⏳', txt:'🗓️ Mes sin cargo + 3 meses al 50% off + <strong>Sello Pionero CONFÍN</strong> — válido para suscripciones hasta el <strong>10 de octubre de 2026</strong>'},
+    {ico:'🔓', txt:'<strong>Cancelás cuando quieras</strong>, sin penalidades. Lo que está pago, está pago. Si cancelás, perdés el Sello Pionero CONFÍN; podés reactivar cuando quieras al valor vigente en ese momento'},
+  ]},
+  'alojamiento-lodge':    { nombre:'Plan Especial', real:'$300.000', lanz:'$150.000', mes:'/mes', condiciones:[
+    {ico:'🎁', txt:'<strong>1er mes sin cargo</strong>'},
+    {ico:'💳', txt:'Meses 2, 3 y 4: <strong>$150.000/mes</strong> (50% off)'},
+    {ico:'📅', txt:'Desde el 5to mes: <strong>$300.000/mes</strong>'},
+    {ico:'🏅', txt:'<strong>Sello Pionero CONFÍN</strong> — beneficios exclusivos'},
+    {ico:'⏳', txt:'🗓️ Mes sin cargo + 3 meses al 50% off + <strong>Sello Pionero CONFÍN</strong> — válido para suscripciones hasta el <strong>10 de octubre de 2026</strong>'},
+    {ico:'🔓', txt:'<strong>Cancelás cuando quieras</strong>, sin penalidades. Lo que está pago, está pago. Si cancelás, perdés el Sello Pionero CONFÍN; podés reactivar cuando quieras al valor vigente en ese momento'},
+  ]},
+  'alojamiento-hostel':   { nombre:'Plan Básico', real:'$70.000', lanz:'$35.000', mes:'/mes', condiciones:[
+    {ico:'🎁', txt:'<strong>1er mes sin cargo</strong>'},
+    {ico:'💳', txt:'Meses 2, 3 y 4: <strong>$35.000/mes</strong> (50% off)'},
+    {ico:'📅', txt:'Desde el 5to mes: <strong>$70.000/mes</strong>'},
+    {ico:'🏅', txt:'<strong>Sello Pionero CONFÍN</strong> — beneficios exclusivos'},
+    {ico:'⏳', txt:'🗓️ Mes sin cargo + 3 meses al 50% off + <strong>Sello Pionero CONFÍN</strong> — válido para suscripciones hasta el <strong>10 de octubre de 2026</strong>'},
+    {ico:'🔓', txt:'<strong>Cancelás cuando quieras</strong>, sin penalidades. Lo que está pago, está pago. Si cancelás, perdés el Sello Pionero CONFÍN; podés reactivar cuando quieras al valor vigente en ese momento'},
+  ]},
+  'gastronomia-pequena':  { nombre:'Plan Básico', real:'$70.000', lanz:'$35.000', mes:'/mes', condiciones:[
+    {ico:'🎁', txt:'<strong>1er mes sin cargo</strong>'},
+    {ico:'💳', txt:'Meses 2, 3 y 4: <strong>$35.000/mes</strong> (50% off)'},
+    {ico:'📅', txt:'Desde el 5to mes: <strong>$70.000/mes</strong>'},
+    {ico:'🏅', txt:'<strong>Sello Pionero CONFÍN</strong> — beneficios exclusivos'},
+    {ico:'⏳', txt:'🗓️ Mes sin cargo + 3 meses al 50% off + <strong>Sello Pionero CONFÍN</strong> — válido para suscripciones hasta el <strong>10 de octubre de 2026</strong>'},
+    {ico:'🔓', txt:'<strong>Cancelás cuando quieras</strong>, sin penalidades. Lo que está pago, está pago. Si cancelás, perdés el Sello Pionero CONFÍN; podés reactivar cuando quieras al valor vigente en ese momento'},
+  ]},
+  'gastronomia-grande':   { nombre:'Plan Estándar', real:'$120.000', lanz:'$60.000', mes:'/mes', condiciones:[
+    {ico:'🎁', txt:'<strong>1er mes sin cargo</strong>'},
+    {ico:'💳', txt:'Meses 2, 3 y 4: <strong>$60.000/mes</strong> (50% off)'},
+    {ico:'📅', txt:'Desde el 5to mes: <strong>$120.000/mes</strong>'},
+    {ico:'🏅', txt:'<strong>Sello Pionero CONFÍN</strong> — beneficios exclusivos'},
+    {ico:'⏳', txt:'🗓️ Mes sin cargo + 3 meses al 50% off + <strong>Sello Pionero CONFÍN</strong> — válido para suscripciones hasta el <strong>10 de octubre de 2026</strong>'},
+    {ico:'🔓', txt:'<strong>Cancelás cuando quieras</strong>, sin penalidades. Lo que está pago, está pago. Si cancelás, perdés el Sello Pionero CONFÍN; podés reactivar cuando quieras al valor vigente en ese momento'},
+  ]},
+  'comercio':  { nombre:'Plan Estándar', real:'$120.000', lanz:'$60.000', mes:'/mes', condiciones:[
+    {ico:'🎁', txt:'<strong>1er mes sin cargo</strong>'},
+    {ico:'💳', txt:'Meses 2, 3 y 4: <strong>$60.000/mes</strong> (50% off)'},
+    {ico:'📅', txt:'Desde el 5to mes: <strong>$120.000/mes</strong>'},
+    {ico:'🏅', txt:'<strong>Sello Pionero CONFÍN</strong> — beneficios exclusivos'},
+    {ico:'⏳', txt:'🗓️ Mes sin cargo + 3 meses al 50% off + <strong>Sello Pionero CONFÍN</strong> — válido para suscripciones hasta el <strong>10 de octubre de 2026</strong>'},
+    {ico:'🔓', txt:'<strong>Cancelás cuando quieras</strong>, sin penalidades. Lo que está pago, está pago. Si cancelás, perdés el Sello Pionero CONFÍN; podés reactivar cuando quieras al valor vigente en ese momento'},
+  ]},
+  'experiencia': { nombre:'Plan Básico', real:'$70.000', lanz:'$35.000', mes:'/mes', condiciones:[
+    {ico:'🎁', txt:'<strong>1er mes sin cargo</strong>'},
+    {ico:'💳', txt:'Meses 2, 3 y 4: <strong>$35.000/mes</strong> (50% off)'},
+    {ico:'📅', txt:'Desde el 5to mes: <strong>$70.000/mes</strong>'},
+    {ico:'🏅', txt:'<strong>Sello Pionero CONFÍN</strong> — beneficios exclusivos'},
+    {ico:'⏳', txt:'🗓️ Mes sin cargo + 3 meses al 50% off + <strong>Sello Pionero CONFÍN</strong> — válido para suscripciones hasta el <strong>10 de octubre de 2026</strong>'},
+    {ico:'🔓', txt:'<strong>Cancelás cuando quieras</strong>, sin penalidades. Lo que está pago, está pago. Si cancelás, perdés el Sello Pionero CONFÍN; podés reactivar cuando quieras al valor vigente en ese momento'},
+  ]},
+  'wellness':  { nombre:'Plan Básico', real:'$70.000', lanz:'$35.000', mes:'/mes', condiciones:[
+    {ico:'🎁', txt:'<strong>1er mes sin cargo</strong>'},
+    {ico:'💳', txt:'Meses 2, 3 y 4: <strong>$35.000/mes</strong> (50% off)'},
+    {ico:'📅', txt:'Desde el 5to mes: <strong>$70.000/mes</strong>'},
+    {ico:'🏅', txt:'<strong>Sello Pionero CONFÍN</strong> — beneficios exclusivos'},
+    {ico:'⏳', txt:'🗓️ Mes sin cargo + 3 meses al 50% off + <strong>Sello Pionero CONFÍN</strong> — válido para suscripciones hasta el <strong>10 de octubre de 2026</strong>'},
+    {ico:'🔓', txt:'<strong>Cancelás cuando quieras</strong>, sin penalidades. Lo que está pago, está pago. Si cancelás, perdés el Sello Pionero CONFÍN; podés reactivar cuando quieras al valor vigente en ese momento'},
+  ]},
+  'artesano':  { nombre:'Plan Artesanos y Emprendedores', nota:'Para artesanos, diseñadores y emprendedores independientes que producen y venden su propio trabajo — en ferias, por encargo o de forma itinerante — sin local comercial fijo. Si tenés un local fijo, te recomendamos ver los planes de Comercios.', real:'$50.000', lanz:'$25.000', mes:'/mes', condiciones:[
+    {ico:'🎁', txt:'<strong>1er mes sin cargo</strong>'},
+    {ico:'💳', txt:'Meses 2, 3 y 4: <strong>$25.000/mes</strong> (50% off)'},
+    {ico:'📅', txt:'Desde el 5to mes: <strong>$50.000/mes</strong>'},
+    {ico:'🏅', txt:'<strong>Sello Pionero CONFÍN</strong> — beneficios exclusivos'},
+    {ico:'🗓️', txt:'Mes sin cargo + 3 meses al 50% off + <strong>Sello Pionero CONFÍN</strong> — válido para suscripciones hasta el <strong>10 de octubre de 2026</strong>'},
+    {ico:'🔓', txt:'<strong>Cancelás cuando quieras</strong>, sin penalidades. Lo que está pago, está pago. Si cancelás, perdés el Sello Pionero CONFÍN; podés reactivar cuando quieras al valor vigente en ese momento'},
+  ]},
+  'traslado':  { nombre:'Plan Básico', real:'$70.000', lanz:'$35.000', mes:'/mes', condiciones:[
+    {ico:'🎁', txt:'<strong>1er mes sin cargo</strong>'},
+    {ico:'💳', txt:'Meses 2, 3 y 4: <strong>$35.000/mes</strong> (50% off)'},
+    {ico:'📅', txt:'Desde el 5to mes: <strong>$70.000/mes</strong>'},
+    {ico:'🏅', txt:'<strong>Sello Pionero CONFÍN</strong> — beneficios exclusivos'},
+    {ico:'⏳', txt:'🗓️ Mes sin cargo + 3 meses al 50% off + <strong>Sello Pionero CONFÍN</strong> — válido para suscripciones hasta el <strong>10 de octubre de 2026</strong>'},
+    {ico:'🔓', txt:'<strong>Cancelás cuando quieras</strong>, sin penalidades. Lo que está pago, está pago. Si cancelás, perdés el Sello Pionero CONFÍN; podés reactivar cuando quieras al valor vigente en ese momento'},
+  ]},
+};
+
+function mostrarPantalla(id) {
+  ['hero-screen','zona-screen','form-wrap','success-screen'].forEach(function(pid) {
+    var el = document.getElementById(pid);
+    if (!el) return;
+    el.style.display = 'none';
+  });
+  var target = document.getElementById(id);
+  if (target) {
+    target.style.display = id === 'success-screen' ? 'flex' : id === 'hero-screen' ? 'flex' : 'block';
+  }
+  window.scrollTo({top:0,behavior:'instant'});
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+function mostrarFormulario() {
+  mostrarPantalla('zona-screen');
+}
+
+function volverRubros() {
+  document.getElementById('rubro-grid-wrap').style.display = 'block';
+  document.querySelectorAll('.calificacion-box').forEach(b => b.classList.remove('visible'));
+  document.getElementById('precio-box').classList.remove('visible');
+  document.getElementById('rental-box').classList.remove('visible');
+  document.getElementById('btn-paso2').disabled = true;
+  rubroSeleccionado = null;
+  document.querySelectorAll('.rubro-card').forEach(c => c.classList.remove('selected'));
+  window.scrollTo(0,0);
+}
+
+function seleccionarZona(codigo) {
+  const zona = ZONAS[codigo] || ZONAS['SMA'];
+  zonaActual = zona;
+  zonaCodigoActual = codigo;
+
+  mostrarPantalla('form-wrap');
+}
+
+function seleccionarZonaOtra() {
+  document.getElementById('zona-otra-msg').style.display = 'block';
+}
+
+async function enviarInteresOtraZona() {
+  const email = document.getElementById('otra-email').value.trim();
+  const localidad = document.getElementById('otra-localidad').value.trim();
+  if (!email) { alert('Por favor ingresá tu email'); return; }
+  try {
+    await fetch(SUPABASE_URL + '/rest/v1/interes_zona', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY },
+      body: JSON.stringify({ email, localidad, fecha: new Date().toISOString() })
+    });
+  } catch(e) {}
+  document.getElementById('zona-otra-msg').innerHTML = '<p style="color:var(--atlantic);font-weight:600;text-align:center;">✅ ¡Anotado! Te avisamos cuando lleguemos a tu zona.</p>';
+}
+
+function volverHero() {
+  mostrarPantalla('hero-screen');
+  document.getElementById('form-wrap').style.display = 'none';
+  window.scrollTo(0,0);
+}
+
+function selectRubro(rubro) {
+  rubroSeleccionado = rubro;
+  calSeleccionada = null;
+  document.querySelectorAll('.rubro-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById('rc-' + rubro).classList.add('selected');
+
+  document.getElementById('rubro-grid-wrap').style.display = 'none';
+  document.querySelectorAll('.calificacion-box').forEach(b => b.classList.remove('visible'));
+  document.getElementById('precio-box').classList.remove('visible');
+  document.getElementById('rental-box').classList.remove('visible');
+  document.getElementById('btn-paso2').disabled = true;
+
+  if (rubro === 'alojamiento') {
+    document.getElementById('cal-alojamiento').classList.add('visible');
+    document.querySelectorAll('input[name="cal-aloj"]').forEach(r => r.checked = false);
+    document.querySelectorAll('#cal-alojamiento .cal-option').forEach(o => o.classList.remove('selected'));
+  } else if (rubro === 'gastronomia') {
+    document.getElementById('cal-gastronomia').classList.add('visible');
+    document.querySelectorAll('input[name="cal-gastro"]').forEach(r => r.checked = false);
+    document.querySelectorAll('#cal-gastronomia .cal-option').forEach(o => o.classList.remove('selected'));
+  } else if (rubro === 'rental') {
+    document.getElementById('rental-box').classList.add('visible');
+    planAsignado = 'rental';
+    document.getElementById('btn-paso2').disabled = false;
+  } else if (rubro === 'artesano') {
+    mostrarPrecio('artesano');
+    document.getElementById('btn-paso2').disabled = false;
+  } else {
+
+    mostrarPrecio(rubro);
+    document.getElementById('btn-paso2').disabled = false;
+  }
+}
+
+function selectCal(rubro, cal) {
+  calSeleccionada = cal;
+  const key = rubro + '-' + cal;
+  document.querySelectorAll('#cal-' + rubro + ' .cal-option').forEach(o => o.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+  planAsignado = key;
+  mostrarPrecio(key);
+  document.getElementById('btn-paso2').disabled = false;
+}
+
+function mostrarPrecio(key) {
+  const plan = PLANES[key];
+  if (!plan) return;
+  const box = document.getElementById('precio-box');
+  box.classList.add('visible');
+  document.getElementById('precio-plan-nombre').textContent = plan.nombre;
+  document.getElementById('precio-real-txt').textContent = plan.real;
+  document.getElementById('precio-lanz-txt').textContent = plan.lanz;
+  document.getElementById('precio-mes-txt').textContent = plan.mes;
+
+  const notaEl = document.getElementById('precio-nota');
+  if (notaEl) {
+    if (plan.nota) {
+      notaEl.innerHTML = '<strong style="color:#6BA4A5;">¿Para quién es este plan?</strong><br>' + plan.nota;
+      notaEl.style.display = 'block';
+    } else {
+      notaEl.style.display = 'none';
+    }
+  }
+  const conds = document.getElementById('precio-condiciones');
+  conds.innerHTML = plan.condiciones.map(c =>
+    `<div class="precio-cond-item">${c.ico} <span>${c.txt}</span></div>`
+  ).join('');
+}
+
+let pasoActual = 1;
+
+function irPaso(paso) {
+  if (paso === 2) {
+    const campos = ['ob-nombre','ob-responsable','ob-localidad','ob-wa','ob-email'];
+
+  }
+  if (paso === 3) {
+
+    const nombre = document.getElementById('ob-nombre').value.trim();
+    const resp = document.getElementById('ob-responsable').value.trim();
+    const loc = document.getElementById('ob-localidad').value;
+    const wa = document.getElementById('ob-wa').value.trim();
+    const email = document.getElementById('ob-email').value.trim();
+    if (!nombre || !resp || !loc || !wa || !email) {
+      alert('Completá todos los campos obligatorios para continuar.');
+      return;
+    }
+    if (!email.includes('@')) {
+      alert('Ingresá un email válido.');
+      return;
+    }
+  }
+
+  document.getElementById('step-' + pasoActual).classList.remove('active');
+  document.getElementById('dot-' + pasoActual).classList.remove('active');
+  document.getElementById('dot-' + pasoActual).classList.add('done');
+  pasoActual = paso;
+  document.getElementById('step-' + paso).classList.add('active');
+  document.getElementById('dot-' + paso).classList.add('active');
+
+  const fieldUnidades = document.getElementById('field-unidades');
+  if (rubroSeleccionado === 'alojamiento') {
+    fieldUnidades.style.display = 'block';
+  } else if (rubroSeleccionado === 'rental') {
+    fieldUnidades.style.display = 'block';
+    document.getElementById('label-unidades').textContent = 'Cantidad de unidades disponibles';
+  } else {
+    fieldUnidades.style.display = 'none';
+  }
+
+  window.scrollTo({top:0,behavior:'instant'});
+  document.getElementById('form-wrap').scrollTop = 0;
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+function abrirTyC() { document.getElementById('tyc-modal').classList.add('open'); }
+function cerrarTyC() { document.getElementById('tyc-modal').classList.remove('open'); }
+
+async function enviarOnboarding() {
+  const resp = document.getElementById('ob-responsabilidad').checked;
+  if (!resp) { alert('Debés declarar que la información es veraz para continuar.'); return; }
+  const tyc = document.getElementById('ob-tyc').checked;
+  if (!tyc) { alert('Debés aceptar las condiciones de publicación para continuar.'); return; }
+
+  const btn = document.getElementById('btn-submit');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  const codigoAlta = generarCodigo(rubroSeleccionado || 'otro');
+  const datos = {
+    direccion: document.getElementById('ob-direccion').value.trim(),
+    web: document.getElementById('ob-web').value.trim(),
+    facebook: document.getElementById('ob-facebook').value.trim(),
+    otras_redes: document.getElementById('ob-otras-redes').value.trim(),
+    link_reservas: document.getElementById('ob-link-reservas').value.trim(),
+    link_carta: document.getElementById('ob-link-carta').value.trim(),
+    contacto_tipo: document.querySelector('input[name="ob-contacto-tipo"]:checked')?.value || 'whatsapp',
+    acepta_reservas_wa: document.getElementById('ob-reservas').value,
+    descripcion_luna: document.getElementById('ob-descripcion-luna').value.trim(),
+    foto_portada: fotoPortadaUrl,
+    fotos_galeria: fotosGaleriaUrls.length > 0 ? JSON.stringify(fotosGaleriaUrls) : null,
+    zona_codigo: zonaCodigoActual,
+    zona_nombre: zonaActual.nombre,
+    zona_provincia: zonaActual.provincia,
+    zona_pais: zonaActual.pais,
+    codigo_alta: codigoAlta,
+    nombre: document.getElementById('ob-nombre').value.trim(),
+    responsable: document.getElementById('ob-responsable').value.trim(),
+    localidad: document.getElementById('ob-localidad').value,
+    whatsapp: document.getElementById('ob-wa').value.trim(),
+    email: document.getElementById('ob-email').value.trim(),
+    instagram: document.getElementById('ob-ig').value.trim(),
+    rubro: rubroSeleccionado,
+    plan: planAsignado,
+    unidades: document.getElementById('ob-unidades').value || null,
+    descripcion: document.getElementById('ob-descripcion').value.trim(),
+    es_pionero: true,
+    activo: false,
+    fecha_alta: new Date().toISOString(),
+  };
+
+  try {
+
+    let fotoPortadaUrl = null;
+    let fotosGaleriaUrls = [];
+    try {
+      const SUPABASE_CLIENT_URL = SUPABASE_URL;
+      const fotoInput = document.getElementById('ob-foto');
+      if (fotoInput && fotoInput.files && fotoInput.files[0]) {
+        const file = fotoInput.files[0];
+        const ext = file.name.split('.').pop().toLowerCase() || 'jpg';
+        const path = codigoAlta + '/portada.' + ext;
+        const formData = new FormData();
+        formData.append('', file);
+        const upRes = await fetch(SUPABASE_URL.replace('/rest/v1','') + '/storage/v1/object/fotos-establecimientos/' + path, {
+          method: 'POST',
+          headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY },
+          body: file
+        });
+        if (upRes.ok) {
+          fotoPortadaUrl = SUPABASE_URL.replace('/rest/v1','') + '/storage/v1/object/public/fotos-establecimientos/' + path;
+        }
+      }
+      const galeriaInput = document.getElementById('ob-galeria');
+      if (galeriaInput && galeriaInput.files && galeriaInput.files.length > 0) {
+        const archivos = Array.from(galeriaInput.files).slice(0, 6);
+        for (let i = 0; i < archivos.length; i++) {
+          const file = archivos[i];
+          const ext = file.name.split('.').pop().toLowerCase() || 'jpg';
+          const path = codigoAlta + '/galeria/foto_' + i + '.' + ext;
+          const upRes = await fetch(SUPABASE_URL.replace('/rest/v1','') + '/storage/v1/object/fotos-establecimientos/' + path, {
+            method: 'POST',
+            headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY },
+            body: file
+          });
+          if (upRes.ok) {
+            fotosGaleriaUrls.push(SUPABASE_URL.replace('/rest/v1','') + '/storage/v1/object/public/fotos-establecimientos/' + path);
+          }
+        }
+      }
+    } catch(e) { console.warn('Upload fotos:', e); }
+
+    await fetch(SUPABASE_URL + '/rest/v1/leads_afiliacion', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(datos)
+    });
+  } catch(e) { console.warn('Supabase error:', e); }
+
+  const asunto = encodeURIComponent('🌿 Nueva alta CONFÍN: ' + datos.nombre);
+  const cuerpo = encodeURIComponent(
+    'NUEVA ALTA RECIBIDA\n\n' +
+    'Nombre: ' + datos.nombre + '\n' +
+    'Responsable: ' + datos.responsable + '\n' +
+    'Localidad: ' + datos.localidad + '\n' +
+    'WhatsApp: ' + datos.whatsapp + '\n' +
+    'Email: ' + datos.email + '\n' +
+    'Instagram: ' + (datos.instagram || '-') + '\n' +
+    'Rubro: ' + datos.rubro + '\n' +
+    'Plan asignado: ' + datos.plan + '\n' +
+    'Unidades/plazas: ' + (datos.unidades || '-') + '\n\n' +
+    '🔍 Verificar:\n' +
+    'Google: https://www.google.com/search?q=' + encodeURIComponent(datos.nombre + ' ' + datos.localidad) + '\n' +
+    'Instagram: https://instagram.com/' + (datos.instagram || '').replace('@','') + '\n' +
+    'Maps: https://maps.google.com/?q=' + encodeURIComponent(datos.nombre + ' ' + datos.localidad + ' Argentina')
+  );
+  window.open('mailto:contacto.confinapp@gmail.com?subject=' + asunto + '&body=' + cuerpo, '_blank');
+
+  mostrarPantalla('success-screen');
+  window.scrollTo(0,0);
+}
+</script>
+<footer style="text-align:center;padding:32px 20px 48px;border-top:1px solid rgba(107,164,165,0.15);margin-top:40px;"><img src="confin-logo-transparente.png" alt="CONFÍN" style="height:36px;width:auto;margin-bottom:12px;opacity:0.7;display:block;margin-left:auto;margin-right:auto;"><p style="font-size:0.68rem;color:#7A6E65;line-height:1.8;letter-spacing:0.04em;">Consultas: <a href="mailto:contacto.confinapp@gmail.com" style="color:#6BA4A5;">contacto.confinapp@gmail.com</a><br>San Martín de los Andes, Neuquén, Argentina</p></footer>
+</body>
+</html>
