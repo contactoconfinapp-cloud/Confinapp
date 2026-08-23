@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Editar mi perfil — CONFÍN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#0F2B25;--cream:#F3EFE6;--atlantic:#6BA4A5;
+  --ember:#B8673A;--bark:#4A4540;--ash:#C4BAB0;--fog:#F3EFE6;--soil:#0F2B25;
+  --font-d:'Cormorant Garamond',Georgia,serif;--font-b:'DM Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:var(--fog);color:var(--soil);font-family:var(--font-b);font-weight:300;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+.page{max-width:480px;margin:0 auto;padding:0 0 60px;}
+.header{background:var(--deep);padding:14px 20px;display:flex;align-items:center;justify-content:center;}
+.header-title{font-family:var(--font-d);font-size:1rem;letter-spacing:0.2em;color:rgba(163,196,204,0.7);}
+.section{padding:24px 20px;}
+.section-eyebrow{font-size:0.82rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--atlantic);margin-bottom:6px;}
+.section-title{font-family:var(--font-d);font-size:1.6rem;font-weight:300;color:var(--soil);margin-bottom:20px;line-height:1.2;}
+.field-group{margin-bottom:16px;}
+.field-label{font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--bark);margin-bottom:6px;display:block;}
+.field-req{color:var(--ember);}
+.field-input{width:100%;border:1px solid var(--ash);background:#fff;color:var(--soil);padding:12px 14px;font-size:0.9rem;font-family:var(--font-b);border-radius:8px;outline:none;transition:border-color 0.2s;}
+.field-input:focus{border-color:var(--atlantic);}
+.field-input::placeholder{color:var(--ash);}
+.field-hint{font-size:0.82rem;color:var(--bark);margin-top:4px;line-height:1.5;}
+textarea.field-input{resize:vertical;min-height:90px;}
+.btn{background:var(--atlantic);color:#fff;border:none;padding:16px;font-size:0.86rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-family:var(--font-b);border-radius:8px;width:100%;margin-top:8px;transition:background 0.2s;}
+.btn:disabled{opacity:0.5;pointer-events:none;}
+.btn-secondary{background:transparent;color:var(--atlantic);border:1px solid var(--atlantic);}
+.aviso{background:rgba(107,164,165,0.08);border:1px solid rgba(107,164,165,0.25);border-radius:10px;padding:16px;margin-bottom:20px;font-size:0.88rem;line-height:1.7;}
+.error-box{display:none;background:#fdecea;border:1px solid #e57373;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:0.88rem;color:#b71c1c;line-height:1.5;}
+.success-box{display:none;background:rgba(107,164,165,0.1);border:1px solid var(--atlantic);border-radius:8px;padding:16px;margin-bottom:16px;font-size:0.88rem;color:var(--deep);line-height:1.5;}
+.divider{height:1px;background:rgba(107,164,165,0.2);margin:20px 0;}
+#pantalla-buscar{display:block;}
+#pantalla-editar{display:none;}
+.perfil-header{background:var(--deep);border-radius:12px;padding:16px 18px;margin-bottom:20px;}
+.perfil-nombre{font-family:var(--font-d);font-size:1.2rem;color:var(--cream);}
+.perfil-codigo{font-size:0.78rem;color:rgba(163,196,204,0.6);letter-spacing:0.1em;margin-top:4px;}
+.tab-row{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+.tab{padding:8px 14px;border:1px solid var(--ash);border-radius:20px;font-size:0.82rem;cursor:pointer;background:#fff;color:var(--bark);transition:all 0.2s;}
+.tab.active{background:var(--atlantic);color:#fff;border-color:var(--atlantic);}
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-title">CONFÍN — Mi perfil</div>
+</div>
+
+<div class="page">
+
+  <!-- PANTALLA 1: BUSCAR POR CÓDIGO -->
+  <div id="pantalla-buscar">
+    <div class="section">
+      <div class="section-eyebrow">Gestión de perfil</div>
+      <div class="section-title">Editá tu<br>establecimiento</div>
+
+      <div class="aviso">
+        📩 Ingresá el código que recibiste por email cuando completaste el alta. Si no lo encontrás, escribinos a <strong>contacto.confinapp@gmail.com</strong>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Tu código de alta <span class="field-req">*</span></label>
+        <input class="field-input" type="text" id="input-codigo" placeholder="Ej: SMA-001 o BAR-RNT-12345" style="text-transform:uppercase;" oninput="this.value=this.value.toUpperCase()">
+      </div>
+
+      <div id="error-buscar" class="error-box"></div>
+
+      <button class="btn" onclick="buscarPorCodigo()">Buscar mi perfil →</button>
+    </div>
+  </div>
+
+  <!-- PANTALLA 2: EDITAR -->
+  <div id="pantalla-editar">
+    <div class="section">
+
+      <div class="perfil-header">
+        <div class="perfil-nombre" id="perfil-nombre-display">—</div>
+        <div class="perfil-codigo" id="perfil-codigo-display">—</div>
+      </div>
+
+      <div class="tab-row">
+        <div class="tab active" onclick="mostrarTab('datos')">Datos</div>
+        <div class="tab" onclick="mostrarTab('precios')">Precios</div>
+        <div class="tab" onclick="mostrarTab('promo')">Promoción</div>
+        <div class="tab" onclick="mostrarTab('fotos')">Fotos</div>
+      </div>
+
+      <!-- TAB DATOS -->
+      <div class="tab-content active" id="tab-datos">
+        <div class="field-group">
+          <label class="field-label">Nombre del establecimiento</label>
+          <input class="field-input" type="text" id="ed-nombre">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Nombre del responsable</label>
+          <input class="field-input" type="text" id="ed-responsable">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Dirección</label>
+          <input class="field-input" type="text" id="ed-direccion">
+        </div>
+        <div class="field-group">
+          <label class="field-label">WhatsApp</label>
+          <input class="field-input" type="tel" id="ed-wa">
+          <div style="display:flex;align-items:center;gap:8px;margin-top:8px;padding:10px 14px;background:#fff;border:1px solid var(--ash);border-radius:8px;">
+            <input type="checkbox" id="ed-wa-publico" style="accent-color:var(--atlantic);width:16px;height:16px;">
+            <label for="ed-wa-publico" style="font-size:0.82rem;color:var(--soil);cursor:pointer;">Mostrar WhatsApp públicamente en mi perfil</label>
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Email</label>
+          <input class="field-input" type="email" id="ed-email">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Instagram</label>
+          <input class="field-input" type="text" id="ed-ig">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Página web</label>
+          <input class="field-input" type="url" id="ed-web">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Facebook / otra red</label>
+          <input class="field-input" type="text" id="ed-facebook">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Descripción para Luna</label>
+          <textarea class="field-input" id="ed-descripcion-luna" maxlength="280" placeholder="Máx. 280 caracteres"></textarea>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Medios de pago</label>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="ed-pagos-checks">
+            <label style="display:flex;align-items:center;gap:5px;font-size:0.88rem;"><input type="checkbox" value="efectivo"> Efectivo</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:0.88rem;"><input type="checkbox" value="credito"> Crédito</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:0.88rem;"><input type="checkbox" value="debito"> Débito</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:0.88rem;"><input type="checkbox" value="transferencia"> Transferencia</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:0.88rem;"><input type="checkbox" value="mp"> Mercado Pago</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:0.88rem;"><input type="checkbox" value="dolares"> Dólares</label>
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Idiomas</label>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="ed-idiomas-checks">
+            <label style="display:flex;align-items:center;gap:5px;font-size:0.88rem;"><input type="checkbox" value="es"> Español</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:0.88rem;"><input type="checkbox" value="en"> Inglés</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:0.88rem;"><input type="checkbox" value="pt"> Portugués</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:0.88rem;"><input type="checkbox" value="fr"> Francés</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:0.88rem;"><input type="checkbox" value="de"> Alemán</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB PRECIOS -->
+      <div class="tab-content" id="tab-precios">
+        <p class="field-hint" style="margin-bottom:16px;">Precios en USD por noche según cantidad de personas. Completá solo los que apliquen. El precio final lo acordás directamente con el turista — esto es orientativo.</p>
+        
+        <div style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--atlantic);font-weight:700;margin:14px 0 7px;">Temporada alta — USD por noche</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;">
+          <input class="field-input" type="number" id="p-alta-1" placeholder="1 persona" style="flex:1;min-width:78px;font-size:0.82rem;padding:9px 7px;" min="0">
+          <input class="field-input" type="number" id="p-alta-2" placeholder="2 personas" style="flex:1;min-width:78px;font-size:0.82rem;padding:9px 7px;" min="0">
+          <input class="field-input" type="number" id="p-alta-3" placeholder="3 personas" style="flex:1;min-width:78px;font-size:0.82rem;padding:9px 7px;" min="0">
+          <input class="field-input" type="number" id="p-alta-4" placeholder="4 personas" style="flex:1;min-width:78px;font-size:0.82rem;padding:9px 7px;" min="0">
+          <input class="field-input" type="number" id="p-alta-5" placeholder="5 personas" style="flex:1;min-width:78px;font-size:0.82rem;padding:9px 7px;" min="0">
+          <input class="field-input" type="number" id="p-alta-6" placeholder="6 personas" style="flex:1;min-width:78px;font-size:0.82rem;padding:9px 7px;" min="0">
+        </div>
+
+        <div style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--atlantic);font-weight:700;margin:14px 0 7px;">Temporada media — USD por noche</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;">
+          <input class="field-input" type="number" id="p-media-1" placeholder="1 persona" style="flex:1;min-width:78px;font-size:0.82rem;padding:9px 7px;" min="0">
+          <input class="field-input" type="number" id="p-media-2" placeholder="2 personas" style="flex:1;min-width:78px;font-size:0.82rem;padding:9px 7px;" min="0">
+          <input class="field-input" type="number" id="p-media-3" placeholder="3 personas" style="flex:1;min-width:78px;font-size:0.82rem;padding:9px 7px;" min="0">
+          <input class="field-input" type="number" id="p-media-4" placeholder="4 personas" style="flex:1;min-width:78px;font-size:0.82rem;padding:9px 7px;" min="0">
+          <input class="field-input" type="number" id="p-media-5" placeholder="5 personas" style="flex:1;min-width:78px;font-size:0.82rem;padding:9px 7px;" min="0">
+          <input class="field-input" type="number" id="p-media-6" placeholder="6 personas" style="flex:1;min-width:78px;font-size:0.82rem;padding:9px 7px;" min="0">
+        </div>
+
+        <div style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--atlantic);font-weight:700;margin:14px 0 7px;">Temporada baja — USD por noche</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;">
+          <input class="field-input" type="number" id="p-baja-1" placeholder="1 persona" style="flex:1;min-width:78px;font-size:0.82rem;padding:9px 7px;" min="0">
+          <input class="field-input" type="number" id="p-baja-2" placeholder="2 personas" style="flex:1;min-width:78px;font-size:0.82rem;padding:9px 7px;" min="0">
+          <input class="field-input" type="number" id="p-baja-3" placeholder="3 personas" style="flex:1;min-width:78px;font-size:0.82rem;padding:9px 7px;" min="0">
+          <input class="field-input" type="number" id="p-baja-4" placeholder="4 personas" style="flex:1;min-width:78px;font-size:0.82rem;padding:9px 7px;" min="0">
+          <input class="field-input" type="number" id="p-baja-5" placeholder="5 personas" style="flex:1;min-width:78px;font-size:0.82rem;padding:9px 7px;" min="0">
+          <input class="field-input" type="number" id="p-baja-6" placeholder="6 personas" style="flex:1;min-width:78px;font-size:0.82rem;padding:9px 7px;" min="0">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Detalle adicional (opcional)</label>
+          <input class="field-input" type="text" id="ed-precio-detalle" placeholder="Ej: Desayuno incluido · Mínimo 2 noches" maxlength="100">
+        </div>
+      </div>
+
+      <!-- TAB PROMO -->
+      <div class="tab-content" id="tab-promo">
+        <p class="field-hint" style="margin-bottom:16px;">Publicá una promoción activa. Se muestra destacada en tu perfil. Actualizala cuando quieras — podés cambiarla o quitarla.</p>
+        <div class="field-group">
+          <label class="field-label">Promoción vigente</label>
+          <input class="field-input" type="text" id="ed-promo" maxlength="150" placeholder="Ej: 15% de descuento mencionando CONFÍN · Válido hasta el 30/9">
+        </div>
+        <p class="field-hint">Máx. 150 caracteres. Si no tenés promoción activa, dejá el campo vacío.</p>
+      </div>
+
+      <!-- TAB FOTOS -->
+      <div class="tab-content" id="tab-fotos">
+        <p class="field-hint" style="margin-bottom:16px;">Reemplazá tu foto principal o agregá fotos a la galería. Las fotos nuevas reemplazan las anteriores.</p>
+        <div class="field-group">
+          <label class="field-label">Nueva foto principal</label>
+          <input class="field-input" type="file" id="ed-foto" accept="image/jpeg,image/png,image/webp" style="padding:8px;">
+          <p class="field-hint">Máx. 5MB. Reemplaza la foto actual.</p>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Nuevas fotos de galería (hasta 6)</label>
+          <input class="field-input" type="file" id="ed-galeria" accept="image/jpeg,image/png,image/webp" multiple style="padding:8px;">
+          <p class="field-hint">Se agregan a las fotos existentes (máx. 6 en total).</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div id="error-guardar" class="error-box"></div>
+      <div id="success-guardar" class="success-box">✅ ¡Cambios guardados! Tu perfil se actualizará en CONFÍN en menos de 1 hora.</div>
+
+      <button class="btn" id="btn-guardar" onclick="guardarCambios()">Guardar cambios →</button>
+      <button class="btn btn-secondary" style="margin-top:10px;" onclick="volver()">← Buscar otro establecimiento</button>
+
+    </div>
+  </div>
+
+</div>
+
+<footer style="text-align:center;padding:32px 20px 48px;border-top:1px solid rgba(107,164,165,0.15);">
+  <p style="font-size:0.82rem;color:#7A6E65;">Consultas: <a href="mailto:contacto.confinapp@gmail.com" style="color:#6BA4A5;">contacto.confinapp@gmail.com</a></p>
+</footer>
+
+<script>
+const SUPABASE_URL = 'https://cstaurdeiyulzaqymexa.supabase.co/rest/v1';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNzdGF1cmRlaXl1bHphcXltZXhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE3MTE0NzEsImV4cCI6MjA5NzI4NzQ3MX0.Fy0qqp6MhcryEkttW2fMUAB_N50PlvSwjfmeRv3HJjA';
+const STORAGE_URL = 'https://cstaurdeiyulzaqymexa.supabase.co/storage/v1/object/fotos-establecimientos/';
+const STORAGE_PUBLIC = 'https://cstaurdeiyulzaqymexa.supabase.co/storage/v1/object/public/fotos-establecimientos/';
+
+var registroActual = null;
+
+function mostrarError(id, msg) {
+  var el = document.getElementById(id);
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function ocultarError(id) {
+  document.getElementById(id).style.display = 'none';
+}
+
+function mostrarTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  event.target.classList.add('active');
+}
+
+async function buscarPorCodigo() {
+  var codigo = document.getElementById('input-codigo').value.trim().toUpperCase();
+  if (!codigo) { mostrarError('error-buscar', 'Ingresá tu código de alta.'); return; }
+  ocultarError('error-buscar');
+
+  var btn = event.target;
+  btn.disabled = true;
+  btn.textContent = '⏳ Buscando...';
+
+  try {
+    var res = await fetch(SUPABASE_URL + '/leads_afiliacion?codigo_alta=eq.' + encodeURIComponent(codigo) + '&select=*', {
+      headers: {'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY}
+    });
+    var data = await res.json();
+    if (!data || data.length === 0) {
+      mostrarError('error-buscar', 'No encontramos ningún establecimiento con ese código. Verificá que esté escrito correctamente.');
+      btn.disabled = false;
+      btn.textContent = 'Buscar mi perfil →';
+      return;
+    }
+    registroActual = data[0];
+    cargarDatos(registroActual);
+    document.getElementById('pantalla-buscar').style.display = 'none';
+    document.getElementById('pantalla-editar').style.display = 'block';
+  } catch(e) {
+    mostrarError('error-buscar', 'Error de conexión. Intentá nuevamente.');
+    btn.disabled = false;
+    btn.textContent = 'Buscar mi perfil →';
+  }
+}
+
+function cargarDatos(d) {
+  document.getElementById('perfil-nombre-display').textContent = d.nombre || '—';
+  document.getElementById('perfil-codigo-display').textContent = 'Código: ' + d.codigo_alta + ' · ' + (d.rubro || '') + ' · ' + (d.zona_nombre || '');
+
+  document.getElementById('ed-nombre').value = d.nombre || '';
+  document.getElementById('ed-responsable').value = d.responsable || '';
+  document.getElementById('ed-direccion').value = d.direccion || '';
+  document.getElementById('ed-wa').value = d.whatsapp || '';
+  document.getElementById('ed-wa-publico').checked = d.wa_publico !== false;
+  document.getElementById('ed-email').value = d.email || '';
+  document.getElementById('ed-ig').value = d.instagram || '';
+  document.getElementById('ed-web').value = d.web || '';
+  document.getElementById('ed-facebook').value = d.facebook || '';
+  document.getElementById('ed-descripcion-luna').value = d.descripcion_luna || '';
+  document.getElementById('ed-precio-detalle').value = d.precio_detalle || '';
+  document.getElementById('ed-promo').value = d.promo || '';
+
+  // Precios por temporada
+  var precios = d.precios_usd || {};
+  ['alta','media','baja'].forEach(function(t) {
+    for (var i = 1; i <= 6; i++) {
+      var el = document.getElementById('p-' + t + '-' + i);
+      if (el) el.value = (precios[t] && precios[t][i]) ? precios[t][i] : '';
+    }
+  });
+
+  // Pagos
+  var pagos = d.pagos || [];
+  document.querySelectorAll('#ed-pagos-checks input').forEach(cb => {
+    cb.checked = pagos.includes(cb.value);
+  });
+
+  // Idiomas
+  var idiomas = d.idiomas || [];
+  document.querySelectorAll('#ed-idiomas-checks input').forEach(cb => {
+    cb.checked = idiomas.includes(cb.value);
+  });
+}
+
+async function guardarCambios() {
+  ocultarError('error-guardar');
+  document.getElementById('success-guardar').style.display = 'none';
+
+  var btn = document.getElementById('btn-guardar');
+  btn.disabled = true;
+  btn.textContent = '⏳ Guardando...';
+
+  try {
+    var codigo = registroActual.codigo_alta;
+
+    // Subir foto portada si hay nueva
+    var fotoInput = document.getElementById('ed-foto');
+    var fotoPortadaUrl = registroActual.foto_portada;
+    if (fotoInput.files && fotoInput.files.length > 0) {
+      var f = fotoInput.files[0];
+      var ext = f.name.split('.').pop().toLowerCase() || 'jpg';
+      var path = codigo + '/fotos/portada.' + ext;
+      var up = await fetch(STORAGE_URL + path, {
+        method: 'POST',
+        headers: {'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY, 'x-upsert': 'true'},
+        body: f
+      });
+      if (up.ok) fotoPortadaUrl = STORAGE_PUBLIC + path;
+    }
+
+    // Subir galería si hay nuevas
+    var galeriaInput = document.getElementById('ed-galeria');
+    var fotosGaleriaUrls = registroActual.fotos_galeria || [];
+    if (galeriaInput.files && galeriaInput.files.length > 0) {
+      var archivos = Array.from(galeriaInput.files).slice(0, 6 - fotosGaleriaUrls.length);
+      for (var i = 0; i < archivos.length; i++) {
+        if (archivos[i].size > 5 * 1024 * 1024) continue;
+        var ext2 = archivos[i].name.split('.').pop().toLowerCase() || 'jpg';
+        var path2 = codigo + '/galeria/foto_' + (fotosGaleriaUrls.length + i) + '.' + ext2;
+        var up2 = await fetch(STORAGE_URL + path2, {
+          method: 'POST',
+          headers: {'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY, 'x-upsert': 'true'},
+          body: archivos[i]
+        });
+        if (up2.ok) fotosGaleriaUrls.push(STORAGE_PUBLIC + path2);
+      }
+    }
+
+    var updates = {
+      nombre: document.getElementById('ed-nombre').value.trim(),
+      responsable: document.getElementById('ed-responsable').value.trim(),
+      direccion: document.getElementById('ed-direccion').value.trim(),
+      whatsapp: document.getElementById('ed-wa').value.trim(),
+      wa_publico: document.getElementById('ed-wa-publico').checked,
+      email: document.getElementById('ed-email').value.trim(),
+      instagram: document.getElementById('ed-ig').value.trim(),
+      web: document.getElementById('ed-web').value.trim(),
+      facebook: document.getElementById('ed-facebook').value.trim(),
+      descripcion_luna: document.getElementById('ed-descripcion-luna').value.trim(),
+      precio_desde: document.getElementById('ed-precio-desde').value || null,
+      precio_hasta: document.getElementById('ed-precio-hasta').value || null,
+      precio_detalle: document.getElementById('ed-precio-detalle').value.trim() || null,
+      promo: document.getElementById('ed-promo').value.trim() || null,
+      pagos: Array.from(document.querySelectorAll('#ed-pagos-checks input:checked')).map(i => i.value),
+      idiomas: Array.from(document.querySelectorAll('#ed-idiomas-checks input:checked')).map(i => i.value),
+      foto_portada: fotoPortadaUrl,
+      fotos_galeria: fotosGaleriaUrls,
+    };
+
+    var dbRes = await fetch(SUPABASE_URL + '/leads_afiliacion?codigo_alta=eq.' + encodeURIComponent(codigo), {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(updates)
+    });
+
+    if (!dbRes.ok) throw new Error('Error ' + dbRes.status);
+
+    document.getElementById('success-guardar').style.display = 'block';
+    window.scrollTo({top: document.getElementById('success-guardar').offsetTop - 20, behavior: 'smooth'});
+
+  } catch(e) {
+    mostrarError('error-guardar', 'Error al guardar. Intentá nuevamente o escribinos a contacto.confinapp@gmail.com');
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Guardar cambios →';
+}
+
+function volver() {
+  registroActual = null;
+  document.getElementById('pantalla-editar').style.display = 'none';
+  document.getElementById('pantalla-buscar').style.display = 'block';
+  document.getElementById('input-codigo').value = '';
+}
+</script>
+
+</body>
+</html>
